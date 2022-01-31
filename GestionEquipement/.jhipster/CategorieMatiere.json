@@ -1,0 +1,24 @@
+{
+  "name": "CategorieMatiere",
+  "fields": [
+    {
+      "fieldName": "categorie",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "categorie_matiere",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "microserviceName": "GestionEquipement",
+  "clientRootFolder": "GestionEquipement",
+  "databaseType": "sql",
+  "changelogDate": "20210606235926"
+}

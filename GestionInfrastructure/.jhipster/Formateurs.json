@@ -1,0 +1,71 @@
+{
+  "name": "Formateurs",
+  "fields": [
+    {
+      "fieldName": "nomFormateur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomFormateur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numb1",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numb2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ville",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "specialite",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "formateurs",
+      "relationshipName": "nomEtablissement"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "filiereStabilise",
+      "otherEntityRelationshipName": "nomFormateur",
+      "relationshipName": "nomFiliere"
+    }
+  ],
+  "entityTableName": "formateurs",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "microserviceName": "GestionInfrastructure",
+  "clientRootFolder": "GestionInfrastructure",
+  "databaseType": "sql",
+  "changelogDate": "20210607000628"
+}

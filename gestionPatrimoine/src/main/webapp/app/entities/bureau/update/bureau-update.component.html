@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-bureau-heading" data-cy="BureauCreateUpdateHeading" jhiTranslate="gestionPatrimoineApp.bureau.home.createOrEditLabel">
+        Create or edit a Bureau
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.bureau.nomStructure" for="field_nomStructure"
+            >Nom Structure</label
+          >
+          <select class="form-control" name="nomStructure" formControlName="nomStructure" id="field_nomStructure" data-cy="nomStructure">
+            <option [ngValue]="null">{{ 'gestionPatrimoineApp.NomS.null' | translate }}</option>
+            <option value="Etablissement">{{ 'gestionPatrimoineApp.NomS.Etablissement' | translate }}</option>
+            <option value="MEFPAI">{{ 'gestionPatrimoineApp.NomS.MEFPAI' | translate }}</option>
+          </select>
+          <div
+            *ngIf="editForm.get('nomStructure')!.invalid && (editForm.get('nomStructure')!.dirty || editForm.get('nomStructure')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomStructure')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.bureau.direction" for="field_direction">Direction</label>
+          <select class="form-control" name="direction" formControlName="direction" id="field_direction" data-cy="direction">
+            <option [ngValue]="null">{{ 'gestionPatrimoineApp.Direction.null' | translate }}</option>
+            <option value="DAGE">{{ 'gestionPatrimoineApp.Direction.DAGE' | translate }}</option>
+            <option value="DFPT">{{ 'gestionPatrimoineApp.Direction.DFPT' | translate }}</option>
+            <option value="DA">{{ 'gestionPatrimoineApp.Direction.DA' | translate }}</option>
+            <option value="PE">{{ 'gestionPatrimoineApp.Direction.PE' | translate }}</option>
+            <option value="DRH">{{ 'gestionPatrimoineApp.Direction.DRH' | translate }}</option>
+            <option value="CEP">{{ 'gestionPatrimoineApp.Direction.CEP' | translate }}</option>
+            <option value="CelluleInformatique">{{ 'gestionPatrimoineApp.Direction.CelluleInformatique' | translate }}</option>
+            <option value="CelluleJuridique">{{ 'gestionPatrimoineApp.Direction.CelluleJuridique' | translate }}</option>
+            <option value="CelluleGenre">{{ 'gestionPatrimoineApp.Direction.CelluleGenre' | translate }}</option>
+            <option value="CPM">{{ 'gestionPatrimoineApp.Direction.CPM' | translate }}</option>
+            <option value="DE">{{ 'gestionPatrimoineApp.Direction.DE' | translate }}</option>
+            <option value="PEJA">{{ 'gestionPatrimoineApp.Direction.PEJA' | translate }}</option>
+            <option value="SEN32">{{ 'gestionPatrimoineApp.Direction.SEN32' | translate }}</option>
+            <option value="BureauCourrier">{{ 'gestionPatrimoineApp.Direction.BureauCourrier' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.bureau.nomEtablissement" for="field_nomEtablissement"
+            >Nom Etablissement</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomEtablissement"
+            id="field_nomEtablissement"
+            data-cy="nomEtablissement"
+            formControlName="nomEtablissement"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

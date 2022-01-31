@@ -1,0 +1,45 @@
+{
+  "name": "Etapes",
+  "fields": [
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nomTache",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Duration"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "projets",
+      "otherEntityRelationshipName": "etapes",
+      "relationshipName": "nomProjet"
+    }
+  ],
+  "entityTableName": "etapes",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "microserviceName": "GestionInfrastructure",
+  "clientRootFolder": "GestionInfrastructure",
+  "databaseType": "sql",
+  "changelogDate": "20210607000428"
+}

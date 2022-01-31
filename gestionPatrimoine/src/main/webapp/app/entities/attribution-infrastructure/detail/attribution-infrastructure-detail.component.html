@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="attributionInfrastructure">
+      <h2 data-cy="attributionInfrastructureDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.attributionInfrastructure.detail.title">Attribution Infrastructure</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ attributionInfrastructure.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.attributionInfrastructure.dateAttribution">Date Attribution</span></dt>
+        <dd>
+          <span>{{ attributionInfrastructure.dateAttribution | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.attributionInfrastructure.quantite">Quantite</span></dt>
+        <dd>
+          <span>{{ attributionInfrastructure.quantite }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.attributionInfrastructure.idEquipement">Id Equipement</span></dt>
+        <dd>
+          <span>{{ attributionInfrastructure.idEquipement }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.attributionInfrastructure.idPers">Id Pers</span></dt>
+        <dd>
+          <span>{{ attributionInfrastructure.idPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.attributionInfrastructure.nomEtablissement">Nom Etablissement</span></dt>
+        <dd>
+          <div *ngIf="attributionInfrastructure.nomEtablissement">
+            <a [routerLink]="['/etablissement', attributionInfrastructure.nomEtablissement?.id, 'view']">{{
+              attributionInfrastructure.nomEtablissement?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/attribution-infrastructure', attributionInfrastructure.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

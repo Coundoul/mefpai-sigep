@@ -1,0 +1,33 @@
+{
+  "gestionPatrimoineApp": {
+    "fournisseur": {
+      "home": {
+        "title": "Fournisseurs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Fournisseur",
+        "createOrEditLabel": "Créer ou éditer un Fournisseur",
+        "notFound": "Aucun Fournisseur trouvé"
+      },
+      "created": "Un nouveau Fournisseur a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Fournisseur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Fournisseur avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Fournisseur {{ id }} ?"
+      },
+      "detail": {
+        "title": "Fournisseur"
+      },
+      "id": "ID",
+      "codeFournisseuer": "Code Fournisseuer",
+      "nomFournisseur": "Nom Fournisseur",
+      "prenomFournisseur": "Prenom Fournisseur",
+      "sexe": "Sexe",
+      "raisonSocial": "Raison Social",
+      "adresse": "Adresse",
+      "num1": "Num 1",
+      "num2": "Num 2",
+      "ville": "Ville",
+      "email": "Email"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gestionPatrimoineApp": {
+    "projets": {
+      "home": {
+        "title": "Projets",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Projets",
+        "createOrEditLabel": "Créer ou éditer un Projets",
+        "notFound": "Aucun Projets trouvé"
+      },
+      "created": "Un nouveau Projets a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Projets avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Projets avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Projets {{ id }} ?"
+      },
+      "detail": {
+        "title": "Projets"
+      },
+      "id": "ID",
+      "typeProjet": "Type Projet",
+      "nomProjet": "Nom Projet",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "description": "Description",
+      "extension": "Extension",
+      "nom": "Nom",
+      "nomEtablissement": "Nom Etablissement",
+      "nomBatiment": "Nom Batiment",
+      "nomIntervenant": "Nom Intervenant"
+    }
+  }
+}

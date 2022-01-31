@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Attribution.
+    -->
+    <changeSet id="20210606235826-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="nom_utilisateur_id"
+                                 baseTableName="attribution"
+                                 constraintName="fk_attribution__nom_utilisateur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="utilisateur_final"/>
+
+        <addForeignKeyConstraint baseColumnNames="affectations_id"
+                                 baseTableName="attribution"
+                                 constraintName="fk_attribution__affectations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="affectations"/>
+    </changeSet>
+</databaseChangeLog>

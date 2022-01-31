@@ -1,0 +1,30 @@
+{
+  "gestionPatrimoineApp": {
+    "responsable": {
+      "home": {
+        "title": "Responsables",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Responsable",
+        "createOrEditLabel": "Créer ou éditer un Responsable",
+        "notFound": "Aucun Responsable trouvé"
+      },
+      "created": "Un nouveau Responsable a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Responsable avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Responsable avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Responsable {{ id }} ?"
+      },
+      "detail": {
+        "title": "Responsable"
+      },
+      "id": "ID",
+      "nomResponsable": "Nom Responsable",
+      "prenomResponsable": "Prenom Responsable",
+      "email": "Email",
+      "specialite": "Specialite",
+      "numb1": "Numb 1",
+      "numb2": "Numb 2",
+      "raisonSocial": "Raison Social"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+    <h2 style="text-align: center;">
+      <span style="font-weight: bold;">INVENTAIRE</span>
+    </h2>
+    <hr>
+  <div class="" *ngIf="inventaires && inventaires.length > 0 && valeurInventaire == 1">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Reference</th>
+          <th scope="col">Entree</th>
+          <th scope="col">Sortie</th>
+          <th scope="col">Balance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inventaire of inventaires">
+          <th scope="row">{{ inventaire[0]}}</th>
+          <td>{{ (inventaire[1] / inventaire[3]) - (( inventaire[1] % inventaire[3] ) / inventaire[3]) }}</td>
+          <td>{{ inventaire[2] }}</td>
+          <td>{{ (( inventaire[1] / inventaire[3] ) - (( inventaire[1] % inventaire[3] ) / inventaire[3] )) - inventaire[2] }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" (click)="detail(inventaire[0])" class="btn btn-info btn-sm">
+                <fa-icon icon="eye"></fa-icon>
+                <!-- <span class="d-none d-md-inline">Details</span> -->
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<br>

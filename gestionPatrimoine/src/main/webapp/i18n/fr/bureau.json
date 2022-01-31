@@ -1,0 +1,26 @@
+{
+  "gestionPatrimoineApp": {
+    "bureau": {
+      "home": {
+        "title": "Bureaus",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Bureau",
+        "createOrEditLabel": "Créer ou éditer un Bureau",
+        "notFound": "Aucun Bureau trouvé"
+      },
+      "created": "Un nouveau Bureau a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Bureau avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Bureau avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Bureau {{ id }} ?"
+      },
+      "detail": {
+        "title": "Bureau"
+      },
+      "id": "ID",
+      "nomStructure": "Nom Structure",
+      "direction": "Direction",
+      "nomEtablissement": "Nom Etablissement"
+    }
+  }
+}

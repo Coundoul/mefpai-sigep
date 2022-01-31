@@ -1,0 +1,30 @@
+{
+  "name": "ContratProjet",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "projets",
+      "otherEntityRelationshipName": "nom",
+      "relationshipName": "nomProjet",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "contrat_projet",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "databaseType": "sql",
+  "changelogDate": "20210607001026"
+}

@@ -1,0 +1,31 @@
+{
+  "gestionPatrimoineApp": {
+    "corpsEtat": {
+      "home": {
+        "title": "Corps Etats",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Corps Etat",
+        "createOrEditLabel": "Create or edit a Corps Etat",
+        "notFound": "No Corps Etats found"
+      },
+      "created": "A new Corps Etat is created with identifier {{ param }}",
+      "updated": "A Corps Etat is updated with identifier {{ param }}",
+      "deleted": "A Corps Etat is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Corps Etat {{ id }}?"
+      },
+      "detail": {
+        "title": "Corps Etat"
+      },
+      "id": "ID",
+      "nomCorps": "Nom Corps",
+      "grosOeuvre": "Gros Oeuvre",
+      "descriptionGrosOeuvre": "Description Gros Oeuvre",
+      "secondOeuvre": "Second Oeuvre",
+      "descriptionSecondOeuvre": "Description Second Oeuvre",
+      "oservation": "Oservation",
+      "etatCorps": "Etat Corps",
+      "nomResponsable": "Nom Responsable"
+    }
+  }
+}

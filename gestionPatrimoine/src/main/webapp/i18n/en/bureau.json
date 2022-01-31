@@ -1,0 +1,26 @@
+{
+  "gestionPatrimoineApp": {
+    "bureau": {
+      "home": {
+        "title": "Bureaus",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bureau",
+        "createOrEditLabel": "Create or edit a Bureau",
+        "notFound": "No Bureaus found"
+      },
+      "created": "A new Bureau is created with identifier {{ param }}",
+      "updated": "A Bureau is updated with identifier {{ param }}",
+      "deleted": "A Bureau is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bureau {{ id }}?"
+      },
+      "detail": {
+        "title": "Bureau"
+      },
+      "id": "ID",
+      "nomStructure": "Nom Structure",
+      "direction": "Direction",
+      "nomEtablissement": "Nom Etablissement"
+    }
+  }
+}

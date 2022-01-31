@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="intendant">
+      <h2 data-cy="intendantDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.intendant.detail.title">Intendant</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ intendant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.intendant.nomPers">Nom Pers</span></dt>
+        <dd>
+          <span>{{ intendant.nomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.intendant.prenomPers">Prenom Pers</span></dt>
+        <dd>
+          <span>{{ intendant.prenomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.intendant.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + intendant.sexe }}">{{ intendant.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.intendant.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ intendant.mobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.intendant.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ intendant.adresse }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/intendant', intendant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

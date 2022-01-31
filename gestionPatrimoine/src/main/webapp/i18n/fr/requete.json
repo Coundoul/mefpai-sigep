@@ -1,0 +1,31 @@
+{
+  "gestionPatrimoineApp": {
+    "requete": {
+      "home": {
+        "title": "Requetes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Requete",
+        "createOrEditLabel": "Créer ou éditer un Requete",
+        "notFound": "Aucun Requete trouvé"
+      },
+      "created": "Un nouveau Requete a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Requete avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Requete avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Requete {{ id }} ?"
+      },
+      "detail": {
+        "title": "Requete"
+      },
+      "id": "ID",
+      "type": "Type",
+      "typePanne": "Type Panne",
+      "datePost": "Date Post",
+      "description": "Description",
+      "etatTraite": "Etat Traite",
+      "dateLancement": "Date Lancement",
+      "idPers": "Id Pers",
+      "nomStructure": "Nom Structure"
+    }
+  }
+}

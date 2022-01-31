@@ -1,0 +1,57 @@
+{
+  "name": "Intervenant",
+  "fields": [
+    {
+      "fieldName": "nomIntervenant",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomIntervenant",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailProfessionnel",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "raisonSocial",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "maitre",
+      "fieldType": "TypeMaitre",
+      "fieldValues": "MaitreOuvrage,MaitreOeuvre",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "projets",
+      "otherEntityRelationshipName": "nomIntervenant",
+      "relationshipName": "nomProjet"
+    }
+  ],
+  "entityTableName": "intervenant",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "microserviceName": "GestionInfrastructure",
+  "clientRootFolder": "GestionInfrastructure",
+  "databaseType": "sql",
+  "changelogDate": "20210607000728"
+}

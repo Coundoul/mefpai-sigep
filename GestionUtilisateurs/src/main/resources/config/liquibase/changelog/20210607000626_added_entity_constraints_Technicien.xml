@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Technicien.
+    -->
+    <changeSet id="20210607000626-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="chef_maintenance_id"
+                                 baseTableName="technicien"
+                                 constraintName="fk_technicien__chef_maintenance_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="chef_maintenance"/>
+    </changeSet>
+</databaseChangeLog>

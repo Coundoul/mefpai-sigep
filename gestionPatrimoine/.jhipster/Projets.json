@@ -1,0 +1,74 @@
+{
+  "name": "Projets",
+  "fields": [
+    {
+      "fieldName": "typeProjet",
+      "fieldType": "TypeProjet",
+      "fieldValues": "Construction,Rehabilitation",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nomProjet",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "extension",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "contratProjet",
+      "otherEntityRelationshipName": "nomProjet",
+      "relationshipName": "nom",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "nomProjet",
+      "relationshipName": "nomEtablissement"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "projets",
+      "relationshipName": "nomBatiment"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "intervenant",
+      "otherEntityRelationshipName": "nomProjet",
+      "relationshipName": "nomIntervenant"
+    }
+  ],
+  "entityTableName": "projets",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "databaseType": "sql",
+  "changelogDate": "20210607003126"
+}

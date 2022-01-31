@@ -1,0 +1,34 @@
+{
+  "gestionPatrimoineApp": {
+    "batiment": {
+      "home": {
+        "title": "Batiments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Batiment",
+        "createOrEditLabel": "Create or edit a Batiment",
+        "notFound": "No Batiments found"
+      },
+      "created": "A new Batiment is created with identifier {{ param }}",
+      "updated": "A Batiment is updated with identifier {{ param }}",
+      "deleted": "A Batiment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Batiment {{ id }}?"
+      },
+      "detail": {
+        "title": "Batiment"
+      },
+      "id": "ID",
+      "nomBatiment": "Nom Batiment",
+      "nbrPiece": "Nbr Piece",
+      "designation": "Designation",
+      "surface": "Surface",
+      "etatGeneral": "Etat General",
+      "description": "Description",
+      "nombreSalle": "Nombre Salle",
+      "nomEtablissement": "Nom Etablissement",
+      "nomCorps": "Nom Corps",
+      "typeBa": "Type Ba",
+      "nomAtelier": "Nom Atelier"
+    }
+  }
+}

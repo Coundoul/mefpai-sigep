@@ -1,0 +1,25 @@
+{
+  "gestionPatrimoineApp": {
+    "filiereStabilise": {
+      "home": {
+        "title": "Filiere Stabilises",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Filiere Stabilise",
+        "createOrEditLabel": "Create or edit a Filiere Stabilise",
+        "notFound": "No Filiere Stabilises found"
+      },
+      "created": "A new Filiere Stabilise is created with identifier {{ param }}",
+      "updated": "A Filiere Stabilise is updated with identifier {{ param }}",
+      "deleted": "A Filiere Stabilise is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Filiere Stabilise {{ id }}?"
+      },
+      "detail": {
+        "title": "Filiere Stabilise"
+      },
+      "id": "ID",
+      "nomFiliere": "Nom Filiere",
+      "nomFormateur": "Nom Formateur"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fournisseur">
+      <h2 data-cy="fournisseurDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.fournisseur.detail.title">Fournisseur</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ fournisseur.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.codeFournisseuer">Code Fournisseuer</span></dt>
+        <dd>
+          <span>{{ fournisseur.codeFournisseuer }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.nomFournisseur">Nom Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.nomFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.prenomFournisseur">Prenom Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.prenomFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + fournisseur.sexe }}">{{ fournisseur.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.raisonSocial">Raison Social</span></dt>
+        <dd>
+          <span>{{ fournisseur.raisonSocial }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ fournisseur.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.num1">Num 1</span></dt>
+        <dd>
+          <span>{{ fournisseur.num1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.num2">Num 2</span></dt>
+        <dd>
+          <span>{{ fournisseur.num2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.ville">Ville</span></dt>
+        <dd>
+          <span>{{ fournisseur.ville }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.fournisseur.email">Email</span></dt>
+        <dd>
+          <span>{{ fournisseur.email }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fournisseur', fournisseur.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

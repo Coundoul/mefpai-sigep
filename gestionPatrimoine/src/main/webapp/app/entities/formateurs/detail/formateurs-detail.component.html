@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="formateurs">
+      <h2 data-cy="formateursDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.formateurs.detail.title">Formateurs</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ formateurs.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.nomFormateur">Nom Formateur</span></dt>
+        <dd>
+          <span>{{ formateurs.nomFormateur }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.prenomFormateur">Prenom Formateur</span></dt>
+        <dd>
+          <span>{{ formateurs.prenomFormateur }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.email">Email</span></dt>
+        <dd>
+          <span>{{ formateurs.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.numb1">Numb 1</span></dt>
+        <dd>
+          <span>{{ formateurs.numb1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.numb2">Numb 2</span></dt>
+        <dd>
+          <span>{{ formateurs.numb2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ formateurs.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.ville">Ville</span></dt>
+        <dd>
+          <span>{{ formateurs.ville }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.specialite">Specialite</span></dt>
+        <dd>
+          <span>{{ formateurs.specialite }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.formateurs.nomEtablissement">Nom Etablissement</span></dt>
+        <dd>
+          <div *ngIf="formateurs.nomEtablissement">
+            <a [routerLink]="['/etablissement', formateurs.nomEtablissement?.id, 'view']">{{ formateurs.nomEtablissement?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/formateurs', formateurs.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

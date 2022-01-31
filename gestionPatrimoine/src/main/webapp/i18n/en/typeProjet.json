@@ -1,0 +1,9 @@
+{
+  "gestionPatrimoineApp": {
+    "TypeProjet": {
+      "null": "",
+      "Construction": "Construction",
+      "Rehabilitation": "Rehabilitation"
+    }
+  }
+}

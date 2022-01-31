@@ -1,0 +1,24 @@
+{
+  "gestionPatrimoineApp": {
+    "categorieMatiere": {
+      "home": {
+        "title": "Categorie Matieres",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Categorie Matiere",
+        "createOrEditLabel": "Create or edit a Categorie Matiere",
+        "notFound": "No Categorie Matieres found"
+      },
+      "created": "A new Categorie Matiere is created with identifier {{ param }}",
+      "updated": "A Categorie Matiere is updated with identifier {{ param }}",
+      "deleted": "A Categorie Matiere is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Categorie Matiere {{ id }}?"
+      },
+      "detail": {
+        "title": "Categorie Matiere"
+      },
+      "id": "ID",
+      "categorie": "Categorie"
+    }
+  }
+}

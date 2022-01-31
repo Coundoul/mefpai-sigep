@@ -1,0 +1,50 @@
+{
+  "name": "Etablissement",
+  "fields": [
+    {
+      "fieldName": "nomEtablissement",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "surfaceBatie",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "superficie",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idPers",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "quartier",
+      "otherEntityRelationshipName": "etablissement",
+      "relationshipName": "nomQuartier"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "projets",
+      "otherEntityRelationshipName": "nomEtablissement",
+      "relationshipName": "nomProjet"
+    }
+  ],
+  "entityTableName": "etablissement",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "databaseType": "sql",
+  "changelogDate": "20210607001726"
+}

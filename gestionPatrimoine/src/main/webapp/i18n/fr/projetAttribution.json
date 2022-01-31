@@ -1,0 +1,28 @@
+{
+  "gestionPatrimoineApp": {
+    "projetAttribution": {
+      "home": {
+        "title": "ProjetAttributions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Projet Attribution",
+        "createOrEditLabel": "Créer ou éditer un Projet Attribution",
+        "notFound": "Aucun Projet Attribution trouvé"
+      },
+      "created": "Un nouveau Projet Attribution a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Projet Attribution avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Projet Attribution avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Projet Attribution {{ id }} ?"
+      },
+      "detail": {
+        "title": "Projet Attribution"
+      },
+      "id": "ID",
+      "dateAttribution": "Date Attribution",
+      "quantite": "Quantite",
+      "idEquipement": "Id Equipement",
+      "idPers": "Id Pers",
+      "nomProjet": "Nom Projet"
+    }
+  }
+}

@@ -1,0 +1,208 @@
+<div class="row justify-content-center">
+  <div class="card jh-card col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-fournisseur-heading"
+        data-cy="FournisseurCreateUpdateHeading"
+      >
+        Nouveau Fournisseur
+      </h2>
+
+      <div>
+        <!-- <jhi-alert-error></jhi-alert-error> -->
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.fournisseur.codeFournisseuer" for="field_codeFournisseuer"
+            >Code Fournisseuer</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="codeFournisseuer"
+            id="field_codeFournisseuer"
+            data-cy="codeFournisseuer"
+            formControlName="codeFournisseuer"
+          />
+          <div
+            *ngIf="
+              editForm.get('codeFournisseuer')!.invalid &&
+              (editForm.get('codeFournisseuer')!.dirty || editForm.get('codeFournisseuer')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codeFournisseuer')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label"  for="field_nomFournisseur"
+            >Nom </label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomFournisseur"
+            id="field_nomFournisseur"
+            data-cy="nomFournisseur"
+            formControlName="nomFournisseur"
+          />
+          <div
+            *ngIf="
+              editForm.get('nomFournisseur')!.invalid && (editForm.get('nomFournisseur')!.dirty || editForm.get('nomFournisseur')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomFournisseur')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label"  for="field_prenomFournisseur"
+            >Prénom</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="prenomFournisseur"
+            id="field_prenomFournisseur"
+            data-cy="prenomFournisseur"
+            formControlName="prenomFournisseur"
+          />
+          <div
+            *ngIf="
+              editForm.get('prenomFournisseur')!.invalid &&
+              (editForm.get('prenomFournisseur')!.dirty || editForm.get('prenomFournisseur')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prenomFournisseur')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.fournisseur.sexe" for="field_sexe">Sexe</label>
+          <select class="form-control" name="sexe" formControlName="sexe" id="field_sexe" data-cy="sexe">
+            <option [ngValue]="null">{{ 'gestionPatrimoineApp.Sexe.null' | translate }}</option>
+            <option value="Masculin">{{ 'gestionPatrimoineApp.Sexe.Masculin' | translate }}</option>
+            <option value="Feminin">{{ 'gestionPatrimoineApp.Sexe.Feminin' | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('sexe')!.invalid && (editForm.get('sexe')!.dirty || editForm.get('sexe')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('sexe')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.fournisseur.raisonSocial" for="field_raisonSocial"
+            >Raison Social</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="raisonSocial"
+            id="field_raisonSocial"
+            data-cy="raisonSocial"
+            formControlName="raisonSocial"
+          />
+          <div
+            *ngIf="editForm.get('raisonSocial')!.invalid && (editForm.get('raisonSocial')!.dirty || editForm.get('raisonSocial')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('raisonSocial')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.fournisseur.adresse" for="field_adresse">Adresse</label>
+          <input type="text" class="form-control" name="adresse" id="field_adresse" data-cy="adresse" formControlName="adresse" />
+          <div *ngIf="editForm.get('adresse')!.invalid && (editForm.get('adresse')!.dirty || editForm.get('adresse')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('adresse')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_num1">Numéro Téléphone</label>
+          <input type="text" class="form-control" name="num1" id="field_num1" data-cy="num1" formControlName="num1" />
+          <div *ngIf="editForm.get('num1')!.invalid && (editForm.get('num1')!.dirty || editForm.get('num1')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('num1')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label"  for="field_num2">Autre Numéro</label>
+          <input type="text" class="form-control" name="num2" id="field_num2" data-cy="num2" formControlName="num2" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.fournisseur.ville" for="field_ville">Ville</label>
+          <input type="text" class="form-control" name="ville" id="field_ville" data-cy="ville" formControlName="ville" />
+          <div *ngIf="editForm.get('ville')!.invalid && (editForm.get('ville')!.dirty || editForm.get('ville')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ville')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.fournisseur.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="cancel()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

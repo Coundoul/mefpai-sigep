@@ -1,0 +1,373 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+    <h2 id="page-heading" data-cy="EquipementHeading" style="text-align: center;">
+      <span >Liste des Matières</span>
+
+      <hr>
+
+      <div class="d-flex justify-content-end">
+        <div class="formulaire-recherche col-md-4" style="position: relative; right: 35%;">
+          <form class="navbar-form" name="editForm" novalidate (ngSubmit)="rechercher()" [formGroup]="editForm">
+              <div class="input-group no-border">
+                
+                  <input matInput type="text" id="recherche" name="recherche" class="form-control" style="text-decoration: underline;" formControlName="recherche" placeholder="Search...">
+                  
+              
+                <button mat-raised-button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-secondary btn-circle btn-xl">
+                    <fa-icon icon="search"></fa-icon>  
+                    <div class="ripple-container"></div>
+                </button>
+              </div>
+          </form>
+        </div>
+        
+
+        <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+          <span >Actualiser</span>
+        </button>
+
+        <button
+          id="jh-create-entity"
+          data-cy="entityCreateButton"
+          class="btn btn-primary jh-create-entity create-equipement"
+          [routerLink]="['/equipement/new']"
+        >
+          <fa-icon icon="plus"></fa-icon>
+          <span> Ajouter Matière </span>
+        </button>
+      </div>
+    </h2>
+
+    <!-- <jhi-alert-error></jhi-alert-error> -->
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="equipements?.length === 0">
+      <span jhiTranslate="gestionPatrimoineApp.equipement.home.notFound">No equipements found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="equipements && equipements.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+            <th scope="col" jhiSortBy="reference">
+              <span>Référence</span><fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="reference">
+              <span>Nom Matière</span>
+            </th>
+            <!-- <th scope="col" jhiSortBy="reference">
+              <span>Caracteristique</span>
+            </th> -->
+            <!-- <th scope="col" jhiSortBy="description">
+              <span jhiTranslate="gestionPatrimoineApp.equipement.description">Description</span> <fa-icon icon="sort"></fa-icon>
+            </th> -->
+            <!-- <th scope="col" jhiSortBy="prixUnitaire">
+              <span jhiTranslate="gestionPatrimoineApp.equipement.prixUnitaire">Prix Unitaire</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="typeMatiere">
+              <span jhiTranslate="gestionPatrimoineApp.equipement.typeMatiere">Type Matiere</span> <fa-icon icon="sort"></fa-icon>
+            </th> -->
+            <th scope="col" jhiSortBy="quantite"><span>Quantite</span></th>
+            <!-- <th scope="col" jhiSortBy="quantite"><span>Groupe</span></th> -->
+            <th scope="col" jhiSortBy="group"><span>Volatile</span></th>
+            <!-- <th scope="col" jhiSortBy="etatMatiere"><span>Etat</span></th> -->
+            <!-- <th scope="col" jhiSortBy="photo">
+              <span jhiTranslate="gestionPatrimoineApp.equipement.photo">Photo</span> <fa-icon icon="sort"></fa-icon>
+            </th> -->
+            <!-- <th scope="col" jhiSortBy="nomMagazin.id">
+              <span jhiTranslate="gestionPatrimoineApp.equipement.nomMagazin">Nom Magazin</span> <fa-icon icon="sort"></fa-icon>
+            </th> -->
+            <!-- <th scope="col" jhiSortBy="nomFournisseur.id">
+              <span jhiTranslate="gestionPatrimoineApp.equipement.nomFournisseur">Nom Fournisseur</span> <fa-icon icon="sort"></fa-icon>
+            </th> -->
+            <!-- <th scope="col" jhiSortBy="bon.id">
+              <span jhiTranslate="gestionPatrimoineApp.equipement.bon">Bon</span> <fa-icon icon="sort"></fa-icon>
+            </th> -->
+            <th scope="col" jhiSortBy="categorie.id"><span>Categorie</span></th>
+            <th scope="col" style="text-align: center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let equipement of equipements; trackBy: trackId" data-cy="entityTable">
+            <!-- <td>
+              <a [routerLink]="['/equipement', equipement.id, 'view']">{{ equipement.id }}</a>
+            </td> -->
+            <td>{{ equipement.reference }}</td>
+            <td>{{ equipement.nomMatiere }}</td>
+            <!-- <td>{{ equipement.caracteristique }}</td> -->
+            <!-- <td>{{ equipement.description }}</td>
+            <td>{{ equipement.prixUnitaire }}</td> -->
+            <!-- <td>{{ equipement.typeMatiere }}</td> -->
+            <td>{{ equipement.quantite }}</td>
+            <!-- <td>
+              {{ equipement.typeMatiere }}
+            </td> -->
+            
+            <td>
+              <div *ngIf="equipement.group === true">
+                <span>
+                  <fa-icon icon="check-circle" style="color: greenyellow; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+
+              <div *ngIf="equipement.group === false">
+                <span>
+                  <fa-icon icon="check-circle" style="color: red; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+              <!-- {{ requete.etatTraite }}</td> -->
+            
+            </td>
+            
+            <!-- <td>
+              <div *ngIf="equipement.etatMatiere === 'Bon Etat'">
+                <span>
+                  <fa-icon icon="lightbulb" style="color: greenyellow; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+
+              <div *ngIf="equipement.etatMatiere === 'Mauvais Etat'">
+                <span>
+                  <fa-icon icon="lightbulb" style="color: #FF9900; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+
+              <div *ngIf="equipement.etatMatiere === 'Hors Service'">
+                <span>
+                  <fa-icon icon="lightbulb" style="color: red; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+            </td> -->
+            <!-- <td>
+              <a *ngIf="equipement.photo" (click)="openFile(equipement.photo, equipement.photoContentType)">
+                <img
+                  [src]="'data:' + equipement.photoContentType + ';base64,' + equipement.photo"
+                  style="max-height: 30px"
+                  alt="equipement image"
+                />
+              </a>
+              <span *ngIf="equipement.photo">{{ equipement.photoContentType }}, {{ byteSize(equipement.photo) }}</span>
+            </td> -->
+            <!-- <td>
+              <div *ngIf="equipement.nomMagazin">
+                <a [routerLink]="['/magazin', equipement.nomMagazin?.id, 'view']">{{ equipement.nomMagazin?.id }}</a>
+              </div>
+            </td> -->
+            <!-- <td>
+              <div *ngIf="equipement.nomFournisseur">
+                <a [routerLink]="['/fournisseur', equipement.nomFournisseur?.id, 'view']">{{ equipement.nomFournisseur?.id }}</a>
+              </div>
+            </td> -->
+            <!-- <td>
+              <div *ngIf="equipement.bon">
+                <a [routerLink]="['/bon', equipement.bon?.id, 'view']">{{ equipement.bon?.id }}</a>
+              </div>
+            </td> -->
+            <td>
+              <div *ngIf="equipement.categorie">
+                {{ equipement.categorie.categorie }}
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  [routerLink]="['/equipement', equipement.id, 'view']"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <fa-icon icon="eye"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" >Détail</span> -->
+                </button>
+
+                <button
+                  type="submit"
+                  [routerLink]="['/equipement', equipement.id, 'edit']"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <fa-icon icon="pencil-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" >Modifier</span> -->
+                </button>
+
+                <button
+                  type="submit"
+                  [routerLink]="['/equipement', equipement.id, 'signaler']"
+                  class="btn btn-warning btn-sm"
+                >
+                  <fa-icon icon="bell" style="color: white;"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" style="color: white;">Signaler</span> -->
+                </button>
+
+                <button type="submit" (click)="delete(equipement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <fa-icon icon="trash-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline">Supprimer</span> -->
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="equipements && equipements.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+
+
+    <div class="table-responsive" id="detailRecherche" *ngIf="detailRecherche">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+            <th scope="col" jhiSortBy="reference">
+              <span>Référence</span><fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="reference">
+              <span>Nom Matière</span>
+            </th>
+            
+            <th scope="col" jhiSortBy="quantite"><span>Quantité</span></th>
+            <!-- <th scope="col" jhiSortBy="quantite"><span>Groupe</span></th> -->
+            <th scope="col" jhiSortBy="group"><span>Volatile</span></th>
+            
+            <th scope="col" jhiSortBy="categorie.id"><span>Catégorie</span></th>
+            <th scope="col" style="text-align: center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- <td>
+              <a [routerLink]="['/equipement', equipement.id, 'view']">{{ equipement.id }}</a>
+            </td> -->
+            <td>{{ detailRecherche[1] }}</td>
+            <td>{{ detailRecherche[2] }}</td>
+            <!-- <td>{{ equipement.caracteristique }}</td> -->
+            <!-- <td>{{ equipement.description }}</td>
+            <td>{{ equipement.prixUnitaire }}</td> -->
+            <!-- <td>{{ equipement.typeMatiere }}</td> -->
+            <td>{{ detailRecherche[2] }}</td>
+            <!-- <td>
+              {{ equipement.typeMatiere }}
+            </td> -->
+            
+            <td>
+              <div *ngIf="detailRecherche[4] === true">
+                <span>
+                  <fa-icon icon="check-circle" style="color: greenyellow; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+
+              <div *ngIf="detailRecherche[4] === false">
+                <span>
+                  <fa-icon icon="check-circle" style="color: red; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+              <!-- {{ requete.etatTraite }}</td> -->
+            
+            </td>
+            
+            <td>
+              <div *ngIf="detailRecherche[5]">
+                  {{ detailRecherche[5] }}  
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <fa-icon icon="eye"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" >Détail</span> -->
+                </button>
+
+                <button
+                  type="submit"
+                  
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <fa-icon icon="pencil-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" >Modifier</span> -->
+                </button>
+
+                <button
+                  type="submit"
+                  
+                  class="btn btn-warning btn-sm"
+                >
+                  <fa-icon icon="bell" style="color: white;"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" style="color: white;">Signaler</span> -->
+                </button>
+
+                <button type="submit"  class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <fa-icon icon="trash-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline">Supprimer</span> -->
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- <div class="mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__supporting-text">
+      <div class="mdl-stepper-horizontal-alternative">
+        <div class="mdl-stepper-step active-step step-done">
+          <div class="mdl-stepper-circle"><span>1</span></div>
+          <div class="mdl-stepper-title">Add pets</div>
+          <div class="mdl-stepper-bar-left"></div>
+          <div class="mdl-stepper-bar-right"></div>
+        </div>
+        <div class="mdl-stepper-step active-step editable-step">
+          <div class="mdl-stepper-circle"><span>2</span></div>
+          <div class="mdl-stepper-title">Set location</div>
+          <div class="mdl-stepper-optional">Optional</div>
+          <div class="mdl-stepper-bar-left"></div>
+          <div class="mdl-stepper-bar-right"></div>
+        </div>
+        <div class="mdl-stepper-step active-step">
+          <div class="mdl-stepper-circle"><span>3</span></div>
+          <div class="mdl-stepper-title">Invite friends</div>
+          <div class="mdl-stepper-optional">Optional</div>
+          <div class="mdl-stepper-bar-left"></div>
+          <div class="mdl-stepper-bar-right"></div>
+        </div>
+        <div class="mdl-stepper-step">
+          <div class="mdl-stepper-circle"><span>4</span></div>
+          <div class="mdl-stepper-title">Share</div>
+          <div class="mdl-stepper-optional">Optional</div>
+          <div class="mdl-stepper-bar-left"></div>
+          <div class="mdl-stepper-bar-right"></div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

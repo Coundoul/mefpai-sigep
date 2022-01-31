@@ -1,0 +1,21 @@
+{
+  "gestionPatrimoineApp": {
+    "Direction": {
+      "null": "",
+      "DAGE": "DAGE",
+      "DFPT": "DFPT",
+      "DA": "DA",
+      "PE": "PE",
+      "DRH": "DRH",
+      "CEP": "CEP",
+      "CelluleInformatique": "CelluleInformatique",
+      "CelluleJuridique": "CelluleJuridique",
+      "CelluleGenre": "CelluleGenre",
+      "CPM": "CPM",
+      "DE": "DE",
+      "PEJA": "PEJA",
+      "SEN32": "SEN32",
+      "BureauCourrier": "BureauCourrier"
+    }
+  }
+}

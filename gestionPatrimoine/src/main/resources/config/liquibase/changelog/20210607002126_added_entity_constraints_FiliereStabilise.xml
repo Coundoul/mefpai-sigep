@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity FiliereStabilise.
+    -->
+    <changeSet id="20210607002126-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="nom_formateur_id"
+                                 baseTableName="filiere_stabilise"
+                                 constraintName="fk_filiere_stabilise__nom_formateur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formateurs"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,32 @@
+{
+  "name": "Bureau",
+  "fields": [
+    {
+      "fieldName": "nomStructure",
+      "fieldType": "NomS",
+      "fieldValues": "Etablissement,MEFPAI",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "direction",
+      "fieldType": "Direction",
+      "fieldValues": "DAGE,DFPT,DA,PE,DRH,CEP,CelluleInformatique,CelluleJuridique,CelluleGenre,CPM,DE,PEJA,SEN32,BureauCourrier"
+    },
+    {
+      "fieldName": "nomEtablissement",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "bureau",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionMaintenance"],
+  "databaseType": "sql",
+  "changelogDate": "20210607000226"
+}

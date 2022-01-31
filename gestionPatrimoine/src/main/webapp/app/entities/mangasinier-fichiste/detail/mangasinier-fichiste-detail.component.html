@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="mangasinierFichiste">
+      <h2 data-cy="mangasinierFichisteDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.detail.title">Mangasinier Fichiste</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ mangasinierFichiste.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.nomPers">Nom Pers</span></dt>
+        <dd>
+          <span>{{ mangasinierFichiste.nomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.prenomPers">Prenom Pers</span></dt>
+        <dd>
+          <span>{{ mangasinierFichiste.prenomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + mangasinierFichiste.sexe }}">{{ mangasinierFichiste.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ mangasinierFichiste.mobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ mangasinierFichiste.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.direction">Direction</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Direction.' + mangasinierFichiste.direction }}">{{
+            mangasinierFichiste.direction
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.mangasinierFichiste.comptablePrincipale">Comptable Principale</span></dt>
+        <dd>
+          <div *ngIf="mangasinierFichiste.comptablePrincipale">
+            <a [routerLink]="['/comptable-principale', mangasinierFichiste.comptablePrincipale?.id, 'view']">{{
+              mangasinierFichiste.comptablePrincipale?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/mangasinier-fichiste', mangasinierFichiste.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

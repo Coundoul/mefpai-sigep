@@ -1,0 +1,30 @@
+{
+  "gestionPatrimoineApp": {
+    "mangasinierFichiste": {
+      "home": {
+        "title": "Mangasinier Fichistes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mangasinier Fichiste",
+        "createOrEditLabel": "Create or edit a Mangasinier Fichiste",
+        "notFound": "No Mangasinier Fichistes found"
+      },
+      "created": "A new Mangasinier Fichiste is created with identifier {{ param }}",
+      "updated": "A Mangasinier Fichiste is updated with identifier {{ param }}",
+      "deleted": "A Mangasinier Fichiste is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mangasinier Fichiste {{ id }}?"
+      },
+      "detail": {
+        "title": "Mangasinier Fichiste"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse",
+      "direction": "Direction",
+      "comptablePrincipale": "Comptable Principale"
+    }
+  }
+}

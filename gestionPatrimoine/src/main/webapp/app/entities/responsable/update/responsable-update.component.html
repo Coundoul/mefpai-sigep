@@ -1,0 +1,166 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-responsable-heading"
+        data-cy="ResponsableCreateUpdateHeading"
+        jhiTranslate="gestionPatrimoineApp.responsable.home.createOrEditLabel"
+      >
+        Create or edit a Responsable
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.responsable.nomResponsable" for="field_nomResponsable"
+            >Nom Responsable</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomResponsable"
+            id="field_nomResponsable"
+            data-cy="nomResponsable"
+            formControlName="nomResponsable"
+          />
+          <div
+            *ngIf="
+              editForm.get('nomResponsable')!.invalid && (editForm.get('nomResponsable')!.dirty || editForm.get('nomResponsable')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomResponsable')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.responsable.prenomResponsable" for="field_prenomResponsable"
+            >Prenom Responsable</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="prenomResponsable"
+            id="field_prenomResponsable"
+            data-cy="prenomResponsable"
+            formControlName="prenomResponsable"
+          />
+          <div
+            *ngIf="
+              editForm.get('prenomResponsable')!.invalid &&
+              (editForm.get('prenomResponsable')!.dirty || editForm.get('prenomResponsable')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prenomResponsable')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.responsable.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.responsable.specialite" for="field_specialite"
+            >Specialite</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="specialite"
+            id="field_specialite"
+            data-cy="specialite"
+            formControlName="specialite"
+          />
+          <div *ngIf="editForm.get('specialite')!.invalid && (editForm.get('specialite')!.dirty || editForm.get('specialite')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('specialite')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.responsable.numb1" for="field_numb1">Numb 1</label>
+          <input type="text" class="form-control" name="numb1" id="field_numb1" data-cy="numb1" formControlName="numb1" />
+          <div *ngIf="editForm.get('numb1')!.invalid && (editForm.get('numb1')!.dirty || editForm.get('numb1')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('numb1')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.responsable.numb2" for="field_numb2">Numb 2</label>
+          <input type="text" class="form-control" name="numb2" id="field_numb2" data-cy="numb2" formControlName="numb2" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.responsable.raisonSocial" for="field_raisonSocial"
+            >Raison Social</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="raisonSocial"
+            id="field_raisonSocial"
+            data-cy="raisonSocial"
+            formControlName="raisonSocial"
+          />
+          <div
+            *ngIf="editForm.get('raisonSocial')!.invalid && (editForm.get('raisonSocial')!.dirty || editForm.get('raisonSocial')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('raisonSocial')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

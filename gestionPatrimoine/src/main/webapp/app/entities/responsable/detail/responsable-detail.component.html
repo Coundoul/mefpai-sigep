@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="responsable">
+      <h2 data-cy="responsableDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.responsable.detail.title">Responsable</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ responsable.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.responsable.nomResponsable">Nom Responsable</span></dt>
+        <dd>
+          <span>{{ responsable.nomResponsable }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.responsable.prenomResponsable">Prenom Responsable</span></dt>
+        <dd>
+          <span>{{ responsable.prenomResponsable }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.responsable.email">Email</span></dt>
+        <dd>
+          <span>{{ responsable.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.responsable.specialite">Specialite</span></dt>
+        <dd>
+          <span>{{ responsable.specialite }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.responsable.numb1">Numb 1</span></dt>
+        <dd>
+          <span>{{ responsable.numb1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.responsable.numb2">Numb 2</span></dt>
+        <dd>
+          <span>{{ responsable.numb2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.responsable.raisonSocial">Raison Social</span></dt>
+        <dd>
+          <span>{{ responsable.raisonSocial }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/responsable', responsable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-etapes-heading" data-cy="EtapesCreateUpdateHeading" jhiTranslate="gestionPatrimoineApp.etapes.home.createOrEditLabel">
+        Create or edit a Etapes
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etapes.dateDebut" for="field_dateDebut">Date Debut</label>
+          <div class="d-flex">
+            <input
+              id="field_dateDebut"
+              data-cy="dateDebut"
+              type="datetime-local"
+              class="form-control"
+              name="dateDebut"
+              formControlName="dateDebut"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('dateDebut')!.invalid && (editForm.get('dateDebut')!.dirty || editForm.get('dateDebut')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateDebut')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dateDebut')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etapes.dateFin" for="field_dateFin">Date Fin</label>
+          <div class="d-flex">
+            <input
+              id="field_dateFin"
+              data-cy="dateFin"
+              type="datetime-local"
+              class="form-control"
+              name="dateFin"
+              formControlName="dateFin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('dateFin')!.invalid && (editForm.get('dateFin')!.dirty || editForm.get('dateFin')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateFin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dateFin')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etapes.nomTache" for="field_nomTache">Nom Tache</label>
+          <input type="text" class="form-control" name="nomTache" id="field_nomTache" data-cy="nomTache" formControlName="nomTache" />
+          <div *ngIf="editForm.get('nomTache')!.invalid && (editForm.get('nomTache')!.dirty || editForm.get('nomTache')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomTache')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etapes.duration" for="field_duration">Duration</label>
+          <input type="text" class="form-control" name="duration" id="field_duration" data-cy="duration" formControlName="duration" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etapes.nomProjet" for="field_nomProjet">Nom Projet</label>
+          <select class="form-control" id="field_nomProjet" data-cy="nomProjet" name="nomProjet" formControlName="nomProjet">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="projetsOption.id === editForm.get('nomProjet')!.value?.id ? editForm.get('nomProjet')!.value : projetsOption"
+              *ngFor="let projetsOption of projetsSharedCollection; trackBy: trackProjetsById"
+            >
+              {{ projetsOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

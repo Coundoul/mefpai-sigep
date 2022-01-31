@@ -1,0 +1,124 @@
+<div>
+  <h2 id="page-heading" data-cy="UtilisateurFinalHeading">
+    <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.home.title">Utilisateur Finals</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-utilisateur-final"
+        [routerLink]="['/utilisateur-final/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.home.createLabel"> Create a new Utilisateur Final </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="utilisateurFinals?.length === 0">
+    <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.home.notFound">No utilisateurFinals found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="utilisateurFinals && utilisateurFinals.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomUtilisateur">
+            <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.nomUtilisateur">Nom Utilisateur</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prenomUtilisateur">
+            <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.prenomUtilisateur">Prenom Utilisateur</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailInstitutionnel">
+            <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.emailInstitutionnel">Email Institutionnel</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mobile">
+            <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.mobile">Mobile</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sexe">
+            <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.sexe">Sexe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="departement">
+            <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.departement">Departement</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="serviceDep">
+            <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.serviceDep">Service Dep</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let utilisateurFinal of utilisateurFinals; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/utilisateur-final', utilisateurFinal.id, 'view']">{{ utilisateurFinal.id }}</a>
+          </td>
+          <td>{{ utilisateurFinal.nomUtilisateur }}</td>
+          <td>{{ utilisateurFinal.prenomUtilisateur }}</td>
+          <td>{{ utilisateurFinal.emailInstitutionnel }}</td>
+          <td>{{ utilisateurFinal.mobile }}</td>
+          <td>{{ utilisateurFinal.sexe }}</td>
+          <td>{{ utilisateurFinal.departement }}</td>
+          <td>{{ utilisateurFinal.serviceDep }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/utilisateur-final', utilisateurFinal.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/utilisateur-final', utilisateurFinal.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(utilisateurFinal)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="utilisateurFinals && utilisateurFinals.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

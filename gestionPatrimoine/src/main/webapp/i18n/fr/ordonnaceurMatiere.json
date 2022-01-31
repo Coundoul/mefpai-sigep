@@ -1,0 +1,29 @@
+{
+  "gestionPatrimoineApp": {
+    "ordonnaceurMatiere": {
+      "home": {
+        "title": "OrdonnaceurMatieres",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Ordonnaceur Matiere",
+        "createOrEditLabel": "Créer ou éditer un Ordonnaceur Matiere",
+        "notFound": "Aucun Ordonnaceur Matiere trouvé"
+      },
+      "created": "Un nouveau Ordonnaceur Matiere a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Ordonnaceur Matiere avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Ordonnaceur Matiere avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Ordonnaceur Matiere {{ id }} ?"
+      },
+      "detail": {
+        "title": "Ordonnaceur Matiere"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse",
+      "direction": "Direction"
+    }
+  }
+}

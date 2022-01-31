@@ -1,0 +1,59 @@
+{
+  "name": "ChefMaintenance",
+  "fields": [
+    {
+      "fieldName": "nomPers",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomPers",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "Sexe",
+      "fieldValues": "Masculin,Feminin",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mobile",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direction",
+      "fieldType": "Direction",
+      "fieldValues": "DAGE,DFPT,DA,PE,DRH,CEP,CelluleInformatique,CelluleJuridique,CelluleGenre,CPM,DE,PEJA,SEN32,BureauCourrier"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "technicien",
+      "otherEntityRelationshipName": "chefMaintenance",
+      "relationshipName": "technicien"
+    }
+  ],
+  "entityTableName": "chef_maintenance",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionUtilisateurs"],
+  "microserviceName": "GestionUtilisateurs",
+  "clientRootFolder": "GestionUtilisateurs",
+  "databaseType": "sql",
+  "changelogDate": "20210606235726"
+}

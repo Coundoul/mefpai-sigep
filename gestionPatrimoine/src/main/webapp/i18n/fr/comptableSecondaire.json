@@ -1,0 +1,30 @@
+{
+  "gestionPatrimoineApp": {
+    "comptableSecondaire": {
+      "home": {
+        "title": "ComptableSecondaires",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Comptable Secondaire",
+        "createOrEditLabel": "Créer ou éditer un Comptable Secondaire",
+        "notFound": "Aucun Comptable Secondaire trouvé"
+      },
+      "created": "Un nouveau Comptable Secondaire a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Comptable Secondaire avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Comptable Secondaire avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Comptable Secondaire {{ id }} ?"
+      },
+      "detail": {
+        "title": "Comptable Secondaire"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse",
+      "direction": "Direction",
+      "comptablePrincipale": "Comptable Principale"
+    }
+  }
+}

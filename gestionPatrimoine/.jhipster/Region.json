@@ -1,0 +1,23 @@
+{
+  "name": "Region",
+  "fields": [
+    {
+      "fieldName": "nomRegion",
+      "fieldType": "NomRegion",
+      "fieldValues": "Dakar,Thies,SaintLouis,Diourbel,Tambacounda,Zinguinchor,Kolda,Kaffrine,Fatick,Matam,Kaolack,Sedhiou,Kedougou,Podor",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "region",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure", "GestionEquipement"],
+  "databaseType": "sql",
+  "changelogDate": "20210607003326"
+}

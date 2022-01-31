@@ -1,0 +1,93 @@
+<div class="card jh-card" >
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center;">Detail</h4>
+
+  </div>
+
+  <!-- <div class="modal-body"> -->
+    <!-- <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Reference</th>
+          <th scope="col">Entree</th>
+          <th scope="col">Sortie</th>
+          <th scope="col">Balance</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{ inventaire[0]}}</th>
+          <td>{{ inventaire[1] }}</td>
+          <td>{{ inventaire[2] }}</td>
+          <td>{{ inventaire[1] - inventaire[2] }}</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+  <div class="modal-body">
+      <h4 style="text-align: center;">Tableau Entrant</h4>
+      <table class="table" >
+        <thead class="thead-dark">
+          <tr >
+            <th scope="col">Reference</th>
+            <th scope="col">Type</th>
+            <th scope="col">Quantite</th>
+            <th scope="col">Date</th>
+            <th>Attributaire/Affectataire</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let detail of detailInventaire">
+          <tr *ngIf="detail[3] === 'ReAffectation'">
+            <th scope="row">{{ detail[0]}}</th>
+            <td>
+              <div *ngIf="detail[3] === 'ReAffectation'">
+                <span>
+                  Entrant
+                </span>
+              </div>
+            </td>
+            <td>{{ detail[4] }}</td>
+            <td>{{ detail[5] }}</td>
+            <td>{{ detail[6] }}</td>
+          </tr>
+        </tbody>
+      </table>
+  <br>
+      <h4 style="text-align: center;">Tableau Sortant</h4>
+      <table class="table" >
+        <thead class="thead-dark">
+          <tr >
+            <th scope="col">Reference</th>
+            <th scope="col">Type</th>
+            <th scope="col">Quantite</th>
+            <th scope="col">Date</th>
+            <th>Attributaire/Affectataire</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let detail of detailInventaire">
+          <tr *ngIf="detail[3] === 'Affectation'">
+            <th scope="row">{{ detail[0]}}</th>
+            <td>
+              <div *ngIf="detail[3] === 'Affectation'">
+                <span>
+                  Sortie
+                </span>
+              </div>
+            </td>
+            <td>{{ detail[4] }}</td>
+            <td>{{ detail[5] }}</td>
+            <td>{{ detail[6] }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <span>Cancel</span>
+    </button>
+  </div>
+
+</div> 
+   

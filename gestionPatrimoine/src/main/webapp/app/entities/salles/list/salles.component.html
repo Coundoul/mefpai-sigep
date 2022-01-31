@@ -1,0 +1,100 @@
+<div>
+  <h2 id="page-heading" data-cy="SallesHeading">
+    <span jhiTranslate="gestionPatrimoineApp.salles.home.title">Salles</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gestionPatrimoineApp.salles.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-salles"
+        [routerLink]="['/salles/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gestionPatrimoineApp.salles.home.createLabel"> Create a new Salles </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="salles?.length === 0">
+    <span jhiTranslate="gestionPatrimoineApp.salles.home.notFound">No salles found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="salles && salles.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomSalle">
+            <span jhiTranslate="gestionPatrimoineApp.salles.nomSalle">Nom Salle</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="classe">
+            <span jhiTranslate="gestionPatrimoineApp.salles.classe">Classe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomBatiment.id">
+            <span jhiTranslate="gestionPatrimoineApp.salles.nomBatiment">Nom Batiment</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let salles of salles; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/salles', salles.id, 'view']">{{ salles.id }}</a>
+          </td>
+          <td>{{ salles.nomSalle }}</td>
+          <td jhiTranslate="{{ 'gestionPatrimoineApp.Classe.' + salles.classe }}">{{ salles.classe }}</td>
+          <td>
+            <div *ngIf="salles.nomBatiment">
+              <a [routerLink]="['/batiment', salles.nomBatiment?.id, 'view']">{{ salles.nomBatiment?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/salles', salles.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/salles', salles.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(salles)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="salles && salles.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

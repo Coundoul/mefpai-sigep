@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+      <div *ngIf="projets">
+        <h2 data-cy="projetsDetailsHeading" style="text-align: center;"><span jhiTranslate="gestionPatrimoineApp.projets.detail.title">Projets</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <!-- <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ projets.id }}</span>
+          </dd> -->
+          <dt><span jhiTranslate="gestionPatrimoineApp.projets.typeProjet">Type Projet</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'gestionPatrimoineApp.TypeProjet.' + projets.typeProjet }}">{{ projets.typeProjet }}</span>
+          </dd>
+          <dt><span>Nom du Projet</span></dt>
+          <dd>
+            <span>{{ projets.nomProjet }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.projets.dateDebut">Date Debut</span></dt>
+          <dd>
+            <span>{{ projets.dateDebut | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.projets.dateFin">Date Fin</span></dt>
+          <dd>
+            <span>{{ projets.dateFin | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.projets.description">Description</span></dt>
+          <dd>
+            <span>{{ projets.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.projets.extension">Extension</span></dt>
+          <dd>
+            <div *ngIf="projets.extension === true">
+              <span>
+                <fa-icon icon="check-circle" style="color: greenyellow; font-size: 150%"></fa-icon>
+              </span>
+            </div>
+
+            <div *ngIf="projets.extension === false">
+              <span>
+                <fa-icon icon="check-circle" style="color: red; font-size: 150%"></fa-icon>
+              </span>
+            </div>
+          </dd>
+          <!-- <dt><span jhiTranslate="gestionPatrimoineApp.projets.nom">Nom</span></dt>
+          <dd>
+            <div *ngIf="projets.nom">
+              <a [routerLink]="['/contrat-projet', projets.nom?.id, 'view']">{{ projets.nom?.id }}</a>
+            </div>
+          </dd> -->
+          <dt><span>Etablissement</span></dt>
+          <dd>
+            <div *ngIf="projets.nomEtablissement?.id === 11">
+              <span>
+                Université Cheikh Anta Diop de Dakar
+              </span>
+            </div>
+            <div *ngIf="projets.nomEtablissement?.id === 12">
+              <span>
+                Delafosse
+              </span>
+            </div>
+          </dd>
+          <!-- <dd>
+            <div *ngIf="projets.etablissement">
+              {{ projets.etablissement.nomEtablissement}} -->
+              <!-- <a [routerLink]="['/etablissement', projets.nomEtablissement?.id, 'view']">{{ projets.nomEtablissement?.id }}</a> -->
+            <!-- </div>
+          </dd> -->
+          <!-- <dt><span jhiTranslate="gestionPatrimoineApp.projets.nomBatiment">Nom Batiment</span></dt>
+          <dd>
+            <div *ngIf="projets.batiment">
+              {{ projets.batiment.nomBatiment}} -->
+              <!-- <a [routerLink]="['/etablissement', projets.nomBatiment?.id, 'view']">{{ projets.nomBatiment?.id }}</a> -->
+            <!-- </div>
+          </dd> -->
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/projets', projets.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+  </div>
+</div>

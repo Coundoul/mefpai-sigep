@@ -1,0 +1,28 @@
+{
+  "gestionPatrimoineApp": {
+    "atelier": {
+      "home": {
+        "title": "Ateliers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Atelier",
+        "createOrEditLabel": "Créer ou éditer un Atelier",
+        "notFound": "Aucun Atelier trouvé"
+      },
+      "created": "Un nouveau Atelier a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Atelier avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Atelier avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Atelier {{ id }} ?"
+      },
+      "detail": {
+        "title": "Atelier"
+      },
+      "id": "ID",
+      "nomAtelier": "Nom Atelier",
+      "surface": "Surface",
+      "description": "Description",
+      "nomFiliere": "Nom Filiere",
+      "nomBatiment": "Nom Batiment"
+    }
+  }
+}

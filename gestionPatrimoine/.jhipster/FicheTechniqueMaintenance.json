@@ -1,0 +1,38 @@
+{
+  "name": "FicheTechniqueMaintenance",
+  "fields": [
+    {
+      "fieldName": "pieceJointe",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idPers",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDepot",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "requete",
+      "otherEntityRelationshipName": "ficheTechniqueMaintenance",
+      "relationshipName": "type"
+    }
+  ],
+  "entityTableName": "fiche_technique_maintenance",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionMaintenance"],
+  "databaseType": "sql",
+  "changelogDate": "20210607002026"
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Atelier",
+  "fields": [
+    {
+      "fieldName": "nomAtelier",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "surface",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "filiereStabilise",
+      "otherEntityRelationshipName": "atelier",
+      "relationshipName": "nomFiliere"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "batiment",
+      "otherEntityRelationshipName": "nomAtelier",
+      "relationshipName": "nomBatiment"
+    }
+  ],
+  "entityTableName": "atelier",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "databaseType": "sql",
+  "changelogDate": "20210606235726"
+}

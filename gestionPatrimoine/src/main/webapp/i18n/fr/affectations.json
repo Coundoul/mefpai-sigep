@@ -1,0 +1,29 @@
+{
+  "gestionPatrimoineApp": {
+    "affectations": {
+      "home": {
+        "title": "Affectations",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Affectations",
+        "createOrEditLabel": "Créer ou éditer un Affectations",
+        "notFound": "Aucun Affectations trouvé"
+      },
+      "created": "Un nouveau Affectations a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Affectations avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Affectations avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Affectations {{ id }} ?"
+      },
+      "detail": {
+        "title": "Affectations"
+      },
+      "id": "ID",
+      "quantiteAffecter": "Quantite Affecter",
+      "typeAttribution": "Type Attribution",
+      "idPers": "Id Pers",
+      "dateAttribution": "Date Attribution",
+      "equipement": "Equipement",
+      "attribution": "Attribution"
+    }
+  }
+}

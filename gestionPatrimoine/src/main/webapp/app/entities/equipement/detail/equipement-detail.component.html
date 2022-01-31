@@ -1,0 +1,132 @@
+<div class="row">
+  <div class="col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+      <div *ngIf="equipement">
+        <h2 data-cy="equipementDetailsHeading" style="text-align: center;"><span>Détail Matière {{ equipement.reference }}</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <!-- <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ equipement.id }}</span>
+          </dd> -->
+          <dt><span>Référence</span></dt>
+          <dd>
+            <span>{{ equipement.reference }}</span>
+          </dd>
+          <dt><span>Nom Matière</span></dt>
+          <dd>
+            <span>{{ equipement.nomMatiere }}</span>
+          </dd>
+          <dt><span>Caractéristique</span></dt>
+          <dd>
+            <span>{{ equipement.caracteristique }}</span>
+          </dd>
+          <dt><span>Bénéficiaire</span></dt>
+          <dd>
+            <span>{{ equipement.description }}</span>
+          </dd>
+          <dt><span>Type Matière</span></dt>
+          <dd>
+            <span>{{ equipement.typeMatiere }}</span>
+          </dd>
+          <dt><span>Quantité</span></dt>
+          <dd>
+            <span>{{ equipement.quantite }}</span>
+          </dd>
+          <dt><span>Volatile</span></dt>
+          <dd>
+              <div *ngIf="equipement.group === true">
+                <span>
+                  <fa-icon icon="check-circle" style="color: greenyellow; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+
+              <div *ngIf="equipement.group === false">
+                <span>
+                  <fa-icon icon="check-circle" style="color: red; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+          </dd>
+          <dt><span>Etat Matière</span></dt>
+          <dd>
+            <div *ngIf="equipement.etatMatiere === 'Bon Etat'">
+              <span>
+                <fa-icon icon="lightbulb" style="color: greenyellow; font-size: 150%"></fa-icon>
+              </span>
+            </div>
+
+            <div *ngIf="equipement.etatMatiere === 'Mauvais Etat'">
+              <span>
+                <fa-icon icon="lightbulb" style="color: #FF9900; font-size: 150%"></fa-icon>
+              </span>
+            </div>
+
+            <div *ngIf="equipement.etatMatiere === 'Hors Service'">
+              <span>
+                <fa-icon icon="lightbulb" style="color: red; font-size: 150%"></fa-icon>
+              </span>
+            </div>
+          </dd>
+            <dt><span>Magazin</span></dt>
+          <dd>
+            <div *ngIf="equipement.magazin">
+              {{ equipement.magazin?.nomMagazin }}
+              <!-- <a [routerLink]="['/magazin', equipement.nomMagazin?.id, 'view']">{{ equipement.nomMagazin?.id }}</a> -->
+            </div>
+          </dd>
+          <dt><span>Fournisseur</span></dt>
+          <dd>
+            <div *ngIf="equipement.fournisseur">
+              {{ equipement.fournisseur?.prenomFournisseur }} {{ equipement.fournisseur?.nomFournisseur }}
+              <!-- <a [routerLink]="['/fournisseur', equipement.nomFournisseur?.id, 'view']">{{ equipement.nomFournisseur?.id }}</a> -->
+            </div>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.equipement.categorie">Categorie</span></dt>
+          <dd>
+            <div *ngIf="equipement.categorie">
+              {{ equipement.categorie.categorie }}
+              <!-- <a [routerLink]="['/categorie-matiere', equipement.categorie?.id, 'view']">{{ equipement.categorie?.id }}</a> -->
+            </div>
+          </dd>
+          <dt><span>Numéro de Bon</span></dt>
+          <dd>
+            <div *ngIf="equipement.bon">
+              <a [routerLink]="['/bon', equipement.bon?.id, 'view']">{{ equipement.bon?.id }}</a>
+            </div>
+          </dd>
+        
+          <dt><span jhiTranslate="gestionPatrimoineApp.equipement.photo">Photo</span></dt>
+          <dd>
+            <div *ngIf="equipement.photo">
+              <a (click)="openFile(equipement.photo, equipement.photoContentType)">
+                <img
+                  [src]="'data:' + equipement.photoContentType + ';base64,' + equipement.photo"
+                  style="max-width: 100%"
+                  alt="equipement image"
+                />
+              </a>
+              <!-- , {{ byteSize(equipement.photo) }} -->
+            </div>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/equipement', equipement.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Modifier</span>
+        </button>
+      </div>
+    
+  </div>
+</div>

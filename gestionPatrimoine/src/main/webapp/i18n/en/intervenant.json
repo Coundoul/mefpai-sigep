@@ -1,0 +1,30 @@
+{
+  "gestionPatrimoineApp": {
+    "intervenant": {
+      "home": {
+        "title": "Intervenants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Intervenant",
+        "createOrEditLabel": "Create or edit a Intervenant",
+        "notFound": "No Intervenants found"
+      },
+      "created": "A new Intervenant is created with identifier {{ param }}",
+      "updated": "A Intervenant is updated with identifier {{ param }}",
+      "deleted": "A Intervenant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Intervenant {{ id }}?"
+      },
+      "detail": {
+        "title": "Intervenant"
+      },
+      "id": "ID",
+      "nomIntervenant": "Nom Intervenant",
+      "prenomIntervenant": "Prenom Intervenant",
+      "emailProfessionnel": "Email Professionnel",
+      "raisonSocial": "Raison Social",
+      "maitre": "Maitre",
+      "role": "Role",
+      "nomProjet": "Nom Projet"
+    }
+  }
+}

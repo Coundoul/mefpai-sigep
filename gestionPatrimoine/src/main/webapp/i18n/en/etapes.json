@@ -1,0 +1,28 @@
+{
+  "gestionPatrimoineApp": {
+    "etapes": {
+      "home": {
+        "title": "Etapes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Etapes",
+        "createOrEditLabel": "Create or edit a Etapes",
+        "notFound": "No Etapes found"
+      },
+      "created": "A new Etapes is created with identifier {{ param }}",
+      "updated": "A Etapes is updated with identifier {{ param }}",
+      "deleted": "A Etapes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Etapes {{ id }}?"
+      },
+      "detail": {
+        "title": "Etapes"
+      },
+      "id": "ID",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "nomTache": "Nom Tache",
+      "duration": "Duration",
+      "nomProjet": "Nom Projet"
+    }
+  }
+}

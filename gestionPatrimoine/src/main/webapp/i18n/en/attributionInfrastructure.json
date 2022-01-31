@@ -1,0 +1,28 @@
+{
+  "gestionPatrimoineApp": {
+    "attributionInfrastructure": {
+      "home": {
+        "title": "Attribution Infrastructures",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Attribution Infrastructure",
+        "createOrEditLabel": "Create or edit a Attribution Infrastructure",
+        "notFound": "No Attribution Infrastructures found"
+      },
+      "created": "A new Attribution Infrastructure is created with identifier {{ param }}",
+      "updated": "A Attribution Infrastructure is updated with identifier {{ param }}",
+      "deleted": "A Attribution Infrastructure is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Attribution Infrastructure {{ id }}?"
+      },
+      "detail": {
+        "title": "Attribution Infrastructure"
+      },
+      "id": "ID",
+      "dateAttribution": "Date Attribution",
+      "quantite": "Quantite",
+      "idEquipement": "Id Equipement",
+      "idPers": "Id Pers",
+      "nomEtablissement": "Nom Etablissement"
+    }
+  }
+}

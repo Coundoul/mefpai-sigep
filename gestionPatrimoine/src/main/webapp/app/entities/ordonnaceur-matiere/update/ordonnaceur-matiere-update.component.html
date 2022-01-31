@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <h2
+          id="jhi-ordonnaceur-matiere-heading"
+          data-cy="OrdonnaceurMatiereCreateUpdateHeading"
+          jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.home.createOrEditLabel"
+        >
+          Create or edit a Ordonnaceur Matiere
+        </h2>
+
+        <div>
+          <jhi-alert-error></jhi-alert-error>
+
+          <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+            <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.nomPers" for="field_nomPers"
+              >Nom Pers</label
+            >
+            <input type="text" class="form-control" name="nomPers" id="field_nomPers" data-cy="nomPers" formControlName="nomPers" />
+            <div *ngIf="editForm.get('nomPers')!.invalid && (editForm.get('nomPers')!.dirty || editForm.get('nomPers')!.touched)">
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('nomPers')?.errors?.required"
+                jhiTranslate="entity.validation.required"
+              >
+                This field is required.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.prenomPers" for="field_prenomPers"
+              >Prenom Pers</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="prenomPers"
+              id="field_prenomPers"
+              data-cy="prenomPers"
+              formControlName="prenomPers"
+            />
+            <div *ngIf="editForm.get('prenomPers')!.invalid && (editForm.get('prenomPers')!.dirty || editForm.get('prenomPers')!.touched)">
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('prenomPers')?.errors?.required"
+                jhiTranslate="entity.validation.required"
+              >
+                This field is required.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.sexe" for="field_sexe">Sexe</label>
+            <select class="form-control" name="sexe" formControlName="sexe" id="field_sexe" data-cy="sexe">
+              <option [ngValue]="null">{{ 'gestionPatrimoineApp.Sexe.null' | translate }}</option>
+              <option value="Masculin">{{ 'gestionPatrimoineApp.Sexe.Masculin' | translate }}</option>
+              <option value="Feminin">{{ 'gestionPatrimoineApp.Sexe.Feminin' | translate }}</option>
+            </select>
+            <div *ngIf="editForm.get('sexe')!.invalid && (editForm.get('sexe')!.dirty || editForm.get('sexe')!.touched)">
+              <small class="form-text text-danger" *ngIf="editForm.get('sexe')?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.mobile" for="field_mobile">Mobile</label>
+            <input type="text" class="form-control" name="mobile" id="field_mobile" data-cy="mobile" formControlName="mobile" />
+            <div *ngIf="editForm.get('mobile')!.invalid && (editForm.get('mobile')!.dirty || editForm.get('mobile')!.touched)">
+              <small class="form-text text-danger" *ngIf="editForm.get('mobile')?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.adresse" for="field_adresse"
+              >Adresse</label
+            >
+            <input type="text" class="form-control" name="adresse" id="field_adresse" data-cy="adresse" formControlName="adresse" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.direction" for="field_direction"
+              >Direction</label
+            >
+            <select class="form-control" name="direction" formControlName="direction" id="field_direction" data-cy="direction">
+              <option [ngValue]="null">{{ 'gestionPatrimoineApp.Direction.null' | translate }}</option>
+              <option value="DAGE">{{ 'gestionPatrimoineApp.Direction.DAGE' | translate }}</option>
+              <option value="DFPT">{{ 'gestionPatrimoineApp.Direction.DFPT' | translate }}</option>
+              <option value="DA">{{ 'gestionPatrimoineApp.Direction.DA' | translate }}</option>
+              <option value="PE">{{ 'gestionPatrimoineApp.Direction.PE' | translate }}</option>
+              <option value="DRH">{{ 'gestionPatrimoineApp.Direction.DRH' | translate }}</option>
+              <option value="CEP">{{ 'gestionPatrimoineApp.Direction.CEP' | translate }}</option>
+              <option value="CelluleInformatique">{{ 'gestionPatrimoineApp.Direction.CelluleInformatique' | translate }}</option>
+              <option value="CelluleJuridique">{{ 'gestionPatrimoineApp.Direction.CelluleJuridique' | translate }}</option>
+              <option value="CelluleGenre">{{ 'gestionPatrimoineApp.Direction.CelluleGenre' | translate }}</option>
+              <option value="CPM">{{ 'gestionPatrimoineApp.Direction.CPM' | translate }}</option>
+              <option value="DE">{{ 'gestionPatrimoineApp.Direction.DE' | translate }}</option>
+              <option value="PEJA">{{ 'gestionPatrimoineApp.Direction.PEJA' | translate }}</option>
+              <option value="SEN32">{{ 'gestionPatrimoineApp.Direction.SEN32' | translate }}</option>
+              <option value="BureauCourrier">{{ 'gestionPatrimoineApp.Direction.BureauCourrier' | translate }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+          </button>
+
+          <button
+            type="submit"
+            id="save-entity"
+            data-cy="entityCreateSaveButton"
+            [disabled]="editForm.invalid || isSaving"
+            class="btn btn-primary"
+          >
+            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+          </button>
+        </div>
+      </form>
+  </div>
+</div>

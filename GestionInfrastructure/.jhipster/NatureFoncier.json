@@ -1,0 +1,36 @@
+{
+  "name": "NatureFoncier",
+  "fields": [
+    {
+      "fieldName": "typeFoncier",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "pieceJointe",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "corpsEtat",
+      "otherEntityRelationshipName": "natureFoncier",
+      "relationshipName": "nomCorps"
+    }
+  ],
+  "entityTableName": "nature_foncier",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "microserviceName": "GestionInfrastructure",
+  "clientRootFolder": "GestionInfrastructure",
+  "databaseType": "sql",
+  "changelogDate": "20210607000828"
+}

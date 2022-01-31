@@ -1,0 +1,31 @@
+{
+  "name": "Commune",
+  "fields": [
+    {
+      "fieldName": "nomCommune",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "departement",
+      "otherEntityRelationshipName": "commune",
+      "relationshipName": "nomDepartement"
+    }
+  ],
+  "entityTableName": "commune",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure", "GestionEquipement"],
+  "microserviceName": "GestionInfrastructure",
+  "clientRootFolder": "GestionInfrastructure",
+  "databaseType": "sql",
+  "changelogDate": "20210606235928"
+}

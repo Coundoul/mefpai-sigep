@@ -1,0 +1,31 @@
+{
+  "name": "FiliereStabilise",
+  "fields": [
+    {
+      "fieldName": "nomFiliere",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "formateurs",
+      "otherEntityRelationshipName": "nomFiliere",
+      "relationshipName": "nomFormateur"
+    }
+  ],
+  "entityTableName": "filiere_stabilise",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "microserviceName": "GestionInfrastructure",
+  "clientRootFolder": "GestionInfrastructure",
+  "databaseType": "sql",
+  "changelogDate": "20210607000528"
+}

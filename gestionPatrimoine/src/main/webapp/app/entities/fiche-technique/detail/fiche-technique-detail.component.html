@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+      <div *ngIf="ficheTechnique">
+        <h2 data-cy="ficheTechniqueDetailsHeading">
+          <span jhiTranslate="gestionPatrimoineApp.ficheTechnique.detail.title">Fiche Technique</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ ficheTechnique.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.ficheTechnique.pieceJointe">Piece Jointe</span></dt>
+          <dd>
+            <span>{{ ficheTechnique.pieceJointe }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.ficheTechnique.dateDepot">Date Depot</span></dt>
+          <dd>
+            <span>{{ ficheTechnique.dateDepot | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.ficheTechnique.nomResponsable">Nom Responsable</span></dt>
+          <dd>
+            <div *ngIf="ficheTechnique.nomResponsable">
+              <a [routerLink]="['/responsable', ficheTechnique.nomResponsable?.id, 'view']">{{ ficheTechnique.nomResponsable?.id }}</a>
+            </div>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/fiche-technique', ficheTechnique.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+  </div>
+</div>

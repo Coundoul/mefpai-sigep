@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-region-heading" data-cy="RegionCreateUpdateHeading" jhiTranslate="gestionPatrimoineApp.region.home.createOrEditLabel">
+        Create or edit a Region
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.region.nomRegion" for="field_nomRegion">Nom Region</label>
+          <select class="form-control" name="nomRegion" formControlName="nomRegion" id="field_nomRegion" data-cy="nomRegion">
+            <option [ngValue]="null">{{ 'gestionPatrimoineApp.NomRegion.null' | translate }}</option>
+            <option value="Dakar">{{ 'gestionPatrimoineApp.NomRegion.Dakar' | translate }}</option>
+            <option value="Thies">{{ 'gestionPatrimoineApp.NomRegion.Thies' | translate }}</option>
+            <option value="SaintLouis">{{ 'gestionPatrimoineApp.NomRegion.SaintLouis' | translate }}</option>
+            <option value="Diourbel">{{ 'gestionPatrimoineApp.NomRegion.Diourbel' | translate }}</option>
+            <option value="Tambacounda">{{ 'gestionPatrimoineApp.NomRegion.Tambacounda' | translate }}</option>
+            <option value="Zinguinchor">{{ 'gestionPatrimoineApp.NomRegion.Zinguinchor' | translate }}</option>
+            <option value="Kolda">{{ 'gestionPatrimoineApp.NomRegion.Kolda' | translate }}</option>
+            <option value="Kaffrine">{{ 'gestionPatrimoineApp.NomRegion.Kaffrine' | translate }}</option>
+            <option value="Fatick">{{ 'gestionPatrimoineApp.NomRegion.Fatick' | translate }}</option>
+            <option value="Matam">{{ 'gestionPatrimoineApp.NomRegion.Matam' | translate }}</option>
+            <option value="Kaolack">{{ 'gestionPatrimoineApp.NomRegion.Kaolack' | translate }}</option>
+            <option value="Sedhiou">{{ 'gestionPatrimoineApp.NomRegion.Sedhiou' | translate }}</option>
+            <option value="Kedougou">{{ 'gestionPatrimoineApp.NomRegion.Kedougou' | translate }}</option>
+            <option value="Podor">{{ 'gestionPatrimoineApp.NomRegion.Podor' | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('nomRegion')!.invalid && (editForm.get('nomRegion')!.dirty || editForm.get('nomRegion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomRegion')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

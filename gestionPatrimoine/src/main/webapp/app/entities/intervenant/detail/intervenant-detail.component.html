@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+      <div *ngIf="intervenant">
+        <h2 data-cy="intervenantDetailsHeading" style="text-align: center;"><span jhiTranslate="gestionPatrimoineApp.intervenant.detail.title">Intervenant</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>Prénom</span></dt>
+          <dd>
+            <span>{{ intervenant.prenomIntervenant }}</span>
+          </dd>
+          <dt><span>Nom</span></dt>
+          <dd>
+            <span>{{ intervenant.nomIntervenant }}</span>
+          </dd>
+          
+          <dt><span jhiTranslate="gestionPatrimoineApp.intervenant.emailProfessionnel">Email Professionnel</span></dt>
+          <dd>
+            <span>{{ intervenant.emailProfessionnel }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.intervenant.raisonSocial">Raison Social</span></dt>
+          <dd>
+            <span>{{ intervenant.raisonSocial }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.intervenant.maitre">Maitre</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'gestionPatrimoineApp.TypeMaitre.' + intervenant.maitre }}">{{ intervenant.maitre }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.intervenant.role">Role</span></dt>
+          <dd>
+            <span>{{ intervenant.role }}</span>
+          </dd>
+          <dt><span >Projet</span></dt>
+          <dd>
+            <div *ngIf="intervenant.nomProjet?.id === 11">
+              <span>
+                Construction Etablissement
+              </span>
+            </div>
+            <div *ngIf="intervenant.nomProjet?.id === 12">
+              <span>
+                Construction des Toilettes
+              </span>
+            </div>
+            <div *ngIf="intervenant.nomProjet?.id === 13">
+              <span>
+                Construction des Salles de Classe
+              </span>
+            </div>
+
+          </dd>
+          <!-- <dd>
+            <div *ngIf="intervenant.nomProjet">
+              
+              <a [routerLink]="['/projets', intervenant.nomProjet?.id, 'view']">{{ intervenant.nomProjet?.id }}</a>
+            </div>
+          </dd> -->
+
+          <!-- <dt><span>Type de Projet</span></dt>
+          <dd>
+            <div *ngIf="intervenant.projets">
+              {{ intervenant.projets.typeProjet}}
+            </div>
+          </dd> -->
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/intervenant', intervenant.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+  </div>
+</div>

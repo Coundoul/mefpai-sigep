@@ -1,0 +1,28 @@
+{
+  "gestionPatrimoineApp": {
+    "intendant": {
+      "home": {
+        "title": "Intendants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Intendant",
+        "createOrEditLabel": "Create or edit a Intendant",
+        "notFound": "No Intendants found"
+      },
+      "created": "A new Intendant is created with identifier {{ param }}",
+      "updated": "A Intendant is updated with identifier {{ param }}",
+      "deleted": "A Intendant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Intendant {{ id }}?"
+      },
+      "detail": {
+        "title": "Intendant"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Departement",
+  "fields": [
+    {
+      "fieldName": "nomDepartement",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "region",
+      "otherEntityRelationshipName": "departement",
+      "relationshipName": "nomRegion"
+    }
+  ],
+  "entityTableName": "departement",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure", "GestionEquipement"],
+  "databaseType": "sql",
+  "changelogDate": "20210607001226"
+}

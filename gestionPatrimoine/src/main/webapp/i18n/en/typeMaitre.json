@@ -1,0 +1,9 @@
+{
+  "gestionPatrimoineApp": {
+    "TypeMaitre": {
+      "null": "",
+      "MaitreOuvrage": "MaitreOuvrage",
+      "MaitreOeuvre": "MaitreOeuvre"
+    }
+  }
+}

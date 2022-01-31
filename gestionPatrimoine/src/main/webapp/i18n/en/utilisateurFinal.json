@@ -1,0 +1,30 @@
+{
+  "gestionPatrimoineApp": {
+    "utilisateurFinal": {
+      "home": {
+        "title": "Utilisateur Finals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Utilisateur Final",
+        "createOrEditLabel": "Create or edit a Utilisateur Final",
+        "notFound": "No Utilisateur Finals found"
+      },
+      "created": "A new Utilisateur Final is created with identifier {{ param }}",
+      "updated": "A Utilisateur Final is updated with identifier {{ param }}",
+      "deleted": "A Utilisateur Final is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Utilisateur Final {{ id }}?"
+      },
+      "detail": {
+        "title": "Utilisateur Final"
+      },
+      "id": "ID",
+      "nomUtilisateur": "Nom Utilisateur",
+      "prenomUtilisateur": "Prenom Utilisateur",
+      "emailInstitutionnel": "Email Institutionnel",
+      "mobile": "Mobile",
+      "sexe": "Sexe",
+      "departement": "Departement",
+      "serviceDep": "Service Dep"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "ChefEtablissement",
+  "fields": [
+    {
+      "fieldName": "nomPers",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomPers",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "Sexe",
+      "fieldValues": "Masculin,Feminin",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mobile",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "chef_etablissement",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionUtilisateurs"],
+  "databaseType": "sql",
+  "changelogDate": "20210607000426"
+}

@@ -1,0 +1,43 @@
+{
+  "name": "AttributionInfrastructure",
+  "fields": [
+    {
+      "fieldName": "dateAttribution",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "quantite",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idEquipement",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idPers",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "attributionInfrastructure",
+      "relationshipName": "nomEtablissement"
+    }
+  ],
+  "entityTableName": "attribution_infrastructure",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "databaseType": "sql",
+  "changelogDate": "20210606235926"
+}

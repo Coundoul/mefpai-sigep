@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="corpsEtat">
+      <h2 data-cy="corpsEtatDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.corpsEtat.detail.title">Corps Etat</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ corpsEtat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.nomCorps">Nom Corps</span></dt>
+        <dd>
+          <span>{{ corpsEtat.nomCorps }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.grosOeuvre">Gros Oeuvre</span></dt>
+        <dd>
+          <span>{{ corpsEtat.grosOeuvre }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.descriptionGrosOeuvre">Description Gros Oeuvre</span></dt>
+        <dd>
+          <span>{{ corpsEtat.descriptionGrosOeuvre }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.secondOeuvre">Second Oeuvre</span></dt>
+        <dd>
+          <span>{{ corpsEtat.secondOeuvre }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.descriptionSecondOeuvre">Description Second Oeuvre</span></dt>
+        <dd>
+          <span>{{ corpsEtat.descriptionSecondOeuvre }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.oservation">Oservation</span></dt>
+        <dd>
+          <span>{{ corpsEtat.oservation }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.etatCorps">Etat Corps</span></dt>
+        <dd>
+          <span>{{ corpsEtat.etatCorps }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.corpsEtat.nomResponsable">Nom Responsable</span></dt>
+        <dd>
+          <div *ngIf="corpsEtat.nomResponsable">
+            <a [routerLink]="['/responsable', corpsEtat.nomResponsable?.id, 'view']">{{ corpsEtat.nomResponsable?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/corps-etat', corpsEtat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

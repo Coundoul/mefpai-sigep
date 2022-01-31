@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+    <h2 id="page-heading" data-cy="ProjetAttributionHeading">
+      <span>Equipemnts dans le Projet</span>
+
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+          <span jhiTranslate="gestionPatrimoineApp.projetAttribution.home.refreshListLabel">Refresh List</span>
+        </button>
+
+        <button
+          id="jh-create-entity"
+          data-cy="entityCreateButton"
+          class="btn btn-primary jh-create-entity create-projet-attribution"
+          [routerLink]="['/projet-attribution/new']"
+        >
+          <fa-icon icon="plus"></fa-icon>
+          <span jhiTranslate="gestionPatrimoineApp.projetAttribution.home.createLabel"> Create a new Projet Attribution </span>
+        </button>
+      </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="projetAttributions?.length === 0">
+      <span jhiTranslate="gestionPatrimoineApp.projetAttribution.home.notFound">No projetAttributions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="projetAttributions && projetAttributions.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+            <th scope="col" jhiSortBy="dateAttribution">
+              <span jhiTranslate="gestionPatrimoineApp.projetAttribution.dateAttribution">Date Attribution</span>
+              <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="quantite">
+              <span jhiTranslate="gestionPatrimoineApp.projetAttribution.quantite">Quantite</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="idEquipement">
+              <span jhiTranslate="gestionPatrimoineApp.projetAttribution.idEquipement">Id Equipement</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="idPers">
+              <span jhiTranslate="gestionPatrimoineApp.projetAttribution.idPers">Id Pers</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="nomProjet.id">
+              <span jhiTranslate="gestionPatrimoineApp.projetAttribution.nomProjet">Nom Projet</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let projetAttribution of projetAttributions; trackBy: trackId" data-cy="entityTable">
+            <td>
+              <a [routerLink]="['/projet-attribution', projetAttribution.id, 'view']">{{ projetAttribution.id }}</a>
+            </td>
+            <td>{{ projetAttribution.dateAttribution | formatMediumDatetime }}</td>
+            <td>{{ projetAttribution.quantite }}</td>
+            <td>{{ projetAttribution.idEquipement }}</td>
+            <td>{{ projetAttribution.idPers }}</td>
+            <td>
+              <div *ngIf="projetAttribution.nomProjet">
+                <a [routerLink]="['/projets', projetAttribution.nomProjet?.id, 'view']">{{ projetAttribution.nomProjet?.id }}</a>
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  [routerLink]="['/projet-attribution', projetAttribution.id, 'view']"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <fa-icon icon="eye"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                </button>
+
+                <button
+                  type="submit"
+                  [routerLink]="['/projet-attribution', projetAttribution.id, 'edit']"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <fa-icon icon="pencil-alt"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+
+                <button type="submit" (click)="delete(projetAttribution)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <fa-icon icon="times"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="projetAttributions && projetAttributions.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>

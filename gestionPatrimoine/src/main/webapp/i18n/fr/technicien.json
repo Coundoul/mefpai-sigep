@@ -1,0 +1,30 @@
+{
+  "gestionPatrimoineApp": {
+    "technicien": {
+      "home": {
+        "title": "Techniciens",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Technicien",
+        "createOrEditLabel": "Créer ou éditer un Technicien",
+        "notFound": "Aucun Technicien trouvé"
+      },
+      "created": "Un nouveau Technicien a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Technicien avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Technicien avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Technicien {{ id }} ?"
+      },
+      "detail": {
+        "title": "Technicien"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse",
+      "direction": "Direction",
+      "chefMaintenance": "Chef Maintenance"
+    }
+  }
+}

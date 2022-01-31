@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3 mt-4">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+    <h2 id="page-heading" data-cy="BonHeading">
+      <span jhiTranslate="gestionPatrimoineApp.bon.home.title">Bons</span>
+
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+          <span jhiTranslate="gestionPatrimoineApp.bon.home.refreshListLabel">Refresh List</span>
+        </button>
+
+        <!-- <button type="submit" (click)="addBon()" class="btn btn-primary jh-create-entity create-bon" data-cy="entityCreateButton">
+        <fa-icon icon="plus"></fa-icon>
+        <span class="d-none d-md-inline">Create a new bon Modal</span>
+      </button> -->
+
+        <!-- <button
+          id="jh-create-entity"
+          data-cy="entityCreateButton"
+          class="btn btn-primary jh-create-entity create-bon"
+          [routerLink]="['/bon/new']"
+        >
+          <fa-icon icon="plus"></fa-icon>
+          <span jhiTranslate="gestionPatrimoineApp.bon.home.createLabel"> Create a new Bon </span>
+        </button> -->
+
+        <button type="submit" (click)="create()" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+          <fa-icon icon="plus"></fa-icon>
+          <span jhiTranslate="gestionPatrimoineApp.bon.home.createLabel"> Create a new Bon </span>
+        </button>
+      </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="bons?.length === 0">
+      <span jhiTranslate="gestionPatrimoineApp.bon.home.notFound">No bons found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="bons && bons.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+            <th scope="col" jhiSortBy="typeBon">
+              <span jhiTranslate="gestionPatrimoineApp.bon.typeBon">Type Bon</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="quantiteLivre">
+              <span jhiTranslate="gestionPatrimoineApp.bon.quantiteLivre">Quantite Livre</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="quantiteCommande">
+              <span jhiTranslate="gestionPatrimoineApp.bon.quantiteCommande">Quantite Commande</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="dateCreation">
+              <span jhiTranslate="gestionPatrimoineApp.bon.dateCreation">Date Creation</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="etat">
+              <span jhiTranslate="gestionPatrimoineApp.bon.etat">Etat</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bon of bons; trackBy: trackId" data-cy="entityTable">
+            <td>
+              <a [routerLink]="['/bon', bon.id, 'view']">{{ bon.id }}</a>
+            </td>
+            <td jhiTranslate="{{ 'gestionPatrimoineApp.TypeBon.' + bon.typeBon }}">{{ bon.typeBon }}</td>
+            <td>{{ bon.quantiteLivre }}</td>
+            <td>{{ bon.quantiteCommande }}</td>
+            <td>{{ bon.dateCreation | formatMediumDatetime }}</td>
+            <td>{{ bon.etat }}</td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button type="submit" [routerLink]="['/bon', bon.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                  <fa-icon icon="eye"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                </button>
+
+                <button type="submit" [routerLink]="['/bon', bon.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                  <fa-icon icon="pencil-alt"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+
+                <!-- <button type="submit" (click)="update(bon)" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button> -->
+
+                <button type="submit" (click)="delete(bon)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <fa-icon icon="times"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="bons && bons.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>

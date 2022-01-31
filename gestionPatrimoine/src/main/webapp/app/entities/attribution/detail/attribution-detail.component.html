@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-3 mt-4">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-md-9 justify-content-center">
+    <div class="col-8">
+      <div *ngIf="attribution">
+        <h2 data-cy="attributionDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.attribution.detail.title">Attribution</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ attribution.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.attribution.quantiteAffecter">Quantite Affecter</span></dt>
+          <dd>
+            <span>{{ attribution.quantiteAffecter }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.attribution.idPers">Id Pers</span></dt>
+          <dd>
+            <span>{{ attribution.idPers }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.attribution.dateAffectation">Date Affectation</span></dt>
+          <dd>
+            <span>{{ attribution.dateAffectation | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.attribution.nomUtilisateur">Nom Utilisateur</span></dt>
+          <dd>
+            <div *ngIf="attribution.nomUtilisateur">
+              <a [routerLink]="['/utilisateur-final', attribution.nomUtilisateur?.id, 'view']">{{ attribution.nomUtilisateur?.id }}</a>
+            </div>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.attribution.affectations">Affectations</span></dt>
+          <dd>
+            <div *ngIf="attribution.affectations">
+              <a [routerLink]="['/affectations', attribution.affectations?.id, 'view']">{{ attribution.affectations?.id }}</a>
+            </div>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/attribution', attribution.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

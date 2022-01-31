@@ -1,0 +1,26 @@
+{
+  "gestionPatrimoineApp": {
+    "natureFoncier": {
+      "home": {
+        "title": "NatureFonciers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Nature Foncier",
+        "createOrEditLabel": "Créer ou éditer un Nature Foncier",
+        "notFound": "Aucun Nature Foncier trouvé"
+      },
+      "created": "Un nouveau Nature Foncier a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Nature Foncier avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Nature Foncier avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Nature Foncier {{ id }} ?"
+      },
+      "detail": {
+        "title": "Nature Foncier"
+      },
+      "id": "ID",
+      "typeFoncier": "Type Foncier",
+      "pieceJointe": "Piece Jointe",
+      "nomCorps": "Nom Corps"
+    }
+  }
+}

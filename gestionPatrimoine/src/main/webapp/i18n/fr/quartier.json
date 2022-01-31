@@ -1,0 +1,25 @@
+{
+  "gestionPatrimoineApp": {
+    "quartier": {
+      "home": {
+        "title": "Quartiers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Quartier",
+        "createOrEditLabel": "Créer ou éditer un Quartier",
+        "notFound": "Aucun Quartier trouvé"
+      },
+      "created": "Un nouveau Quartier a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Quartier avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Quartier avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Quartier {{ id }} ?"
+      },
+      "detail": {
+        "title": "Quartier"
+      },
+      "id": "ID",
+      "nomQuartier": "Nom Quartier",
+      "nomCommune": "Nom Commune"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "name": "Equipement",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prixUnitaire",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "typeMatiere",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "quantite",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "etatMatiere",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "group",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "magazin",
+      "otherEntityRelationshipName": "reference",
+      "relationshipName": "nomMagazin"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fournisseur",
+      "otherEntityRelationshipName": "equipement",
+      "relationshipName": "nomFournisseur"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "bon",
+      "otherEntityRelationshipName": "reference",
+      "relationshipName": "bon"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "categorieMatiere",
+      "otherEntityRelationshipName": "equipement",
+      "relationshipName": "categorie"
+    }
+  ],
+  "entityTableName": "equipement",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "databaseType": "sql",
+  "changelogDate": "20210607001626"
+}

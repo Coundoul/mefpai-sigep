@@ -1,0 +1,29 @@
+{
+  "gestionPatrimoineApp": {
+    "detenteur": {
+      "home": {
+        "title": "Detenteurs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Detenteur",
+        "createOrEditLabel": "Create or edit a Detenteur",
+        "notFound": "No Detenteurs found"
+      },
+      "created": "A new Detenteur is created with identifier {{ param }}",
+      "updated": "A Detenteur is updated with identifier {{ param }}",
+      "deleted": "A Detenteur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Detenteur {{ id }}?"
+      },
+      "detail": {
+        "title": "Detenteur"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse",
+      "direction": "Direction"
+    }
+  }
+}

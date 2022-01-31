@@ -1,0 +1,25 @@
+{
+  "gestionPatrimoineApp": {
+    "contratProjet": {
+      "home": {
+        "title": "ContratProjets",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Contrat Projet",
+        "createOrEditLabel": "Créer ou éditer un Contrat Projet",
+        "notFound": "Aucun Contrat Projet trouvé"
+      },
+      "created": "Un nouveau Contrat Projet a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Contrat Projet avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Contrat Projet avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Contrat Projet {{ id }} ?"
+      },
+      "detail": {
+        "title": "Contrat Projet"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "nomProjet": "Nom Projet"
+    }
+  }
+}

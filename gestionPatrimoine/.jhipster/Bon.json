@@ -1,0 +1,46 @@
+{
+  "name": "Bon",
+  "fields": [
+    {
+      "fieldName": "typeBon",
+      "fieldType": "TypeBon",
+      "fieldValues": "Entree,Sortie",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "quantiteLivre",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "quantiteCommande",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "equipement",
+      "otherEntityRelationshipName": "bon",
+      "relationshipName": "reference"
+    }
+  ],
+  "entityTableName": "bon",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "databaseType": "sql",
+  "changelogDate": "20210607000126"
+}

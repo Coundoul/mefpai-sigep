@@ -1,0 +1,31 @@
+{
+  "gestionPatrimoineApp": {
+    "requete": {
+      "home": {
+        "title": "Requetes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Requete",
+        "createOrEditLabel": "Create or edit a Requete",
+        "notFound": "No Requetes found"
+      },
+      "created": "A new Requete is created with identifier {{ param }}",
+      "updated": "A Requete is updated with identifier {{ param }}",
+      "deleted": "A Requete is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Requete {{ id }}?"
+      },
+      "detail": {
+        "title": "Requete"
+      },
+      "id": "ID",
+      "type": "Type",
+      "typePanne": "Type Panne",
+      "datePost": "Date Post",
+      "description": "Description",
+      "etatTraite": "Etat Traite",
+      "dateLancement": "Date Lancement",
+      "idPers": "Id Pers",
+      "nomStructure": "Nom Structure"
+    }
+  }
+}

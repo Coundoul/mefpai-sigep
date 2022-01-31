@@ -1,0 +1,33 @@
+{
+  "name": "FicheTechnique",
+  "fields": [
+    {
+      "fieldName": "pieceJointe",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDepot",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "responsable",
+      "otherEntityRelationshipName": "ficheTechnique",
+      "relationshipName": "nomResponsable"
+    }
+  ],
+  "entityTableName": "fiche_technique",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine"],
+  "databaseType": "sql",
+  "changelogDate": "20210607001926"
+}

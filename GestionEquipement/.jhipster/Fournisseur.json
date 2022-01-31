@@ -1,0 +1,75 @@
+{
+  "name": "Fournisseur",
+  "fields": [
+    {
+      "fieldName": "codeFournisseuer",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nomFournisseur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomFournisseur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "Sexe",
+      "fieldValues": "Masculin,Feminin",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "raisonSocial",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "num1",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "num2",
+      "fieldType": "String",
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "ville",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "fournisseur",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "microserviceName": "GestionEquipement",
+  "clientRootFolder": "GestionEquipement",
+  "databaseType": "sql",
+  "changelogDate": "20210607000426"
+}

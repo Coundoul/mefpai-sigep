@@ -1,0 +1,35 @@
+{
+  "name": "Salles",
+  "fields": [
+    {
+      "fieldName": "nomSalle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "classe",
+      "fieldType": "Classe",
+      "fieldValues": "ClassePhysique,ClassePedagogique",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "batiment",
+      "otherEntityRelationshipName": "salles",
+      "relationshipName": "nomBatiment"
+    }
+  ],
+  "entityTableName": "salles",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "databaseType": "sql",
+  "changelogDate": "20210607003626"
+}

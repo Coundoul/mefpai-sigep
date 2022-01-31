@@ -1,0 +1,26 @@
+{
+  "gestionPatrimoineApp": {
+    "ficheTechnique": {
+      "home": {
+        "title": "FicheTechniques",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Fiche Technique",
+        "createOrEditLabel": "Créer ou éditer un Fiche Technique",
+        "notFound": "Aucun Fiche Technique trouvé"
+      },
+      "created": "Un nouveau Fiche Technique a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Fiche Technique avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Fiche Technique avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Fiche Technique {{ id }} ?"
+      },
+      "detail": {
+        "title": "Fiche Technique"
+      },
+      "id": "ID",
+      "pieceJointe": "Piece Jointe",
+      "dateDepot": "Date Depot",
+      "nomResponsable": "Nom Responsable"
+    }
+  }
+}

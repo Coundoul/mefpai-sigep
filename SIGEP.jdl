@@ -1,0 +1,587 @@
+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 //Pour le jeton
+
+application {
+  config {
+    baseName gestionPatrimoine,
+    applicationType gateway,
+    packageName sn.coundoul.gestion.patrimoine,
+    authenticationType oauth2,
+    prodDatabaseType mysql,
+    devDatabaseType mysql,
+    clientFramework angularX,
+	enableHibernateCache false,
+	languages [fr,en],
+	serverPort 9000,
+    testFrameworks [protractor]
+  }
+  entities *
+}
+
+
+
+application {
+  config {
+    baseName GestionUtilisateurs,
+    applicationType microservice,
+    packageName sn.coundoul.gestion.utilisateurs,
+    authenticationType oauth2,
+    devDatabaseType mysql,
+    prodDatabaseType mysql,
+    serverPort 8010,
+  }
+  entities Technicien, ChefMaintenance, ComptablePrincipale, ComptableSecondaire,
+  Detenteur, OrdonnaceurMatiere, Intendant, ChefProjet, ChefEtablissement,
+  Directeur, MangasinierFichiste
+}
+
+
+
+entity Technicien {
+	nomPers String required,
+	prenomPers String required,
+    
+	sexe Sexe required,
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction
+}
+
+
+entity Intendant {
+    nomPers String required,
+	prenomPers String required,
+    
+	sexe Sexe required,
+    @unique
+	mobile String required,
+	adresse String
+}
+
+entity ChefMaintenance {
+    nomPers String required,
+	prenomPers String required,
+    
+	sexe Sexe required,
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction
+}
+
+entity ComptablePrincipale {
+    nomPers String required,
+	prenomPers String required,
+    
+	sexe Sexe required,
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction required,
+}
+
+entity OrdonnaceurMatiere {
+    nomPers String required,
+	prenomPers String required,
+	sexe Sexe required,
+    
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction,
+}
+
+entity ComptableSecondaire {
+    nomPers String required,
+	prenomPers String required,
+	sexe Sexe required,
+    
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction required,
+}
+
+entity Detenteur {
+    nomPers String required,
+	prenomPers String required,
+	sexe Sexe required,
+    
+    mobile String required,
+	adresse String,
+	direction Direction required,
+}
+
+entity MangasinierFichiste {
+    nomPers String required,
+	prenomPers String required,
+	sexe Sexe required,
+    
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction required,
+}
+
+entity Directeur {
+    nomPers String required,
+	prenomPers String required,
+	sexe Sexe required,
+    
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction required,
+}
+
+entity ChefProjet {
+    nomPers String required,
+	prenomPers String required,
+	sexe Sexe required,
+    
+    @unique
+	mobile String required,
+	adresse String,
+	direction Direction,
+}
+
+entity ChefEtablissement {
+    nomPers String required,
+	prenomPers String required,
+	sexe Sexe required,
+    
+    @unique
+	mobile String required,
+	adresse String
+}
+
+
+enum Direction {
+DAGE, DFPT, DA, PE, DRH, CEP, 
+CelluleInformatique, CelluleJuridique,
+CelluleGenre, CPM, DE, PEJA, SEN32, 
+BureauCourrier
+}
+
+relationship OneToMany {
+    ComptablePrincipale to MangasinierFichiste,
+	ChefMaintenance to Technicien,
+	ComptablePrincipale to ComptableSecondaire
+}
+
+
+application {
+  config {
+    baseName GestionInfrastructure,
+    applicationType microservice,
+    packageName sn.coundoul.gestion.infrastructure,
+    authenticationType oauth2,
+	serviceDiscoveryType eureka,
+	enableHibernateCache false,
+	devDatabaseType mysql,
+    prodDatabaseType mysql,
+    serverPort 8011,
+  }
+  entities Etablissement, Batiment, Projets, Salles, TypeBatiment, 
+  Atelier, AttributionInfrastructure, Intervenant, NatureFoncier, ContratProjet, CorpsEtat,
+  Responsable, ProjetAttribution, 
+  FiliereStabilise, Formateurs, Etapes, Departement, Quartier, Region, Commune
+}
+
+entity Etablissement {
+	nomEtablissement String required,
+    surfaceBatie Double required,
+    superficie Double required,
+    idPers Integer required
+}
+entity Salles {
+	nomSalle String required,
+    classe Classe required
+}
+
+enum Classe{
+ClassePhysique, ClassePedagogique
+}
+
+entity Atelier {
+	nomAtelier String required,
+    surface Double required,
+	description String required
+}
+entity FiliereStabilise {
+	nomFiliere String required,
+}
+entity Batiment {
+	nomBatiment String required,
+    nbrPiece String required,
+	designation String required,
+    surface Double required,
+    etatGeneral Boolean required,
+    description String,
+    nombreSalle Integer required
+}
+entity TypeBatiment {
+	typeBa String required,
+}
+
+entity ContratProjet {
+	nom String required,
+}
+entity CorpsEtat {
+	nomCorps String required,
+    grosOeuvre String required,
+	descriptionGrosOeuvre String required,
+    secondOeuvre String required,
+	descriptionSecondOeuvre String required,
+    oservation Boolean required,
+    etatCorps Boolean
+}
+entity Responsable {
+    nomResponsable String required,
+    prenomResponsable String required,
+    email String  required,
+    specialite String  required,
+    numb1 String required
+    numb2 String,
+    raisonSocial String required,
+}
+entity FicheTechnique {
+    pieceJointe String required
+    dateDepot Instant
+}
+entity NatureFoncier {
+    typeFoncier String required,
+    pieceJointe String required
+}
+entity Formateurs {
+    nomFormateur String required,
+    prenomFormateur String required,
+    email String  required,
+    numb1 String required
+    numb2 String,
+    adresse String required,
+    ville String required,
+    specialite String required
+}
+entity Projets {
+    typeProjet TypeProjet required,
+    nomProjet String required,
+    dateDebut ZonedDateTime required,
+    dateFin ZonedDateTime required
+    description String required,
+    extension Boolean required
+}
+
+entity Etapes {
+    dateDebut ZonedDateTime required,
+    dateFin ZonedDateTime required,
+    nomTache String required,
+    duration Duration
+}
+entity Intervenant {
+    nomIntervenant String required,
+    prenomIntervenant String required,
+    emailProfessionnel String required,
+    raisonSocial String required,
+    maitre TypeMaitre required,
+    role String required,
+}
+
+entity AttributionInfrastructure{
+dateAttribution Instant,
+quantite Integer required,
+idEquipement Integer required,
+idPers Integer required
+}
+
+entity ProjetAttribution{
+dateAttribution Instant,
+quantite Integer required,
+idEquipement Integer required,
+idPers Integer required
+}
+
+enum TypeMaitre {
+MaitreOuvrage, MaitreOeuvre
+}
+
+entity Quartier {
+    nomQuartier String required,
+}
+entity Commune {
+    nomCommune String required
+}
+entity Departement {
+    nomDepartement String required
+}
+entity Region {
+    nomRegion NomRegion required
+}
+
+
+enum NomRegion {
+Dakar, Thies, SaintLouis, Diourbel,
+Tambacounda, Zinguinchor, Kolda, Kaffrine,
+Fatick, Matam, Kaolack, Sedhiou, Kedougou, Podor
+}
+
+enum TypeProjet{
+Construction, Rehabilitation
+}
+
+relationship OneToOne {
+    Projets{nom} to ContratProjet{nomProjet}
+}
+
+relationship ManyToOne {
+	Departement {nomRegion} to Region,
+
+    Commune {nomDepartement} to Departement,
+
+    Quartier {nomCommune} to Commune,
+
+    Etablissement {nomQuartier} to Quartier,
+
+    Formateurs {nomEtablissement} to Etablissement,
+
+    Batiment {nomEtablissement} to Etablissement,
+    
+    TypeBatiment {nomBatiment} to Batiment{typeBa},
+
+    Projets {nomEtablissement} to Etablissement{nomProjet},
+
+    CorpsEtat {nomResponsable} to Responsable,
+
+    Batiment {nomCorps} to CorpsEtat,
+
+    NatureFoncier {nomCorps} to CorpsEtat,
+
+    AttributionInfrastructure{nomEtablissement} to Etablissement,
+
+    FicheTechnique {nomResponsable} to Responsable,
+
+    Salles {nomBatiment} to Batiment,
+
+    Projets {nomBatiment} to Etablissement,
+
+    Etapes {nomProjet} to Projets,
+
+    Atelier {nomFiliere} to FiliereStabilise,
+
+    Atelier {nomBatiment} to Batiment{nomAtelier},
+
+    FiliereStabilise{nomFormateur} to Formateurs{nomFiliere},
+
+    Intervenant {nomProjet} to Projets{nomIntervenant},
+
+    ProjetAttribution{nomProjet} to Projets
+}
+
+paginate Etablissement, Batiment, Formateurs, Projets, Atelier, Etapes  with infinite-scroll
+paginate Etablissement, Batiment, Formateurs, Projets, Atelier, Etapes with pagination
+
+
+
+
+
+
+application {
+  config {
+    baseName GestionEquipement,
+    applicationType microservice,
+    packageName sn.coundoul.gestion.equipement,
+    authenticationType oauth2,
+	serviceDiscoveryType eureka,
+	enableHibernateCache false,
+	devDatabaseType mysql,
+    prodDatabaseType mysql,
+    serverPort 8012,
+  }
+  entities Magazin, Equipement, CategorieMatiere, Fournisseur, UtilisateurFinal, Bon
+  , DetailSortie, Attribution, Affectations, Quartier,
+  Commune, Departement, Region
+}
+
+entity Magazin {
+	nomMagazin String required,
+    surfaceBatie Double required,
+    superficie Double required,
+    idPers Integer required 
+}
+
+entity Equipement {
+	@unique
+	reference String required,
+    description String,
+    prixUnitaire Integer required,
+    typeMatiere String required,
+    quantite Integer required,
+    etatMatiere String required,
+    group Boolean required,
+    photo ImageBlob
+}
+entity CategorieMatiere {
+	categorie String required
+}
+
+entity Fournisseur {
+	codeFournisseuer String required,
+    nomFournisseur String required,
+	prenomFournisseur String required,
+    sexe Sexe required,
+    raisonSocial String required,
+    adresse String required,
+	@unique
+    num1 String required,
+	@unique
+    num2 String,
+    ville String required,
+    email String required
+}
+
+entity UtilisateurFinal {
+    nomUtilisateur String required,
+	prenomUtilisateur String required,
+	@email
+	@unique
+    emailInstitutionnel String required,
+	@unique
+    mobile String required,
+    sexe String required,
+    departement String,
+    serviceDep String,
+}
+
+
+entity Bon {
+    typeBon TypeBon required,
+    quantiteLivre Integer,
+    quantiteCommande Integer,
+    dateCreation Instant,
+    etat Boolean
+}
+
+entity DetailSortie {
+    pieceJointe String required,
+    idPers Integer required
+}
+
+entity Affectations {
+	quantiteAffecter Integer required,
+    typeAttribution Type required,
+    idPers Integer required,
+    dateAttribution Instant
+}
+
+entity Attribution {
+	quantiteAffecter Integer required,
+    idPers Integer required,
+    dateAffectation Instant
+}
+
+
+enum Sexe{
+Masculin, Feminin
+}
+enum Type{
+ReAffectation, Affectation
+}
+
+enum TypeBon{
+Entree, Sortie
+}
+
+relationship ManyToOne {
+	Magazin {nomQuartier} to Quartier,
+    Equipement {nomMagazin} to Magazin{reference},
+    Equipement{nomFournisseur} to Fournisseur
+    Equipement to Bon{reference},
+    Equipement {categorie} to CategorieMatiere,
+    Affectations{Equipement} to Equipement,
+    Attribution {nomUtilisateur} to UtilisateurFinal,
+    Attribution to Affectations,
+	
+}
+
+relationship OneToOne{
+	DetailSortie {typeBon}  to Bon
+}
+
+// Set pagination options
+paginate Equipement, DetailSortie, Fournisseur, CategorieMatiere, Magazin with infinite-scroll
+paginate Equipement, DetailSortie, Fournisseur, CategorieMatiere, Magazin with pagination
+
+
+
+
+
+
+
+
+application {
+  config {
+    baseName GestionMaintenance,
+    applicationType microservice,
+    packageName sn.coundoul.gestion.maintenance,
+    authenticationType oauth2,
+	serviceDiscoveryType eureka,
+	enableHibernateCache false,
+	devDatabaseType mysql,
+    prodDatabaseType mysql,
+    serverPort 8013,
+  }
+  entities Requete, FicheTechniqueMaintenance, Bureau
+}
+
+entity Requete {
+	type String required,
+    typePanne Double required,
+    datePost Double required,
+    description String required,
+    etatTraite Boolean,
+    dateLancement Instant,
+    idPers Integer required
+}
+
+entity FicheTechniqueMaintenance {
+	pieceJointe String required,
+    idPers Integer required,
+    dateDepot Instant
+}
+
+
+entity Bureau {
+	nomStructure NomS required,
+    direction Direction,
+    nomEtablissement String,
+}
+
+enum NomS{
+Etablissement,
+MEFPAI
+}
+
+enum Direction {
+DAGE, DFPT, DA, PE, DRH, CEP, 
+CelluleInformatique, CelluleJuridique,
+CelluleGenre, CPM, DE, PEJA, SEN32, 
+BureauCourrier
+}
+
+
+relationship ManyToOne {
+    FicheTechniqueMaintenance{type} to Requete,
+    Requete{nomStructure} to Bureau
+}
+
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+deployment{
+deploymentType docker-compose
+appsFolders [GestionEquipement, GestionUtilisateurs, GestionInfrastructure, GestionMaintenance, GestionPatrimoine]
+dockerRepositoryName "3ba8f2ff0727"
+}
+

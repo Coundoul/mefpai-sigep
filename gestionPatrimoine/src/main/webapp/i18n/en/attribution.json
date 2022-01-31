@@ -1,0 +1,28 @@
+{
+  "gestionPatrimoineApp": {
+    "attribution": {
+      "home": {
+        "title": "Attributions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Attribution",
+        "createOrEditLabel": "Create or edit a Attribution",
+        "notFound": "No Attributions found"
+      },
+      "created": "A new Attribution is created with identifier {{ param }}",
+      "updated": "A Attribution is updated with identifier {{ param }}",
+      "deleted": "A Attribution is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Attribution {{ id }}?"
+      },
+      "detail": {
+        "title": "Attribution"
+      },
+      "id": "ID",
+      "quantiteAffecter": "Quantite Affecter",
+      "idPers": "Id Pers",
+      "dateAffectation": "Date Affectation",
+      "nomUtilisateur": "Nom Utilisateur",
+      "affectations": "Affectations"
+    }
+  }
+}

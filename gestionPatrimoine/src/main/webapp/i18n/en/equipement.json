@@ -1,0 +1,35 @@
+{
+  "gestionPatrimoineApp": {
+    "equipement": {
+      "home": {
+        "title": "Equipements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Equipement",
+        "createOrEditLabel": "Create or edit a Equipement",
+        "notFound": "No Equipements found"
+      },
+      "created": "A new Equipement is created with identifier {{ param }}",
+      "updated": "A Equipement is updated with identifier {{ param }}",
+      "deleted": "A Equipement is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Equipement {{ id }}?"
+      },
+      "detail": {
+        "title": "Equipement"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "description": "Description",
+      "prixUnitaire": "Prix Unitaire",
+      "typeMatiere": "Type Matiere",
+      "quantite": "Quantite",
+      "etatMatiere": "Etat Matiere",
+      "group": "Group",
+      "photo": "Photo",
+      "nomMagazin": "Nom Magazin",
+      "nomFournisseur": "Nom Fournisseur",
+      "bon": "Bon",
+      "categorie": "Categorie"
+    }
+  }
+}

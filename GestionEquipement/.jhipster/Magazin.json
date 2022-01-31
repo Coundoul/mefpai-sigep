@@ -1,0 +1,52 @@
+{
+  "name": "Magazin",
+  "fields": [
+    {
+      "fieldName": "nomMagazin",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "surfaceBatie",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "superficie",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idPers",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "quartier",
+      "otherEntityRelationshipName": "magazin",
+      "relationshipName": "nomQuartier"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "equipement",
+      "otherEntityRelationshipName": "nomMagazin",
+      "relationshipName": "reference"
+    }
+  ],
+  "entityTableName": "magazin",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "microserviceName": "GestionEquipement",
+  "clientRootFolder": "GestionEquipement",
+  "databaseType": "sql",
+  "changelogDate": "20210607000526"
+}

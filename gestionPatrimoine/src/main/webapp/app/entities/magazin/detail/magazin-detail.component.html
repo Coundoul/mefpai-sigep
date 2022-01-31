@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="magazin">
+      <h2 data-cy="magazinDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.magazin.detail.title">Magazin</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ magazin.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.magazin.nomMagazin">Nom Magazin</span></dt>
+        <dd>
+          <span>{{ magazin.nomMagazin }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.magazin.surfaceBatie">Surface Batie</span></dt>
+        <dd>
+          <span>{{ magazin.surfaceBatie }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.magazin.superficie">Superficie</span></dt>
+        <dd>
+          <span>{{ magazin.superficie }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.magazin.idPers">Id Pers</span></dt>
+        <dd>
+          <span>{{ magazin.idPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.magazin.nomQuartier">Nom Quartier</span></dt>
+        <dd>
+          <div *ngIf="magazin.nomQuartier">
+            <a [routerLink]="['/quartier', magazin.nomQuartier?.id, 'view']">{{ magazin.nomQuartier?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/magazin', magazin.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

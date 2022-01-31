@@ -1,0 +1,9 @@
+{
+  "gestionPatrimoineApp": {
+    "Classe": {
+      "null": "",
+      "ClassePhysique": "ClassePhysique",
+      "ClassePedagogique": "ClassePedagogique"
+    }
+  }
+}

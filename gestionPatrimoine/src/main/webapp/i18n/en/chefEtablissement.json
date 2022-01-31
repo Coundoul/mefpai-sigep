@@ -1,0 +1,28 @@
+{
+  "gestionPatrimoineApp": {
+    "chefEtablissement": {
+      "home": {
+        "title": "Chef Etablissements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Chef Etablissement",
+        "createOrEditLabel": "Create or edit a Chef Etablissement",
+        "notFound": "No Chef Etablissements found"
+      },
+      "created": "A new Chef Etablissement is created with identifier {{ param }}",
+      "updated": "A Chef Etablissement is updated with identifier {{ param }}",
+      "deleted": "A Chef Etablissement is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Chef Etablissement {{ id }}?"
+      },
+      "detail": {
+        "title": "Chef Etablissement"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse"
+    }
+  }
+}

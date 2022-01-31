@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+
+    <h2 id="page-heading" data-cy="RequeteHeading">
+      <span>Liste des Demandes</span>
+
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+          <span>Actualiser</span>
+        </button>
+
+        <button
+          id="jh-create-entity"
+          data-cy="entityCreateButton"
+          class="btn btn-primary jh-create-entity create-requete"
+          [routerLink]="['/requete/new']"
+        >
+          <fa-icon icon="plus"></fa-icon>
+          <span> Ajouter Demande</span>
+        </button>
+      </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="requetes?.length === 0">
+      <span jhiTranslate="gestionPatrimoineApp.requete.home.notFound">No requetes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="requetes && requetes.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+            <!-- <th scope="col" jhiSortBy="type">
+              <span jhiTranslate="gestionPatrimoineApp.requete.type">Type</span>
+            </th> -->
+            <!-- <th scope="col" jhiSortBy="typePanne">
+              <span jhiTranslate="gestionPatrimoineApp.requete.typePanne">Type Panne</span>
+            </th> -->
+            <th scope="col" jhiSortBy="datePost">
+              <span>Date Demande</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <span jhiTranslate="gestionPatrimoineApp.requete.description">Description</span> 
+            </th>
+            <th scope="col" jhiSortBy="etatTraite">
+              <span jhiTranslate="gestionPatrimoineApp.requete.etatTraite">Etat Traite</span> 
+            </th>
+            <th scope="col" jhiSortBy="dateLancement">
+              <span>Date Réparation</span>
+            </th>
+            
+            <!-- <th scope="col" jhiSortBy="nomStructure.id">
+              <span jhiTranslate="gestionPatrimoineApp.requete.nomStructure">Nom Structure</span> 
+            </th> -->
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let requete of requetes; trackBy: trackId" data-cy="entityTable">
+            <!-- <td>
+              <a [routerLink]="['/requete', requete.id, 'view']">{{ requete.id }}</a>
+            </td> -->
+            <td>{{ requete.type  }}</td>
+            <!-- <td>{{ requete.typePanne }}</td> -->
+            <td>{{ requete.description }}</td>
+            <td>
+              <div *ngIf="requete.etatTraite === true">
+                <span>
+                  <fa-icon icon="check-circle" style="color: greenyellow; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+
+              <div *ngIf="requete.etatTraite === false">
+                <span>
+                  <fa-icon icon="check-circle" style="color: red; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+              <!-- {{ requete.etatTraite }}</td> -->
+            
+            </td>
+            <td>{{ requete.dateLancement | formatMediumDate }}</td>
+            <!-- <td>
+              <div *ngIf="requete.nomStructure">
+                <a [routerLink]="['/bureau', requete.nomStructure?.id, 'view']">{{ requete.nomStructure?.id }}</a>
+              </div>
+            </td> -->
+            <td class="text-right">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  [routerLink]="['/requete', requete.id, 'view']"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <fa-icon icon="eye"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
+                </button>
+
+                <button
+                  type="submit"
+                  [routerLink]="['/requete', requete.id, 'edit']"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <fa-icon icon="pencil-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span> -->
+                </button>
+
+                <button type="submit" (click)="delete(requete)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <fa-icon icon="trash-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span> -->
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="requetes && requetes.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>

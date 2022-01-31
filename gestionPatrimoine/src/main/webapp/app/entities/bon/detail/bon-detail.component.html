@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="card jh-card col-8">
+    <div *ngIf="bon">
+      <h2 data-cy="bonDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.bon.detail.title">Bon</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bon.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.bon.typeBon">Type Bon</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.TypeBon.' + bon.typeBon }}">{{ bon.typeBon }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.bon.quantiteLivre">Quantite Livre</span></dt>
+        <dd>
+          <span>{{ bon.quantiteLivre }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.bon.quantiteCommande">Quantite Commande</span></dt>
+        <dd>
+          <span>{{ bon.quantiteCommande }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.bon.dateCreation">Date Creation</span></dt>
+        <dd>
+          <span>{{ bon.dateCreation | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.bon.etat">Etat</span></dt>
+        <dd>
+          <span>{{ bon.etat }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bon', bon.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

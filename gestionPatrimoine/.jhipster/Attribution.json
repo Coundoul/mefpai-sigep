@@ -1,0 +1,44 @@
+{
+  "name": "Attribution",
+  "fields": [
+    {
+      "fieldName": "quantiteAffecter",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idPers",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateAffectation",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "utilisateurFinal",
+      "otherEntityRelationshipName": "attribution",
+      "relationshipName": "nomUtilisateur"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affectations",
+      "otherEntityRelationshipName": "attribution",
+      "relationshipName": "affectations"
+    }
+  ],
+  "entityTableName": "attribution",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "databaseType": "sql",
+  "changelogDate": "20210606235826"
+}

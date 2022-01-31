@@ -1,0 +1,102 @@
+{
+  "name": "Equipement",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "nomMatiere",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caracteristique",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "beneficiaire",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeMatiere",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "quantite",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "etatMatiere",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateSignalisation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "group",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo1",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image1"
+    },
+    {
+      "fieldName": "photo2",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image2"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "magazin",
+      "otherEntityRelationshipName": "reference",
+      "relationshipName": "nomMagazin"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fournisseur",
+      "otherEntityRelationshipName": "equipement",
+      "relationshipName": "nomFournisseur"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "bon",
+      "otherEntityRelationshipName": "reference",
+      "relationshipName": "bon"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "categorieMatiere",
+      "otherEntityRelationshipName": "equipement",
+      "relationshipName": "categorie"
+    }
+  ],
+  "entityTableName": "equipement",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "microserviceName": "GestionEquipement",
+  "clientRootFolder": "GestionEquipement",
+  "databaseType": "sql",
+  "changelogDate": "20210607000326"
+}

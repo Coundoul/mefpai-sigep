@@ -1,0 +1,31 @@
+{
+  "gestionPatrimoineApp": {
+    "comptablePrincipale": {
+      "home": {
+        "title": "Comptable Principales",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Comptable Principale",
+        "createOrEditLabel": "Create or edit a Comptable Principale",
+        "notFound": "No Comptable Principales found"
+      },
+      "created": "A new Comptable Principale is created with identifier {{ param }}",
+      "updated": "A Comptable Principale is updated with identifier {{ param }}",
+      "deleted": "A Comptable Principale is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Comptable Principale {{ id }}?"
+      },
+      "detail": {
+        "title": "Comptable Principale"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse",
+      "direction": "Direction",
+      "mangasinierFichiste": "Mangasinier Fichiste",
+      "comptableSecondaire": "Comptable Secondaire"
+    }
+  }
+}

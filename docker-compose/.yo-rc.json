@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "SpringCloudGateway",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": [
+      "GestionEquipement",
+      "GestionUtilisateurs",
+      "GestionInfrastructure",
+      "GestionMaintenance",
+      "GestionPatrimoine"
+    ],
+    "clusteredDbApps": [],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "3ba8f2ff0727",
+    "dockerPushCommand": "docker push",
+    "jwtSecretKey": "YTc1MTM2NGUzYTYzYTI2NmYyZWNkMzU5NjAyYjlhMzJiOWJmNDBjNzZjZjY2MjJlOTgxY2MwNGY1ZjEwYTExNzk5NDZkM2EwZGI3NmU4YzFjNzlkYWZlZjM4ZGU0ZDMzMGFhYg=="
+  }
+}

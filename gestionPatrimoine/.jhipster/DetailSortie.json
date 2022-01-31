@@ -1,0 +1,35 @@
+{
+  "name": "DetailSortie",
+  "fields": [
+    {
+      "fieldName": "pieceJointe",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idPers",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "bon",
+      "otherEntityRelationshipName": "detailSortie",
+      "relationshipName": "typeBon",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "detail_sortie",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "databaseType": "sql",
+  "changelogDate": "20210607001326"
+}

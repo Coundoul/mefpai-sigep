@@ -1,0 +1,9 @@
+{
+  "gestionPatrimoineApp": {
+    "Type": {
+      "null": "",
+      "ReAffectation": "ReAffectation",
+      "Affectation": "Affectation"
+    }
+  }
+}

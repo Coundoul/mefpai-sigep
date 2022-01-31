@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity ComptableSecondaire.
+    -->
+    <changeSet id="20210607000026-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="comptable_principale_id"
+                                 baseTableName="comptable_secondaire"
+                                 constraintName="fk_comptable_secondaire__comptable_principale_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comptable_principale"/>
+    </changeSet>
+</databaseChangeLog>

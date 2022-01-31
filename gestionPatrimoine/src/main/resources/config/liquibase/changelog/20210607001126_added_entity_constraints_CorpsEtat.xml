@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity CorpsEtat.
+    -->
+    <changeSet id="20210607001126-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="nom_responsable_id"
+                                 baseTableName="corps_etat"
+                                 constraintName="fk_corps_etat__nom_responsable_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="responsable"/>
+    </changeSet>
+</databaseChangeLog>

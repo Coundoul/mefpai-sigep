@@ -1,0 +1,177 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <h2 id="jhi-requete-heading" data-cy="RequeteCreateUpdateHeading" style="text-align: center;">
+          Nouvelle Demande
+        </h2>
+        <hr>
+        <div>
+          <jhi-alert-error></jhi-alert-error>
+
+          <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+            <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_type">Date Demande</label>
+            <input type="datetime-local" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+            <div *ngIf="editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)">
+              <small class="form-text text-danger" *ngIf="editForm.get('type')?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.requete.typePanne" for="field_typePanne">Type Panne</label>
+            <input type="number" class="form-control" name="typePanne" id="field_typePanne" data-cy="typePanne" formControlName="typePanne" />
+            <div *ngIf="editForm.get('typePanne')!.invalid && (editForm.get('typePanne')!.dirty || editForm.get('typePanne')!.touched)">
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('typePanne')?.errors?.required"
+                jhiTranslate="entity.validation.required"
+              >
+                This field is required.
+              </small>
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('typePanne')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+              >
+                This field should be a number.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.requete.datePost" for="field_datePost">Date Post</label>
+            <input type="number" class="form-control" name="datePost" id="field_datePost" data-cy="datePost" formControlName="datePost" />
+            <div *ngIf="editForm.get('datePost')!.invalid && (editForm.get('datePost')!.dirty || editForm.get('datePost')!.touched)">
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('datePost')?.errors?.required"
+                jhiTranslate="entity.validation.required"
+              >
+                This field is required.
+              </small>
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('datePost')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+              >
+                This field should be a number.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.requete.description" for="field_description"
+              >Description</label
+            >
+            <!-- <extarea
+              type="text"
+              class="form-control"
+              name="description"
+              id="field_description"
+              data-cy="description"
+              formControlName="description"
+            > -->
+            <textarea class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description" rows="10"></textarea>
+            <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('description')?.errors?.required"
+                jhiTranslate="entity.validation.required"
+              >
+                This field is required.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.requete.etatTraite" for="field_etatTraite"
+              >Etat Traite</label
+            >
+            <input
+              type="checkbox"
+              class="form-check"
+              name="etatTraite"
+              id="field_etatTraite"
+              data-cy="etatTraite"
+              formControlName="etatTraite"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.requete.dateLancement" for="field_dateLancement"
+              >Date Lancement</label
+            >
+            <div class="d-flex">
+              <input
+                id="field_dateLancement"
+                data-cy="dateLancement"
+                type="datetime-local"
+                class="form-control"
+                name="dateLancement"
+                formControlName="dateLancement"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.requete.nomStructure" for="field_nomStructure"
+              >Nom Structure</label
+            >
+            <select class="form-control" id="field_nomStructure" data-cy="nomStructure" name="nomStructure" formControlName="nomStructure">
+              <option [ngValue]="null"></option>
+              <option
+                [ngValue]="bureauOption.id === editForm.get('nomStructure')!.value?.id ? editForm.get('nomStructure')!.value : bureauOption"
+                *ngFor="let bureauOption of bureausSharedCollection; trackBy: trackBureauById"
+              >
+                {{ bureauOption.nomStructure }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.requete.idPers" for="field_idPers">Id Pers</label>
+            <input type="number" class="form-control" name="idPers" id="field_idPers" data-cy="idPers" formControlName="idPers" />
+            <div *ngIf="editForm.get('idPers')!.invalid && (editForm.get('idPers')!.dirty || editForm.get('idPers')!.touched)">
+              <small class="form-text text-danger" *ngIf="editForm.get('idPers')?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+              </small>
+              <small class="form-text text-danger" [hidden]="!editForm.get('idPers')?.errors?.number" jhiTranslate="entity.validation.number">
+                This field should be a number.
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+          </button>
+
+          <button
+            type="submit"
+            id="save-entity"
+            data-cy="entityCreateSaveButton"
+            [disabled]="editForm.invalid || isSaving"
+            class="btn btn-primary"
+          >
+            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+          </button>
+        </div>
+      </form>
+  </div>
+</div>

@@ -1,0 +1,668 @@
+<nav data-cy="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary" style="height: 40%;">
+  <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
+    <!-- <img src="../../../content/images/logo.gif" alt="indisponible" class="logoGP"> -->
+    <span class="navbar-title">SIGEP-BI</span>
+    <fa-icon class="bars-sigep" icon="bars"></fa-icon>
+  </a>
+  
+  
+  <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+    <div class="documentation-mefpai" *ngSwitchCase="false">
+      <a href="" style="text-decoration: none; color:white;">
+        ACCUEIL
+      </a>
+      <a style="text-decoration: none; color:white;">
+        M.E.F.P.A.I
+      </a>
+      <a style="text-decoration: none; color:white;">
+        DAGE
+      </a>
+    </div>
+  
+
+    <ul class="navbar-nav ml-auto" *ngSwitchCase="true">
+      <!-- jhipster-needle-add-element-equipment-to-menu - JHipster will add new menu items here -->
+      <li
+        ngbDropdown
+        class="nav-item dropdown pointer"
+        display="dynamic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+          <span>
+            <fa-icon icon="cogs"></fa-icon>
+            <span>Matière</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="affectations"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.affectations">Affectations</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="attribution"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.attribution">Attribution</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="bon"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.bon">Bon</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="categorie-matiere"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.categorieMatiere">Categorie Matiere</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="detail-sortie"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.detailSortie">Detail Sortie</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="detenteur"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.detenteur">Detenteur</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="equipement"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.equipement">Equipement</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="fournisseur"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.fournisseur">Fournisseur</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="magazin"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.magazin">Magazin</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="mangasinier-fichiste"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.mangasinierFichiste">Mangasinier Fichiste</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="utilisateur-final"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.utilisateurFinal">Utilisateur Final</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- jhipster-needle-add-element-infrastructure-to-menu - JHipster will add new menu items here -->
+      <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_PROJET']"
+        ngbDropdown
+        class="nav-item dropdown pointer"
+        display="dynamic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+          <span>
+            <fa-icon icon="chart-bar"></fa-icon>
+            <span>Infrastructures</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="atelier"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.atelier">Atelier</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="attribution-infrastructure"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.attributionInfrastructure">Attribution Infrastructure</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="batiment"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.batiment">Batiment</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="contrat-projet"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.contratProjet">Contrat Projet</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="corps-etat"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.corpsEtat">Corps Etat</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="etapes"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.etapes">Etapes</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="filiere-stabilise"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.filiereStabilise">Filiere Stabilise</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="formateurs"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.formateurs">Formateurs</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="nature-foncier"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.natureFoncier">Nature Foncier</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="projet-attribution"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.projetAttribution">Projet Attribution</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="projets"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.projets">Projets</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="type-batiment"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.typeBatiment">Type Batiment</span>
+            </a>
+          </li>
+
+          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+        </ul>
+      </li>
+
+      <!-- jhipster-needle-add-element-maintenance-to-menu - JHipster will add new menu items here -->
+      <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_MAINTENANCE']"
+        ngbDropdown
+        class="nav-item dropdown pointer"
+        display="dynamic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+          <span>
+            <fa-icon icon="tools"></fa-icon>
+            <span>Maintenance</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="fiche-technique"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.ficheTechnique">Fiche Technique</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="intervenant"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.intervenant">Intervenant</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="requete"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.requete">Requete</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="technicien"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.technicien">Technicien</span>
+            </a>
+          </li>
+          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+        </ul>
+      </li>
+
+      <!-- jhipster-needle-add-element-Utilisateurs-to-menu - JHipster will add new menu items here -->
+      <li *jhiHasAnyAuthority="['ROLE_ADMIN']"
+        ngbDropdown
+        class="nav-item dropdown pointer"
+        display="dynamic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+          <span>
+            <fa-icon icon="users"></fa-icon>
+            <span>Administrations</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="comptable-principale"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="plus-circle" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.comptablePrincipale">Comptable Principale</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="comptable-secondaire"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="plus-circle" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.comptableSecondaire">Comptable Secondaire</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="mangasinier-fichiste"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="plus-circle" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.mangasinierFichiste">Mangasinier Fichiste</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="ordonnaceur-matiere"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="plus-circle" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.ordonnaceurMatiere">Ordonnaceur Matiere</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="detenteur"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="plus-circle" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.detenteur">Detenteur</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="chef-etablissement"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.chefEtablissement">Chef Etablissement</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="chef-maintenance"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.chefMaintenance">Chef Maintenance</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="chef-projet"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.chefProjet">Chef Projet</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="directeur"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.directeur">Directeur</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="intendant"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.intendant">Intendant</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="intervenant"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.intervenant">Intervenant</span>
+            </a>
+          </li>
+
+          
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="responsable"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.responsable">Responsable</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="technicien"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.technicien">Technicien</span>
+            </a>
+          </li>
+
+          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+        </ul>
+      </li>
+
+      <!-- jhipster-needle-add-element-Recherche-to-menu - JHipster will add new menu items here -->
+
+      <!--  <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
+          <span>
+            <fa-icon icon="flag"></fa-icon>
+            <span jhiTranslate="global.menu.language">Language</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
+          <li *ngFor="let language of languages">
+            <a
+              class="dropdown-item"
+              [jhiActiveMenu]="language"
+              href="javascript:void(0);"
+              (click)="changeLanguage(language); collapseNavbar()"
+              >{{ language | findLanguageFromKey }}</a
+            >
+          </li>
+        </ul>
+      </li> -->
+
+      <!-- <li
+        ngbDropdown
+        class="nav-item dropdown pointer"
+        display="dynamic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        *ngSwitchCase="false"
+      >
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
+          <span *ngIf="!getImageUrl()">
+            <fa-icon icon="user"></fa-icon>
+            <span jhiTranslate="global.menu.account.main">Account</span>
+          </span>
+          <span *ngIf="getImageUrl()">
+            <img [src]="getImageUrl()" class="profile-image rounded-circle" alt="Avatar" />
+          </span>
+        </a> -->
+              
+    </ul>
+
+
+     
+
+    <div [ngSwitch]="isAuthenticated()">
+      <div *ngSwitchCase="true">
+        <form class="d-flex">
+          <input class="form-control me-sm-2" type="text" placeholder="Chercher" />
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+            <font style="vertical-align: inherit"><font style="vertical-align: inherit">Chercher</font></font>
+          </button>
+        </form>
+      </div>
+
+      <div *ngSwitchCase="false" class="button-connexion">
+              <a class="fa-lg mr-2 d-flex" (click)="login()" id="login" data-cy="login" style="color: white; text-decoration: none;">
+                <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
+                <span>Connexion</span>
+              </a>
+      </div>
+    </div>
+  </div>
+</nav>

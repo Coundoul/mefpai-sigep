@@ -1,0 +1,26 @@
+{
+  "gestionPatrimoineApp": {
+    "detailSortie": {
+      "home": {
+        "title": "DetailSorties",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Detail Sortie",
+        "createOrEditLabel": "Créer ou éditer un Detail Sortie",
+        "notFound": "Aucun Detail Sortie trouvé"
+      },
+      "created": "Un nouveau Detail Sortie a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Detail Sortie avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Detail Sortie avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Detail Sortie {{ id }} ?"
+      },
+      "detail": {
+        "title": "Detail Sortie"
+      },
+      "id": "ID",
+      "pieceJointe": "Piece Jointe",
+      "idPers": "Id Pers",
+      "typeBon": "Type Bon"
+    }
+  }
+}

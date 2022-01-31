@@ -1,0 +1,59 @@
+{
+  "name": "UtilisateurFinal",
+  "fields": [
+    {
+      "fieldName": "nomUtilisateur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenomUtilisateur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailInstitutionnel",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "email": true,
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "mobile",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "departement",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "serviceDep",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "utilisateur_final",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionEquipement"],
+  "microserviceName": "GestionEquipement",
+  "clientRootFolder": "GestionEquipement",
+  "databaseType": "sql",
+  "changelogDate": "20210607000826"
+}

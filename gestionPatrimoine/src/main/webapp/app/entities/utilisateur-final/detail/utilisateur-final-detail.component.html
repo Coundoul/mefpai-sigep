@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="utilisateurFinal">
+      <h2 data-cy="utilisateurFinalDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.detail.title">Utilisateur Final</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.nomUtilisateur">Nom Utilisateur</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.nomUtilisateur }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.prenomUtilisateur">Prenom Utilisateur</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.prenomUtilisateur }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.emailInstitutionnel">Email Institutionnel</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.emailInstitutionnel }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.mobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.sexe">Sexe</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.departement">Departement</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.departement }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.utilisateurFinal.serviceDep">Service Dep</span></dt>
+        <dd>
+          <span>{{ utilisateurFinal.serviceDep }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/utilisateur-final', utilisateurFinal.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

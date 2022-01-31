@@ -1,0 +1,27 @@
+{
+  "gestionPatrimoineApp": {
+    "ficheTechniqueMaintenance": {
+      "home": {
+        "title": "FicheTechniqueMaintenances",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Fiche Technique Maintenance",
+        "createOrEditLabel": "Créer ou éditer un Fiche Technique Maintenance",
+        "notFound": "Aucun Fiche Technique Maintenance trouvé"
+      },
+      "created": "Un nouveau Fiche Technique Maintenance a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Fiche Technique Maintenance avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Fiche Technique Maintenance avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Fiche Technique Maintenance {{ id }} ?"
+      },
+      "detail": {
+        "title": "Fiche Technique Maintenance"
+      },
+      "id": "ID",
+      "pieceJointe": "Piece Jointe",
+      "idPers": "Id Pers",
+      "dateDepot": "Date Depot",
+      "type": "Type"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+  <div class="card jh-card col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-magazin-heading" data-cy="MagazinCreateUpdateHeading" >
+        Nouveau Magazin
+      </h2>
+
+      <div>
+        <!-- <jhi-alert-error></jhi-alert-error> -->
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.magazin.nomMagazin" for="field_nomMagazin"
+            >Nom Magazin</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomMagazin"
+            id="field_nomMagazin"
+            data-cy="nomMagazin"
+            formControlName="nomMagazin"
+          />
+          <div *ngIf="editForm.get('nomMagazin')!.invalid && (editForm.get('nomMagazin')!.dirty || editForm.get('nomMagazin')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomMagazin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.magazin.surfaceBatie" for="field_surfaceBatie"
+            >Surface Batie</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="surfaceBatie"
+            id="field_surfaceBatie"
+            data-cy="surfaceBatie"
+            formControlName="surfaceBatie"
+          />
+          <div
+            *ngIf="editForm.get('surfaceBatie')!.invalid && (editForm.get('surfaceBatie')!.dirty || editForm.get('surfaceBatie')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('surfaceBatie')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('surfaceBatie')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.magazin.superficie" for="field_superficie">Superficie</label>
+          <input
+            type="number"
+            class="form-control"
+            name="superficie"
+            id="field_superficie"
+            data-cy="superficie"
+            formControlName="superficie"
+          />
+          <div *ngIf="editForm.get('superficie')!.invalid && (editForm.get('superficie')!.dirty || editForm.get('superficie')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('superficie')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('superficie')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.magazin.idPers" for="field_idPers">Id Pers</label>
+          <input type="number" class="form-control" name="idPers" id="field_idPers" data-cy="idPers" formControlName="idPers" />
+          <div *ngIf="editForm.get('idPers')!.invalid && (editForm.get('idPers')!.dirty || editForm.get('idPers')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('idPers')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('idPers')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_nomQuartier"
+            >Quartier</label
+          >
+          <select class="form-control" id="field_nomQuartier" data-cy="nomQuartier" name="nomQuartier" formControlName="nomQuartier">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="quartierOption.id === editForm.get('nomQuartier')!.value?.id ? editForm.get('nomQuartier')!.value : quartierOption"
+              *ngFor="let quartierOption of quartiersSharedCollection; trackBy: trackQuartierById"
+            >
+              {{ quartierOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="cancel()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span >Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

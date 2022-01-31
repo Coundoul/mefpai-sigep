@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="natureFoncier">
+      <h2 data-cy="natureFoncierDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.natureFoncier.detail.title">Nature Foncier</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ natureFoncier.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.natureFoncier.typeFoncier">Type Foncier</span></dt>
+        <dd>
+          <span>{{ natureFoncier.typeFoncier }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.natureFoncier.pieceJointe">Piece Jointe</span></dt>
+        <dd>
+          <span>{{ natureFoncier.pieceJointe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.natureFoncier.nomCorps">Nom Corps</span></dt>
+        <dd>
+          <div *ngIf="natureFoncier.nomCorps">
+            <a [routerLink]="['/corps-etat', natureFoncier.nomCorps?.id, 'view']">{{ natureFoncier.nomCorps?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/nature-foncier', natureFoncier.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

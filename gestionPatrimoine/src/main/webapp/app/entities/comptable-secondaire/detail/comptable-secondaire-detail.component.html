@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="comptableSecondaire">
+      <h2 data-cy="comptableSecondaireDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.detail.title">Comptable Secondaire</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ comptableSecondaire.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.nomPers">Nom Pers</span></dt>
+        <dd>
+          <span>{{ comptableSecondaire.nomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.prenomPers">Prenom Pers</span></dt>
+        <dd>
+          <span>{{ comptableSecondaire.prenomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + comptableSecondaire.sexe }}">{{ comptableSecondaire.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ comptableSecondaire.mobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ comptableSecondaire.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.direction">Direction</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Direction.' + comptableSecondaire.direction }}">{{
+            comptableSecondaire.direction
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptableSecondaire.comptablePrincipale">Comptable Principale</span></dt>
+        <dd>
+          <div *ngIf="comptableSecondaire.comptablePrincipale">
+            <a [routerLink]="['/comptable-principale', comptableSecondaire.comptablePrincipale?.id, 'view']">{{
+              comptableSecondaire.comptablePrincipale?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/comptable-secondaire', comptableSecondaire.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "gestionPatrimoineApp": {
+    "detailSortie": {
+      "home": {
+        "title": "Detail Sorties",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Detail Sortie",
+        "createOrEditLabel": "Create or edit a Detail Sortie",
+        "notFound": "No Detail Sorties found"
+      },
+      "created": "A new Detail Sortie is created with identifier {{ param }}",
+      "updated": "A Detail Sortie is updated with identifier {{ param }}",
+      "deleted": "A Detail Sortie is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Detail Sortie {{ id }}?"
+      },
+      "detail": {
+        "title": "Detail Sortie"
+      },
+      "id": "ID",
+      "pieceJointe": "Piece Jointe",
+      "idPers": "Id Pers",
+      "typeBon": "Type Bon"
+    }
+  }
+}

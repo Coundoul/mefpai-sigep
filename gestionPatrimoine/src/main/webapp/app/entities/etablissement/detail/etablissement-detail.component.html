@@ -1,0 +1,210 @@
+<!-- <div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="etablissement">
+      <h2 data-cy="etablissementDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.etablissement.detail.title">Etablissement</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ etablissement.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.etablissement.nomEtablissement">Nom Etablissement</span></dt>
+        <dd>
+          <span>{{ etablissement.nomEtablissement }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.etablissement.surfaceBatie">Surface Batie</span></dt>
+        <dd>
+          <span>{{ etablissement.surfaceBatie }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.etablissement.superficie">Superficie</span></dt>
+        <dd>
+          <span>{{ etablissement.superficie }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.etablissement.idPers">Id Pers</span></dt>
+        <dd>
+          <span>{{ etablissement.idPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.etablissement.nomQuartier">Nom Quartier</span></dt>
+        <dd>
+          <div *ngIf="etablissement.nomQuartier">
+            <a [routerLink]="['/quartier', etablissement.nomQuartier?.id, 'view']">{{ etablissement.nomQuartier?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/etablissement', etablissement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+  <div class="card jh-card col-xs-12 col-md-9" *ngIf="etablissement">
+      
+    <div class="" >
+      <h2 style="text-align: center;">
+        <span style="font-weight: bold;">IDENTIFICATION DE L'Etablissement</span>
+      </h2>
+      <hr>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nom de l'établissement</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Quartier</th>
+            <th scope="col">Commune</th>
+            <th scope="col">Département</th>
+            <th scope="col">Région</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ etablissement.nomEtablissement }}</td>
+            <td>{{ etablissement.adresse }}</td>
+            <td>{{ etablissement.telephone }}</td>
+            <td>{{ etablissement.email }}</td>
+            <td>{{ etablissement.nomQuartier?.nomQuartier }}</td>
+            <td>{{ etablissement.nomQuartier?.nomCommune?.id }}</td>
+            <td>{{ etablissement.nomQuartier?.nomCommune?.nomDepartement?.id }}</td>
+            <td>{{ etablissement.nomQuartier?.nomCommune?.nomDepartement?.nomRegion?.id }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+    <div class="" >
+      <h4 style="text-align: center;">
+        <span style="font-weight: bold;">RENSEIGNEMENTS GENERAUX SUR L'ETABLISSEMENT</span>
+      </h4>
+    
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Caractéristique générales de l'établissement</th>
+            <th scope="col">Réponses</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">Statut Foncier</td>
+            <td>{{ etablissement.statusFoncier }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Propriétaire</td>
+            <td>{{ etablissement.proprietaire }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Superficie du terrain</td>
+            <td>{{ etablissement.superficie }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Surface Batie</td>
+            <td>{{ etablissement.surfaceBatie }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Possibilité Extension</td>
+            <td>{{ etablissement.possibiliteExtension }}, {{ etablissement.descriptionExtension }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Nombre Apprenants</td>
+            <td>{{ etablissement.nombreApprenants }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Branchement Eau</td>
+            <td>{{ etablissement.branchementEau }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Branchement Electricité</td>
+            <td>{{ etablissement.branchementElectricite }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Puissance Souscrite</td>
+            <td>{{ etablissement.puissanceSouscrite }}</td>
+          </tr>
+          
+          <tr>
+            <td scope="row">Type de Réseau</td>
+            <td>{{ etablissement.typeReseau }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Circuit de Terre</td>
+            <td>{{ etablissement.circuitTerre }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Système de Protection Arret d'urgence</td>
+            <td>{{ etablissement.protectionArret }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Protection contre la foudre</td>
+            <td>{{ etablissement.protectionFoudre }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Connexion Téléphonique</td>
+            <td>{{ etablissement.connexionTel }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Connexion Internet</td>
+            <td>{{ etablissement.connexionInternet }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Environnement Immédiat</td>
+            <td>{{ etablissement.environnement }}</td>
+          </tr>
+
+          <tr>
+            <td scope="row">Dispositif de Sécurité mis en place</td>
+            <td>{{ etablissement.dispositif }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+    
+    <div>
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/etablissement', etablissement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+</div>
+</div>
+<br>

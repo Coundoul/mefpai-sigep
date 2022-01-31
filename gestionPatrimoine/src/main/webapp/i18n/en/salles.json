@@ -1,0 +1,26 @@
+{
+  "gestionPatrimoineApp": {
+    "salles": {
+      "home": {
+        "title": "Salles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Salles",
+        "createOrEditLabel": "Create or edit a Salles",
+        "notFound": "No Salles found"
+      },
+      "created": "A new Salles is created with identifier {{ param }}",
+      "updated": "A Salles is updated with identifier {{ param }}",
+      "deleted": "A Salles is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Salles {{ id }}?"
+      },
+      "detail": {
+        "title": "Salles"
+      },
+      "id": "ID",
+      "nomSalle": "Nom Salle",
+      "classe": "Classe",
+      "nomBatiment": "Nom Batiment"
+    }
+  }
+}

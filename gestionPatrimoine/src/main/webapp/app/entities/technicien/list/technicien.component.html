@@ -1,0 +1,132 @@
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+    <h2 id="page-heading" data-cy="TechnicienHeading" style="text-align: center;">
+      <span>Liste des Prestataires</span>
+
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+          <span>Actualiser</span>
+        </button>
+
+        <button
+          id="jh-create-entity"
+          data-cy="entityCreateButton"
+          class="btn btn-primary jh-create-entity create-technicien"
+          [routerLink]="['/technicien/new']"
+        >
+          <fa-icon icon="plus"></fa-icon>
+          <span> Ajouter Prestataire </span>
+        </button>
+      </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="techniciens?.length === 0">
+      <span jhiTranslate="gestionPatrimoineApp.technicien.home.notFound">No techniciens found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="techniciens && techniciens.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+            <th scope="col" jhiSortBy="nomPers">
+              <span >Nom</span> 
+            </th>
+            <th scope="col" jhiSortBy="prenomPers">
+              <span>Prenom </span>
+            </th>
+            <th scope="col" jhiSortBy="sexe">
+              <span jhiTranslate="gestionPatrimoineApp.technicien.sexe">Sexe</span>
+            </th>
+            <th scope="col" jhiSortBy="mobile">
+              <span jhiTranslate="gestionPatrimoineApp.technicien.mobile">Mobile</span> 
+            </th>
+            <th scope="col" jhiSortBy="adresse">
+              <span jhiTranslate="gestionPatrimoineApp.technicien.adresse">Adresse</span>
+            </th>
+            <th scope="col" jhiSortBy="direction">
+              <span jhiTranslate="gestionPatrimoineApp.technicien.direction">Direction</span>
+            </th>
+            <!-- <th scope="col" jhiSortBy="chefMaintenance.id">
+              <span jhiTranslate="gestionPatrimoineApp.technicien.chefMaintenance">Chef Maintenance</span> <fa-icon icon="sort"></fa-icon>
+            </th> -->
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let technicien of techniciens; trackBy: trackId" data-cy="entityTable">
+            <!-- <td>
+              <a [routerLink]="['/technicien', technicien.id, 'view']">{{ technicien.id }}</a>
+            </td> -->
+            <td>{{ technicien.nomPers }}</td>
+            <td>{{ technicien.prenomPers }}</td>
+            <td jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + technicien.sexe }}">{{ technicien.sexe }}</td>
+            <td>{{ technicien.mobile }}</td>
+            <td>{{ technicien.adresse }}</td>
+            <td jhiTranslate="{{ 'gestionPatrimoineApp.Direction.' + technicien.direction }}">{{ technicien.direction }}</td>
+            <!-- <td>
+              <div *ngIf="technicien.chefMaintenance">
+                <a [routerLink]="['/chef-maintenance', technicien.chefMaintenance?.id, 'view']">{{ technicien.chefMaintenance?.id }}</a>
+              </div>
+            </td> -->
+            <td class="text-right">
+              <div class="btn-group">
+                <!-- <button
+                  type="submit"
+                  [routerLink]="['/technicien', technicien.id, 'view']"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <fa-icon icon="eye"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                </button> -->
+
+                <button
+                  type="submit"
+                  [routerLink]="['/technicien', technicien.id, 'edit']"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <fa-icon icon="pencil-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span> -->
+                </button>
+
+                <button type="submit" (click)="delete(technicien)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <fa-icon icon="trash-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span> -->
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="techniciens && techniciens.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>

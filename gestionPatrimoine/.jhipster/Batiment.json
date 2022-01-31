@@ -1,0 +1,76 @@
+{
+  "name": "Batiment",
+  "fields": [
+    {
+      "fieldName": "nomBatiment",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nbrPiece",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "surface",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "etatGeneral",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nombreSalle",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "batiment",
+      "relationshipName": "nomEtablissement"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "corpsEtat",
+      "otherEntityRelationshipName": "batiment",
+      "relationshipName": "nomCorps"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "typeBatiment",
+      "otherEntityRelationshipName": "nomBatiment",
+      "relationshipName": "typeBa"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "atelier",
+      "otherEntityRelationshipName": "nomBatiment",
+      "relationshipName": "nomAtelier"
+    }
+  ],
+  "entityTableName": "batiment",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionInfrastructure"],
+  "databaseType": "sql",
+  "changelogDate": "20210607000026"
+}

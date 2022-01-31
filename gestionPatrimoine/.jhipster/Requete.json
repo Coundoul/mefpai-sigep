@@ -1,0 +1,57 @@
+{
+  "name": "Requete",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "typePanne",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "datePost",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "etatTraite",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateLancement",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "idPers",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "bureau",
+      "otherEntityRelationshipName": "requete",
+      "relationshipName": "nomStructure"
+    }
+  ],
+  "entityTableName": "requete",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gestionPatrimoine", "GestionMaintenance"],
+  "databaseType": "sql",
+  "changelogDate": "20210607003426"
+}

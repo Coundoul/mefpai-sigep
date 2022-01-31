@@ -1,0 +1,134 @@
+<div>
+  <h2 id="page-heading" data-cy="FormateursHeading">
+    <span jhiTranslate="gestionPatrimoineApp.formateurs.home.title">Formateurs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gestionPatrimoineApp.formateurs.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-formateurs"
+        [routerLink]="['/formateurs/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gestionPatrimoineApp.formateurs.home.createLabel"> Create a new Formateurs </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="formateurs?.length === 0">
+    <span jhiTranslate="gestionPatrimoineApp.formateurs.home.notFound">No formateurs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="formateurs && formateurs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomFormateur">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.nomFormateur">Nom Formateur</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prenomFormateur">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.prenomFormateur">Prenom Formateur</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="numb1">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.numb1">Numb 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="numb2">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.numb2">Numb 2</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="adresse">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.adresse">Adresse</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="ville">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.ville">Ville</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="specialite">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.specialite">Specialite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomEtablissement.id">
+            <span jhiTranslate="gestionPatrimoineApp.formateurs.nomEtablissement">Nom Etablissement</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formateurs of formateurs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/formateurs', formateurs.id, 'view']">{{ formateurs.id }}</a>
+          </td>
+          <td>{{ formateurs.nomFormateur }}</td>
+          <td>{{ formateurs.prenomFormateur }}</td>
+          <td>{{ formateurs.email }}</td>
+          <td>{{ formateurs.numb1 }}</td>
+          <td>{{ formateurs.numb2 }}</td>
+          <td>{{ formateurs.adresse }}</td>
+          <td>{{ formateurs.ville }}</td>
+          <td>{{ formateurs.specialite }}</td>
+          <td>
+            <div *ngIf="formateurs.nomEtablissement">
+              <a [routerLink]="['/etablissement', formateurs.nomEtablissement?.id, 'view']">{{ formateurs.nomEtablissement?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/formateurs', formateurs.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/formateurs', formateurs.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(formateurs)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="formateurs && formateurs.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

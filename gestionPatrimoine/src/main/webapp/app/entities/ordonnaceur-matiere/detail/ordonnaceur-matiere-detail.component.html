@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ordonnaceurMatiere">
+      <h2 data-cy="ordonnaceurMatiereDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.detail.title">Ordonnaceur Matiere</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ordonnaceurMatiere.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.nomPers">Nom Pers</span></dt>
+        <dd>
+          <span>{{ ordonnaceurMatiere.nomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.prenomPers">Prenom Pers</span></dt>
+        <dd>
+          <span>{{ ordonnaceurMatiere.prenomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + ordonnaceurMatiere.sexe }}">{{ ordonnaceurMatiere.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ ordonnaceurMatiere.mobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ ordonnaceurMatiere.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.ordonnaceurMatiere.direction">Direction</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Direction.' + ordonnaceurMatiere.direction }}">{{
+            ordonnaceurMatiere.direction
+          }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ordonnaceur-matiere', ordonnaceurMatiere.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

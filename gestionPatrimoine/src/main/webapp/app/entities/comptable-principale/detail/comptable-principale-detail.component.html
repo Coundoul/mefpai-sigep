@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="comptablePrincipale">
+      <h2 data-cy="comptablePrincipaleDetailsHeading">
+        <span jhiTranslate="gestionPatrimoineApp.comptablePrincipale.detail.title">Comptable Principale</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ comptablePrincipale.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptablePrincipale.nomPers">Nom Pers</span></dt>
+        <dd>
+          <span>{{ comptablePrincipale.nomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptablePrincipale.prenomPers">Prenom Pers</span></dt>
+        <dd>
+          <span>{{ comptablePrincipale.prenomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptablePrincipale.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + comptablePrincipale.sexe }}">{{ comptablePrincipale.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptablePrincipale.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ comptablePrincipale.mobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptablePrincipale.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ comptablePrincipale.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.comptablePrincipale.direction">Direction</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Direction.' + comptablePrincipale.direction }}">{{
+            comptablePrincipale.direction
+          }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/comptable-principale', comptablePrincipale.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

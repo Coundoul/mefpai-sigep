@@ -1,0 +1,9 @@
+{
+  "gestionPatrimoineApp": {
+    "TypeBon": {
+      "null": "",
+      "Entree": "Entree",
+      "Sortie": "Sortie"
+    }
+  }
+}

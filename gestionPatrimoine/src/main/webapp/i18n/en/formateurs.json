@@ -1,0 +1,33 @@
+{
+  "gestionPatrimoineApp": {
+    "formateurs": {
+      "home": {
+        "title": "Formateurs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Formateurs",
+        "createOrEditLabel": "Create or edit a Formateurs",
+        "notFound": "No Formateurs found"
+      },
+      "created": "A new Formateurs is created with identifier {{ param }}",
+      "updated": "A Formateurs is updated with identifier {{ param }}",
+      "deleted": "A Formateurs is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Formateurs {{ id }}?"
+      },
+      "detail": {
+        "title": "Formateurs"
+      },
+      "id": "ID",
+      "nomFormateur": "Nom Formateur",
+      "prenomFormateur": "Prenom Formateur",
+      "email": "Email",
+      "numb1": "Numb 1",
+      "numb2": "Numb 2",
+      "adresse": "Adresse",
+      "ville": "Ville",
+      "specialite": "Specialite",
+      "nomEtablissement": "Nom Etablissement",
+      "nomFiliere": "Nom Filiere"
+    }
+  }
+}

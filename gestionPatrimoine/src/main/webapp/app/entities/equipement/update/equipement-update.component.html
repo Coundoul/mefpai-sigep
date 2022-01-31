@@ -1,0 +1,464 @@
+<div class="row">
+  <div class="col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-md-9">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-equipement-heading" data-cy="EquipementCreateUpdateHeading" style="text-align: center;">Enregistrer Matières</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+        <mat-horizontal-stepper class="text-matiere" #stepper (selectionChange)="onSetepChange($event)">
+          <mat-step>
+            <!-- <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+              <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+              <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+            </div> -->
+
+            <div class="form-group">
+              <label class="form-control-label"  for="field_reference"
+                >Référence</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="reference"
+                id="field_reference"
+                data-cy="reference"
+                formControlName="reference"
+              />
+              <div *ngIf="editForm.get('reference')!.invalid && (editForm.get('reference')!.dirty || editForm.get('reference')!.touched)">
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('reference')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_nomMatiere"
+                >Nom Matière</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="nomMatiere"
+                id="field_nomMatiere"
+                data-cy="nomMatiere"
+                formControlName="nomMatiere"
+              />
+              <div *ngIf="editForm.get('nomMatiere')!.invalid && (editForm.get('nomMatiere')!.dirty || editForm.get('nomMatiere')!.touched)">
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('nomMatiere')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_caracteristique"
+                >Caractéristique</label
+              >
+              <textarea class="form-control"
+                name="caracteristique"
+                id="field_caracteristique"
+                data-cy="caracteristique"
+                formControlName="caracteristique" rows="10">
+              </textarea>
+              <div *ngIf="editForm.get('caracteristique')!.invalid && (editForm.get('caracteristique')!.dirty || editForm.get('caracteristique')!.touched)">
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('caracteristique')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_description">Bénéficiare</label>
+              <select class="form-control" name="description" formControlName="description" id="field_description" data-cy="description">
+                <option [ngValue]="null"></option>
+                <option value="DRH">DRH</option>
+                <option value="DAGE">DAGE</option>
+                <option value="PEJA">PEJA</option>
+                <option value="DFPT">DFPT</option>
+                <option value="CelluleGenre">Cellule Genre</option>
+                <option value="CelluleInformatique">Cellule Informatique</option>
+              </select>
+            </div>
+
+            <!-- <inputnull, [Validators.required]
+                  type="number"
+                  class="form-control"
+                  name="prixUnitaire"
+                  id="field_prixUnitaire"
+                  data-cy="prixUnitaire"
+                  formControlName="prixUnitaire"
+                  
+                /> -->
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_typeMatiere"
+                >Groupe</label
+              >
+              <!-- <input
+                type="text"
+                class="form-control"
+                name="typeMatiere"
+                id="field_typeMatiere"
+                data-cy="typeMatiere"
+                formControlName="typeMatiere"
+              /> -->
+              <select class="form-control" name="typeMatiere" formControlName="typeMatiere" id="field_typeMatiere" data-cy="typeMatiere">
+                <option [ngValue]="null"></option>
+                <option value="1er Groupe">1er Groupe</option>
+                <option value="2eme Groupe">2eme Groupe</option>
+              </select>
+              <div
+                *ngIf="editForm.get('typeMatiere')!.invalid && (editForm.get('typeMatiere')!.dirty || editForm.get('typeMatiere')!.touched)"
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('typeMatiere')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.equipement.quantite" for="field_quantite"
+                >Quantite</label
+              >
+              <input type="number" class="form-control" name="quantite" id="field_quantite" data-cy="quantite" formControlName="quantite" />
+              <div *ngIf="editForm.get('quantite')!.invalid && (editForm.get('quantite')!.dirty || editForm.get('quantite')!.touched)">
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('quantite')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  [hidden]="!editForm.get('quantite')?.errors?.number"
+                  jhiTranslate="entity.validation.number"
+                >
+                  This field should be a number.
+                </small>
+              </div>
+            </div>
+            <div>
+              <button type="button" id="cancel-save" class="btn btn-secondary btn-lg" (click)="previousState()">
+                <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+              </button>
+              <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
+                <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
+              </button>
+            </div>
+          </mat-step>
+
+          <mat-step>
+            <div class="form-group">
+              <label class="form-control-label" for="field_etatMatiere"
+                >Etat Matière</label
+              >
+
+              <select class="form-control" name="etatMatiere" formControlName="etatMatiere" id="field_etatMatiere" data-cy="etatMatiere">
+                <option [ngValue]="null"></option>
+                <option value="Bon Etat">Bon Etat</option>
+                <option value="Mauvais Etat">Mauvais Etat</option>
+                <option value="Hors Service">Hors Service</option>
+              </select>
+
+              <!-- <div
+                *ngIf="editForm.get('etatMatiere')!.invalid && (editForm.get('etatMatiere')!.dirty || editForm.get('etatMatiere')!.touched)"
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('etatMatiere')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div> -->
+            </div>
+
+            <!-- <div class="form-group">
+              <label class="form-control-label" for="field_dateSignalisation"
+                >Date de signalisation</label
+              >
+              <div class="d-flex">
+                <input
+                  id="field_dateSignalisation"
+                  data-cy="dateSignalisation"
+                  type="datetime-local"
+                  class="form-control"
+                  name="dateSignalisation"
+                  formControlName="dateSignalisation"
+                  placeholder="YYYY-MM-DD HH:mm"
+                />
+              </div>
+            </div> -->
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_group">Volatile</label>
+              <input type="checkbox" class="form-check" name="group" id="field_group" data-cy="group" formControlName="group" />
+              <div *ngIf="editForm.get('group')!.invalid && (editForm.get('group')!.dirty || editForm.get('group')!.touched)">
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('group')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.equipement.photo" for="field_photo">Photo</label>
+              <div>
+                <img
+                  [src]="'data:' + editForm.get('photoContentType')!.value + ';base64,' + editForm.get('photo')!.value"
+                  style="max-height: 100px"
+                  *ngIf="editForm.get('photo')!.value"
+                  alt="equipement image"
+                />
+                <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+                  <span class="pull-left">{{ editForm.get('photoContentType')!.value }}, {{ byteSize(editForm.get('photo')!.value) }}</span>
+                  <button
+                    type="button"
+                    (click)="clearInputImage('photo', 'photoContentType', 'file_photo')"
+                    class="btn btn-secondary btn-xs pull-right"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                  </button>
+                </div>
+                <input
+                  type="file"
+                  id="file_photo"
+                  data-cy="photo"
+                  (change)="setFileData($event, 'photo', true)"
+                  accept="image/*"
+                  jhiTranslate="entity.action.addimage"
+                />
+              </div>
+              <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+              <input
+                type="hidden"
+                class="form-control"
+                name="photoContentType"
+                id="field_photoContentType"
+                formControlName="photoContentType"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label"  for="field_photo1">Ajouter un autre</label>
+              <div>
+                <img
+                  [src]="'data:' + editForm.get('photo1ContentType')!.value + ';base64,' + editForm.get('photo1')!.value"
+                  style="max-height: 100px"
+                  *ngIf="editForm.get('photo1')!.value"
+                  alt="equipement image1"
+                />
+                <div *ngIf="editForm.get('photo1')!.value" class="form-text text-danger clearfix">
+                  <span class="pull-left">{{ editForm.get('photo1ContentType')!.value }}, {{ byteSize(editForm.get('photo1')!.value) }}</span>
+                  <button
+                    type="button"
+                    (click)="clearInputImage('photo1', 'photo1ContentType', 'file_photo1')"
+                    class="btn btn-secondary btn-xs pull-right"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                  </button>
+                </div>
+                <input
+                  type="file"
+                  id="file_photo1"
+                  data-cy="photo1"
+                  (change)="setFileData($event, 'photo1', true)"
+                  accept="image1/*"
+                  jhiTranslate="entity.action.addimage"
+                />
+              </div>
+              <input type="hidden" class="form-control" name="photo1" id="field_photo1" data-cy="photo1" formControlName="photo1" />
+              <input
+                type="hidden"
+                class="form-control"
+                name="photo1ContentType"
+                id="field_photo1ContentType"
+                formControlName="photo1ContentType"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_photo2">Ajouter un autre</label>
+              <div>
+                <img
+                  [src]="'data:' + editForm.get('photo2ContentType')!.value + ';base64,' + editForm.get('photo2')!.value"
+                  style="max-height: 100px"
+                  *ngIf="editForm.get('photo2')!.value"
+                  alt="equipement image2"
+                />
+                <div *ngIf="editForm.get('photo2')!.value" class="form-text text-danger clearfix">
+                  <span class="pull-left">{{ editForm.get('photo2ContentType')!.value }}, {{ byteSize(editForm.get('photo2')!.value) }}</span>
+                  <button
+                    type="button"
+                    (click)="clearInputImage('photo2', 'photo2ContentType', 'file_photo2')"
+                    class="btn btn-secondary btn-xs pull-right"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                  </button>
+                </div>
+                <input
+                  type="file"
+                  id="file_photo2"
+                  data-cy="photo2"
+                  (change)="setFileData($event, 'photo2', true)"
+                  accept="image2/*"
+                  jhiTranslate="entity.action.addimage"
+                />
+              </div>
+              <input type="hidden" class="form-control" name="photo2" id="field_photo2" data-cy="photo2" formControlName="photo2" />
+              <input
+                type="hidden"
+                class="form-control"
+                name="photo2ContentType"
+                id="field_photo2ContentType"
+                formControlName="photo2ContentType"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_nomMagazin">Magazin</label>
+              <div class="row">
+                <div class="col-md-10">
+                  <select class="form-control" id="field_nomMagazin" data-cy="nomMagazin" name="nomMagazin" formControlName="nomMagazin">
+                    <option [ngValue]="null"></option>
+                    <option
+                      [ngValue]="
+                        magazinOption.id === editForm.get('nomMagazin')!.value?.id ? editForm.get('nomMagazin')!.value : magazinOption
+                      "
+                      *ngFor="let magazinOption of magazinsSharedCollection; trackBy: trackMagazinById"
+                    >
+                      {{ magazinOption.nomMagazin }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <button id="jh-create-entity" (click)="openMagazin()" class="btn btn-success">
+                    <fa-icon icon="plus" style="color: white"></fa-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_nomFournisseur">Fournisseur</label>
+              <div class="row">
+                <div class="col-md-10">
+                  <select
+                    class="form-control"
+                    id="field_nomFournisseur"
+                    data-cy="nomFournisseur"
+                    name="nomFournisseur"
+                    formControlName="nomFournisseur"
+                  >
+                    <option [ngValue]="null"></option>
+                    <option
+                      [ngValue]="
+                        fournisseurOption.id === editForm.get('nomFournisseur')!.value?.id
+                          ? editForm.get('nomFournisseur')!.value
+                          : fournisseurOption
+                      "
+                      *ngFor="let fournisseurOption of fournisseursSharedCollection; trackBy: trackFournisseurById"
+                    >
+                    {{ fournisseurOption.prenomFournisseur }} {{ fournisseurOption.nomFournisseur }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <button id="jh-create-entity" (click)="openFournisseur()" class="btn btn-success">
+                    <fa-icon icon="plus" style="color: white"></fa-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.equipement.categorie" for="field_categorie"
+                >Categorie</label
+              >
+              <div class="row">
+                <div class="col-md-10">
+                  <select class="form-control" id="field_categorie" data-cy="categorie" name="categorie" formControlName="categorie">
+                    <option [ngValue]="null"></option>
+                    <option
+                      [ngValue]="
+                        categorieMatiereOption.id === editForm.get('categorie')!.value?.id
+                          ? editForm.get('categorie')!.value
+                          : categorieMatiereOption
+                      "
+                      *ngFor="let categorieMatiereOption of categorieMatieresSharedCollection; trackBy: trackCategorieMatiereById"
+                    >
+                      {{ categorieMatiereOption.categorie }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col-md-2">
+                  <button id="jh-create-entity" (click)="openCategorie()" class="btn btn-success">
+                    <fa-icon icon="plus" style="color: white"></fa-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.equipement.bon" for="field_bon">Bon</label>
+              <select class="form-control" id="field_bon" data-cy="bon" name="bon" formControlName="bon">
+                <option [ngValue]="null"></option>
+                <option
+                  [ngValue]="bonOption.id === editForm.get('bon')!.value?.id ? editForm.get('bon')!.value : bonOption"
+                  *ngFor="let bonOption of bonsSharedCollection; trackBy: trackBonById"
+                >
+                  {{ bonOption.typeBon }}
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
+                <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
+              </button>
+
+              <button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary btn-lg"
+                style="position: relative; left: 60%"
+              >
+                <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
+              </button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </form>
+  </div>
+</div>
+<br />

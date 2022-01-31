@@ -1,0 +1,30 @@
+{
+  "gestionPatrimoineApp": {
+    "chefMaintenance": {
+      "home": {
+        "title": "Chef Maintenances",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Chef Maintenance",
+        "createOrEditLabel": "Create or edit a Chef Maintenance",
+        "notFound": "No Chef Maintenances found"
+      },
+      "created": "A new Chef Maintenance is created with identifier {{ param }}",
+      "updated": "A Chef Maintenance is updated with identifier {{ param }}",
+      "deleted": "A Chef Maintenance is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Chef Maintenance {{ id }}?"
+      },
+      "detail": {
+        "title": "Chef Maintenance"
+      },
+      "id": "ID",
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "sexe": "Sexe",
+      "mobile": "Mobile",
+      "adresse": "Adresse",
+      "direction": "Direction",
+      "technicien": "Technicien"
+    }
+  }
+}

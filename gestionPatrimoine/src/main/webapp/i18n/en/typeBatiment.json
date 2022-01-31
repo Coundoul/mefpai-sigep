@@ -1,0 +1,25 @@
+{
+  "gestionPatrimoineApp": {
+    "typeBatiment": {
+      "home": {
+        "title": "Type Batiments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Type Batiment",
+        "createOrEditLabel": "Create or edit a Type Batiment",
+        "notFound": "No Type Batiments found"
+      },
+      "created": "A new Type Batiment is created with identifier {{ param }}",
+      "updated": "A Type Batiment is updated with identifier {{ param }}",
+      "deleted": "A Type Batiment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Type Batiment {{ id }}?"
+      },
+      "detail": {
+        "title": "Type Batiment"
+      },
+      "id": "ID",
+      "typeBa": "Type Ba",
+      "nomBatiment": "Nom Batiment"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gestionPatrimoineApp": {
+    "affectations": {
+      "home": {
+        "title": "Affectations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Affectations",
+        "createOrEditLabel": "Create or edit a Affectations",
+        "notFound": "No Affectations found"
+      },
+      "created": "A new Affectations is created with identifier {{ param }}",
+      "updated": "A Affectations is updated with identifier {{ param }}",
+      "deleted": "A Affectations is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Affectations {{ id }}?"
+      },
+      "detail": {
+        "title": "Affectations"
+      },
+      "id": "ID",
+      "quantiteAffecter": "Quantite Affecter",
+      "typeAttribution": "Type Attribution",
+      "idPers": "Id Pers",
+      "dateAttribution": "Date Attribution",
+      "equipement": "Equipement",
+      "attribution": "Attribution"
+    }
+  }
+}
