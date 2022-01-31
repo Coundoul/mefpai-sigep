@@ -12,7 +12,7 @@ export type EntityArrayResponseType = HttpResponse<IBureau[]>;
 
 @Injectable({ providedIn: 'root' })
 export class BureauService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/bureaus');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/bureaus', 'gestionmaintenance');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 

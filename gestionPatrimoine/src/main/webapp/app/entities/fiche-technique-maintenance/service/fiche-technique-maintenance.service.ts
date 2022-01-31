@@ -14,7 +14,7 @@ export type EntityArrayResponseType = HttpResponse<IFicheTechniqueMaintenance[]>
 
 @Injectable({ providedIn: 'root' })
 export class FicheTechniqueMaintenanceService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/fiche-technique-maintenances');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/fiche-technique-maintenances', 'gestionmaintenance');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
