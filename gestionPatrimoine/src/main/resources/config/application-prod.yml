@@ -54,6 +54,8 @@ spring:
   liquibase:
     contexts: prod
     url: jdbc:mysql://localhost:3306/gestionPatrimoine?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: dage
+    password: passer1234
   r2dbc:
     url: r2dbc:mysql://localhost:3306/gestionPatrimoine?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
     username: root
