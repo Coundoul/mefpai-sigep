@@ -18,6 +18,6 @@ import { CATEGORISER_ROUTE } from './categoriser.route';
     MatButtonModule,
     CommonModule,
   ],
-  declarations: [CategoriserComponent]
+  declarations: [CategoriserComponent],
 })
-export class CategoriserModule { }
+export class CategoriserModule {}

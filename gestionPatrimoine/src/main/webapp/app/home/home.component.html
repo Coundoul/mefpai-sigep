@@ -11,10 +11,11 @@
   <div class="col-md-9">
     <div style="padding-left: 30%" [ngSwitch]="isAuthenticated()">
       <div *ngSwitchCase="false">
-        <marquee behavior="alternate" direction="left"><h1 class="display-4">Bienvenue Dans SIGEP</h1></marquee>
+        <!-- <marquee behavior="alternate" direction="left"><h1 class="display-4">Bienvenue Dans SIGEP</h1></marquee>
+        <br /> -->
         <br />
         <div style="width: 70%">
-            <img src="./content/images/accueil.png" style="background-size: contain" alt="" />
+          <img src="./content/images/accueil.png" style="background-size: contain" alt="" />
         </div>
       </div>
     </div>
@@ -28,7 +29,7 @@
               <div class="container-fluid">
                 <div class="row mb-2">
                   <div class="col-md-12">
-                    <h1 class="m-0" style="text-align: center;">Tableau de bord</h1>
+                    <h1 class="m-0" style="text-align: center">Tableau de bord</h1>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -53,7 +54,9 @@
                         </span>
                       </div>
                       <div class="icon"></div>
-                      <a href="/equipement" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_COMPTABLE_PRINCIPALE']" class="small-box-footer">Plus Détail <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="/equipement" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_COMPTABLE_PRINCIPALE']" class="small-box-footer"
+                        >Plus Détail <i class="fas fa-arrow-circle-right"></i
+                      ></a>
                     </div>
                   </div>
                   <!-- ./col -->
@@ -68,7 +71,9 @@
                         </span>
                       </div>
                       <div class="icon"></div>
-                      <a href="/projets" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_PROJET']" class="small-box-footer">Plus Détail <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="/projets" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_PROJET']" class="small-box-footer"
+                        >Plus Détail <i class="fas fa-arrow-circle-right"></i
+                      ></a>
                     </div>
                   </div>
                   <!-- ./col -->
@@ -83,7 +88,9 @@
                         </span>
                       </div>
                       <div class="icon"></div>
-                      <a href="/requete" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_MAINTENANCE']" class="small-box-footer">Plus Détail <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="/requete" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_MAINTENANCE']" class="small-box-footer"
+                        >Plus Détail <i class="fas fa-arrow-circle-right"></i
+                      ></a>
                     </div>
                   </div>
                 </div>

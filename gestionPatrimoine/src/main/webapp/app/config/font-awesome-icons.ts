@@ -117,5 +117,4 @@ export const fontAwesomeIcons = [
   faCheckCircle,
   faChevronCircleDown,
   faChevronCircleUp,
-  
 ];

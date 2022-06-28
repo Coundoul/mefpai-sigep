@@ -24,10 +24,9 @@ import { EquipementService } from '../service/equipement.service';
 @Component({
   selector: 'jhi-signaler',
   templateUrl: './signaler.component.html',
-  styleUrls: ['./signaler.component.scss']
+  styleUrls: ['./signaler.component.scss'],
 })
 export class SignalerComponent implements OnInit {
-
   isSaving = false;
   @ViewChild('stepper') stepper!: MatHorizontalStepper;
   step = 0;
@@ -123,15 +122,16 @@ export class SignalerComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     //const equipement = this.createFromForm();
-    alert("1112");
+    alert('1112');
     this.ref = this.editForm.get(['reference'])!.value;
     this.etat = this.editForm.get(['etat'])!.value;
     this.dteSignal = this.editForm.get(['dateSignalisation'])!.value
-    ? dayjs(this.editForm.get(['dateSignalisation'])!.value, DATE_TIME_FORMAT)
+      ? dayjs(this.editForm.get(['dateSignalisation'])!.value, DATE_TIME_FORMAT)
       : undefined;
-    alert(this.ref);alert(this.etat);alert(this.dteSignal);
+    alert(this.ref);
+    alert(this.etat);
+    alert(this.dteSignal);
     this.subscribeToSaveResponse(this.equipementService.updateEtatMatiere(this.ref, this.etat, this.dteSignal));
-    
   }
 
   trackMagazinById(index: number, item: IMagazin): number {
@@ -243,11 +243,8 @@ export class SignalerComponent implements OnInit {
       description: this.editForm.get(['description'])!.value,
       etatMatiere: this.editForm.get(['etatMatiere'])!.value,
       dateSignalisation: this.editForm.get(['dateSignalisation'])!.value
-      ? dayjs(this.editForm.get(['dateSignalisation'])!.value, DATE_TIME_FORMAT)
+        ? dayjs(this.editForm.get(['dateSignalisation'])!.value, DATE_TIME_FORMAT)
         : undefined,
     };
   }
-
 }
-
-

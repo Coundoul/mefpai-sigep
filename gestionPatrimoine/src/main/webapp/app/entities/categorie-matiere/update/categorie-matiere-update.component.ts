@@ -24,7 +24,9 @@ export class CategorieMatiereUpdateComponent implements OnInit {
   constructor(
     protected categorieMatiereService: CategorieMatiereService,
     protected activatedRoute: ActivatedRoute,
-    protected fb: FormBuilder, public activeModal: NgbActiveModal,private router: Router
+    protected fb: FormBuilder,
+    public activeModal: NgbActiveModal,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

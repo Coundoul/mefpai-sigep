@@ -4,9 +4,9 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-    <h2 id="page-heading" data-cy="EtablissementHeading" style="text-align: center;">
-      <span >Etablissements</span>
-      <hr>
+    <h2 id="page-heading" data-cy="EtablissementHeading" style="text-align: center">
+      <span>Etablissements</span>
+      <hr />
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
           <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
@@ -45,7 +45,7 @@
               <span jhiTranslate="gestionPatrimoineApp.etablissement.surfaceBatie">Surface Batie</span>
             </th>
             <th scope="col" jhiSortBy="superficie">
-              <span jhiTranslate="gestionPatrimoineApp.etablissement.superficie">Superficie</span> 
+              <span jhiTranslate="gestionPatrimoineApp.etablissement.superficie">Superficie</span>
             </th>
             <th scope="col" jhiSortBy="idPers">
               <span>Chef Etablissement</span>
@@ -61,19 +61,15 @@
             <!-- <td>
               <a [routerLink]="['/etablissement', etablissement.id, 'view']">{{ etablissement.id }}</a>
             </td> -->
-            <td>{{ etablissement.nomEtablissement }} </td>
+            <td>{{ etablissement.nomEtablissement }}</td>
             <td>{{ etablissement.surfaceBatie }} m²</td>
             <td>{{ etablissement.superficie }} m²</td>
             <td>
               <div *ngIf="etablissement.idPers === 10">
-                <span>
-                  Babacar Diouf
-                </span>
+                <span> Babacar Diouf </span>
               </div>
               <div *ngIf="etablissement.idPers === 4">
-                <span>
-                  Babacar Fall
-                </span>
+                <span> Babacar Fall </span>
               </div>
             </td>
             <!-- <td>
@@ -105,7 +101,13 @@
                   <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span> -->
                 </button>
 
-                <button *jhiHasAnyAuthority="['ROLE_ADMIN']" type="submit" (click)="delete(etablissement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <button
+                  *jhiHasAnyAuthority="['ROLE_ADMIN']"
+                  type="submit"
+                  (click)="delete(etablissement)"
+                  class="btn btn-danger btn-sm"
+                  data-cy="entityDeleteButton"
+                >
                   <fa-icon icon="trash-alt"></fa-icon>
                   <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span> -->
                 </button>

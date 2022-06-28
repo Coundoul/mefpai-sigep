@@ -1,12 +1,7 @@
 <div class="row justify-content-center">
   <div class="card jh-card col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2
-        id="jhi-fournisseur-heading"
-        data-cy="FournisseurCreateUpdateHeading"
-      >
-        Nouveau Fournisseur
-      </h2>
+      <h2 id="jhi-fournisseur-heading" data-cy="FournisseurCreateUpdateHeading">Nouveau Fournisseur</h2>
 
       <div>
         <!-- <jhi-alert-error></jhi-alert-error> -->
@@ -45,9 +40,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label"  for="field_nomFournisseur"
-            >Nom </label
-          >
+          <label class="form-control-label" for="field_nomFournisseur">Nom </label>
           <input
             type="text"
             class="form-control"
@@ -72,9 +65,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label"  for="field_prenomFournisseur"
-            >Prénom</label
-          >
+          <label class="form-control-label" for="field_prenomFournisseur">Prénom</label>
           <input
             type="text"
             class="form-control"
@@ -163,7 +154,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label"  for="field_num2">Autre Numéro</label>
+          <label class="form-control-label" for="field_num2">Autre Numéro</label>
           <input type="text" class="form-control" name="num2" id="field_num2" data-cy="num2" formControlName="num2" />
         </div>
 

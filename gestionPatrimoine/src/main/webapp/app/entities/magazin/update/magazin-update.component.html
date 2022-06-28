@@ -1,9 +1,7 @@
 <div class="row justify-content-center">
   <div class="card jh-card col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-magazin-heading" data-cy="MagazinCreateUpdateHeading" >
-        Nouveau Magazin
-      </h2>
+      <h2 id="jhi-magazin-heading" data-cy="MagazinCreateUpdateHeading">Nouveau Magazin</h2>
 
       <div>
         <!-- <jhi-alert-error></jhi-alert-error> -->
@@ -110,9 +108,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" for="field_nomQuartier"
-            >Quartier</label
-          >
+          <label class="form-control-label" for="field_nomQuartier">Quartier</label>
           <select class="form-control" id="field_nomQuartier" data-cy="nomQuartier" name="nomQuartier" formControlName="nomQuartier">
             <option [ngValue]="null"></option>
             <option
@@ -127,7 +123,7 @@
 
       <div>
         <button type="button" id="cancel-save" class="btn btn-secondary" (click)="cancel()">
-          <fa-icon icon="ban"></fa-icon>&nbsp;<span >Annuler</span>
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
         </button>
 
         <button

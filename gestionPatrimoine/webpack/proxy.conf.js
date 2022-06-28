@@ -15,8 +15,8 @@ function setupProxy() {
         '/auth',
         '/health',
       ],
-      target: `http${tls ? 's' : ''}://localhost:9000`,
-      secure: false,
+      target: `http${tls ? 's' : ''}://10.198.100.208:9000`,
+      secure: true,
       changeOrigin: tls,
     },
   ];

@@ -3,15 +3,9 @@
     <jhi-sidebar></jhi-sidebar>
   </div>
 
-<div class="card jh-card col-xs-12 col-md-9 mt-3">
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2
-        id="jhi-intervenant-heading"
-        data-cy="IntervenantCreateUpdateHeading"
-        style="text-align: center;"
-      >
-        Ajouter Intervenant
-      </h2>
+      <h2 id="jhi-intervenant-heading" data-cy="IntervenantCreateUpdateHeading" style="text-align: center">Ajouter Intervenant</h2>
 
       <div>
         <jhi-alert-error></jhi-alert-error>
@@ -22,9 +16,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" for="field_nomIntervenant"
-            >Nom</label
-          >
+          <label class="form-control-label" for="field_nomIntervenant">Nom</label>
           <input
             type="text"
             class="form-control"
@@ -49,9 +41,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label"  for="field_prenomIntervenant"
-            >Prenom</label
-          >
+          <label class="form-control-label" for="field_prenomIntervenant">Prenom</label>
           <input
             type="text"
             class="form-control"
@@ -157,9 +147,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.intervenant.nomProjet" for="field_nomProjet"
-            >Projet</label
-          >
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.intervenant.nomProjet" for="field_nomProjet">Projet</label>
           <select class="form-control" id="field_nomProjet" data-cy="nomProjet" name="nomProjet" formControlName="nomProjet">
             <option [ngValue]="null"></option>
             <option

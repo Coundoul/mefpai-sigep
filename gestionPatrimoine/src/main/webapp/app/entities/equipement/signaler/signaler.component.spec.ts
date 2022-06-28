@@ -11,9 +11,8 @@ describe('SignalerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignalerComponent ]
-    })
-    .compileComponents();
+      declarations: [SignalerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

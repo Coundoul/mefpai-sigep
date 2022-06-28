@@ -6,7 +6,6 @@ import { ApplicationConfigService } from 'app/core/config/application-config.ser
 import { createRequestOption } from 'app/core/request/request-util';
 import { IDetailInventaire, IInventaire } from './inventaire.model';
 
-
 export type EntityResponseType = HttpResponse<IInventaire>;
 export type EntityResponseTypeDetail = HttpResponse<IDetailInventaire>;
 export type EntityArrayResponseType = HttpResponse<IInventaire[]>;

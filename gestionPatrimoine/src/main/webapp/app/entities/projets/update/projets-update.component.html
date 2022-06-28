@@ -4,223 +4,223 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-        <h2 id="jhi-projets-heading" data-cy="ProjetsCreateUpdateHeading" jhiTranslate="gestionPatrimoineApp.projets.home.createOrEditLabel">
-          Ajouter un Nouveau Projet
-        </h2>
-        <hr>
-        <div>
-          <jhi-alert-error></jhi-alert-error>
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-projets-heading" data-cy="ProjetsCreateUpdateHeading" jhiTranslate="gestionPatrimoineApp.projets.home.createOrEditLabel">
+        Ajouter un Nouveau Projet
+      </h2>
+      <hr />
+      <div>
+        <jhi-alert-error></jhi-alert-error>
 
-          <div class="form-group" [hidden]="editForm.get('id')!.value == null">
-            <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
-            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.typeProjet" for="field_typeProjet"
-              >Type Projet</label
-            >
-            <select class="form-control" name="typeProjet" formControlName="typeProjet" id="field_typeProjet" data-cy="typeProjet">
-              <option [ngValue]="null">{{ 'gestionPatrimoineApp.TypeProjet.null' | translate }}</option>
-              <option value="Construction">{{ 'gestionPatrimoineApp.TypeProjet.Construction' | translate }}</option>
-              <option value="Rehabilitation">{{ 'gestionPatrimoineApp.TypeProjet.Rehabilitation' | translate }}</option>
-            </select>
-            <div *ngIf="editForm.get('typeProjet')!.invalid && (editForm.get('typeProjet')!.dirty || editForm.get('typeProjet')!.touched)">
-              <small
-                class="form-text text-danger"
-                *ngIf="editForm.get('typeProjet')?.errors?.required"
-                jhiTranslate="entity.validation.required"
-              >
-                This field is required.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nomProjet" for="field_nomProjet">Nom Projet</label>
-            <input type="text" class="form-control" name="nomProjet" id="field_nomProjet" data-cy="nomProjet" formControlName="nomProjet" />
-            <div *ngIf="editForm.get('nomProjet')!.invalid && (editForm.get('nomProjet')!.dirty || editForm.get('nomProjet')!.touched)">
-              <small
-                class="form-text text-danger"
-                *ngIf="editForm.get('nomProjet')?.errors?.required"
-                jhiTranslate="entity.validation.required"
-              >
-                This field is required.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.dateDebut" for="field_dateDebut">Date Debut</label>
-            <div class="d-flex">
-              <input
-                id="field_dateDebut"
-                data-cy="dateDebut"
-                type="datetime-local"
-                class="form-control"
-                name="dateDebut"
-                formControlName="dateDebut"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-            </div>
-            <div *ngIf="editForm.get('dateDebut')!.invalid && (editForm.get('dateDebut')!.dirty || editForm.get('dateDebut')!.touched)">
-              <small
-                class="form-text text-danger"
-                *ngIf="editForm.get('dateDebut')?.errors?.required"
-                jhiTranslate="entity.validation.required"
-              >
-                This field is required.
-              </small>
-              <small
-                class="form-text text-danger"
-                [hidden]="!editForm.get('dateDebut')?.errors?.ZonedDateTimelocal"
-                jhiTranslate="entity.validation.ZonedDateTimelocal"
-              >
-                This field should be a date and time.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.dateFin" for="field_dateFin">Date Fin</label>
-            <div class="d-flex">
-              <input
-                id="field_dateFin"
-                data-cy="dateFin"
-                type="datetime-local"
-                class="form-control"
-                name="dateFin"
-                formControlName="dateFin"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-            </div>
-            <div *ngIf="editForm.get('dateFin')!.invalid && (editForm.get('dateFin')!.dirty || editForm.get('dateFin')!.touched)">
-              <small
-                class="form-text text-danger"
-                *ngIf="editForm.get('dateFin')?.errors?.required"
-                jhiTranslate="entity.validation.required"
-              >
-                This field is required.
-              </small>
-              <small
-                class="form-text text-danger"
-                [hidden]="!editForm.get('dateFin')?.errors?.ZonedDateTimelocal"
-                jhiTranslate="entity.validation.ZonedDateTimelocal"
-              >
-                This field should be a date and time.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.description" for="field_description"
-              >Description</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="description"
-              id="field_description"
-              data-cy="description"
-              formControlName="description"
-            />
-            <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
-              <small
-                class="form-text text-danger"
-                *ngIf="editForm.get('description')?.errors?.required"
-                jhiTranslate="entity.validation.required"
-              >
-                This field is required.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.extension" for="field_extension">Extension</label>
-            <input type="checkbox" class="form-check" name="extension" id="field_extension" data-cy="extension" formControlName="extension" />
-            <div *ngIf="editForm.get('extension')!.invalid && (editForm.get('extension')!.dirty || editForm.get('extension')!.touched)">
-              <small
-                class="form-text text-danger"
-                *ngIf="editForm.get('extension')?.errors?.required"
-                jhiTranslate="entity.validation.required"
-              >
-                This field is required.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nom" for="field_nom">Nom</label>
-            <select class="form-control" id="field_nom" data-cy="nom" name="nom" formControlName="nom">
-              <option [ngValue]="null"></option>
-              <option
-                [ngValue]="contratProjetOption.id === editForm.get('nom')!.value?.id ? editForm.get('nom')!.value : contratProjetOption"
-                *ngFor="let contratProjetOption of nomsCollection; trackBy: trackContratProjetById"
-              >
-                {{ contratProjetOption.id }}
-              </option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nomEtablissement" for="field_nomEtablissement"
-              >Nom Etablissement</label
-            >
-            <select
-              class="form-control"
-              id="field_nomEtablissement"
-              data-cy="nomEtablissement"
-              name="nomEtablissement"
-              formControlName="nomEtablissement"
-            >
-              <option [ngValue]="null"></option>
-              <option
-                [ngValue]="
-                  etablissementOption.id === editForm.get('nomEtablissement')!.value?.id
-                    ? editForm.get('nomEtablissement')!.value
-                    : etablissementOption
-                "
-                *ngFor="let etablissementOption of etablissementsSharedCollection; trackBy: trackEtablissementById"
-              >
-                {{ etablissementOption.id }}
-              </option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nomBatiment" for="field_nomBatiment"
-              >Nom Batiment</label
-            >
-            <select class="form-control" id="field_nomBatiment" data-cy="nomBatiment" name="nomBatiment" formControlName="nomBatiment">
-              <option [ngValue]="null"></option>
-              <option
-                [ngValue]="
-                  etablissementOption.id === editForm.get('nomBatiment')!.value?.id ? editForm.get('nomBatiment')!.value : etablissementOption
-                "
-                *ngFor="let etablissementOption of etablissementsSharedCollection; trackBy: trackEtablissementById"
-              >
-                {{ etablissementOption.id }}
-              </option>
-            </select>
-          </div>
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-        <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-          </button>
-
-          <button
-            type="submit"
-            id="save-entity"
-            data-cy="entityCreateSaveButton"
-            [disabled]="editForm.invalid || isSaving"
-            class="btn btn-primary"
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.typeProjet" for="field_typeProjet"
+            >Type Projet</label
           >
-            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-          </button>
+          <select class="form-control" name="typeProjet" formControlName="typeProjet" id="field_typeProjet" data-cy="typeProjet">
+            <option [ngValue]="null">{{ 'gestionPatrimoineApp.TypeProjet.null' | translate }}</option>
+            <option value="Construction">{{ 'gestionPatrimoineApp.TypeProjet.Construction' | translate }}</option>
+            <option value="Rehabilitation">{{ 'gestionPatrimoineApp.TypeProjet.Rehabilitation' | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('typeProjet')!.invalid && (editForm.get('typeProjet')!.dirty || editForm.get('typeProjet')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('typeProjet')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
         </div>
-      </form>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nomProjet" for="field_nomProjet">Nom Projet</label>
+          <input type="text" class="form-control" name="nomProjet" id="field_nomProjet" data-cy="nomProjet" formControlName="nomProjet" />
+          <div *ngIf="editForm.get('nomProjet')!.invalid && (editForm.get('nomProjet')!.dirty || editForm.get('nomProjet')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomProjet')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.dateDebut" for="field_dateDebut">Date Debut</label>
+          <div class="d-flex">
+            <input
+              id="field_dateDebut"
+              data-cy="dateDebut"
+              type="datetime-local"
+              class="form-control"
+              name="dateDebut"
+              formControlName="dateDebut"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('dateDebut')!.invalid && (editForm.get('dateDebut')!.dirty || editForm.get('dateDebut')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateDebut')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dateDebut')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.dateFin" for="field_dateFin">Date Fin</label>
+          <div class="d-flex">
+            <input
+              id="field_dateFin"
+              data-cy="dateFin"
+              type="datetime-local"
+              class="form-control"
+              name="dateFin"
+              formControlName="dateFin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('dateFin')!.invalid && (editForm.get('dateFin')!.dirty || editForm.get('dateFin')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateFin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dateFin')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+          <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('description')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.extension" for="field_extension">Extension</label>
+          <input type="checkbox" class="form-check" name="extension" id="field_extension" data-cy="extension" formControlName="extension" />
+          <div *ngIf="editForm.get('extension')!.invalid && (editForm.get('extension')!.dirty || editForm.get('extension')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('extension')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nom" for="field_nom">Nom</label>
+          <select class="form-control" id="field_nom" data-cy="nom" name="nom" formControlName="nom">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="contratProjetOption.id === editForm.get('nom')!.value?.id ? editForm.get('nom')!.value : contratProjetOption"
+              *ngFor="let contratProjetOption of nomsCollection; trackBy: trackContratProjetById"
+            >
+              {{ contratProjetOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nomEtablissement" for="field_nomEtablissement"
+            >Nom Etablissement</label
+          >
+          <select
+            class="form-control"
+            id="field_nomEtablissement"
+            data-cy="nomEtablissement"
+            name="nomEtablissement"
+            formControlName="nomEtablissement"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                etablissementOption.id === editForm.get('nomEtablissement')!.value?.id
+                  ? editForm.get('nomEtablissement')!.value
+                  : etablissementOption
+              "
+              *ngFor="let etablissementOption of etablissementsSharedCollection; trackBy: trackEtablissementById"
+            >
+              {{ etablissementOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.projets.nomBatiment" for="field_nomBatiment"
+            >Nom Batiment</label
+          >
+          <select class="form-control" id="field_nomBatiment" data-cy="nomBatiment" name="nomBatiment" formControlName="nomBatiment">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                etablissementOption.id === editForm.get('nomBatiment')!.value?.id ? editForm.get('nomBatiment')!.value : etablissementOption
+              "
+              *ngFor="let etablissementOption of etablissementsSharedCollection; trackBy: trackEtablissementById"
+            >
+              {{ etablissementOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
   </div>
 </div>

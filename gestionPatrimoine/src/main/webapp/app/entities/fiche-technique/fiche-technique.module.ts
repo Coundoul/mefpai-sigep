@@ -9,7 +9,7 @@ import { FicheTechniqueRoutingModule } from './route/fiche-technique-routing.mod
 import { SidebarModule } from 'app/layouts/sidebar/sidebar.module';
 
 @NgModule({
-  imports: [SharedModule, FicheTechniqueRoutingModule, SidebarModule,],
+  imports: [SharedModule, FicheTechniqueRoutingModule, SidebarModule],
   declarations: [
     FicheTechniqueComponent,
     FicheTechniqueDetailComponent,

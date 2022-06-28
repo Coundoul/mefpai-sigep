@@ -39,7 +39,7 @@ export class AffectationsUpdateComponent implements OnInit {
     protected equipementService: EquipementService,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder,
-    protected utilisateurService: UtilisateurFinalService,
+    protected utilisateurService: UtilisateurFinalService
   ) {}
 
   ngOnInit(): void {
@@ -54,8 +54,6 @@ export class AffectationsUpdateComponent implements OnInit {
       this.loadRelationshipsOptions();
     });
   }
-
-
 
   previousState(): void {
     window.history.back();

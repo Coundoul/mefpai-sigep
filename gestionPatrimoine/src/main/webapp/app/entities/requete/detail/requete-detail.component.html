@@ -4,74 +4,70 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-      <div *ngIf="requete">
-        <h2 data-cy="requeteDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.requete.detail.title">Requete</span></h2>
+    <div *ngIf="requete">
+      <h2 data-cy="requeteDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.requete.detail.title">Requete</span></h2>
 
-        <hr />
+      <hr />
 
-        <jhi-alert-error></jhi-alert-error>
+      <jhi-alert-error></jhi-alert-error>
 
-        <jhi-alert></jhi-alert>
+      <jhi-alert></jhi-alert>
 
-        <dl class="row-md jh-entity-details">
-          <!-- <dt><span jhiTranslate="global.field.id">ID</span></dt>
+      <dl class="row-md jh-entity-details">
+        <!-- <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
             <span>{{ requete.id }}</span>
           </dd> -->
-          <dt><span jhiTranslate="gestionPatrimoineApp.requete.type">Type</span></dt>
-          <dd>
-            <span>{{ requete.type }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.requete.typePanne">Type Panne</span></dt>
-          <dd>
-            <span>{{ requete.typePanne }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.requete.datePost">Date Post</span></dt>
-          <dd>
-            <span>{{ requete.datePost }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.requete.description">Description</span></dt>
-          <dd>
-            <span>{{ requete.description }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.requete.etatTraite">Etat Traite</span></dt>
-          <dd>
-            <span>{{ requete.etatTraite }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.requete.dateLancement">Date Lancement</span></dt>
-          <dd>
-            <span>{{ requete.dateLancement | formatMediumDatetime }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.requete.idPers">Id Pers</span></dt>
-          <dd>
-            <span>
-              <div *ngIf="requete.idPers === 2">
-                <span>
-                  Asta Niang
-                </span>
-              </div>
-              <div *ngIf="requete.idPers === 1">
-                <span>
-                  Arame Diouf
-                </span>
-              </div>
-            </span>
-          </dd>
-          <!-- <dt><span jhiTranslate="gestionPatrimoineApp.requete.nomStructure">Nom Structure</span></dt>
+        <dt><span jhiTranslate="gestionPatrimoineApp.requete.type">Type</span></dt>
+        <dd>
+          <span>{{ requete.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.requete.typePanne">Type Panne</span></dt>
+        <dd>
+          <span>{{ requete.typePanne }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.requete.datePost">Date Post</span></dt>
+        <dd>
+          <span>{{ requete.datePost }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.requete.description">Description</span></dt>
+        <dd>
+          <span>{{ requete.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.requete.etatTraite">Etat Traite</span></dt>
+        <dd>
+          <span>{{ requete.etatTraite }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.requete.dateLancement">Date Lancement</span></dt>
+        <dd>
+          <span>{{ requete.dateLancement | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.requete.idPers">Id Pers</span></dt>
+        <dd>
+          <span>
+            <div *ngIf="requete.idPers === 2">
+              <span> Asta Niang </span>
+            </div>
+            <div *ngIf="requete.idPers === 1">
+              <span> Arame Diouf </span>
+            </div>
+          </span>
+        </dd>
+        <!-- <dt><span jhiTranslate="gestionPatrimoineApp.requete.nomStructure">Nom Structure</span></dt>
           <dd>
             <div *ngIf="requete.nomStructure">
               <a [routerLink]="['/bureau', requete.nomStructure?.id, 'view']">{{ requete.nomStructure?.id }}</a>
             </div>
           </dd> -->
-        </dl>
+      </dl>
 
-        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-        </button>
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
 
-        <button type="button" [routerLink]="['/requete', requete.id, 'edit']" class="btn btn-primary">
-          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-        </button>
-      </div>
+      <button type="button" [routerLink]="['/requete', requete.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
   </div>
 </div>

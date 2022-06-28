@@ -3,134 +3,135 @@
     <jhi-sidebar></jhi-sidebar>
   </div>
 
-<div class="card jh-card col-xs-12 col-md-9 mt-3">
-  <h2 id="page-heading" data-cy="IntervenantHeading">
-    <span jhiTranslate="gestionPatrimoineApp.intervenant.home.title">Intervenants</span>
+  <div class="card jh-card col-xs-12 col-md-9 mt-3">
+    <h2 id="page-heading" data-cy="IntervenantHeading">
+      <span jhiTranslate="gestionPatrimoineApp.intervenant.home.title">Intervenants</span>
 
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
-        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="gestionPatrimoineApp.intervenant.home.refreshListLabel">Refresh List</span>
-      </button>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+          <span jhiTranslate="gestionPatrimoineApp.intervenant.home.refreshListLabel">Refresh List</span>
+        </button>
 
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-intervenant"
-        [routerLink]="['/intervenant/new']"
-      >
-        <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="gestionPatrimoineApp.intervenant.home.createLabel"> Create a new Intervenant </span>
-      </button>
+        <button
+          id="jh-create-entity"
+          data-cy="entityCreateButton"
+          class="btn btn-primary jh-create-entity create-intervenant"
+          [routerLink]="['/intervenant/new']"
+        >
+          <fa-icon icon="plus"></fa-icon>
+          <span jhiTranslate="gestionPatrimoineApp.intervenant.home.createLabel"> Create a new Intervenant </span>
+        </button>
+      </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="intervenants?.length === 0">
+      <span jhiTranslate="gestionPatrimoineApp.intervenant.home.notFound">No intervenants found</span>
     </div>
-  </h2>
 
-  <jhi-alert-error></jhi-alert-error>
-
-  <jhi-alert></jhi-alert>
-
-  <div class="alert alert-warning" id="no-result" *ngIf="intervenants?.length === 0">
-    <span jhiTranslate="gestionPatrimoineApp.intervenant.home.notFound">No intervenants found</span>
-  </div>
-
-  <div class="table-responsive" id="entities" *ngIf="intervenants && intervenants.length > 0">
-    <table class="table table-striped" aria-describedby="page-heading">
-      <thead>
-        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-          <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
-          <th scope="col" jhiSortBy="prenomIntervenant">
-            <span>Prénom</span>
-          </th>
-          <th scope="col" jhiSortBy="nomIntervenant">
-            <span>Nom</span>
-          </th>
-          <th scope="col" jhiSortBy="emailProfessionnel">
-            <span jhiTranslate="gestionPatrimoineApp.intervenant.emailProfessionnel">Email Professionnel</span>
-          </th>
-          <!-- <th scope="col" jhiSortBy="raisonSocial">
+    <div class="table-responsive" id="entities" *ngIf="intervenants && intervenants.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
+            <th scope="col" jhiSortBy="prenomIntervenant">
+              <span>Prénom</span>
+            </th>
+            <th scope="col" jhiSortBy="nomIntervenant">
+              <span>Nom</span>
+            </th>
+            <th scope="col" jhiSortBy="emailProfessionnel">
+              <span jhiTranslate="gestionPatrimoineApp.intervenant.emailProfessionnel">Email Professionnel</span>
+            </th>
+            <!-- <th scope="col" jhiSortBy="raisonSocial">
             <span jhiTranslate="gestionPatrimoineApp.intervenant.raisonSocial">Raison Social</span> <fa-icon icon="sort"></fa-icon>
           </th> -->
-          <th scope="col" jhiSortBy="maitre">
-            <span jhiTranslate="gestionPatrimoineApp.intervenant.maitre">Maitre</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <!-- <th scope="col" jhiSortBy="role">
+            <th scope="col" jhiSortBy="maitre">
+              <span jhiTranslate="gestionPatrimoineApp.intervenant.maitre">Maitre</span> <fa-icon icon="sort"></fa-icon>
+            </th>
+            <!-- <th scope="col" jhiSortBy="role">
             <span jhiTranslate="gestionPatrimoineApp.intervenant.role">Role</span> <fa-icon icon="sort"></fa-icon>
           </th> -->
-          <!-- <th scope="col" jhiSortBy="nomProjet.id">
+            <!-- <th scope="col" jhiSortBy="nomProjet.id">
             <span >Projet</span> <fa-icon icon="sort"></fa-icon>
           </th> -->
-          <!-- <th scope="col" jhiSortBy="nomProjet.id">
+            <!-- <th scope="col" jhiSortBy="nomProjet.id">
             <span>Type de Projet</span> <fa-icon icon="sort"></fa-icon>
           </th> -->
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let intervenant of intervenants; trackBy: trackId" data-cy="entityTable">
-          <!-- <td>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let intervenant of intervenants; trackBy: trackId" data-cy="entityTable">
+            <!-- <td>
             <a [routerLink]="['/intervenant', intervenant.id, 'view']">{{ intervenant.id }}</a>
           </td> -->
-          <td>{{ intervenant.nomIntervenant }}</td>
-          <td>{{ intervenant.prenomIntervenant }}</td>
-          <td>{{ intervenant.emailProfessionnel }}</td>
-          <!-- <td>{{ intervenant.raisonSocial }}</td> -->
-          <td jhiTranslate="{{ 'gestionPatrimoineApp.TypeMaitre.' + intervenant.maitre }}">{{ intervenant.maitre }}</td>
-          <!-- <td>{{ intervenant.role }}</td> -->
-          <!-- <td>
+            <td>{{ intervenant.nomIntervenant }}</td>
+            <td>{{ intervenant.prenomIntervenant }}</td>
+            <td>{{ intervenant.emailProfessionnel }}</td>
+            <!-- <td>{{ intervenant.raisonSocial }}</td> -->
+            <td jhiTranslate="{{ 'gestionPatrimoineApp.TypeMaitre.' + intervenant.maitre }}">{{ intervenant.maitre }}</td>
+            <!-- <td>{{ intervenant.role }}</td> -->
+            <!-- <td>
             <div *ngIf="intervenant.projets">
               {{ intervenant.projets.nomProjet}}
               <a [routerLink]="['/projets', intervenant.nomProjet?.id, 'view']">{{ intervenant.nomProjet?.id }}</a>
             </div>
           </td> -->
-          
-          <td class="text-right">
-            <div class="btn-group">
-              <button
-                type="submit"
-                [routerLink]="['/intervenant', intervenant.id, 'view']"
-                class="btn btn-info btn-sm"
-                data-cy="entityDetailsButton"
-              >
-                <fa-icon icon="eye"></fa-icon>
-                <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
-              </button>
 
-              <button
-                type="submit"
-                [routerLink]="['/intervenant', intervenant.id, 'edit']"
-                class="btn btn-primary btn-sm"
-                data-cy="entityEditButton"
-              >
-                <fa-icon icon="pencil-alt"></fa-icon>
-                <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span> -->
-              </button>
+            <td class="text-right">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  [routerLink]="['/intervenant', intervenant.id, 'view']"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <fa-icon icon="eye"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
+                </button>
 
-              <button type="submit" (click)="delete(intervenant)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                <fa-icon icon="trash-alt"></fa-icon>
-                <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span> -->
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+                <button
+                  type="submit"
+                  [routerLink]="['/intervenant', intervenant.id, 'edit']"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <fa-icon icon="pencil-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span> -->
+                </button>
 
-  <div *ngIf="intervenants && intervenants.length > 0">
-    <div class="row justify-content-center">
-      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+                <button type="submit" (click)="delete(intervenant)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <fa-icon icon="trash-alt"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span> -->
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="row justify-content-center">
-      <ngb-pagination
-        [collectionSize]="totalItems"
-        [(page)]="ngbPaginationPage"
-        [pageSize]="itemsPerPage"
-        [maxSize]="5"
-        [rotate]="true"
-        [boundaryLinks]="true"
-        (pageChange)="loadPage($event)"
-      ></ngb-pagination>
+    <div *ngIf="intervenants && intervenants.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
     </div>
   </div>
 </div>

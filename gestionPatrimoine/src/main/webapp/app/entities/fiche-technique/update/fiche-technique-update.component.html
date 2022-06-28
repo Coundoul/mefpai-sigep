@@ -4,104 +4,104 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-        <h2
-          id="jhi-fiche-technique-heading"
-          data-cy="FicheTechniqueCreateUpdateHeading"
-          jhiTranslate="gestionPatrimoineApp.ficheTechnique.home.createOrEditLabel"
-        >
-          Create or edit a Fiche Technique
-        </h2>
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-fiche-technique-heading"
+        data-cy="FicheTechniqueCreateUpdateHeading"
+        jhiTranslate="gestionPatrimoineApp.ficheTechnique.home.createOrEditLabel"
+      >
+        Create or edit a Fiche Technique
+      </h2>
 
-        <div>
-          <jhi-alert-error></jhi-alert-error>
+      <div>
+        <jhi-alert-error></jhi-alert-error>
 
-          <div class="form-group" [hidden]="editForm.get('id')!.value == null">
-            <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
-            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ficheTechnique.pieceJointe" for="field_pieceJointe"
-              >Piece Jointe</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="pieceJointe"
-              id="field_pieceJointe"
-              data-cy="pieceJointe"
-              formControlName="pieceJointe"
-            />
-            <div *ngIf="editForm.get('pieceJointe')!.invalid && (editForm.get('pieceJointe')!.dirty || editForm.get('pieceJointe')!.touched)">
-              <small
-                class="form-text text-danger"
-                *ngIf="editForm.get('pieceJointe')?.errors?.required"
-                jhiTranslate="entity.validation.required"
-              >
-                This field is required.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ficheTechnique.dateDepot" for="field_dateDepot"
-              >Date Depot</label
-            >
-            <div class="d-flex">
-              <input
-                id="field_dateDepot"
-                data-cy="dateDepot"
-                type="datetime-local"
-                class="form-control"
-                name="dateDepot"
-                formControlName="dateDepot"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ficheTechnique.nomResponsable" for="field_nomResponsable"
-              >Nom Responsable</label
-            >
-            <select
-              class="form-control"
-              id="field_nomResponsable"
-              data-cy="nomResponsable"
-              name="nomResponsable"
-              formControlName="nomResponsable"
-            >
-              <option [ngValue]="null"></option>
-              <option
-                [ngValue]="
-                  responsableOption.id === editForm.get('nomResponsable')!.value?.id
-                    ? editForm.get('nomResponsable')!.value
-                    : responsableOption
-                "
-                *ngFor="let responsableOption of responsablesSharedCollection; trackBy: trackResponsableById"
-              >
-                {{ responsableOption.id }}
-              </option>
-            </select>
-          </div>
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-        <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-          </button>
-
-          <button
-            type="submit"
-            id="save-entity"
-            data-cy="entityCreateSaveButton"
-            [disabled]="editForm.invalid || isSaving"
-            class="btn btn-primary"
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ficheTechnique.pieceJointe" for="field_pieceJointe"
+            >Piece Jointe</label
           >
-            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-          </button>
+          <input
+            type="text"
+            class="form-control"
+            name="pieceJointe"
+            id="field_pieceJointe"
+            data-cy="pieceJointe"
+            formControlName="pieceJointe"
+          />
+          <div *ngIf="editForm.get('pieceJointe')!.invalid && (editForm.get('pieceJointe')!.dirty || editForm.get('pieceJointe')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pieceJointe')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
         </div>
-      </form>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ficheTechnique.dateDepot" for="field_dateDepot"
+            >Date Depot</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateDepot"
+              data-cy="dateDepot"
+              type="datetime-local"
+              class="form-control"
+              name="dateDepot"
+              formControlName="dateDepot"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.ficheTechnique.nomResponsable" for="field_nomResponsable"
+            >Nom Responsable</label
+          >
+          <select
+            class="form-control"
+            id="field_nomResponsable"
+            data-cy="nomResponsable"
+            name="nomResponsable"
+            formControlName="nomResponsable"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                responsableOption.id === editForm.get('nomResponsable')!.value?.id
+                  ? editForm.get('nomResponsable')!.value
+                  : responsableOption
+              "
+              *ngFor="let responsableOption of responsablesSharedCollection; trackBy: trackResponsableById"
+            >
+              {{ responsableOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
   </div>
 </div>

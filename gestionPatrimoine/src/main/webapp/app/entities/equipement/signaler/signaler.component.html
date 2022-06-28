@@ -5,141 +5,125 @@
 
   <div class="card jh-card col-md-9">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-equipement-heading" data-cy="EquipementCreateUpdateHeading" style="text-align: center;">Enregistrer Matières</h2>
+      <h2 id="jhi-equipement-heading" data-cy="EquipementCreateUpdateHeading" style="text-align: center">Enregistrer Matières</h2>
 
       <div>
         <jhi-alert-error></jhi-alert-error>
-        
-            <!-- <div class="form-group" [hidden]="editForm.get('id')!.value != null">
+
+        <!-- <div class="form-group" [hidden]="editForm.get('id')!.value != null">
               <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
               <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
             </div> -->
 
-            <div class="form-group">
-              <label class="form-control-label"  for="field_reference"
-                >Référence</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                name="reference"
-                id="field_reference"
-                data-cy="reference"
-                formControlName="reference"
-                readonly
-              />
-              <div *ngIf="editForm.get('reference')!.invalid && (editForm.get('reference')!.dirty || editForm.get('reference')!.touched)">
-                <small
-                  class="form-text text-danger"
-                  *ngIf="editForm.get('reference')?.errors?.required"
-                  jhiTranslate="entity.validation.required"
-                >
-                  This field is required.
-                </small>
-              </div>
-            </div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_reference">Référence</label>
+          <input
+            type="text"
+            class="form-control"
+            name="reference"
+            id="field_reference"
+            data-cy="reference"
+            formControlName="reference"
+            readonly
+          />
+          <div *ngIf="editForm.get('reference')!.invalid && (editForm.get('reference')!.dirty || editForm.get('reference')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('reference')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label class="form-control-label" for="field_nomMatiere">Nom Matière</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomMatiere"
+            id="field_nomMatiere"
+            data-cy="nomMatiere"
+            formControlName="nomMatiere"
+            readonly
+          />
+          <div *ngIf="editForm.get('nomMatiere')!.invalid && (editForm.get('nomMatiere')!.dirty || editForm.get('nomMatiere')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomMatiere')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <label class="form-control-label" for="field_nomMatiere"
-                >Nom Matière</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                name="nomMatiere"
-                id="field_nomMatiere"
-                data-cy="nomMatiere"
-                formControlName="nomMatiere"
-                readonly
-              />
-              <div *ngIf="editForm.get('nomMatiere')!.invalid && (editForm.get('nomMatiere')!.dirty || editForm.get('nomMatiere')!.touched)">
-                <small
-                  class="form-text text-danger"
-                  *ngIf="editForm.get('nomMatiere')?.errors?.required"
-                  jhiTranslate="entity.validation.required"
-                >
-                  This field is required.
-                </small>
-              </div>
-            </div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_description">Bénéficiaire</label>
+          <select class="form-control" name="description" formControlName="description" id="field_description" data-cy="description">
+            <option [ngValue]="null"></option>
+            <option value="DRH">DRH</option>
+            <option value="DAGE">DAGE</option>
+            <option value="PEJA">PEJA</option>
+            <option value="DFPT">DFPT</option>
+            <option value="CelluleGenre">Cellule Genre</option>
+            <option value="CelluleInformatique">Cellule Informatique</option>
+          </select>
+        </div>
 
-            <div class="form-group">
-              <label class="form-control-label" for="field_description">Bénéficiaire</label>
-              <select class="form-control" name="description" formControlName="description" id="field_description" data-cy="description">
-                <option [ngValue]="null"></option>
-                <option value="DRH">DRH</option>
-                <option value="DAGE">DAGE</option>
-                <option value="PEJA">PEJA</option>
-                <option value="DFPT">DFPT</option>
-                <option value="CelluleGenre">Cellule Genre</option>
-                <option value="CelluleInformatique">Cellule Informatique</option>
-              </select>
-            </div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_etatMatiere">Etat Matière</label>
 
-            <div class="form-group">
-              <label class="form-control-label" for="field_etatMatiere"
-                >Etat Matière</label
-              >
+          <select class="form-control" name="etatMatiere" formControlName="etatMatiere" id="field_etatMatiere" data-cy="etatMatiere">
+            <option [ngValue]="null"></option>
+            <option value="Bon Etat">Bon Etat</option>
+            <option value="Mauvais Etat">Mauvais Etat</option>
+            <option value="Hors Service">Hors Service</option>
+          </select>
 
-              <select class="form-control" name="etatMatiere" formControlName="etatMatiere" id="field_etatMatiere" data-cy="etatMatiere">
-                <option [ngValue]="null"></option>
-                <option value="Bon Etat">Bon Etat</option>
-                <option value="Mauvais Etat">Mauvais Etat</option>
-                <option value="Hors Service">Hors Service</option>
-              </select>
+          <div *ngIf="editForm.get('etatMatiere')!.invalid && (editForm.get('etatMatiere')!.dirty || editForm.get('etatMatiere')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('etatMatiere')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
 
-              <div
-                *ngIf="editForm.get('etatMatiere')!.invalid && (editForm.get('etatMatiere')!.dirty || editForm.get('etatMatiere')!.touched)"
-              >
-                <small
-                  class="form-text text-danger"
-                  *ngIf="editForm.get('etatMatiere')?.errors?.required"
-                  jhiTranslate="entity.validation.required"
-                >
-                  This field is required.
-                </small>
-              </div>
-            </div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_dateSignalisation">Date de Signalisation</label>
+          <div class="d-flex">
+            <input
+              id="field_dateSignalisation"
+              data-cy="dateSignalisation"
+              type="datetime-local"
+              class="form-control"
+              name="dateSignalisation"
+              formControlName="dateSignalisation"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
 
+        <div>
+          <button type="button" id="cancel-save" class="btn btn-secondary btn-lg" (click)="previousState()">
+            <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+          </button>
 
-            <div class="form-group">
-              <label class="form-control-label" for="field_dateSignalisation"
-                >Date de Signalisation</label
-              >
-              <div class="d-flex">
-                <input
-                  id="field_dateSignalisation"
-                  data-cy="dateSignalisation"
-                  type="datetime-local"
-                  class="form-control"
-                  name="dateSignalisation"
-                  formControlName="dateSignalisation"
-                  placeholder="YYYY-MM-DD HH:mm"
-                />
-              </div>
-            </div>
-
-
-              
-            <div>
-              <button type="button" id="cancel-save" class="btn btn-secondary btn-lg" (click)="previousState()">
-                <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
-              </button>
-              
-            
-              <button
-                type="submit"
-                id="save-entity"
-                data-cy="entityCreateSaveButton"
-                [disabled]="editForm.invalid || isSaving"
-                class="btn btn-primary btn-lg"
-                style="position: relative; left: 60%"
-              >
-                <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
-              </button>
-
-            </div>
+          <button
+            type="submit"
+            id="save-entity"
+            data-cy="entityCreateSaveButton"
+            [disabled]="editForm.invalid || isSaving"
+            class="btn btn-primary btn-lg"
+            style="position: relative; left: 60%"
+          >
+            <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
+          </button>
+        </div>
       </div>
     </form>
   </div>

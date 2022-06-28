@@ -11,9 +11,8 @@ describe('RechercheEquipementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RechercheEquipementComponent ]
-    })
-    .compileComponents();
+      declarations: [RechercheEquipementComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -9,7 +9,4 @@ export const INVENTAIRE_ROUTE: Route = {
     pageTitle: 'inventaire.title',
   },
   canActivate: [UserRouteAccessService],
-
 };
-
-

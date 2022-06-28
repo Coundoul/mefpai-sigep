@@ -1,12 +1,11 @@
 export enum Beneficiaire {
-    DRH = 'DRH',
+  DRH = 'DRH',
 
-    DFPT = 'DFPT',
+  DFPT = 'DFPT',
 
-    PEJA = 'PEJA',
+  PEJA = 'PEJA',
 
-    CelluleInformatique = 'CelluleInformatique',
-  
-    CelluleGenre = 'CelluleGenre',
-  }
-  
+  CelluleInformatique = 'CelluleInformatique',
+
+  CelluleGenre = 'CelluleGenre',
+}

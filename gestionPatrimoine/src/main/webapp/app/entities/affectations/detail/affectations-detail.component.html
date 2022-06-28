@@ -4,89 +4,84 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-      <div *ngIf="affectations">
-        <h2 data-cy="affectationsDetailsHeading" style="text-align: center;"><span>Détail Affectation au Service {{ affectations.beneficiaire }}</span></h2>
+    <div *ngIf="affectations">
+      <h2 data-cy="affectationsDetailsHeading" style="text-align: center">
+        <span>Détail Affectation au Service {{ affectations.beneficiaire }}</span>
+      </h2>
 
-        <hr />
+      <hr />
 
-        <jhi-alert-error></jhi-alert-error>
+      <jhi-alert-error></jhi-alert-error>
 
-        <jhi-alert></jhi-alert>
+      <jhi-alert></jhi-alert>
 
-        <dl class="row-md jh-entity-details">
-          <!-- <dt><span jhiTranslate="global.field.id">ID</span></dt>
+      <dl class="row-md jh-entity-details">
+        <!-- <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
             <span>{{ affectations.id }}</span>
           </dd> -->
-              <dt style="text-align: center;"><span>Matière</span></dt>
-              <dd>
-                <div *ngIf="affectations.equipement">
-                  <dt><span>Référence</span></dt>
-                  {{ affectations.equipement.reference }}
-                  <hr>
-                  <!-- <a [routerLink]="['/equipement', affectations.equipement?.id, 'view']">{{ affectations.equipement?.id }}</a> -->
-                  <div>
-                    <a (click)="openFile(affectations.equipement.photo, affectations.equipement.photoContentType)">
-                      <img
-                        [src]="'data:' + affectations.equipement.photoContentType + ';base64,' + affectations.equipement.photo"
-                        style="max-width: 100%"
-                        alt="equipement image"
-                      />
-                    </a>
-                    <!-- , {{ byteSize(equipement.photo) }} -->
-                  </div>
-                </div>
-                
-              </dd>
-  
-              <dt><span jhiTranslate="gestionPatrimoineApp.affectations.dateAttribution">Date Attribution</span></dt>
-              <dd>
-                <span>{{ affectations.dateAttribution | formatMediumDate }}</span>
-              </dd>
-              <dt><span>Bénéficiaire</span></dt>
-              <dd>
-                <span>{{ affectations.beneficiaire }}</span>
-              </dd>
-              <dt><span >Quantite</span></dt>
-              <dd>
-                <span>{{ affectations.quantiteAffecter }}</span>
-              </dd>
-              <dt><span jhiTranslate="gestionPatrimoineApp.affectations.typeAttribution">Type Attribution</span></dt>
-              <dd>
-                <span jhiTranslate="{{ 'gestionPatrimoineApp.Type.' + affectations.typeAttribution }}">{{ affectations.typeAttribution }}</span>
-              </dd>
-              
-              <dt><span>Personne</span></dt>
-              <dd>
-                <div *ngIf="affectations.idPers === 2">
-                  <span>
-                    Moussa Ndiaye
-                  </span>
-                </div>
-  
-                <div *ngIf="affectations.idPers === 12">
-                  <span>
-                    Papis Fall  
-                  </span>
-                </div>
+        <dt style="text-align: center"><span>Matière</span></dt>
+        <dd>
+          <div *ngIf="affectations.equipement">
+            <dt><span>Référence</span></dt>
+            {{ affectations.equipement.reference }}
+            <hr />
+            <!-- <a [routerLink]="['/equipement', affectations.equipement?.id, 'view']">{{ affectations.equipement?.id }}</a> -->
+            <div>
+              <a (click)="openFile(affectations.equipement.photo, affectations.equipement.photoContentType)">
+                <img
+                  [src]="'data:' + affectations.equipement.photoContentType + ';base64,' + affectations.equipement.photo"
+                  style="max-width: 100%"
+                  alt="equipement image"
+                />
+              </a>
+              <!-- , {{ byteSize(equipement.photo) }} -->
+            </div>
+          </div>
+        </dd>
 
-                <div *ngIf="affectations.idPers === 3">
-                  <span>
-                    Abdou Ba  
-                  </span>
-                </div>
-              </dd>          
-        </dl>
+        <dt><span jhiTranslate="gestionPatrimoineApp.affectations.dateAttribution">Date Attribution</span></dt>
+        <dd>
+          <span>{{ affectations.dateAttribution | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Bénéficiaire</span></dt>
+        <dd>
+          <span>{{ affectations.beneficiaire }}</span>
+        </dd>
+        <dt><span>Quantite</span></dt>
+        <dd>
+          <span>{{ affectations.quantiteAffecter }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.affectations.typeAttribution">Type Attribution</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Type.' + affectations.typeAttribution }}">{{ affectations.typeAttribution }}</span>
+        </dd>
 
-        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span >Retour</span>
-        </button>
+        <dt><span>Personne</span></dt>
+        <dd>
+          <div *ngIf="affectations.idPers === 2">
+            <span> Moussa Ndiaye </span>
+          </div>
 
-        <button type="button" [routerLink]="['/affectations', affectations.id, 'edit']" class="btn btn-primary">
-          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span >Modifier</span>
-        </button>
-      </div>
-      <!-- <div *ngIf="equipement">
+          <div *ngIf="affectations.idPers === 12">
+            <span> Papis Fall </span>
+          </div>
+
+          <div *ngIf="affectations.idPers === 3">
+            <span> Abdou Ba </span>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/affectations', affectations.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Modifier</span>
+      </button>
+    </div>
+    <!-- <div *ngIf="equipement">
         <h2 data-cy="affectationsDetailsHeading"><span>Equipement</span></h2>
 
         <hr />

@@ -4,14 +4,14 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-    <h2 id="page-heading" data-cy="AffectationsHeading" style="text-align: center;">
-      <span >Liste des Affectations de Matières aux Services</span>
-      <hr>
+    <h2 id="page-heading" data-cy="AffectationsHeading" style="text-align: center">
+      <span>Liste des Affectations de Matières aux Services</span>
+      <hr />
 
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
           <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-          <span >Actualiser</span>
+          <span>Actualiser</span>
         </button>
 
         <button
@@ -38,11 +38,9 @@
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-            <th scope="col" jhiSortBy="dateAttribution">
-              <span>Date </span> <fa-icon icon="sort"></fa-icon>
-            </th>
+            <th scope="col" jhiSortBy="dateAttribution"><span>Date </span> <fa-icon icon="sort"></fa-icon></th>
             <th scope="col" jhiSortBy="typeAttribution">
-              <span>Type</span> 
+              <span>Type</span>
             </th>
             <th scope="col" jhiSortBy="beneficiaire">
               <span>Bénéficiare</span>
@@ -51,8 +49,8 @@
               <span>Matière</span>
             </th>
             <th scope="col" jhiSortBy="quantiteAffecter">
-              <span >Quantite </span>
-            </th>            
+              <span>Quantite </span>
+            </th>
             <!-- <th scope="col" jhiSortBy="idPers">
               <span >Comptable Secondaire</span>
             </th> -->
@@ -62,7 +60,7 @@
         <tbody>
           <tr *ngFor="let affectations of affectations; trackBy: trackId" data-cy="entityTable">
             <td>{{ affectations.dateAttribution | formatMediumDate }}</td>
-            
+
             <td jhiTranslate="{{ 'gestionPatrimoineApp.Type.' + affectations.typeAttribution }}">{{ affectations.typeAttribution }}</td>
             <td>{{ affectations.beneficiaire }}</td>
             <td>
@@ -90,12 +88,12 @@
                 </span>
               </div>
             </td> -->
-        
+
             <td class="text-right">
               <div class="btn-group">
                 <button
                   type="submit"
-                  [routerLink]="['/affectations', affectations.id,'view']"
+                  [routerLink]="['/affectations', affectations.id, 'view']"
                   class="btn btn-info btn-sm"
                   data-cy="entityDetailsButton"
                 >

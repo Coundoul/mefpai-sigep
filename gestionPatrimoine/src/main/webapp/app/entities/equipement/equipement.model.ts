@@ -4,7 +4,6 @@ import { IFournisseur } from 'app/entities/fournisseur/fournisseur.model';
 import { IBon } from 'app/entities/bon/bon.model';
 import { ICategorieMatiere } from 'app/entities/categorie-matiere/categorie-matiere.model';
 
-
 export interface IEquipement {
   [x: string]: any;
   id?: number;
@@ -60,5 +59,3 @@ export class Equipement implements IEquipement {
 export function getEquipementIdentifier(equipement: IEquipement): number | undefined {
   return equipement.id;
 }
-
-

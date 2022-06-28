@@ -11,11 +11,10 @@ import { CategoriserService } from './categoriser.service';
 @Component({
   selector: 'jhi-categoriser',
   templateUrl: './categoriser.component.html',
-  styleUrls: ['./categoriser.component.scss']
+  styleUrls: ['./categoriser.component.scss'],
 })
 export class CategoriserComponent implements OnInit {
-
-  categoriserMatieres:any;
+  categoriserMatieres: any;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -30,31 +29,28 @@ export class CategoriserComponent implements OnInit {
     protected dataUtils: DataUtils,
     protected router: Router,
     protected modalService: NgbModal,
-    protected categoriematiereService : CategoriserService,
-    public dialog: MatDialog,
-  ) { }
+    protected categoriematiereService: CategoriserService,
+    public dialog: MatDialog
+  ) {}
 
-  getStat():void{
-    this.categoriematiereService
-      .listEtatCategorieMatiere()
-      .subscribe(
-        (res: HttpResponse<IEtatCategorie[]>) => {
-          this.isLoading = false;
-          this.categoriserMatieres=res.body
-        },
-        () => {
-          this.isLoading = false;
-          this.onError();
-        }
-      );
+  getStat(): void {
+    this.categoriematiereService.listEtatCategorieMatiere().subscribe(
+      (res: HttpResponse<IEtatCategorie[]>) => {
+        this.isLoading = false;
+        this.categoriserMatieres = res.body;
+      },
+      () => {
+        this.isLoading = false;
+        this.onError();
+      }
+    );
   }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.getStat();
   }
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
   }
-
 }

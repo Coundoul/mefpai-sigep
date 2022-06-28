@@ -1,0 +1,32 @@
+version: '3.8'
+volumes:
+  postgres_data:
+    driver: local
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: gestionutilisateur
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Amadou1995
+  keycloak:
+    image: quay.io/keycloak/keycloak:legacy
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: gestionutilisateur
+      DB_USER: postgres
+      DB_SCHEMA: public
+      DB_PASSWORD: Amadou1995
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: passer1234
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+      #JDBC_PARAMS: "ssl=true"
+    ports:
+      - 10.198.100.208:9080:9080
+      - 127.0.0.1:9443:9443
+      - 127.0.0.1:10990:10990
+    depends_on:
+      - postgres

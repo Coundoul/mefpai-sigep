@@ -51,18 +51,16 @@
   </div>
 </div> -->
 
-
 <div class="row">
   <div class="col-xs-12 col-md-3">
     <jhi-sidebar></jhi-sidebar>
   </div>
   <div class="card jh-card col-xs-12 col-md-9" *ngIf="etablissement">
-      
-    <div class="" >
-      <h2 style="text-align: center;">
-        <span style="font-weight: bold;">IDENTIFICATION DE L'Etablissement</span>
+    <div class="">
+      <h2 style="text-align: center">
+        <span style="font-weight: bold">IDENTIFICATION DE L'Etablissement</span>
       </h2>
-      <hr>
+      <hr />
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -92,12 +90,12 @@
       </table>
     </div>
 
-    <hr>
-    <div class="" >
-      <h4 style="text-align: center;">
-        <span style="font-weight: bold;">RENSEIGNEMENTS GENERAUX SUR L'ETABLISSEMENT</span>
+    <hr />
+    <div class="">
+      <h4 style="text-align: center">
+        <span style="font-weight: bold">RENSEIGNEMENTS GENERAUX SUR L'ETABLISSEMENT</span>
       </h4>
-    
+
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -150,7 +148,7 @@
             <td scope="row">Puissance Souscrite</td>
             <td>{{ etablissement.puissanceSouscrite }}</td>
           </tr>
-          
+
           <tr>
             <td scope="row">Type de Réseau</td>
             <td>{{ etablissement.typeReseau }}</td>
@@ -194,8 +192,6 @@
       </table>
     </div>
 
-    
-    
     <div>
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
@@ -205,6 +201,6 @@
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
       </button>
     </div>
+  </div>
 </div>
-</div>
-<br>
+<br />

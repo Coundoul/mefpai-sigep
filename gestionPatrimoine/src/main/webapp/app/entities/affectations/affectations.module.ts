@@ -10,7 +10,7 @@ import { UserService } from '../user/user.service';
 
 @NgModule({
   imports: [SharedModule, AffectationsRoutingModule, SidebarModule],
-  providers:[UserService],
+  providers: [UserService],
   declarations: [AffectationsComponent, AffectationsDetailComponent, AffectationsDeleteDialogComponent],
   entryComponents: [AffectationsDeleteDialogComponent],
 })

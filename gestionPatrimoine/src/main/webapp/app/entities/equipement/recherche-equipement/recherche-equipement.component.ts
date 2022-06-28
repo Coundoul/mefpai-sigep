@@ -11,7 +11,7 @@ import { EquipementService } from '../service/equipement.service';
 @Component({
   selector: 'jhi-recherche-equipement',
   templateUrl: './recherche-equipement.component.html',
-  styleUrls: ['./recherche-equipement.component.scss']
+  styleUrls: ['./recherche-equipement.component.scss'],
 })
 export class RechercheEquipementComponent implements OnInit {
   isSaving = false;
@@ -24,46 +24,43 @@ export class RechercheEquipementComponent implements OnInit {
   recherche: any;
   ascending!: boolean;
   ngbPaginationPage = 1;
-  detailRecherche:any;
+  detailRecherche: any;
 
   editForm = this.fb.group({
-    recherche: [null, [Validators.required]]
+    recherche: [null, [Validators.required]],
   });
   sub: any;
-  
+
   constructor(
     protected equipementService: EquipementService,
     protected activatedRoute: ActivatedRoute,
     protected dataUtils: DataUtils,
     protected router: Router,
     protected modalService: NgbModal,
-    protected fb: FormBuilder,
+    protected fb: FormBuilder
   ) {}
-  
-  getStatDetail(ref: any):void{
-    this.equipementService
-      .rechercher(ref)
-      .subscribe(
-        (res: HttpResponse<any>) => {
-          this.isLoading = false;
-          this.detailRecherche=res.body;
-        },
-        () => {
-          this.isLoading = false;
-        }
-      );
+
+  getStatDetail(ref: any): void {
+    this.equipementService.rechercher(ref).subscribe(
+      (res: HttpResponse<any>) => {
+        this.isLoading = false;
+        this.detailRecherche = res.body;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   ngOnInit(): void {
-   this.sub = this.activatedRoute.params.subscribe(params => {
-     this.recherche = params['reference'];
-     this.getStatDetail(this.recherche);
-   });
-   
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      this.recherche = params['reference'];
+      this.getStatDetail(this.recherche);
+    });
   }
 
   rechercher(): void {
-    this.isSaving=true;
+    this.isSaving = true;
     this.getStatDetail(this.recherche);
   }
 

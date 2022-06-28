@@ -30,7 +30,13 @@ export class FournisseurUpdateComponent implements OnInit {
     email: [null, [Validators.required]],
   });
 
-  constructor(protected fournisseurService: FournisseurService, private router: Router, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder, public activeModal: NgbActiveModal) {}
+  constructor(
+    protected fournisseurService: FournisseurService,
+    private router: Router,
+    protected activatedRoute: ActivatedRoute,
+    protected fb: FormBuilder,
+    public activeModal: NgbActiveModal
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ fournisseur }) => {
@@ -64,7 +70,7 @@ export class FournisseurUpdateComponent implements OnInit {
   }
 
   protected onSaveSuccess(): void {
-      this.router.navigate(['/equipement/new']);
+    this.router.navigate(['/equipement/new']);
   }
 
   protected onSaveError(): void {

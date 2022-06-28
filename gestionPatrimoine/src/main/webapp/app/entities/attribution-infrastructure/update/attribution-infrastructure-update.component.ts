@@ -22,7 +22,7 @@ import { IEquipement } from 'app/entities/equipement/equipement.model';
 export class AttributionInfrastructureUpdateComponent implements OnInit {
   isSaving = false;
   etablissementsSharedCollection: IEtablissement[] = [];
-  equipements:any;
+  equipements: any;
 
   editForm = this.fb.group({
     id: [],
@@ -32,7 +32,7 @@ export class AttributionInfrastructureUpdateComponent implements OnInit {
     idPers: [null, [Validators.required]],
     nomEtablissement: [],
   });
-  isLoading:any;
+  isLoading: any;
 
   constructor(
     protected attributionInfrastructureService: AttributionInfrastructureService,
@@ -56,19 +56,17 @@ export class AttributionInfrastructureUpdateComponent implements OnInit {
     });
   }
 
-  getStat():void{
-    this.equipementService
-      .query()
-      .subscribe(
-        (res: HttpResponse<any>) => {
-          this.isLoading = false;
-          this.equipements=res.body
-        },
-        () => {
-          this.isLoading = false;
-        }
-      );
-    }
+  getStat(): void {
+    this.equipementService.query().subscribe(
+      (res: HttpResponse<any>) => {
+        this.isLoading = false;
+        this.equipements = res.body;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
+  }
 
   previousState(): void {
     window.history.back();

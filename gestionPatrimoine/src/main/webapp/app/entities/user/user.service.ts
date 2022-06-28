@@ -11,15 +11,14 @@ export type EntityResponseType = HttpResponse<any>;
 export type EntityResponseTypeK = HttpResponse<any>;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   // Define API
   apiURL = `${environment.keycloakUrl}${environment.baserealm}${environment.realm}/`;
-  apiPortailRH=`${environment.portailRHurl}`
+  apiPortailRH = `${environment.portailRHurl}`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /*========================================
     CRUD Methods for consuming RESTful API
@@ -31,7 +30,7 @@ export class UserService {
   //     'Content-Type': 'application/json',
   //   //  'Access-Control-Allow-Origin':'*'
   //   })
-  // }  
+  // }
 
   // HttpClient API get() method => Fetch agents list
   // getUser(): Observable<EntityResponseType> {
@@ -45,8 +44,7 @@ export class UserService {
   //   )
   // }
 
-
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@ get user by username   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@ get user by username   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
   // getUserByUsername(Myusername:string): Observable<HttpResponse<any[]>> {
   //   return this.http.get<any>(this.apiPortailRH+"api/userK/users/"+Myusername,{
@@ -73,29 +71,29 @@ export class UserService {
   // }
   //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ user create @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   // create(user: any): Observable<EntityResponseType> {
-   
-  //   return this.http.post<any>(this.apiURL+'users', user, { 
+
+  //   return this.http.post<any>(this.apiURL+'users', user, {
   //   headers:this.httpOptions.headers,
   //     observe: 'response' });
-    
+
   // }
 
-   //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ userK create @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ userK create @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   //  createUserk(userK: any): Observable<EntityResponseTypeK> {
-   
-  //   return this.http.post<any>(this.apiPortailRH+'api/userK/users', userK, { 
+
+  //   return this.http.post<any>(this.apiPortailRH+'api/userK/users', userK, {
   //   headers:this.httpOptions.headers,
   //     observe: 'response' });
-    
+
   // }
   //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ update user @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   // update(user: any): Observable<EntityResponseType> {
-  //   return this.http.put<any>(this.apiPortailRH+'api/userK/users', user, { 
+  //   return this.http.put<any>(this.apiPortailRH+'api/userK/users', user, {
   //     headers:this.httpOptions.headers,
   //     observe: 'response' });
-    
+
   //  }
-  
+
   // //Delete a use
   // delete(user:any){
   //   return this.http.delete(this.apiPortailRH+'api/userK/users/'+user.id,{
@@ -106,62 +104,58 @@ export class UserService {
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ realm role-mapping to a user @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-//   roleMapping(role: IRole[], userID:string): Observable<HttpResponse<IRole[]>> {
-   
-//     return this.http.post<IRole[]>(this.apiURL+'users/'+userID+'/role-mappings/realm', role, { 
-//       //auth/admin/realms/jhipster/clients/898488c8-e260-41c5-a463-7ceea14d587a/roles
-//       ///auth/admin/realms/{realm}/users/{user}/role-mappings/clients/{client}
-//       headers:this.httpOptions.headers,
-//       observe: 'response' });
+  //   roleMapping(role: IRole[], userID:string): Observable<HttpResponse<IRole[]>> {
 
-//  }
+  //     return this.http.post<IRole[]>(this.apiURL+'users/'+userID+'/role-mappings/realm', role, {
+  //       //auth/admin/realms/jhipster/clients/898488c8-e260-41c5-a463-7ceea14d587a/roles
+  //       ///auth/admin/realms/{realm}/users/{user}/role-mappings/clients/{client}
+  //       headers:this.httpOptions.headers,
+  //       observe: 'response' });
 
-//  getRoles(): Observable<HttpResponse<IRole[]>> {
-//     return this.http.get<IRole[]>(this.apiURL + 'roles',{
-//       headers:this.httpOptions.headers,
-//       observe:'response'
-//       })
-//     .pipe(
-//       retry(1),
-//    //   catchError(this.handleError)
-//     )
-//   }
+  //  }
 
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ role-mapping to a user @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  //  getRoles(): Observable<HttpResponse<IRole[]>> {
+  //     return this.http.get<IRole[]>(this.apiURL + 'roles',{
+  //       headers:this.httpOptions.headers,
+  //       observe:'response'
+  //       })
+  //     .pipe(
+  //       retry(1),
+  //    //   catchError(this.handleError)
+  //     )
+  //   }
 
-// clientRoleMapping(role: IRole[], userID:string): Observable<HttpResponse<IRole[]>> {
-   
-//   return this.http.post<IRole[]>(this.apiURL+'users/'+userID+'/role-mappings/clients/898488c8-e260-41c5-a463-7ceea14d587a', role, { 
-//     //auth/admin/realms/jhipster/clients/898488c8-e260-41c5-a463-7ceea14d587a/roles
-//     ///auth/admin/realms/{realm}/users/{user}/role-mappings/clients/{client}
-//     headers:this.httpOptions.headers,
-//     observe: 'response' });
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ role-mapping to a user @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-// }
+  // clientRoleMapping(role: IRole[], userID:string): Observable<HttpResponse<IRole[]>> {
 
+  //   return this.http.post<IRole[]>(this.apiURL+'users/'+userID+'/role-mappings/clients/898488c8-e260-41c5-a463-7ceea14d587a', role, {
+  //     //auth/admin/realms/jhipster/clients/898488c8-e260-41c5-a463-7ceea14d587a/roles
+  //     ///auth/admin/realms/{realm}/users/{user}/role-mappings/clients/{client}
+  //     headers:this.httpOptions.headers,
+  //     observe: 'response' });
 
+  // }
 
-//  assignedProfilUser(userID: any,groupId:any){
-// return this.http.put<any>(this.apiURL+'users/'+userID+'/groups/'+groupId,{ 
-//   headers:this.httpOptions.headers,
-//   observe: 'response' });
+  //  assignedProfilUser(userID: any,groupId:any){
+  // return this.http.put<any>(this.apiURL+'users/'+userID+'/groups/'+groupId,{
+  //   headers:this.httpOptions.headers,
+  //   observe: 'response' });
 
-// }
+  // }
 
-// gettoUser(){
-// return this.http.get<any>(this.apiURL+'users',{
-//   //headers:this.httpOptions.headers,
-//   observe: 'response' 
-// })
-// }
- 
+  // gettoUser(){
+  // return this.http.get<any>(this.apiURL+'users',{
+  //   //headers:this.httpOptions.headers,
+  //   observe: 'response'
+  // })
+  // }
 
-//  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ error handler @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ error handler @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
   /* handleError(handleError: any): import("rxjs").OperatorFunction<HttpResponse<any>, any> {
     throw new Error('Method not implemented.');
   } */
-
 
   // getEvent(): Observable<HttpResponse<any[]>> {
   //   return this.http.get<any>('http://localhost:9080/auth/admin/realms/jhipster/admin-events',{
@@ -174,10 +168,9 @@ export class UserService {
   //   )
   // }
   // desactiver(userId:any,groupId:any){
-  //   return this.http.delete<any>(this.apiURL+'users/'+userId+'/groups/'+groupId,{ 
+  //   return this.http.delete<any>(this.apiURL+'users/'+userId+'/groups/'+groupId,{
   //     headers:this.httpOptions.headers,
   //     observe: 'response' });
-    
+
   //   }
-  
 }

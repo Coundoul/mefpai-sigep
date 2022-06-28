@@ -11,7 +11,7 @@ import { IAffectations } from '../affectations.model';
 })
 export class AffectationsDetailComponent implements OnInit {
   affectations: IAffectations | null = null;
-  equipement:any;
+  equipement: any;
 
   constructor(protected dataUtils: DataUtils, protected activatedRoute: ActivatedRoute) {}
 

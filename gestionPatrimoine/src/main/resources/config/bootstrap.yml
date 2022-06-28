@@ -18,7 +18,7 @@ spring:
   cloud:
     config:
       fail-fast: false # if not in "prod" profile, do not force to use Spring Cloud Config
-      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+      uri: http://10.198.100.208:8761/config
       # name of the config server's property source (file.yml) that we want to use
       name: gestionPatrimoine
       profile: dev # profile(s) of the property source

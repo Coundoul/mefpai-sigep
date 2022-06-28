@@ -6,12 +6,7 @@
   <div class="card jh-card col-md-9 justify-content-center">
     <div>
       <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-        <h2
-          id="jhi-attribution-heading"
-          data-cy="AttributionCreateUpdateHeading"
-        >
-          Nouvelle Affectation
-        </h2>
+        <h2 id="jhi-attribution-heading" data-cy="AttributionCreateUpdateHeading">Nouvelle Affectation</h2>
 
         <div>
           <jhi-alert-error></jhi-alert-error>
@@ -22,9 +17,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-control-label"  for="field_quantiteAffecter"
-              >Quantite à Affecter</label
-            >
+            <label class="form-control-label" for="field_quantiteAffecter">Quantite à Affecter</label>
             <input
               type="number"
               class="form-control"
@@ -95,9 +88,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="field_nomUtilisateur"
-              >Agents</label
-            >
+            <label class="form-control-label" for="field_nomUtilisateur">Agents</label>
             <select
               class="form-control"
               id="field_nomUtilisateur"

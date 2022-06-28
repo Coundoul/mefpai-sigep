@@ -11,9 +11,8 @@ describe('DetailInventaireComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailInventaireComponent ]
-    })
-    .compileComponents();
+      declarations: [DetailInventaireComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

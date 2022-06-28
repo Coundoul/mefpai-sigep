@@ -4,59 +4,59 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-      <div *ngIf="technicien">
-        <h2 data-cy="technicienDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.technicien.detail.title">Technicien</span></h2>
+    <div *ngIf="technicien">
+      <h2 data-cy="technicienDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.technicien.detail.title">Technicien</span></h2>
 
-        <hr />
+      <hr />
 
-        <jhi-alert-error></jhi-alert-error>
+      <jhi-alert-error></jhi-alert-error>
 
-        <jhi-alert></jhi-alert>
+      <jhi-alert></jhi-alert>
 
-        <dl class="row-md jh-entity-details">
-          <dt><span jhiTranslate="global.field.id">ID</span></dt>
-          <dd>
-            <span>{{ technicien.id }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.technicien.nomPers">Nom Pers</span></dt>
-          <dd>
-            <span>{{ technicien.nomPers }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.technicien.prenomPers">Prenom Pers</span></dt>
-          <dd>
-            <span>{{ technicien.prenomPers }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.technicien.sexe">Sexe</span></dt>
-          <dd>
-            <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + technicien.sexe }}">{{ technicien.sexe }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.technicien.mobile">Mobile</span></dt>
-          <dd>
-            <span>{{ technicien.mobile }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.technicien.adresse">Adresse</span></dt>
-          <dd>
-            <span>{{ technicien.adresse }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.technicien.direction">Direction</span></dt>
-          <dd>
-            <span jhiTranslate="{{ 'gestionPatrimoineApp.Direction.' + technicien.direction }}">{{ technicien.direction }}</span>
-          </dd>
-          <dt><span jhiTranslate="gestionPatrimoineApp.technicien.chefMaintenance">Chef Maintenance</span></dt>
-          <dd>
-            <div *ngIf="technicien.chefMaintenance">
-              <a [routerLink]="['/chef-maintenance', technicien.chefMaintenance?.id, 'view']">{{ technicien.chefMaintenance?.id }}</a>
-            </div>
-          </dd>
-        </dl>
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ technicien.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.technicien.nomPers">Nom Pers</span></dt>
+        <dd>
+          <span>{{ technicien.nomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.technicien.prenomPers">Prenom Pers</span></dt>
+        <dd>
+          <span>{{ technicien.prenomPers }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.technicien.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Sexe.' + technicien.sexe }}">{{ technicien.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.technicien.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ technicien.mobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.technicien.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ technicien.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.technicien.direction">Direction</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gestionPatrimoineApp.Direction.' + technicien.direction }}">{{ technicien.direction }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionPatrimoineApp.technicien.chefMaintenance">Chef Maintenance</span></dt>
+        <dd>
+          <div *ngIf="technicien.chefMaintenance">
+            <a [routerLink]="['/chef-maintenance', technicien.chefMaintenance?.id, 'view']">{{ technicien.chefMaintenance?.id }}</a>
+          </div>
+        </dd>
+      </dl>
 
-        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-        </button>
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
 
-        <button type="button" [routerLink]="['/technicien', technicien.id, 'edit']" class="btn btn-primary">
-          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-        </button>
-      </div>
+      <button type="button" [routerLink]="['/technicien', technicien.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
   </div>
 </div>

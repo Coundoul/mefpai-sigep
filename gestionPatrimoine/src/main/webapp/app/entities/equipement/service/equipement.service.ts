@@ -15,7 +15,7 @@ export class EquipementService {
   public resourceUrl = this.applicationConfigService.getEndpointFor('api/equipements', 'gestionequipement');
 
   public resourceUrlRecherche = this.applicationConfigService.getEndpointFor('api/recherche/equipement', 'gestionequipement');
-  
+
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
   create(equipement: IEquipement): Observable<EntityResponseType> {

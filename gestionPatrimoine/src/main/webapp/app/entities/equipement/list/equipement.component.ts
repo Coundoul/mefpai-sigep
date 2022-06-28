@@ -28,12 +28,11 @@ export class EquipementComponent implements OnInit {
   recherche: any;
   ascending!: boolean;
   ngbPaginationPage = 1;
-  detailRecherche:any;
+  detailRecherche: any;
 
   editForm = this.fb.group({
-    recherche: [null, [Validators.required]]
+    recherche: [null, [Validators.required]],
   });
-
 
   constructor(
     protected equipementService: EquipementService,
@@ -41,7 +40,7 @@ export class EquipementComponent implements OnInit {
     protected dataUtils: DataUtils,
     protected router: Router,
     protected modalService: NgbModal,
-    protected fb: FormBuilder,
+    protected fb: FormBuilder
   ) {}
 
   loadPage(page?: number, dontNavigate?: boolean): void {
@@ -93,29 +92,25 @@ export class EquipementComponent implements OnInit {
     });
   }
 
-  getStatDetail(ref: any):void{
-    this.equipementService
-      .rechercher(ref)
-      .subscribe(
-        (res: HttpResponse<any>) => {
-          this.isLoading = false;
-          this.detailRecherche=res.body;
-        },
-        () => {
-          this.isLoading = false;
-        }
-      );
+  getStatDetail(ref: any): void {
+    this.equipementService.rechercher(ref).subscribe(
+      (res: HttpResponse<any>) => {
+        this.isLoading = false;
+        this.detailRecherche = res.body;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   rechercher(): void {
-    this.isSaving=true;
+    this.isSaving = true;
     this.recherche = this.editForm.get(['recherche'])!.value;
     this.router.navigate(['/rechercher']);
     // this.recherche  = this.editForm.get(['recherche'])!.value;
     // this.getStatDetail(this.recherche);
   }
-
-  
 
   protected sort(): string[] {
     const result = [this.predicate + ',' + (this.ascending ? 'asc' : 'desc')];
@@ -160,4 +155,3 @@ export class EquipementComponent implements OnInit {
     this.ngbPaginationPage = this.page ?? 1;
   }
 }
-

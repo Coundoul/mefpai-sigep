@@ -77,11 +77,11 @@ public class GestionPatrimoineApp {
             .ofNullable(env.getProperty("server.servlet.context-path"))
             .filter(StringUtils::isNotBlank)
             .orElse("/");
-        String hostAddress = "localhost";
+        String hostAddress = "10.198.100.208";
         try {
             hostAddress = InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
-            log.warn("The host name could not be determined, using `localhost` as fallback");
+            log.warn("The host name could not be determined, using `10.198.100.208` as fallback");
         }
         log.info(
             "\n----------------------------------------------------------\n\t" +

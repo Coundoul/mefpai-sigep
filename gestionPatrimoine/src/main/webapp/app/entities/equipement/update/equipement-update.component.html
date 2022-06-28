@@ -5,7 +5,7 @@
 
   <div class="card jh-card col-md-9">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-equipement-heading" data-cy="EquipementCreateUpdateHeading" style="text-align: center;">Enregistrer Matières</h2>
+      <h2 id="jhi-equipement-heading" data-cy="EquipementCreateUpdateHeading" style="text-align: center">Enregistrer Matières</h2>
 
       <div>
         <jhi-alert-error></jhi-alert-error>
@@ -17,9 +17,7 @@
             </div> -->
 
             <div class="form-group">
-              <label class="form-control-label"  for="field_reference"
-                >Référence</label
-              >
+              <label class="form-control-label" for="field_reference">Référence</label>
               <input
                 type="text"
                 class="form-control"
@@ -39,11 +37,8 @@
               </div>
             </div>
 
-
             <div class="form-group">
-              <label class="form-control-label" for="field_nomMatiere"
-                >Nom Matière</label
-              >
+              <label class="form-control-label" for="field_nomMatiere">Nom Matière</label>
               <input
                 type="text"
                 class="form-control"
@@ -52,7 +47,9 @@
                 data-cy="nomMatiere"
                 formControlName="nomMatiere"
               />
-              <div *ngIf="editForm.get('nomMatiere')!.invalid && (editForm.get('nomMatiere')!.dirty || editForm.get('nomMatiere')!.touched)">
+              <div
+                *ngIf="editForm.get('nomMatiere')!.invalid && (editForm.get('nomMatiere')!.dirty || editForm.get('nomMatiere')!.touched)"
+              >
                 <small
                   class="form-text text-danger"
                   *ngIf="editForm.get('nomMatiere')?.errors?.required"
@@ -63,18 +60,23 @@
               </div>
             </div>
 
-
             <div class="form-group">
-              <label class="form-control-label" for="field_caracteristique"
-                >Caractéristique</label
-              >
-              <textarea class="form-control"
+              <label class="form-control-label" for="field_caracteristique">Caractéristique</label>
+              <textarea
+                class="form-control"
                 name="caracteristique"
                 id="field_caracteristique"
                 data-cy="caracteristique"
-                formControlName="caracteristique" rows="10">
+                formControlName="caracteristique"
+                rows="10"
+              >
               </textarea>
-              <div *ngIf="editForm.get('caracteristique')!.invalid && (editForm.get('caracteristique')!.dirty || editForm.get('caracteristique')!.touched)">
+              <div
+                *ngIf="
+                  editForm.get('caracteristique')!.invalid &&
+                  (editForm.get('caracteristique')!.dirty || editForm.get('caracteristique')!.touched)
+                "
+              >
                 <small
                   class="form-text text-danger"
                   *ngIf="editForm.get('caracteristique')?.errors?.required"
@@ -109,9 +111,7 @@
                 /> -->
 
             <div class="form-group">
-              <label class="form-control-label" for="field_typeMatiere"
-                >Groupe</label
-              >
+              <label class="form-control-label" for="field_typeMatiere">Groupe</label>
               <!-- <input
                 type="text"
                 class="form-control"
@@ -172,9 +172,7 @@
 
           <mat-step>
             <div class="form-group">
-              <label class="form-control-label" for="field_etatMatiere"
-                >Etat Matière</label
-              >
+              <label class="form-control-label" for="field_etatMatiere">Etat Matière</label>
 
               <select class="form-control" name="etatMatiere" formControlName="etatMatiere" id="field_etatMatiere" data-cy="etatMatiere">
                 <option [ngValue]="null"></option>
@@ -266,7 +264,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-control-label"  for="field_photo1">Ajouter un autre</label>
+              <label class="form-control-label" for="field_photo1">Ajouter un autre</label>
               <div>
                 <img
                   [src]="'data:' + editForm.get('photo1ContentType')!.value + ';base64,' + editForm.get('photo1')!.value"
@@ -275,7 +273,9 @@
                   alt="equipement image1"
                 />
                 <div *ngIf="editForm.get('photo1')!.value" class="form-text text-danger clearfix">
-                  <span class="pull-left">{{ editForm.get('photo1ContentType')!.value }}, {{ byteSize(editForm.get('photo1')!.value) }}</span>
+                  <span class="pull-left"
+                    >{{ editForm.get('photo1ContentType')!.value }}, {{ byteSize(editForm.get('photo1')!.value) }}</span
+                  >
                   <button
                     type="button"
                     (click)="clearInputImage('photo1', 'photo1ContentType', 'file_photo1')"
@@ -313,7 +313,9 @@
                   alt="equipement image2"
                 />
                 <div *ngIf="editForm.get('photo2')!.value" class="form-text text-danger clearfix">
-                  <span class="pull-left">{{ editForm.get('photo2ContentType')!.value }}, {{ byteSize(editForm.get('photo2')!.value) }}</span>
+                  <span class="pull-left"
+                    >{{ editForm.get('photo2ContentType')!.value }}, {{ byteSize(editForm.get('photo2')!.value) }}</span
+                  >
                   <button
                     type="button"
                     (click)="clearInputImage('photo2', 'photo2ContentType', 'file_photo2')"
@@ -385,7 +387,7 @@
                       "
                       *ngFor="let fournisseurOption of fournisseursSharedCollection; trackBy: trackFournisseurById"
                     >
-                    {{ fournisseurOption.prenomFournisseur }} {{ fournisseurOption.nomFournisseur }}
+                      {{ fournisseurOption.prenomFournisseur }} {{ fournisseurOption.nomFournisseur }}
                     </option>
                   </select>
                 </div>

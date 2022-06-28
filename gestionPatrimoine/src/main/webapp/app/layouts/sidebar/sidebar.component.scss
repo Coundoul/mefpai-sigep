@@ -99,7 +99,7 @@ ul {
   list-style-type: none;
 }
 
-.profile_image{
+.profile_image {
   width: 100px;
   height: 100px;
   border-radius: 100px;
@@ -107,25 +107,24 @@ ul {
   left: 20%;
 }
 
-
-li{
-  a{
+li {
+  a {
     // background: rgba(2, 154, 255, 0.63);
     // color: white;
-    text-decoration:none;
+    text-decoration: none;
   }
-  ul{
-    li{
-      a:hover{
+  ul {
+    li {
+      a:hover {
         // background: rgba(2, 154, 255, 0.63);
         // color: white;
-        text-decoration:none;
+        text-decoration: none;
       }
     }
   }
 }
 
-h4{
+h4 {
   text-align: center;
   color: #ccc;
   margin-top: 0%;

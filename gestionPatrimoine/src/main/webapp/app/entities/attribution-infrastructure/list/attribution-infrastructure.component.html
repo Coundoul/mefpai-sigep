@@ -4,9 +4,9 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-    <h2 id="page-heading" data-cy="AttributionInfrastructureHeading" style="text-align: center;">
+    <h2 id="page-heading" data-cy="AttributionInfrastructureHeading" style="text-align: center">
       <span>Liste des Attributions du projet</span>
-      <hr>
+      <hr />
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
           <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
@@ -20,9 +20,7 @@
           [routerLink]="['/attribution-infrastructure/new']"
         >
           <fa-icon icon="plus"></fa-icon>
-          <span>
-            Ajouter une Nouvelle Attribution
-          </span>
+          <span> Ajouter une Nouvelle Attribution </span>
         </button>
       </div>
     </h2>
@@ -99,7 +97,12 @@
                   <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span> -->
                 </button>
 
-                <button type="submit" (click)="delete(attributionInfrastructure)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <button
+                  type="submit"
+                  (click)="delete(attributionInfrastructure)"
+                  class="btn btn-danger btn-sm"
+                  data-cy="entityDeleteButton"
+                >
                   <fa-icon icon="trash-alt"></fa-icon>
                   <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span> -->
                 </button>

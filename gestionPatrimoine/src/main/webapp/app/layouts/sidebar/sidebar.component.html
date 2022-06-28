@@ -1,28 +1,32 @@
-<div  style="position: relative; right: 4%; background-color: white;">
-    <div style="height: 10%;">
-      <img src="../../../content/images/jhipster_family_member_0_head-512.png" class="profile_image" alt="indisponible" style="position: relative; left: 25%;">
-      <h4>Abdoulaye Coundoul</h4>
-    </div>
-  
+<div style="position: relative; right: 4%; background-color: white">
+  <div style="height: 10%">
+    <img
+      src="../../../content/images/jhipster_family_member_0_head-512.png"
+      class="profile_image"
+      alt="indisponible"
+      style="position: relative; left: 25%"
+    />
+    <h4>Abdoulaye Coundoul</h4>
+  </div>
 
   <ul class="list-group shadow">
     <li [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
-      <a  routerLink="/" style="text-decoration:none;">
+      <a routerLink="/" style="text-decoration: none">
         <span [ngClass]="{ 'text-active': currentRout === '/' }">
-          <hr>
+          <hr />
           <fa-icon icon="home"></fa-icon>
           <span jhiTranslate="global.menu.home">Home</span>
-          <hr>
+          <hr />
         </span>
       </a>
     </li>
-    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_COMPTABLE_PRINCIPALE']"  style="background-color: white;">
-      <a class="mt-1" id="adminMenu" data-cy="adminMenu" (click)="myFunction()" style="display: inline-block;">
+    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_COMPTABLE_PRINCIPALE']" style="background-color: white">
+      <a class="mt-1" id="adminMenu" data-cy="adminMenu" (click)="myFunction()" style="display: inline-block">
         <span>
           <fa-icon icon="cogs"></fa-icon>
           <span>Gestion des Matières</span>
-          <fa-icon id="adminMenuCache" style="display:none;" icon="chevron-circle-up"></fa-icon>
-          <fa-icon id="adminMenuAffiche" style="display: inline-block;"  icon="chevron-circle-down"></fa-icon>
+          <fa-icon id="adminMenuCache" style="display: none" icon="chevron-circle-up"></fa-icon>
+          <fa-icon id="adminMenuAffiche" style="display: inline-block" icon="chevron-circle-down"></fa-icon>
         </span>
       </a>
 
@@ -34,7 +38,14 @@
         <fa-icon icon="chevron-circle-down"></fa-icon>
       </a> -->
 
-      <ul class="" id="adminMenuAfficheListe" style="display: inline-block;"  ngDropDownMenu aria-labelledby="admin-menu" style="list-style-type: none;">
+      <ul
+        class=""
+        id="adminMenuAfficheListe"
+        style="display: inline-block"
+        ngDropDownMenu
+        aria-labelledby="admin-menu"
+        style="list-style-type: none"
+      >
         <li class="mt-1">
           <a href="/equipement">
             <fa-icon icon="angle-double-right"></fa-icon>
@@ -77,19 +88,25 @@
       </ul>
     </li>
 
-    
-    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_COMPTABLE_PRINCIPALE', 'ROLE_CHEF_PROJET']" ngbDropdown style="background-color: white;">
-      <hr>
-      <a  id="adminMenuInfra" data-cy="adminMenu"  (click)="myFunctionInfra()" style="display: inline-block;">
+    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_COMPTABLE_PRINCIPALE', 'ROLE_CHEF_PROJET']" ngbDropdown style="background-color: white">
+      <hr />
+      <a id="adminMenuInfra" data-cy="adminMenu" (click)="myFunctionInfra()" style="display: inline-block">
         <span>
           <fa-icon icon="chart-bar"></fa-icon>
           <span>Gestion des Infrastructures</span>
-          <fa-icon id="adminMenuCacheInfra" icon="chevron-circle-up" style="display:none;"></fa-icon>
-          <fa-icon id="adminMenuAfficheInfra" style="display: inline-block;"  icon="chevron-circle-down"></fa-icon>
+          <fa-icon id="adminMenuCacheInfra" icon="chevron-circle-up" style="display: none"></fa-icon>
+          <fa-icon id="adminMenuAfficheInfra" style="display: inline-block" icon="chevron-circle-down"></fa-icon>
         </span>
       </a>
 
-      <ul class="" id="adminMenuListeInfra" style="display: inline-block;"  ngDropDownMenu aria-labelledby="admin-menu" style="list-style-type: none;">
+      <ul
+        class=""
+        id="adminMenuListeInfra"
+        style="display: inline-block"
+        ngDropDownMenu
+        aria-labelledby="admin-menu"
+        style="list-style-type: none"
+      >
         <li class="mt-1" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_PROJET']">
           <a href="/etablissement">
             <fa-icon icon="angle-double-right"></fa-icon>
@@ -103,7 +120,7 @@
             <span>Projets</span>
           </a>
         </li>
-        
+
         <li class="mt-1">
           <a href="/intervenant" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_PROJET']">
             <fa-icon icon="angle-double-right"></fa-icon>
@@ -117,7 +134,7 @@
             <span>Affecter Matières</span>
           </a>
         </li>
-        
+
         <li class="mt-1" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_PROJET']">
           <a href="">
             <fa-icon icon="angle-double-right"></fa-icon>
@@ -133,19 +150,26 @@
         </li>
       </ul>
     </li>
-    
-    <li  *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_MAINTENANCE']" style="background-color: white;">
-      <hr>
-      <a  id="adminMenuMaint" data-cy="adminMenu" (click)="myFunctionMaint()" style="display: inline-block;">
+
+    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_MAINTENANCE']" style="background-color: white">
+      <hr />
+      <a id="adminMenuMaint" data-cy="adminMenu" (click)="myFunctionMaint()" style="display: inline-block">
         <span>
           <fa-icon icon="tools"></fa-icon>
           <span>Gestion Maintenance</span>
-          <fa-icon id="adminMenuCacheMaint" style="display:none;" icon="chevron-circle-up"></fa-icon>
-          <fa-icon id="adminMenuAfficheMaint" style="display: inline-block;"  icon="chevron-circle-down"></fa-icon>
+          <fa-icon id="adminMenuCacheMaint" style="display: none" icon="chevron-circle-up"></fa-icon>
+          <fa-icon id="adminMenuAfficheMaint" style="display: inline-block" icon="chevron-circle-down"></fa-icon>
         </span>
       </a>
 
-      <ul class="" id="adminMenuListeMaint" style="display: inline-block;"  ngDropDownMenu aria-labelledby="admin-menu" style="list-style-type: none;">
+      <ul
+        class=""
+        id="adminMenuListeMaint"
+        style="display: inline-block"
+        ngDropDownMenu
+        aria-labelledby="admin-menu"
+        style="list-style-type: none"
+      >
         <li class="mt-1">
           <a>
             <fa-icon icon="angle-double-right"></fa-icon>
@@ -174,7 +198,6 @@
           </a>
         </li>
 
-
         <li class="mt-1">
           <a href="/fiche-technique">
             <fa-icon icon="angle-double-right"></fa-icon>
@@ -195,14 +218,12 @@
             <span>Etat des Demandes</span>
           </a>
         </li>
-        
       </ul>
-      <hr>
+      <hr />
     </li>
-    
-    <a class="" (click)="logout()" style="text-decoration:none;">
+
+    <a class="" (click)="logout()" style="text-decoration: none">
       <span> <fa-icon icon="sign-out-alt" class="fa-lg mr-2"></fa-icon> Déconnexion </span>
     </a>
   </ul>
-
 </div>

@@ -4,636 +4,591 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-        <h2
-          id="jhi-etablissement-heading"
-          data-cy="EtablissementCreateUpdateHeading"
-          style="text-align: center;"
-        >
-          Nouveau Etablissement
-        </h2>
-        <hr>
-        <div>
-          <jhi-alert-error></jhi-alert-error>
-          <mat-horizontal-stepper class="text-matiere" #stepper (selectionChange)="onSetepChange($event)">
-            <mat-step>
-              <h6 style="text-align: center; font-weight: bold;">Identification De l'Etablissement</h6>
-                <!-- <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-etablissement-heading" data-cy="EtablissementCreateUpdateHeading" style="text-align: center">Nouveau Etablissement</h2>
+      <hr />
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+        <mat-horizontal-stepper class="text-matiere" #stepper (selectionChange)="onSetepChange($event)">
+          <mat-step>
+            <h6 style="text-align: center; font-weight: bold">Identification De l'Etablissement</h6>
+            <!-- <div class="form-group" [hidden]="editForm.get('id')!.value == null">
                   <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
                   <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
                 </div> -->
 
-                <div class="form-group">
-                  <label class="form-control-label" for="field_nomEtablissement"
-                    >Etablissement</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="nomEtablissement"
-                    id="field_nomEtablissement"
-                    data-cy="nomEtablissement"
-                    formControlName="nomEtablissement"
-                  />
-                  <div
-                    *ngIf="
-                      editForm.get('nomEtablissement')!.invalid &&
-                      (editForm.get('nomEtablissement')!.dirty || editForm.get('nomEtablissement')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('nomEtablissement')?.errors?.required"
-                    >
-                      le nom de l'établissement est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_adresse"
-                    >Adresse</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="adresse"
-                    id="field_adresse"
-                    data-cy="adresse"
-                    formControlName="adresse"
-                  />
-                  <div
-                    *ngIf="
-                      editForm.get('adresse')!.invalid &&
-                      (editForm.get('adresse')!.dirty || editForm.get('adresse')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('adresse')?.errors?.required"
-                    >
-                      Adresse de l'établissement est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_telephone"
-                    >Téléphone</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="telephone"
-                    id="field_telephone"
-                    data-cy="telephone"
-                    formControlName="telephone"
-                  />
-                  <div
-                    *ngIf="
-                      editForm.get('telephone')!.invalid &&
-                      (editForm.get('telephone')!.dirty || editForm.get('telephone')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('telephone')?.errors?.required"
-                    >
-                      le numéro est de téléphone est obligatoire
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_email"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    id="field_email"
-                    data-cy="email"
-                    formControlName="email"
-                  />
-                  <div
-                    *ngIf="
-                      editForm.get('email')!.invalid &&
-                      (editForm.get('email')!.dirty || editForm.get('email')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('email')?.errors?.required"
-                    >
-                      l'email de l'établissement est obligatoite!!!
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etablissement.idPers" for="field_idPers">Id Pers</label>
-                  <input type="number" class="form-control" name="idPers" id="field_idPers" data-cy="idPers" formControlName="idPers" />
-                  <div *ngIf="editForm.get('idPers')!.invalid && (editForm.get('idPers')!.dirty || editForm.get('idPers')!.touched)">
-                    <small class="form-text text-danger" *ngIf="editForm.get('idPers')?.errors?.required" jhiTranslate="entity.validation.required">
-                      This field is required.
-                    </small>
-                    <small class="form-text text-danger" [hidden]="!editForm.get('idPers')?.errors?.number" jhiTranslate="entity.validation.number">
-                      This field should be a number.
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_nomQuartier"
-                    >Quartier</label
-                  >
-                  <select class="form-control" id="field_nomQuartier" data-cy="nomQuartier" name="nomQuartier" formControlName="nomQuartier">
-                    <option [ngValue]="null"></option>
-                    <option
-                      [ngValue]="quartierOption.id === editForm.get('nomQuartier')!.value?.id ? editForm.get('nomQuartier')!.value : quartierOption"
-                      *ngFor="let quartierOption of quartiersSharedCollection; trackBy: trackQuartierById"
-                    >
-                      {{ quartierOption.nomQuartier }}
-                    </option>
-                  </select>
-                </div>
-
-                <div>
-                  <button type="button" id="cancel-save" class="btn btn-secondary btn-lg" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
-                  </button>
-                  <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
-                    <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
-                  </button>
-                </div>
-            </mat-step>
-
-            <mat-step>
-              <h6 style="text-align: center; font-weight: bold;">Renseignements Généraux sur l'Etablissement</h6>
-                <div class="form-group">
-                  <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etablissement.surfaceBatie" for="field_surfaceBatie"
-                    >Surface Batie</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="surfaceBatie"
-                    id="field_surfaceBatie"
-                    data-cy="surfaceBatie"
-                    formControlName="surfaceBatie"
-                  />
-                  <div
-                    *ngIf="editForm.get('surfaceBatie')!.invalid && (editForm.get('surfaceBatie')!.dirty || editForm.get('surfaceBatie')!.touched)"
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('surfaceBatie')?.errors?.required"
-                      jhiTranslate="entity.validation.required"
-                    >
-                      This field is required.
-                    </small>
-                    <small
-                      class="form-text text-danger"
-                      [hidden]="!editForm.get('surfaceBatie')?.errors?.number"
-                      jhiTranslate="entity.validation.number"
-                    >
-                      This field should be a number.
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label"  for="field_superficie"
-                    >Superface du terrain</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="superficie"
-                    id="field_superficie"
-                    data-cy="superficie"
-                    formControlName="superficie"
-                  />
-                  <div *ngIf="editForm.get('superficie')!.invalid && (editForm.get('superficie')!.dirty || editForm.get('superficie')!.touched)">
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('superficie')?.errors?.required"
-                      jhiTranslate="entity.validation.required"
-                    >
-                      This field is required.
-                    </small>
-                    <small
-                      class="form-text text-danger"
-                      [hidden]="!editForm.get('superficie')?.errors?.number"
-                      jhiTranslate="entity.validation.number"
-                    >
-                      This field should be a number.
-                    </small>
-                  </div>
-                </div>
-
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_statusFoncier"
-                    >Status Foncier</label
-                  >
-                  <select class="form-control" formControlName="statusFoncier" name="statusFoncier" formControlName="statusFoncier" id="field_statusFoncier" data-cy="statusFoncier">
-                    <option [ngValue]="null"></option>
-                    <option value="Titre Foncier">Titre Foncier</option>
-                    <option value="Bail">Bail</option>
-                    <option value="Permis d'occuper">Permis d'occuper</option>
-                  </select>
-
-                  <div
-                    *ngIf="
-                      editForm.get('statusFoncier')!.invalid &&
-                      (editForm.get('statusFoncier')!.dirty || editForm.get('statusFoncier')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('statusFoncier')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_nombreApprenants"
-                    >Nombre Apprenants</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="nombreApprenants"
-                    id="field_nombreApprenants"
-                    data-cy="nombreApprenants"
-                    formControlName="nombreApprenants"
-                  />
-                  <div
-                    *ngIf="
-                      editForm.get('nombreApprenants')!.invalid &&
-                      (editForm.get('nombreApprenants')!.dirty || editForm.get('nombreApprenants')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('nombreApprenants')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_proprietaire"
-                    >Propriétaire</label
-                  >
-                  <select class="form-control" name="proprietaire" formControlName="proprietaire" id="field_proprietaire" data-cy="proprietaire">
-                    <option [ngValue]="null"></option>
-                    <option value="etat">Etat</option>
-                    <option value="prive">Privé</option>
-                    <option value="autre">Autre</option>
-                  </select>
-                  <div
-                    *ngIf="
-                      editForm.get('proprietaire')!.invalid &&
-                      (editForm.get('proprietaire')!.dirty || editForm.get('proprietaire')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('proprietaire')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-control-label" for="field_possibiliteExtension"
-                    >Possibilité Extension</label
-                  >
-                  <select class="form-control" name="possibiliteExtension" formControlName="possibiliteExtension" id="field_possibiliteExtension" data-cy="possibiliteExtension">
-                    <option [ngValue]="null"></option>
-                    <option value="Oui">Oui</option>
-                    <option value="Non">Non</option>
-                  </select>
-                  <div
-                    *ngIf="
-                      editForm.get('possibiliteExtension')!.invalid &&
-                      (editForm.get('possibiliteExtension')!.dirty || editForm.get('possibiliteExtension')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('possibiliteExtension')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
-
-                
-
-                <div>
-                  <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
-                    <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
-                  </button>
-                  <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
-                    <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
-                  </button>
-                </div>
-            </mat-step>
-
-            <mat-step>
-              <h6 style="text-align: center; font-weight: bold;">Renseignements Généraux sur l'Etablissement</h6>
-
-              <div class="form-group">
-                <label class="form-control-label" for="field_descriptionExtension"
-                  >Description Extension</label
-                >
-                <textarea name="descriptionExtension" class="form-control" 
-                id="field_descriptionExtension" data-cy="descriptionExtension"
-                formControlName="descriptionExtension" cols="30" rows="10">  
-                </textarea>
+            <div class="form-group">
+              <label class="form-control-label" for="field_nomEtablissement">Etablissement</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nomEtablissement"
+                id="field_nomEtablissement"
+                data-cy="nomEtablissement"
+                formControlName="nomEtablissement"
+              />
+              <div
+                *ngIf="
+                  editForm.get('nomEtablissement')!.invalid &&
+                  (editForm.get('nomEtablissement')!.dirty || editForm.get('nomEtablissement')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('nomEtablissement')?.errors?.required">
+                  le nom de l'établissement est obligatoire!!!
+                </small>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label class="form-control-label" for="field_branchementEau"
-                  >Branchement Eau</label
+            <div class="form-group">
+              <label class="form-control-label" for="field_adresse">Adresse</label>
+              <input type="text" class="form-control" name="adresse" id="field_adresse" data-cy="adresse" formControlName="adresse" />
+              <div *ngIf="editForm.get('adresse')!.invalid && (editForm.get('adresse')!.dirty || editForm.get('adresse')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('adresse')?.errors?.required">
+                  Adresse de l'établissement est obligatoire!!!
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_telephone">Téléphone</label>
+              <input
+                type="text"
+                class="form-control"
+                name="telephone"
+                id="field_telephone"
+                data-cy="telephone"
+                formControlName="telephone"
+              />
+              <div *ngIf="editForm.get('telephone')!.invalid && (editForm.get('telephone')!.dirty || editForm.get('telephone')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('telephone')?.errors?.required">
+                  le numéro est de téléphone est obligatoire
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_email">Email</label>
+              <input type="email" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+              <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required">
+                  l'email de l'établissement est obligatoite!!!
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etablissement.idPers" for="field_idPers">Id Pers</label>
+              <input type="number" class="form-control" name="idPers" id="field_idPers" data-cy="idPers" formControlName="idPers" />
+              <div *ngIf="editForm.get('idPers')!.invalid && (editForm.get('idPers')!.dirty || editForm.get('idPers')!.touched)">
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('idPers')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
                 >
-                <select class="form-control" name="branchementEau" formControlName="branchementEau" id="field_branchementEau" data-cy="branchementEau">
-                  <option [ngValue]="null"></option>
-                  <option value="Oui">Oui</option>
-                  <option value="Non">Non</option>
-                </select>
-                <div
-                  *ngIf="
-                    editForm.get('branchementEau')!.invalid &&
-                    (editForm.get('branchementEau')!.dirty || editForm.get('branchementEau')!.touched)
+                  This field is required.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  [hidden]="!editForm.get('idPers')?.errors?.number"
+                  jhiTranslate="entity.validation.number"
+                >
+                  This field should be a number.
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_nomQuartier">Quartier</label>
+              <select class="form-control" id="field_nomQuartier" data-cy="nomQuartier" name="nomQuartier" formControlName="nomQuartier">
+                <option [ngValue]="null"></option>
+                <option
+                  [ngValue]="
+                    quartierOption.id === editForm.get('nomQuartier')!.value?.id ? editForm.get('nomQuartier')!.value : quartierOption
                   "
+                  *ngFor="let quartierOption of quartiersSharedCollection; trackBy: trackQuartierById"
                 >
-                  <small
-                    class="form-text text-danger"
-                    *ngIf="editForm.get('branchementEau')?.errors?.required"
-                  >
-                    Ce champ est obligatoire!!!
-                  </small>
-                </div>
+                  {{ quartierOption.nomQuartier }}
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <button type="button" id="cancel-save" class="btn btn-secondary btn-lg" (click)="previousState()">
+                <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+              </button>
+              <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
+                <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
+              </button>
+            </div>
+          </mat-step>
+
+          <mat-step>
+            <h6 style="text-align: center; font-weight: bold">Renseignements Généraux sur l'Etablissement</h6>
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.etablissement.surfaceBatie" for="field_surfaceBatie"
+                >Surface Batie</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                name="surfaceBatie"
+                id="field_surfaceBatie"
+                data-cy="surfaceBatie"
+                formControlName="surfaceBatie"
+              />
+              <div
+                *ngIf="
+                  editForm.get('surfaceBatie')!.invalid && (editForm.get('surfaceBatie')!.dirty || editForm.get('surfaceBatie')!.touched)
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('surfaceBatie')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  [hidden]="!editForm.get('surfaceBatie')?.errors?.number"
+                  jhiTranslate="entity.validation.number"
+                >
+                  This field should be a number.
+                </small>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label class="form-control-label" for="field_branchementElectricite"
-                  >Branchement Electricité</label
+            <div class="form-group">
+              <label class="form-control-label" for="field_superficie">Superface du terrain</label>
+              <input
+                type="number"
+                class="form-control"
+                name="superficie"
+                id="field_superficie"
+                data-cy="superficie"
+                formControlName="superficie"
+              />
+              <div
+                *ngIf="editForm.get('superficie')!.invalid && (editForm.get('superficie')!.dirty || editForm.get('superficie')!.touched)"
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('superficie')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
                 >
-                <select class="form-control" name="branchementElectricite" formControlName="branchementElectricite" id="field_branchementElectricite" data-cy="branchementElectricite">
-                  <option [ngValue]="null"></option>
-                  <option value="Oui">Oui</option>
-                  <option value="Non">Non</option>
-                </select>
-                <div
-                  *ngIf="
-                    editForm.get('branchementElectricite')!.invalid &&
-                    (editForm.get('branchementElectricite')!.dirty || editForm.get('branchementElectricite')!.touched)
-                  "
+                  This field is required.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  [hidden]="!editForm.get('superficie')?.errors?.number"
+                  jhiTranslate="entity.validation.number"
                 >
-                  <small
-                    class="form-text text-danger"
-                    *ngIf="editForm.get('branchementElectricite')?.errors?.required"
-                  >
-                    Ce champ est obligatoire!!!
-                  </small>
-                </div>
+                  This field should be a number.
+                </small>
               </div>
+            </div>
 
+            <div class="form-group">
+              <label class="form-control-label" for="field_statusFoncier">Status Foncier</label>
+              <select
+                class="form-control"
+                formControlName="statusFoncier"
+                name="statusFoncier"
+                formControlName="statusFoncier"
+                id="field_statusFoncier"
+                data-cy="statusFoncier"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Titre Foncier">Titre Foncier</option>
+                <option value="Bail">Bail</option>
+                <option value="Permis d'occuper">Permis d'occuper</option>
+              </select>
 
-              <div class="form-group">
-                <label class="form-control-label" for="field_puissanceSouscrite"
-                  >Puissance Souscrite</label
-                >
-                <select class="form-control" name="puissanceSouscrite" formControlName="puissanceSouscrite" id="field_puissanceSouscrite" data-cy="puissanceSouscrite">
-                  <option [ngValue]="null"></option>
-                  <option value="Oui">Oui</option>
-                  <option value="Non">Non</option>
-                </select>
-                <div
-                  *ngIf="
-                    editForm.get('puissanceSouscrite')!.invalid &&
-                    (editForm.get('puissanceSouscrite')!.dirty || editForm.get('puissanceSouscrite')!.touched)
-                  "
-                >
-                  <small
-                    class="form-text text-danger"
-                    *ngIf="editForm.get('puissanceSouscrite')?.errors?.required"
-                  >
-                    Ce champ est obligatoire!!!
-                  </small>
-                </div>
+              <div
+                *ngIf="
+                  editForm.get('statusFoncier')!.invalid && (editForm.get('statusFoncier')!.dirty || editForm.get('statusFoncier')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('statusFoncier')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label class="form-control-label" for="field_typeReseau"
-                  >Type Réseau</label
-                >
-                <select class="form-control" name="typeReseau" formControlName="typeReseau" id="field_typeReseau" data-cy="typeReseau">
-                  <option value="22O V">220 V</option>
-                  <option value="380 V">380 V</option>
-                </select>
-                <div
-                  *ngIf="
-                    editForm.get('typeReseau')!.invalid &&
-                    (editForm.get('typeReseau')!.dirty || editForm.get('typeReseau')!.touched)
-                  "
-                >
-                  <small
-                    class="form-text text-danger"
-                    *ngIf="editForm.get('typeReseau')?.errors?.required"
-                  >
-                    Ce champ est obligatoire!!!
-                  </small>
-                </div>
+            <div class="form-group">
+              <label class="form-control-label" for="field_nombreApprenants">Nombre Apprenants</label>
+              <input
+                type="number"
+                class="form-control"
+                name="nombreApprenants"
+                id="field_nombreApprenants"
+                data-cy="nombreApprenants"
+                formControlName="nombreApprenants"
+              />
+              <div
+                *ngIf="
+                  editForm.get('nombreApprenants')!.invalid &&
+                  (editForm.get('nombreApprenants')!.dirty || editForm.get('nombreApprenants')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('nombreApprenants')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label class="form-control-label" for="field_circuitTerre"
-                  >Circuit Terre</label
-                >
-                <select class="form-control" name="circuitTerre" formControlName="circuitTerre" id="field_circuitTerre" data-cy="circuitTerre">
-                  <option [ngValue]="null"></option>
-                  <option value="Oui">Oui</option>
-                  <option value="Non">Non</option>
-                </select>
-                <div
-                  *ngIf="
-                    editForm.get('circuitTerre')!.invalid &&
-                    (editForm.get('circuitTerre')!.dirty || editForm.get('circuitTerre')!.touched)
-                  "
-                >
-                  <small
-                    class="form-text text-danger"
-                    *ngIf="editForm.get('circuitTerre')?.errors?.required"
-                  >
-                    Ce champ est obligatoire!!!
-                  </small>
-                </div>
+            <div class="form-group">
+              <label class="form-control-label" for="field_proprietaire">Propriétaire</label>
+              <select
+                class="form-control"
+                name="proprietaire"
+                formControlName="proprietaire"
+                id="field_proprietaire"
+                data-cy="proprietaire"
+              >
+                <option [ngValue]="null"></option>
+                <option value="etat">Etat</option>
+                <option value="prive">Privé</option>
+                <option value="autre">Autre</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('proprietaire')!.invalid && (editForm.get('proprietaire')!.dirty || editForm.get('proprietaire')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('proprietaire')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
               </div>
+            </div>
 
-              <div>
-                <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
-                  <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
-                </button>
-                <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
-                  <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
-                </button>
+            <div class="form-group">
+              <label class="form-control-label" for="field_possibiliteExtension">Possibilité Extension</label>
+              <select
+                class="form-control"
+                name="possibiliteExtension"
+                formControlName="possibiliteExtension"
+                id="field_possibiliteExtension"
+                data-cy="possibiliteExtension"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('possibiliteExtension')!.invalid &&
+                  (editForm.get('possibiliteExtension')!.dirty || editForm.get('possibiliteExtension')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('possibiliteExtension')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
               </div>
-            </mat-step>
+            </div>
 
-            <mat-step>
-              <h6 style="text-align: center; font-weight: bold;">Renseignements Généraux sur l'Etablissement</h6>
+            <div>
+              <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
+                <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
+              </button>
+              <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
+                <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
+              </button>
+            </div>
+          </mat-step>
 
-                <div class="form-group">
-                  <label class="form-control-label" for="field_protectionArret"
-                    >Protection Arret</label
-                  >
-                  <select class="form-control" name="protectionArret" formControlName="protectionArret" id="field_protectionArret" data-cy="protectionArret">
-                    <option [ngValue]="null"></option>
-                    <option value="Oui">Oui</option>
-                    <option value="Non">Non</option>
-                  </select>
-                  <div
-                    *ngIf="
-                      editForm.get('protectionArret')!.invalid &&
-                      (editForm.get('protectionArret')!.dirty || editForm.get('protectionArret')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('protectionArret')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
+          <mat-step>
+            <h6 style="text-align: center; font-weight: bold">Renseignements Généraux sur l'Etablissement</h6>
 
-                <div class="form-group">
-                  <label class="form-control-label" for="field_protectionFoudre"
-                    >Protection Foudre</label
-                  >
-                  <select class="form-control" name="protectionFoudre" formControlName="protectionFoudre" id="field_protectionFoudre" data-cy="protectionFoudre">
-                    <option [ngValue]="null"></option>
-                    <option value="Oui">Oui</option>
-                    <option value="Non">Non</option>
-                  </select>
-                  <div
-                    *ngIf="
-                      editForm.get('protectionFoudre')!.invalid &&
-                      (editForm.get('protectionFoudre')!.dirty || editForm.get('protectionFoudre')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('protectionFoudre')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
+            <div class="form-group">
+              <label class="form-control-label" for="field_descriptionExtension">Description Extension</label>
+              <textarea
+                name="descriptionExtension"
+                class="form-control"
+                id="field_descriptionExtension"
+                data-cy="descriptionExtension"
+                formControlName="descriptionExtension"
+                cols="30"
+                rows="10"
+              >
+              </textarea>
+            </div>
 
-                <div class="form-group">
-                  <label class="form-control-label" for="field_connexionTel"
-                    >Connexion Téléphonique</label
-                  >
-                  <select class="form-control" name="connexionTel" formControlName="connexionTel" id="field_connexionTel" data-cy="connexionTel">
-                    <option [ngValue]="null"></option>
-                    <option value="Oui">Oui</option>
-                    <option value="Non ">Non </option>
-                  </select>
-                  <div
-                    *ngIf="
-                      editForm.get('connexionTel')!.invalid &&
-                      (editForm.get('connexionTel')!.dirty || editForm.get('connexionTel')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('connexionTel')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
+            <div class="form-group">
+              <label class="form-control-label" for="field_branchementEau">Branchement Eau</label>
+              <select
+                class="form-control"
+                name="branchementEau"
+                formControlName="branchementEau"
+                id="field_branchementEau"
+                data-cy="branchementEau"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('branchementEau')!.invalid &&
+                  (editForm.get('branchementEau')!.dirty || editForm.get('branchementEau')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('branchementEau')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
 
-                <div class="form-group">
-                  <label class="form-control-label" for="field_connexionInternet"
-                    >Connexion Internet</label
-                  >
-                  <select class="form-control" name="connexionInternet" formControlName="connexionInternet" id="field_connexionInternet" data-cy="connexionInternet">
-                    <option [ngValue]="null"></option>
-                    <option value="Oui">Oui</option>
-                    <option value="Non">Non</option>
-                  </select>
-                  <div
-                    *ngIf="
-                      editForm.get('connexionInternet')!.invalid &&
-                      (editForm.get('connexionInternet')!.dirty || editForm.get('connexionInternet')!.touched)
-                    "
-                  >
-                    <small
-                      class="form-text text-danger"
-                      *ngIf="editForm.get('connexionInternet')?.errors?.required"
-                    >
-                      Ce champ est obligatoire!!!
-                    </small>
-                  </div>
-                </div>
+            <div class="form-group">
+              <label class="form-control-label" for="field_branchementElectricite">Branchement Electricité</label>
+              <select
+                class="form-control"
+                name="branchementElectricite"
+                formControlName="branchementElectricite"
+                id="field_branchementElectricite"
+                data-cy="branchementElectricite"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('branchementElectricite')!.invalid &&
+                  (editForm.get('branchementElectricite')!.dirty || editForm.get('branchementElectricite')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('branchementElectricite')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
 
-                <div class="form-group">
-                  <label class="form-control-label" for="field_environnement"
-                    >Environnement</label
-                  >
+            <div class="form-group">
+              <label class="form-control-label" for="field_puissanceSouscrite">Puissance Souscrite</label>
+              <select
+                class="form-control"
+                name="puissanceSouscrite"
+                formControlName="puissanceSouscrite"
+                id="field_puissanceSouscrite"
+                data-cy="puissanceSouscrite"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('puissanceSouscrite')!.invalid &&
+                  (editForm.get('puissanceSouscrite')!.dirty || editForm.get('puissanceSouscrite')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('puissanceSouscrite')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
 
-                  <textarea name="environnement" class="form-control" 
-                  id="field_environnement" data-cy="environnement"
-                  formControlName="environnement" cols="30" rows="10">  
-                  </textarea>
+            <div class="form-group">
+              <label class="form-control-label" for="field_typeReseau">Type Réseau</label>
+              <select class="form-control" name="typeReseau" formControlName="typeReseau" id="field_typeReseau" data-cy="typeReseau">
+                <option value="22O V">220 V</option>
+                <option value="380 V">380 V</option>
+              </select>
+              <div
+                *ngIf="editForm.get('typeReseau')!.invalid && (editForm.get('typeReseau')!.dirty || editForm.get('typeReseau')!.touched)"
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('typeReseau')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
 
-                </div>
+            <div class="form-group">
+              <label class="form-control-label" for="field_circuitTerre">Circuit Terre</label>
+              <select
+                class="form-control"
+                name="circuitTerre"
+                formControlName="circuitTerre"
+                id="field_circuitTerre"
+                data-cy="circuitTerre"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('circuitTerre')!.invalid && (editForm.get('circuitTerre')!.dirty || editForm.get('circuitTerre')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('circuitTerre')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
 
-                <div class="form-group">
-                  <label class="form-control-label" for="field_dispositif"
-                    >Dispositif</label
-                  >
-                  <textarea name="dispositif" class="form-control" 
-                  id="field_dispositif" data-cy="dispositif"
-                  formControlName="dispositif" cols="30" rows="10">  
-                  </textarea>
+            <div>
+              <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
+                <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
+              </button>
+              <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
+                <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
+              </button>
+            </div>
+          </mat-step>
 
-                </div>
+          <mat-step>
+            <h6 style="text-align: center; font-weight: bold">Renseignements Généraux sur l'Etablissement</h6>
 
-                <div>
-                  <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
-                    <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
-                  </button>
-    
-                  <button
-                    type="submit"
-                    id="save-entity"
-                    data-cy="entityCreateSaveButton"
-                    [disabled]="editForm.invalid || isSaving"
-                    class="btn btn-primary btn-lg"
-                    style="position: relative; left: 60%"
-                  >
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
-                  </button>
-                </div>
+            <div class="form-group">
+              <label class="form-control-label" for="field_protectionArret">Protection Arret</label>
+              <select
+                class="form-control"
+                name="protectionArret"
+                formControlName="protectionArret"
+                id="field_protectionArret"
+                data-cy="protectionArret"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('protectionArret')!.invalid &&
+                  (editForm.get('protectionArret')!.dirty || editForm.get('protectionArret')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('protectionArret')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
 
-            </mat-step>
+            <div class="form-group">
+              <label class="form-control-label" for="field_protectionFoudre">Protection Foudre</label>
+              <select
+                class="form-control"
+                name="protectionFoudre"
+                formControlName="protectionFoudre"
+                id="field_protectionFoudre"
+                data-cy="protectionFoudre"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('protectionFoudre')!.invalid &&
+                  (editForm.get('protectionFoudre')!.dirty || editForm.get('protectionFoudre')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('protectionFoudre')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_connexionTel">Connexion Téléphonique</label>
+              <select
+                class="form-control"
+                name="connexionTel"
+                formControlName="connexionTel"
+                id="field_connexionTel"
+                data-cy="connexionTel"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non ">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('connexionTel')!.invalid && (editForm.get('connexionTel')!.dirty || editForm.get('connexionTel')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('connexionTel')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_connexionInternet">Connexion Internet</label>
+              <select
+                class="form-control"
+                name="connexionInternet"
+                formControlName="connexionInternet"
+                id="field_connexionInternet"
+                data-cy="connexionInternet"
+              >
+                <option [ngValue]="null"></option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <div
+                *ngIf="
+                  editForm.get('connexionInternet')!.invalid &&
+                  (editForm.get('connexionInternet')!.dirty || editForm.get('connexionInternet')!.touched)
+                "
+              >
+                <small class="form-text text-danger" *ngIf="editForm.get('connexionInternet')?.errors?.required">
+                  Ce champ est obligatoire!!!
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_environnement">Environnement</label>
+
+              <textarea
+                name="environnement"
+                class="form-control"
+                id="field_environnement"
+                data-cy="environnement"
+                formControlName="environnement"
+                cols="30"
+                rows="10"
+              >
+              </textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label" for="field_dispositif">Dispositif</label>
+              <textarea
+                name="dispositif"
+                class="form-control"
+                id="field_dispositif"
+                data-cy="dispositif"
+                formControlName="dispositif"
+                cols="30"
+                rows="10"
+              >
+              </textarea>
+            </div>
+
+            <div>
+              <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
+                <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
+              </button>
+
+              <button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary btn-lg"
+                style="position: relative; left: 60%"
+              >
+                <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
+              </button>
+            </div>
+          </mat-step>
         </mat-horizontal-stepper>
-        </div>
-      </form>
+      </div>
+    </form>
   </div>
 </div>
-<br>
+<br />

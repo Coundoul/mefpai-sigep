@@ -4,31 +4,37 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-    <h2 id="page-heading" data-cy="EquipementHeading" style="text-align: center;">
-      <span >Liste des Matières</span>
+    <h2 id="page-heading" data-cy="EquipementHeading" style="text-align: center">
+      <span>Liste des Matières</span>
 
-      <hr>
+      <hr />
 
       <div class="d-flex justify-content-end">
-        <div class="formulaire-recherche col-md-4" style="position: relative; right: 35%;">
+        <div class="formulaire-recherche col-md-4" style="position: relative; right: 35%">
           <form class="navbar-form" name="editForm" novalidate (ngSubmit)="rechercher()" [formGroup]="editForm">
-              <div class="input-group no-border">
-                
-                  <input matInput type="text" id="recherche" name="recherche" class="form-control" style="text-decoration: underline;" formControlName="recherche" placeholder="Search...">
-                  
-              
-                <button mat-raised-button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-secondary btn-circle btn-xl">
-                    <fa-icon icon="search"></fa-icon>  
-                    <div class="ripple-container"></div>
-                </button>
-              </div>
+            <div class="input-group no-border">
+              <input
+                matInput
+                type="text"
+                id="recherche"
+                name="recherche"
+                class="form-control"
+                style="text-decoration: underline"
+                formControlName="recherche"
+                placeholder="Search..."
+              />
+
+              <button mat-raised-button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-secondary btn-circle btn-xl">
+                <fa-icon icon="search"></fa-icon>
+                <div class="ripple-container"></div>
+              </button>
+            </div>
           </form>
         </div>
-        
 
         <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
           <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-          <span >Actualiser</span>
+          <span>Actualiser</span>
         </button>
 
         <button
@@ -56,9 +62,7 @@
         <thead>
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
             <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
-            <th scope="col" jhiSortBy="reference">
-              <span>Référence</span><fa-icon icon="sort"></fa-icon>
-            </th>
+            <th scope="col" jhiSortBy="reference"><span>Référence</span><fa-icon icon="sort"></fa-icon></th>
             <th scope="col" jhiSortBy="reference">
               <span>Nom Matière</span>
             </th>
@@ -109,7 +113,7 @@
             <!-- <td>
               {{ equipement.typeMatiere }}
             </td> -->
-            
+
             <td>
               <div *ngIf="equipement.group === true">
                 <span>
@@ -123,9 +127,8 @@
                 </span>
               </div>
               <!-- {{ requete.etatTraite }}</td> -->
-            
             </td>
-            
+
             <!-- <td>
               <div *ngIf="equipement.etatMatiere === 'Bon Etat'">
                 <span>
@@ -197,12 +200,8 @@
                   <!-- <span class="d-none d-md-inline" >Modifier</span> -->
                 </button>
 
-                <button
-                  type="submit"
-                  [routerLink]="['/equipement', equipement.id, 'signaler']"
-                  class="btn btn-warning btn-sm"
-                >
-                  <fa-icon icon="bell" style="color: white;"></fa-icon>
+                <button type="submit" [routerLink]="['/equipement', equipement.id, 'signaler']" class="btn btn-warning btn-sm">
+                  <fa-icon icon="bell" style="color: white"></fa-icon>
                   <!-- <span class="d-none d-md-inline" style="color: white;">Signaler</span> -->
                 </button>
 
@@ -235,23 +234,20 @@
       </div>
     </div>
 
-
     <div class="table-responsive" id="detailRecherche" *ngIf="detailRecherche">
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
             <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
-            <th scope="col" jhiSortBy="reference">
-              <span>Référence</span><fa-icon icon="sort"></fa-icon>
-            </th>
+            <th scope="col" jhiSortBy="reference"><span>Référence</span><fa-icon icon="sort"></fa-icon></th>
             <th scope="col" jhiSortBy="reference">
               <span>Nom Matière</span>
             </th>
-            
+
             <th scope="col" jhiSortBy="quantite"><span>Quantité</span></th>
             <!-- <th scope="col" jhiSortBy="quantite"><span>Groupe</span></th> -->
             <th scope="col" jhiSortBy="group"><span>Volatile</span></th>
-            
+
             <th scope="col" jhiSortBy="categorie.id"><span>Catégorie</span></th>
             <th scope="col" style="text-align: center">Actions</th>
           </tr>
@@ -271,7 +267,7 @@
             <!-- <td>
               {{ equipement.typeMatiere }}
             </td> -->
-            
+
             <td>
               <div *ngIf="detailRecherche[4] === true">
                 <span>
@@ -285,46 +281,31 @@
                 </span>
               </div>
               <!-- {{ requete.etatTraite }}</td> -->
-            
             </td>
-            
+
             <td>
               <div *ngIf="detailRecherche[5]">
-                  {{ detailRecherche[5] }}  
+                {{ detailRecherche[5] }}
               </div>
             </td>
             <td class="text-right">
               <div class="btn-group">
-                <button
-                  type="submit"
-                  
-                  class="btn btn-info btn-sm"
-                  data-cy="entityDetailsButton"
-                >
+                <button type="submit" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
                   <fa-icon icon="eye"></fa-icon>
                   <!-- <span class="d-none d-md-inline" >Détail</span> -->
                 </button>
 
-                <button
-                  type="submit"
-                  
-                  class="btn btn-primary btn-sm"
-                  data-cy="entityEditButton"
-                >
+                <button type="submit" class="btn btn-primary btn-sm" data-cy="entityEditButton">
                   <fa-icon icon="pencil-alt"></fa-icon>
                   <!-- <span class="d-none d-md-inline" >Modifier</span> -->
                 </button>
 
-                <button
-                  type="submit"
-                  
-                  class="btn btn-warning btn-sm"
-                >
-                  <fa-icon icon="bell" style="color: white;"></fa-icon>
+                <button type="submit" class="btn btn-warning btn-sm">
+                  <fa-icon icon="bell" style="color: white"></fa-icon>
                   <!-- <span class="d-none d-md-inline" style="color: white;">Signaler</span> -->
                 </button>
 
-                <button type="submit"  class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <button type="submit" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                   <fa-icon icon="trash-alt"></fa-icon>
                   <!-- <span class="d-none d-md-inline">Supprimer</span> -->
                 </button>
@@ -334,7 +315,6 @@
         </tbody>
       </table>
     </div>
-
   </div>
 
   <!-- <div class="mdl-card mdl-shadow--2dp">

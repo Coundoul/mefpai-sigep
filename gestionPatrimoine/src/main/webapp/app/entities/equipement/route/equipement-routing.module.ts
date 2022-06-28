@@ -19,9 +19,9 @@ const equipementRoute: Routes = [
     canActivate: [UserRouteAccessService],
   },
   {
-    path: ':id/view', 
+    path: ':id/view',
     component: EquipementDetailComponent,
-    
+
     resolve: {
       equipement: EquipementRoutingResolveService,
     },
@@ -66,4 +66,3 @@ const equipementRoute: Routes = [
   exports: [RouterModule],
 })
 export class EquipementRoutingModule {}
-

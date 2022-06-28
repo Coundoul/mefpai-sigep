@@ -67,11 +67,11 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://DO_NOT_CALL:9080/auth/realms/jhipster
+            issuer-uri: http://10.198.100.208:9080/auth/realms/jhipster
 
 server:
   port: 10344
-  address: localhost
+  address: 127.0.0.1
 
 # ===================================================================
 # JHipster specific properties

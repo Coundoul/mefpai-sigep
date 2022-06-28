@@ -34,7 +34,8 @@ export class MagazinUpdateComponent implements OnInit {
     protected quartierService: QuartierService,
     protected activatedRoute: ActivatedRoute,
     private router: Router,
-    protected fb: FormBuilder, public activeModal: NgbActiveModal
+    protected fb: FormBuilder,
+    public activeModal: NgbActiveModal
   ) {}
 
   ngOnInit(): void {
@@ -77,8 +78,6 @@ export class MagazinUpdateComponent implements OnInit {
   protected onSaveSuccess(): void {
     this.router.navigate(['/equipement/new']);
   }
-
-  
 
   protected onSaveError(): void {
     // Api for inheritance.

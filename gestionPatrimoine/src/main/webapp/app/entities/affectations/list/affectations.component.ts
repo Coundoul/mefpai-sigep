@@ -30,7 +30,7 @@ export class AffectationsComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected modalService: NgbModal,
-    protected userService: UserService,
+    protected userService: UserService
   ) {}
 
   // loadUser() : void{

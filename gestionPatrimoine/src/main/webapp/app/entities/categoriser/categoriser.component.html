@@ -4,51 +4,51 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-    <h2 style="text-align: center;">
-      <span style="font-weight: bold;">Liste des Matières en Mauvais Etat ou Hors Service</span>
+    <h2 style="text-align: center">
+      <span style="font-weight: bold">Liste des Matières en Mauvais Etat ou Hors Service</span>
     </h2>
-    <hr>
-  <div class="" *ngIf="categoriserMatieres && categoriserMatieres.length > 0">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Nom Matière</th>
-          <th scope="col">Catégorie</th>
-          <th scope="col">Caratéristique</th>
-          <th scope="col">Bénéficiaire</th>
-          <th scope="col">Etat Matières</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let categoriser of categoriserMatieres">
-          <th scope="row">{{ categoriser[0]}}</th>
-          <td>{{ categoriser[1] }}</td>
-          <td>{{ categoriser[2] }}</td>
-          <td>{{ categoriser[3] }}</td>
-          <td>{{ categoriser[4] }}</td>
-          <td>
-            <div *ngIf="categoriser[5] === 'Mauvais Etat'">
-              <span>
-                <fa-icon icon="lightbulb" style="color: orange; font-size: 150%"></fa-icon>
-              </span>
-            </div>
+    <hr />
+    <div class="" *ngIf="categoriserMatieres && categoriserMatieres.length > 0">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Reference</th>
+            <th scope="col">Nom Matière</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Caratéristique</th>
+            <th scope="col">Bénéficiaire</th>
+            <th scope="col">Etat Matières</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let categoriser of categoriserMatieres">
+            <th scope="row">{{ categoriser[0] }}</th>
+            <td>{{ categoriser[1] }}</td>
+            <td>{{ categoriser[2] }}</td>
+            <td>{{ categoriser[3] }}</td>
+            <td>{{ categoriser[4] }}</td>
+            <td>
+              <div *ngIf="categoriser[5] === 'Mauvais Etat'">
+                <span>
+                  <fa-icon icon="lightbulb" style="color: orange; font-size: 150%"></fa-icon>
+                </span>
+              </div>
 
-            <div *ngIf="categoriser[5] === 'Hors Service'">
-              <span>
-                <fa-icon icon="lightbulb" style="color: red; font-size: 150%"></fa-icon>
-              </span>
-            </div>
-          </td>
-          <!-- <td>
+              <div *ngIf="categoriser[5] === 'Hors Service'">
+                <span>
+                  <fa-icon icon="lightbulb" style="color: red; font-size: 150%"></fa-icon>
+                </span>
+              </div>
+            </td>
+            <!-- <td>
             <img
                 [src]="'data:' + categoriser[4] + ';base64,' + categoriser[5]"
                 style="max-width: 100%"
                 alt="equipement image"
             />
           </td> -->
-          <!-- <td class="text-right">
+            <!-- <td class="text-right">
             <div class="btn-group">
               <button type="submit" (click)="detail(inventaire[0])" class="btn btn-info btn-sm">
                 <fa-icon icon="eye"></fa-icon>
@@ -56,10 +56,10 @@
               </button>
             </div>
           </td> -->
-        </tr>
-      </tbody>
-    </table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-</div>
-<br>
+<br />

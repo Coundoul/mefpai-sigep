@@ -10,15 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [
-    RouterModule.forChild([INVENTAIRE_ROUTE]),
-    SidebarModule,
-    SharedModule,
-    MatDialogModule,
-    MatButtonModule,
-    CommonModule,
-  ],
+  imports: [RouterModule.forChild([INVENTAIRE_ROUTE]), SidebarModule, SharedModule, MatDialogModule, MatButtonModule, CommonModule],
   declarations: [InventaireComponent, DetailInventaireComponent],
   //entryComponents: [DetailInventaireComponent],
 })
-export class InventaireModule { }
+export class InventaireModule {}

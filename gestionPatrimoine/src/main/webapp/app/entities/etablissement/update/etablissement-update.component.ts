@@ -21,7 +21,7 @@ export class EtablissementUpdateComponent implements OnInit {
   isSaving = false;
   @ViewChild('stepper') stepper!: MatHorizontalStepper;
   step = 0;
-  
+
   quartiersSharedCollection: IQuartier[] = [];
 
   editForm = this.fb.group({
@@ -57,7 +57,7 @@ export class EtablissementUpdateComponent implements OnInit {
     protected quartierService: QuartierService,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder,
-    protected eventManager: EventManager,
+    protected eventManager: EventManager
   ) {}
 
   ngOnInit(): void {

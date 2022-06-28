@@ -4,9 +4,9 @@
   </div>
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
-    <h2 id="page-heading" data-cy="ProjetsHeading" style="text-align: center;">
-      <span >Projets</span>
-      <hr>
+    <h2 id="page-heading" data-cy="ProjetsHeading" style="text-align: center">
+      <span>Projets</span>
+      <hr />
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
           <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
@@ -96,7 +96,7 @@
                 <a [routerLink]="['/contrat-projet', projets.nom?.id, 'view']">{{ projets.nom?.id }}</a>
               </div>
             </td> -->
-            
+
             <!-- <td>
               <div *ngIf="projets.nomEtablissement">
                 <a [routerLink]="['/etablissement', projets.nomEtablissement?.id, 'view']">{{ projets.nomEtablissement }}</a>

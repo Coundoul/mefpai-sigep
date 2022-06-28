@@ -3,7 +3,7 @@
 This application was generated using JHipster 7.0.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.0.1](https://www.jhipster.tech/documentation-archive/v7.0.1).
 
 This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
-This application is configured for Service Discovery and Configuration with the JHipster-Registry. On launch, it will refuse to start if it is not able to connect to the JHipster-Registry at [http://localhost:8761](http://localhost:8761). For more information, read our documentation on [Service Discovery and Configuration with the JHipster-Registry][].
+This application is configured for Service Discovery and Configuration with the JHipster-Registry. On launch, it will refuse to start if it is not able to connect to the JHipster-Registry at [http://10.198.100.208:8761](http://10.198.100.208:8761). For more information, read our documentation on [Service Discovery and Configuration with the JHipster-Registry][].
 
 ## Development
 
@@ -55,11 +55,11 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://localhost:9080/auth/realms/jhipster
+            issuer-uri: http://10.198.100.208:9080/auth/admin/jhipster
         registration:
           oidc:
-            client-id: web_app
-            client-secret: web_app
+            client-id: SIGEP-BI
+            client-secret: SIGEP-BI
 ```
 
 ### JHipster Control Center
@@ -190,7 +190,7 @@ To ensure everything worked, run:
 java -jar target/*.jar
 ```
 
-Then navigate to [http://localhost:9000](http://localhost:9000) in your browser.
+Then navigate to [http://10.198.100.208:9000](http://10.198.100.208:9000) in your browser.
 
 Refer to [Using JHipster in production][] for more details.
 

@@ -105,48 +105,47 @@ export class SidebarComponent implements OnInit {
   // }
 
   myFunction(): void {
-     this.x = document.getElementById("adminMenuCache");
-     this.y= document.getElementById("adminMenuAffiche");
-     this.z= document.getElementById("adminMenuAfficheListe");
-    if (this.y.style.display === "inline-block" && this.z.style.display === "inline-block" ) {
-      this.y.style.display = "none";
-      this.z.style.display = "none";
-      this.x.style.display = "inline-block";
+    this.x = document.getElementById('adminMenuCache');
+    this.y = document.getElementById('adminMenuAffiche');
+    this.z = document.getElementById('adminMenuAfficheListe');
+    if (this.y.style.display === 'inline-block' && this.z.style.display === 'inline-block') {
+      this.y.style.display = 'none';
+      this.z.style.display = 'none';
+      this.x.style.display = 'inline-block';
     } else {
-      this.y.style.display = "inline-block";
-      this.z.style.display = "inline-block";
-      this.x.style.display = "none";
+      this.y.style.display = 'inline-block';
+      this.z.style.display = 'inline-block';
+      this.x.style.display = 'none';
     }
   }
 
   myFunctionInfra(): void {
-    this.a = document.getElementById("adminMenuCacheInfra");
-    this.b= document.getElementById("adminMenuAfficheInfra");
-    this.c= document.getElementById("adminMenuListeInfra");
-   if (this.b.style.display === "inline-block" && this.c.style.display === "inline-block" ) {
-     this.b.style.display = "none";
-     this.c.style.display = "none";
-     this.a.style.display = "inline-block";
-   } else {
-     this.b.style.display = "inline-block";
-     this.c.style.display = "inline-block";
-     this.a.style.display = "none";
-   }
- }
+    this.a = document.getElementById('adminMenuCacheInfra');
+    this.b = document.getElementById('adminMenuAfficheInfra');
+    this.c = document.getElementById('adminMenuListeInfra');
+    if (this.b.style.display === 'inline-block' && this.c.style.display === 'inline-block') {
+      this.b.style.display = 'none';
+      this.c.style.display = 'none';
+      this.a.style.display = 'inline-block';
+    } else {
+      this.b.style.display = 'inline-block';
+      this.c.style.display = 'inline-block';
+      this.a.style.display = 'none';
+    }
+  }
 
- myFunctionMaint(): void {
-  this.e = document.getElementById("adminMenuCacheMaint");
-  this.f= document.getElementById("adminMenuAfficheMaint");
-  this.d= document.getElementById("adminMenuListeMaint");
- if (this.d.style.display === "inline-block" && this.f.style.display === "inline-block" ) {
-   this.d.style.display = "none";
-   this.f.style.display = "none";
-   this.e.style.display = "inline-block";
- } else {
-   this.d.style.display = "inline-block";
-   this.f.style.display = "inline-block";
-   this.e.style.display = "none";
- }
-}
-
+  myFunctionMaint(): void {
+    this.e = document.getElementById('adminMenuCacheMaint');
+    this.f = document.getElementById('adminMenuAfficheMaint');
+    this.d = document.getElementById('adminMenuListeMaint');
+    if (this.d.style.display === 'inline-block' && this.f.style.display === 'inline-block') {
+      this.d.style.display = 'none';
+      this.f.style.display = 'none';
+      this.e.style.display = 'inline-block';
+    } else {
+      this.d.style.display = 'inline-block';
+      this.f.style.display = 'inline-block';
+      this.e.style.display = 'none';
+    }
+  }
 }

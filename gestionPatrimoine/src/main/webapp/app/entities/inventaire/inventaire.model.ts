@@ -1,4 +1,3 @@
-
 export interface IInventaire {
   reference?: string;
   entreeTotal?: string;
@@ -18,12 +17,7 @@ export interface IDetailInventaire {
 }
 
 export class Inventaire implements IInventaire {
-  constructor(
-    public reference?: string,
-    public entreeTotal?: string,
-    public sortieTotal?: string,
-    public compter?: string,
-  ) {}
+  constructor(public reference?: string, public entreeTotal?: string, public sortieTotal?: string, public compter?: string) {}
 }
 
 export class DetailInventaire implements IDetailInventaire {

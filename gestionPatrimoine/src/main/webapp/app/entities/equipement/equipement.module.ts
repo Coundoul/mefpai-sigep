@@ -16,14 +16,27 @@ import { MatInputModule } from '@angular/material/input';
 import { RechercheEquipementComponent } from './recherche-equipement/recherche-equipement.component';
 
 @NgModule({
-  imports: [SharedModule, EquipementRoutingModule, SidebarModule, MatStepperModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, FormsModule,
+  imports: [
+    SharedModule,
+    EquipementRoutingModule,
+    SidebarModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',
+    }),
   ],
-  declarations: [EquipementComponent, EquipementDetailComponent, EquipementDeleteDialogComponent, RechercheEquipementComponent, EquipementUpdateComponent, SignalerComponent],
+  declarations: [
+    EquipementComponent,
+    EquipementDetailComponent,
+    EquipementDeleteDialogComponent,
+    RechercheEquipementComponent,
+    EquipementUpdateComponent,
+    SignalerComponent,
+  ],
   entryComponents: [EquipementDeleteDialogComponent],
 })
 export class EquipementModule {}
-
-
