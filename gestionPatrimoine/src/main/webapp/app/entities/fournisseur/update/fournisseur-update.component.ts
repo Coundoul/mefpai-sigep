@@ -53,8 +53,12 @@ export class FournisseurUpdateComponent implements OnInit {
     const fournisseur = this.createFromForm();
     if (fournisseur.id !== undefined) {
       this.subscribeToSaveResponse(this.fournisseurService.update(fournisseur));
+      this.activeModal.dismiss();
+      location.reload();
     } else {
       this.subscribeToSaveResponse(this.fournisseurService.create(fournisseur));
+      this.activeModal.dismiss();
+      location.reload();
     }
   }
 

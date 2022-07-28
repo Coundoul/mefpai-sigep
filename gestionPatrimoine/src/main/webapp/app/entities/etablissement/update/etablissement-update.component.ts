@@ -8,7 +8,7 @@ import { finalize, map } from 'rxjs/operators';
 import { IEtablissement, Etablissement } from '../etablissement.model';
 import { EtablissementService } from '../service/etablissement.service';
 import { IQuartier } from 'app/entities/quartier/quartier.model';
-import { QuartierService } from 'app/entities/quartier/service/quartier.service';
+import { QuartierServiceInfra } from 'app/entities/quartier/service/quartier.service';
 import { MatHorizontalStepper } from '@angular/material/stepper';
 import { EventManager } from 'app/core/util/event-manager.service';
 
@@ -54,7 +54,7 @@ export class EtablissementUpdateComponent implements OnInit {
 
   constructor(
     protected etablissementService: EtablissementService,
-    protected quartierService: QuartierService,
+    protected quartierService: QuartierServiceInfra,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder,
     protected eventManager: EventManager

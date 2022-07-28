@@ -2,6 +2,7 @@ package sn.coundoul.gestion.equipement.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,7 +25,6 @@ import sn.coundoul.gestion.equipement.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
-import java.time.Instant;
 
 /**
  * REST controller for managing {@link sn.coundoul.gestion.equipement.domain.Equipement}.
@@ -182,7 +182,7 @@ public class EquipementResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
-    
+
     /**
      * {@code GET  /equipements/:id} : get the "id" equipement.
      *
@@ -212,12 +212,12 @@ public class EquipementResource {
             .build();
     }
 
-
-    
-
-
     @PutMapping("/equipements/{reference}/{etatMatiere}/{dateSignalisation}")
-    public ResponseEntity<Void> updateEtatMatiere(@PathVariable String reference, @PathVariable String etatMatiere, @PathVariable Instant dateSignalisation) {
+    public ResponseEntity<Void> updateEtatMatiere(
+        @PathVariable String reference,
+        @PathVariable String etatMatiere,
+        @PathVariable Instant dateSignalisation
+    ) {
         log.debug("REST request to update Equipement reference : {}", reference);
         equipementRepository.updateEtatMatiere(etatMatiere, dateSignalisation, reference);
         return ResponseEntity

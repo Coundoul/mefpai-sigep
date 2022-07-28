@@ -48,8 +48,12 @@ export class CategorieMatiereUpdateComponent implements OnInit {
     const categorieMatiere = this.createFromForm();
     if (categorieMatiere.id !== undefined) {
       this.subscribeToSaveResponse(this.categorieMatiereService.update(categorieMatiere));
+      this.activeModal.dismiss();
+      location.reload();
     } else {
       this.subscribeToSaveResponse(this.categorieMatiereService.create(categorieMatiere));
+      this.activeModal.dismiss();
+      location.reload();
     }
   }
 

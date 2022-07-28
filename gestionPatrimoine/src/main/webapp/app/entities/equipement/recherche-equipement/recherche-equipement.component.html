@@ -10,25 +10,17 @@
       <hr />
 
       <div class="d-flex justify-content-end">
-        <div class="formulaire-recherche col-md-4" style="position: relative; right: 35%">
-          <form class="navbar-form" name="editForm" novalidate (ngSubmit)="rechercher()" [formGroup]="editForm">
-            <div class="input-group no-border">
-              <div>
-                <input
-                  matInput
-                  type="text"
-                  id="recherche"
-                  name="recherche"
-                  class="form-control"
-                  formControlName="recherche"
-                  placeholder="Search..."
-                />
-                <div style="font-weight: bold; position: relative; right: 30%; bottom: 65%"><br />___________</div>
-              </div>
-              <button mat-raised-button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-secondary btn-circle btn-xl">
-                <fa-icon icon="search"></fa-icon>
-                <div class="ripple-container"></div>
-              </button>
+
+         <!-- Search form -->
+         <div class="row">
+          <form class="search-form" name="editForm" role="form" novalidate (ngSubmit)="rechercher()" [formGroup]="editForm">
+            <div class="input-group mr-2">
+              <input class="form-control py-2 border-right-0 border" type="search" formControlName="recherche" id="recherche" name="recherche">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary border-left-0 border" type="submit" [disabled]="editForm.invalid || isSaving">
+                    <fa-icon icon="search"></fa-icon>
+                  </button>
+                </span>
             </div>
           </form>
         </div>
@@ -77,39 +69,34 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr *ngFor="let detail of detailRecherche" data-cy="entityTable">
             <!-- <td>
               <a [routerLink]="['/equipement', equipement.id, 'view']">{{ equipement.id }}</a>
             </td> -->
-            <td>{{ detailRecherche[1] }}</td>
-            <td>{{ detailRecherche[2] }}</td>
-            <!-- <td>{{ equipement.caracteristique }}</td> -->
-            <!-- <td>{{ equipement.description }}</td>
-            <td>{{ equipement.prixUnitaire }}</td> -->
-            <!-- <td>{{ equipement.typeMatiere }}</td> -->
-            <td>{{ detailRecherche[2] }}</td>
-            <!-- <td>
-              {{ equipement.typeMatiere }}
-            </td> -->
+            <td>{{ detail[1] }}</td>
+            <td>{{ detail[2] }}</td>
+          
+            <td>
+              {{ detail[3] }}
+            </td>
 
             <td>
-              <div *ngIf="detailRecherche[4] === true">
+              <div *ngIf="detail[4] === true">
                 <span>
                   <fa-icon icon="check-circle" style="color: greenyellow; font-size: 150%"></fa-icon>
                 </span>
               </div>
 
-              <div *ngIf="detailRecherche[4] === false">
+              <div *ngIf="detail[4] === false">
                 <span>
                   <fa-icon icon="check-circle" style="color: red; font-size: 150%"></fa-icon>
                 </span>
               </div>
-              <!-- {{ requete.etatTraite }}</td> -->
             </td>
 
             <td>
-              <div *ngIf="detailRecherche[5]">
-                {{ detailRecherche[5] }}
+              <div *ngIf="detail[5]">
+                {{ detail[5] }}
               </div>
             </td>
             <td class="text-right">
@@ -141,37 +128,4 @@
     </div>
   </div>
 
-  <!-- <div class="mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__supporting-text">
-      <div class="mdl-stepper-horizontal-alternative">
-        <div class="mdl-stepper-step active-step step-done">
-          <div class="mdl-stepper-circle"><span>1</span></div>
-          <div class="mdl-stepper-title">Add pets</div>
-          <div class="mdl-stepper-bar-left"></div>
-          <div class="mdl-stepper-bar-right"></div>
-        </div>
-        <div class="mdl-stepper-step active-step editable-step">
-          <div class="mdl-stepper-circle"><span>2</span></div>
-          <div class="mdl-stepper-title">Set location</div>
-          <div class="mdl-stepper-optional">Optional</div>
-          <div class="mdl-stepper-bar-left"></div>
-          <div class="mdl-stepper-bar-right"></div>
-        </div>
-        <div class="mdl-stepper-step active-step">
-          <div class="mdl-stepper-circle"><span>3</span></div>
-          <div class="mdl-stepper-title">Invite friends</div>
-          <div class="mdl-stepper-optional">Optional</div>
-          <div class="mdl-stepper-bar-left"></div>
-          <div class="mdl-stepper-bar-right"></div>
-        </div>
-        <div class="mdl-stepper-step">
-          <div class="mdl-stepper-circle"><span>4</span></div>
-          <div class="mdl-stepper-title">Share</div>
-          <div class="mdl-stepper-optional">Optional</div>
-          <div class="mdl-stepper-bar-left"></div>
-          <div class="mdl-stepper-bar-right"></div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </div>

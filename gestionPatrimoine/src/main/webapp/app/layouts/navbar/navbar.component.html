@@ -30,6 +30,19 @@
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngSwitchCase="true">
+      <li>
+        <a
+          style="color: whitesmoke"
+          class="nav-item dropdown-item"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="collapseNavbar()"
+        >
+          <fa-icon icon="home" [fixedWidth]="true"></fa-icon>
+          <span>Accueil</span>
+        </a>
+      </li>
       <!-- jhipster-needle-add-element-equipment-to-menu - JHipster will add new menu items here -->
       <li
         ngbDropdown
@@ -41,7 +54,7 @@
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
           <span>
             <fa-icon icon="cogs"></fa-icon>
-            <span>Matière</span>
+            <span>G-Matières</span>
           </span>
         </a>
         <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
@@ -200,7 +213,7 @@
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
           <span>
             <fa-icon icon="chart-bar"></fa-icon>
-            <span>Infrastructures</span>
+            <span>G-Infrastructures</span>
           </span>
         </a>
         <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
@@ -372,7 +385,7 @@
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
           <span>
             <fa-icon icon="tools"></fa-icon>
-            <span>Maintenance</span>
+            <span>G-Maintenance</span>
           </span>
         </a>
         <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
@@ -651,7 +664,7 @@
       </a> -->
     </ul>
 
-    <div [ngSwitch]="isAuthenticated()">
+    <!-- <div [ngSwitch]="isAuthenticated()">
       <div *ngSwitchCase="true">
         <form class="d-flex">
           <input class="form-control me-sm-2" type="text" placeholder="Chercher" />
@@ -661,17 +674,17 @@
         </form>
       </div>
 
-      <!-- <div *ngSwitchCase="false" class="button-connexion">
+      <div *ngSwitchCase="false" class="button-connexion">
       <a class="fa-lg mr-2 d-flex" (click)="login()" id="login" data-cy="login" style="color: white; text-decoration: none;">
       <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
       <span>Connexion</span>
       </a>
-      </div> -->
-    </div>
+      </div>
+    </div> -->
 
     <div [ngSwitch]="isAuthenticated()">
       <div *ngSwitchCase="true">
-        <a class="dropdown-item" (click)="logout()" style="text-decoration: none">
+        <a class="dropdown-item" (click)="logout()" style="text-decoration: none; color: whitesmoke">
           <fa-icon icon="sign-out-alt" class="fa-lg mr-2"></fa-icon>
         </a>
       </div>

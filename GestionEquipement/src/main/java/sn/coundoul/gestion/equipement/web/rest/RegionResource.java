@@ -29,7 +29,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link sn.coundoul.gestion.equipement.domain.Region}.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/equipements")
 @Transactional
 public class RegionResource {
 

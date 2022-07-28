@@ -53,18 +53,23 @@ export class RechercheEquipementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.sub = this.activatedRoute.params.subscribe(params => {
-      this.recherche = params['reference'];
-      this.getStatDetail(this.recherche);
+      this.recherche = this.activatedRoute.snapshot.paramMap.get('reference');
+      if (this.recherche !== undefined){
+        this.getStatDetail(this.recherche);
+      }
     });
   }
 
   rechercher(): void {
     this.isSaving = true;
-    this.getStatDetail(this.recherche);
+    this.recherche = this.editForm.get(['recherche'])!.value;
+    this.router.navigate(['/equipement/search', { reference: this.recherche }]);
+    this.ngOnInit();
   }
 
   previousState(): void {
-    window.history.back();
+    this.router.navigate(['/equipement']);
   }
 }

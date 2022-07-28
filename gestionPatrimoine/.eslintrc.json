@@ -20,6 +20,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/restrict-plus-operands": "error",
     "@angular-eslint/component-selector": [
       "error",
       {
@@ -82,7 +83,7 @@
     "@typescript-eslint/unbound-method": "off",
     "arrow-body-style": "error",
     "curly": "error",
-    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "eqeqeq": "off",
     "guard-for-in": "error",
     "no-bitwise": "error",
     "no-caller": "error",

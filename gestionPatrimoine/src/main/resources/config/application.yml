@@ -217,7 +217,7 @@ jhipster:
         - api://default
   gateway:
     authorized-microservices-endpoints:
-      bar: /api/bon, /api/detail-sorties, /api/fournisseurs, /api/equipements, /api/affectations, /api/attributions, /api/categorie-matieres, /api/utilisateur-finals, /api/magazins, /api/inventaires, /api/inventaires/categorie, /api/categoriser, /api/etablissements, /api/recherche/equipement, /api/bureaus, /api/fiche-technique-maintenances, /api/fiche-techniques
+      bar: /api/bon, /api/detail-sorties, /api/fournisseurs, /api/communes, /api/departements, api/equipements/quartiers, api/infrastructures/quartiers, api/magazins, api/equipements/regions, api/infrastructures/regions, /api/equipements, api/search/equipement, /api/affectations, /api/attributions, /api/categorie-matieres, /api/utilisateur-finals, /api/inventaires, /api/inventaires/categorie, /api/categoriser, /api/etablissements, /api/bureaus, /api/fiche-technique-maintenances, /api/fiche-techniques
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

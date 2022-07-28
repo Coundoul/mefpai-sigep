@@ -112,8 +112,8 @@
           <select class="form-control" id="field_nomQuartier" data-cy="nomQuartier" name="nomQuartier" formControlName="nomQuartier">
             <option [ngValue]="null"></option>
             <option
+            *ngFor="let quartierOption of quartiersSharedCollection; trackBy: trackQuartierById"
               [ngValue]="quartierOption.id === editForm.get('nomQuartier')!.value?.id ? editForm.get('nomQuartier')!.value : quartierOption"
-              *ngFor="let quartierOption of quartiersSharedCollection; trackBy: trackQuartierById"
             >
               {{ quartierOption.id }}
             </option>

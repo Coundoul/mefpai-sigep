@@ -14,7 +14,7 @@ export type EntityArrayResponseType = HttpResponse<IEquipement[]>;
 export class EquipementService {
   public resourceUrl = this.applicationConfigService.getEndpointFor('api/equipements', 'gestionequipement');
 
-  public resourceUrlRecherche = this.applicationConfigService.getEndpointFor('api/recherche/equipement', 'gestionequipement');
+  public resourceUrlRecherche = this.applicationConfigService.getEndpointFor('api/search/equipement', 'gestionequipement');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 

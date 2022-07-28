@@ -164,7 +164,7 @@
               <button type="button" id="cancel-save" class="btn btn-secondary btn-lg" (click)="previousState()">
                 <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
               </button>
-              <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg">
+              <button mat-button matStepperNext type="button" class="btn-button-suivant font-weight-bold btn-lg" style="border: none;">
                 <span>Suivant</span><fa-icon icon="angle-right"></fa-icon>
               </button>
             </div>
@@ -442,9 +442,20 @@
             </div>
 
             <div>
-              <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg">
+              <button mat-button matStepperPrevious type="button" class="btn-button-precedent font-weight-bold btn-lg" style="border: none;">
                 <fa-icon icon="angle-left"></fa-icon><span>Précédent</span>
               </button>
+
+              <button
+              type="submit"
+              id="save-entity"
+              data-cy="entityCreateSaveButton"
+              [disabled]="editForm.invalid || isSaving"
+              class="btn btn-success btn-lg"
+              style="position: relative; left: 20%"
+            >
+              <fa-icon icon="plus"></fa-icon>&nbsp;<span>Ajouter Matière</span>
+            </button>
 
               <button
                 type="submit"
@@ -452,7 +463,7 @@
                 data-cy="entityCreateSaveButton"
                 [disabled]="editForm.invalid || isSaving"
                 class="btn btn-primary btn-lg"
-                style="position: relative; left: 60%"
+                style="position: relative; left: 50%"
               >
                 <fa-icon icon="save"></fa-icon>&nbsp;<span>Enregistrer</span>
               </button>

@@ -16,10 +16,7 @@
       <jhi-alert></jhi-alert>
 
       <dl class="row-md jh-entity-details">
-        <!-- <dt><span jhiTranslate="global.field.id">ID</span></dt>
-          <dd>
-            <span>{{ equipement.id }}</span>
-          </dd> -->
+        
         <dt><span>Référence</span></dt>
         <dd>
           <span>{{ equipement.reference }}</span>
@@ -106,20 +103,79 @@
           </div>
         </dd>
 
-        <dt><span jhiTranslate="gestionPatrimoineApp.equipement.photo">Photo</span></dt>
-        <dd>
-          <div *ngIf="equipement.photo">
-            <a (click)="openFile(equipement.photo, equipement.photoContentType)">
-              <img
-                [src]="'data:' + equipement.photoContentType + ';base64,' + equipement.photo"
-                style="max-width: 100%"
-                alt="equipement image"
-              />
-            </a>
-            <!-- , {{ byteSize(equipement.photo) }} -->
-          </div>
-        </dd>
+        <dt></dt>
       </dl>
+        <div class="container">
+          <mat-carousel
+            timings="250ms ease-in"
+            [autoplay]="true"
+            color="accent"
+            maxWidth="auto"
+            [loop]="true"
+            [hideArrows]="false"
+            [hideIndicators]="false"
+            [useKeyboard]="true"
+            [useMouseWheel]="false"
+            orientation="ltr"
+          >
+            <mat-carousel-slide
+              #matCarouselSlide
+              overlayColor="#00000040"
+              [hideOverlay]="false"
+            >
+            <div *ngIf="equipement.photo">
+              <a (click)="openFile(equipement.photo, equipement.photoContentType)">
+                <img
+                  [src]="'data:' + equipement.photoContentType + ';base64,' + equipement.photo"
+                  style="max-width: 100%; max-height: 100%;"
+                  alt="equipement image"
+                />
+              </a>
+              <!-- , {{ byteSize(equipement.photo) }} -->
+              </div>
+            </mat-carousel-slide>
+
+            <mat-carousel-slide
+            #matCarouselSlide
+            overlayColor="#00000040"
+            [hideOverlay]="false"
+            >
+              <div *ngIf="equipement.photo1">
+                <a (click)="openFile(equipement.photo1, equipement.photoContentType)">
+                  <img
+                    [src]="'data:' + equipement.photoContentType + ';base64,' + equipement.photo1"
+                    style="max-width: 100%; max-height: 100%;"
+                    alt="equipement image"
+                  />
+                </a>
+                <!-- , {{ byteSize(equipement.photo) }} -->
+                </div>
+            </mat-carousel-slide>
+
+
+            <mat-carousel-slide
+            #matCarouselSlide
+            overlayColor="#00000040"
+            [hideOverlay]="false"
+            >
+              <div *ngIf="equipement.photo2">
+                <a (click)="openFile(equipement.photo2, equipement.photoContentType)">
+                  <img
+                    [src]="'data:' + equipement.photoContentType + ';base64,' + equipement.photo2"
+                    style="max-width: 100%; max-height: 100%;"
+                    alt="equipement image"
+                  />
+                </a>
+                <!-- , {{ byteSize(equipement.photo) }} -->
+                </div>
+            </mat-carousel-slide>
+
+          </mat-carousel>
+
+        </div>
+        
+        <br>
+      
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>

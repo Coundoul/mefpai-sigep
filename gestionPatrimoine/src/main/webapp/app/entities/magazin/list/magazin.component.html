@@ -62,7 +62,7 @@
           <td>{{ magazin.idPers }}</td>
           <td>
             <div *ngIf="magazin.nomQuartier">
-              <a [routerLink]="['/quartier', magazin.nomQuartier?.id, 'view']">{{ magazin.nomQuartier?.id }}</a>
+              <a>{{ magazin.nomQuartier?.nomQuartier }}</a>
             </div>
           </td>
           <td class="text-right">

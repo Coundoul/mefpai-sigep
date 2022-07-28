@@ -54,9 +54,15 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://localhost:3306/GestionEquipement?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
     username: root
-    password:
+    password: passer1234
     hikari:
       poolName: Hikari
+      minimumIdle: 3
+      maximumPoolSize: 10
+      maxLifetime: 2000
+      connection-test-query: SELECT 1 FROM DUAL
+      connectionTimeout: 300000
+      idleTimeout: 600000
       auto-commit: false
       data-source-properties:
         cachePrepStmts: true

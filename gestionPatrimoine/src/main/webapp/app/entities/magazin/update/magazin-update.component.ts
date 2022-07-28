@@ -59,8 +59,12 @@ export class MagazinUpdateComponent implements OnInit {
     const magazin = this.createFromForm();
     if (magazin.id !== undefined) {
       this.subscribeToSaveResponse(this.magazinService.update(magazin));
+      this.activeModal.dismiss();
+      location.reload();
     } else {
       this.subscribeToSaveResponse(this.magazinService.create(magazin));
+      this.activeModal.dismiss();
+      location.reload();
     }
   }
 

@@ -60,6 +60,12 @@
       <h2 style="text-align: center">
         <span style="font-weight: bold">IDENTIFICATION DE L'Etablissement</span>
       </h2>
+
+      <div class="d-flex justify-content-end">
+        <button type="submit" (click)="previousState()" class="btn btn-outline-secondary" data-cy="entityDetailsBackButton">
+          <fa-icon icon="print"></fa-icon>&nbsp;<span>Imprimer</span>
+        </button>
+      </div>
       <hr />
       <table class="table">
         <thead class="thead-dark">
@@ -82,9 +88,9 @@
             <td>{{ etablissement.telephone }}</td>
             <td>{{ etablissement.email }}</td>
             <td>{{ etablissement.nomQuartier?.nomQuartier }}</td>
-            <td>{{ etablissement.nomQuartier?.nomCommune?.id }}</td>
-            <td>{{ etablissement.nomQuartier?.nomCommune?.nomDepartement?.id }}</td>
-            <td>{{ etablissement.nomQuartier?.nomCommune?.nomDepartement?.nomRegion?.id }}</td>
+            <td>{{ etablissement.nomQuartier?.nomCommune?.nomCommune }}</td>
+            <td>{{ etablissement.nomQuartier?.nomCommune?.nomDepartement?.nomDepartement }}</td>
+            <td>{{ etablissement.nomQuartier?.nomCommune?.nomDepartement?.nomRegion?.nomRegion }}</td>
           </tr>
         </tbody>
       </table>
@@ -192,12 +198,20 @@
       </table>
     </div>
 
+    <hr>
     <div>
-      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+      <h4 style="text-align: center">
+        <span style="font-weight: bold">Google Maps</span>
+      </h4>
+
+      
+    </div>
+
+    <div>
+      <button type="submit" (click)="previousState()" class="btn btn-outline-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
       </button>
-
-      <button type="button" [routerLink]="['/etablissement', etablissement.id, 'edit']" class="btn btn-primary">
+      <button type="button" [routerLink]="['/etablissement', etablissement.id, 'edit']" class="btn btn-outline-primary">
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
       </button>
     </div>

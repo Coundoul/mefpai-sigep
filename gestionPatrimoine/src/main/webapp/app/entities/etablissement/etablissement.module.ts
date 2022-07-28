@@ -10,9 +10,27 @@ import { SidebarModule } from 'app/layouts/sidebar/sidebar.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
+import { GMapModule } from 'primeng-lts/gmap';
+import { ToastModule } from 'primeng-lts/toast';
+import { CheckboxModule } from 'primeng-lts/checkbox';
+import { ButtonModule } from 'primeng-lts/button';
+import { DialogModule } from 'primeng-lts/dialog';
+import { MessageService } from 'primeng-lts/api';
 
 @NgModule({
-  imports: [SharedModule, EtablissementRoutingModule, MatButtonModule, SidebarModule, MatStepperModule, ReactiveFormsModule, FormsModule],
+  imports: [SharedModule, 
+    ToastModule,
+    GMapModule,
+    CheckboxModule,
+    ButtonModule,
+    DialogModule,
+    EtablissementRoutingModule,
+    MatButtonModule, 
+    SidebarModule, 
+    MatStepperModule, 
+    ReactiveFormsModule, 
+    FormsModule],
+  providers: [MessageService],
   declarations: [EtablissementComponent, EtablissementDetailComponent, EtablissementUpdateComponent, EtablissementDeleteDialogComponent],
   entryComponents: [EtablissementDeleteDialogComponent],
 })

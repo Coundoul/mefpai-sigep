@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import {SplitterModule} from 'primeng-lts/splitter';
 @NgModule({
   imports: [
     SharedModule,
@@ -24,6 +25,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatToolbarModule,
     MatIconModule,
     MatDividerModule,
+    SplitterModule,
   ],
   declarations: [HomeComponent],
 })

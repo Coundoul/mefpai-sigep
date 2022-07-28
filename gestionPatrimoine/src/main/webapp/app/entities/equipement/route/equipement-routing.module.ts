@@ -52,7 +52,7 @@ const equipementRoute: Routes = [
     canActivate: [UserRouteAccessService],
   },
   {
-    path: '/rechercher',
+    path: 'search',
     component: RechercheEquipementComponent,
     resolve: {
       equipement: EquipementRoutingResolveService,

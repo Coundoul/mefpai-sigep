@@ -52,6 +52,7 @@ import {
   faChevronCircleDown,
   faChevronCircleUp,
   faArrowRight,
+  faPrint,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -105,6 +106,7 @@ export const fontAwesomeIcons = [
   faTools,
   faChartBar,
   faCogs,
+  faPrint,
   // jhipster-needle-add-icon-import
   faAngleDoubleRight,
   faCircle,

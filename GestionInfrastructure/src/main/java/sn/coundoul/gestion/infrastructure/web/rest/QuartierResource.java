@@ -29,7 +29,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link sn.coundoul.gestion.infrastructure.domain.Quartier}.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/infrastructures")
 @Transactional
 public class QuartierResource {
 

@@ -17,6 +17,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
   templateUrl: './equipement.component.html',
   styleUrls: ['./equipement.component.scss'],
 })
+
 export class EquipementComponent implements OnInit {
   isSaving = false;
   equipements?: IEquipement[];
@@ -43,6 +44,8 @@ export class EquipementComponent implements OnInit {
     protected fb: FormBuilder
   ) {}
 
+
+  
   loadPage(page?: number, dontNavigate?: boolean): void {
     this.isLoading = true;
     const pageToLoad: number = page ?? this.page ?? 1;
@@ -107,9 +110,7 @@ export class EquipementComponent implements OnInit {
   rechercher(): void {
     this.isSaving = true;
     this.recherche = this.editForm.get(['recherche'])!.value;
-    this.router.navigate(['/rechercher']);
-    // this.recherche  = this.editForm.get(['recherche'])!.value;
-    // this.getStatDetail(this.recherche);
+    this.router.navigate(['/equipement/search', { reference: this.recherche }]);
   }
 
   protected sort(): string[] {

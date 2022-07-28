@@ -14,6 +14,9 @@ import { AgmCoreModule } from '@agm/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RechercheEquipementComponent } from './recherche-equipement/recherche-equipement.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCarouselModule } from '@ngmodule/material-carousel'; 
+
 
 @NgModule({
   imports: [
@@ -23,8 +26,10 @@ import { RechercheEquipementComponent } from './recherche-equipement/recherche-e
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
     ReactiveFormsModule,
     FormsModule,
+    MatCarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',
     }),

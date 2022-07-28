@@ -1,10 +1,11 @@
 package sn.coundoul.gestion.equipement.web.rest;
 
+import java.lang.String;
+import java.lang.System.*;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.lang.System.*;
 import java.util.*;
+import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -24,7 +25,6 @@ import sn.coundoul.gestion.equipement.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
-import java.lang.String;
 
 /**
  * REST controller for managing {@link sn.coundoul.gestion.equipement.domain.Equipement}.
@@ -47,16 +47,13 @@ public class RechercheResource {
         this.rechercheRepository = rechercheRepository;
     }
 
-    @GetMapping("/recherche/equipement/{reference}")
+    @GetMapping("/search/equipement/{reference}")
     public ResponseEntity<List<Object>> rechercherEquipement(@PathVariable String reference, Pageable pageable) {
         log.debug("REST request to get recherche equipement reference : {}", reference);
         Page<Object> detail = rechercheRepository.rechercherEquipement(reference, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), detail);
         return ResponseEntity.ok().headers(headers).body(detail.getContent());
     }
-
-
-
     // @GetMapping("detailrecherche/equipement/{reference}")
     // public ResponseEntity<List<Object>> detailRechercheEquipement(@PathVariable String reference, Pageable pageable) {
     //     log.debug("REST request to get detail equipement inventaire : {}", reference);

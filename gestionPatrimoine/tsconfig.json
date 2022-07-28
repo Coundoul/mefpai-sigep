@@ -9,6 +9,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
+    "strictNullChecks": true,
     "outDir": "target/classes/static/app",
     "lib": ["es2018", "dom"],
     "baseUrl": "./",

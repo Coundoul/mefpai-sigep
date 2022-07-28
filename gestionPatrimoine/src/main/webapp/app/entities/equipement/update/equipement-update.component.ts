@@ -68,6 +68,7 @@ export class EquipementUpdateComponent implements OnInit {
   magazin: any;
   fournisseur: any;
 
+
   constructor(
     protected dataUtils: DataUtils,
     protected eventManager: EventManager,
@@ -80,7 +81,7 @@ export class EquipementUpdateComponent implements OnInit {
     protected elementRef: ElementRef,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
