@@ -6,8 +6,6 @@ import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { MatHorizontalStepper } from '@angular/material/stepper';
 
-import * as dayjs from 'dayjs';
-import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 
 import { IEquipement, Equipement } from '../equipement.model';
 import { EquipementService } from '../service/equipement.service';

@@ -21,31 +21,38 @@ public class Batiment implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "nom_batiment", nullable = false)
-    private String nomBatiment;
-
-    @NotNull
-    @Column(name = "nbr_piece", nullable = false)
-    private String nbrPiece;
-
-    @NotNull
     @Column(name = "designation", nullable = false)
     private String designation;
+    
+    @NotNull
+    @Column(name = "nbr_piece", nullable = false)
+    private Double nbrPiece;
 
     @NotNull
     @Column(name = "surface", nullable = false)
     private Double surface;
 
     @NotNull
-    @Column(name = "etat_general", nullable = false)
-    private Boolean etatGeneral;
+    @Column(name = "source_de_financement", nullable = false)
+    private String sourceFinancement; 
 
-    @Column(name = "description")
-    private String description;
+    @Lob
+    @Column(name = "photo", nullable = false)
+    private byte[] photo;
+
+    @Column(name = "photo_content_type")
+    private String photoContentType;
 
     @NotNull
-    @Column(name = "nombre_salle", nullable = false)
-    private Integer nombreSalle;
+    @Column(name = "etat_gros_oeuvre", nullable = false)
+    private String etatGrosOeuvre;
+
+    @NotNull
+    @Column(name = "etat_second_oeuvre", nullable = false)
+    private String etatSecondOeuvre;
+
+    @Column(name = "observation")
+    private String observation;
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "nomQuartier", "nomProjets" }, allowSetters = true)
@@ -77,29 +84,29 @@ public class Batiment implements Serializable {
         return this;
     }
 
-    public String getNomBatiment() {
-        return this.nomBatiment;
+    public String getSourceFinancement() {
+        return this.sourceFinancement;
     }
 
-    public Batiment nomBatiment(String nomBatiment) {
-        this.nomBatiment = nomBatiment;
+    public Batiment sourceFinancement(String sourceFinancement) {
+        this.sourceFinancement = sourceFinancement;
         return this;
     }
 
-    public void setNomBatiment(String nomBatiment) {
-        this.nomBatiment = nomBatiment;
+    public void setSourceFinancement(String sourceFinancement) {
+        this.sourceFinancement = sourceFinancement;
     }
 
-    public String getNbrPiece() {
+    public Double getNbrPiece() {
         return this.nbrPiece;
     }
 
-    public Batiment nbrPiece(String nbrPiece) {
+    public Batiment nbrPiece(Double nbrPiece) {
         this.nbrPiece = nbrPiece;
         return this;
     }
 
-    public void setNbrPiece(String nbrPiece) {
+    public void setNbrPiece(Double nbrPiece) {
         this.nbrPiece = nbrPiece;
     }
 
@@ -129,56 +136,69 @@ public class Batiment implements Serializable {
         this.surface = surface;
     }
 
-    public Boolean getEtatGeneral() {
-        return this.etatGeneral;
+    public byte[] getPhoto() {
+        return this.photo;
     }
 
-    public Batiment etatGeneral(Boolean etatGeneral) {
-        this.etatGeneral = etatGeneral;
+    public Batiment photo(byte[] photo) {
+        this.photo = photo;
         return this;
     }
 
-    public void setEtatGeneral(Boolean etatGeneral) {
-        this.etatGeneral = etatGeneral;
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getPhotoContentType() {
+        return this.photoContentType;
     }
 
-    public Batiment description(String description) {
-        this.description = description;
+    public Batiment photoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
         return this;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPhotoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
     }
 
-    public Integer getNombreSalle() {
-        return this.nombreSalle;
+    public String getEtatGrosOeuvre() {
+        return this.etatGrosOeuvre;
     }
 
-    public Batiment nombreSalle(Integer nombreSalle) {
-        this.nombreSalle = nombreSalle;
+    public Batiment EtatGrosOeuvre(String etatGrosOeuvre) {
+        this.etatGrosOeuvre = etatGrosOeuvre;
         return this;
     }
 
-    public void setNombreSalle(Integer nombreSalle) {
-        this.nombreSalle = nombreSalle;
+    public void setEtatGrosOeuvre(String etatGrosOeuvre) {
+        this.etatGrosOeuvre = etatGrosOeuvre;
     }
 
-    public Etablissement getNomEtablissement() {
-        return this.nomEtablissement;
+    public String getEtatSecondOeuvre() {
+        return this.etatSecondOeuvre;
     }
 
-    public Batiment nomEtablissement(Etablissement etablissement) {
-        this.setNomEtablissement(etablissement);
+    public Batiment EtatSecondOeuvre(String etatSecondOeuvre) {
+        this.etatSecondOeuvre = etatSecondOeuvre;
         return this;
     }
 
-    public void setNomEtablissement(Etablissement etablissement) {
-        this.nomEtablissement = etablissement;
+    public void setEtatSecondOeuvre(String etatSecondOeuvre) {
+        this.etatSecondOeuvre = etatSecondOeuvre;
+    }
+
+    public String getObservation() {
+        return this.observation;
+    }
+
+    public Batiment observation(String observation) {
+        this.observation = observation;
+        return this;
+    }
+
+    public void setObservation(String observation) {
+        this.observation = observation;
     }
 
     public CorpsEtat getNomCorps() {
@@ -280,13 +300,13 @@ public class Batiment implements Serializable {
     public String toString() {
         return "Batiment{" +
             "id=" + getId() +
-            ", nomBatiment='" + getNomBatiment() + "'" +
-            ", nbrPiece='" + getNbrPiece() + "'" +
             ", designation='" + getDesignation() + "'" +
+            ", nbrPiece='" + getNbrPiece() + "'" +
             ", surface=" + getSurface() +
-            ", etatGeneral='" + getEtatGeneral() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", nombreSalle=" + getNombreSalle() +
+            ", sourceFinancement='" + getSourceFinancement() + "'" +
+            ", etatGrosOeuvre='" + getEtatGrosOeuvre() + "'" +
+            ", etatSecondOeuvre='" + getEtatSecondOeuvre() + "'" +
+            ", observation='" + getObservation() + "'" +
             "}";
     }
 }

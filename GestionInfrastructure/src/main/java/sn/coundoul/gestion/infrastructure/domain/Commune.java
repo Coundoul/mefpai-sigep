@@ -23,7 +23,7 @@ public class Commune implements Serializable {
     private String nomCommune;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "nomRegion" }, allowSetters = true)
+    @JsonIgnoreProperties(allowSetters = true)
     private Departement nomDepartement;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

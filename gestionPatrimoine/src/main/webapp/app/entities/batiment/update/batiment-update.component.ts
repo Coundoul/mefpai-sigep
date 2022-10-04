@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,9 @@ import { IEtablissement } from 'app/entities/etablissement/etablissement.model';
 import { EtablissementService } from 'app/entities/etablissement/service/etablissement.service';
 import { ICorpsEtat } from 'app/entities/corps-etat/corps-etat.model';
 import { CorpsEtatService } from 'app/entities/corps-etat/service/corps-etat.service';
+import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
+import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
+import { AlertError } from 'app/shared/alert/alert-error.model';
 
 @Component({
   selector: 'jhi-batiment-update',
@@ -24,23 +27,28 @@ export class BatimentUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    nomBatiment: [null, [Validators.required]],
-    nbrPiece: [null, [Validators.required]],
     designation: [null, [Validators.required]],
+    nbrPiece: [null, [Validators.required]],
     surface: [null, [Validators.required]],
-    etatGeneral: [null, [Validators.required]],
-    description: [],
-    nombreSalle: [null, [Validators.required]],
+    sourceFinancement: [null, [Validators.required]],
+    photo: [null, [Validators.required]],
+    photoContentType: [null, [Validators.required]],
+    etatGrosOeuvre: [null, [Validators.required]],
+    etatSecondOeuvre: [null, [Validators.required]],
+    observation: [null, [Validators.required]],
     nomEtablissement: [],
     nomCorps: [],
   });
 
   constructor(
     protected batimentService: BatimentService,
+    protected eventManager: EventManager,
     protected etablissementService: EtablissementService,
     protected corpsEtatService: CorpsEtatService,
     protected activatedRoute: ActivatedRoute,
-    protected fb: FormBuilder
+    protected fb: FormBuilder,
+    protected elementRef: ElementRef,
+    protected dataUtils: DataUtils,
   ) {}
 
   ngOnInit(): void {
@@ -65,12 +73,35 @@ export class BatimentUpdateComponent implements OnInit {
     }
   }
 
+  setFileData(event: Event, field: string, isImage: boolean): void {
+    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
+      error: (err: FileLoadError) =>
+        this.eventManager.broadcast(
+          new EventWithContent<AlertError>('gestionPatrimoineApp.error', { ...err, key: 'error.file.' + err.key })
+        ),
+    });
+  }
+
+  clearInputImage(field: string, fieldContentType: string, idInput: string): void {
+    this.editForm.patchValue({
+      [field]: null,
+      [fieldContentType]: null,
+    });
+    if (idInput && this.elementRef.nativeElement.querySelector('#' + idInput)) {
+      this.elementRef.nativeElement.querySelector('#' + idInput).value = null;
+    }
+  }
+
   trackEtablissementById(index: number, item: IEtablissement): number {
     return item.id!;
   }
 
   trackCorpsEtatById(index: number, item: ICorpsEtat): number {
     return item.id!;
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IBatiment>>): void {
@@ -95,13 +126,15 @@ export class BatimentUpdateComponent implements OnInit {
   protected updateForm(batiment: IBatiment): void {
     this.editForm.patchValue({
       id: batiment.id,
-      nomBatiment: batiment.nomBatiment,
-      nbrPiece: batiment.nbrPiece,
       designation: batiment.designation,
+      nbrPiece: batiment.nbrPiece,
       surface: batiment.surface,
-      etatGeneral: batiment.etatGeneral,
-      description: batiment.description,
-      nombreSalle: batiment.nombreSalle,
+      sourceFinancement: batiment.sourceFinancement,
+      photo: batiment.photo,
+      photoContentType: batiment.photoContentType,
+      etatGrosOeuvre: batiment.etatGrosOeuvre,
+      etatSecondOeuvre: batiment.etatSecondOeuvre,
+      observation: batiment.observation,
       nomEtablissement: batiment.nomEtablissement,
       nomCorps: batiment.nomCorps,
     });
@@ -142,13 +175,15 @@ export class BatimentUpdateComponent implements OnInit {
     return {
       ...new Batiment(),
       id: this.editForm.get(['id'])!.value,
-      nomBatiment: this.editForm.get(['nomBatiment'])!.value,
-      nbrPiece: this.editForm.get(['nbrPiece'])!.value,
       designation: this.editForm.get(['designation'])!.value,
+      nbrPiece: this.editForm.get(['nbrPiece'])!.value,
       surface: this.editForm.get(['surface'])!.value,
-      etatGeneral: this.editForm.get(['etatGeneral'])!.value,
-      description: this.editForm.get(['description'])!.value,
-      nombreSalle: this.editForm.get(['nombreSalle'])!.value,
+      sourceFinancement: this.editForm.get(['sourceFinancement'])!.value,
+      photoContentType: this.editForm.get(['photoContentType'])!.value,
+      photo: this.editForm.get(['photo'])!.value,
+      etatGrosOeuvre: this.editForm.get(['etatGrosOeuvre'])!.value,
+      etatSecondOeuvre: this.editForm.get(['etatSecondOeuvre'])!.value,
+      observation: this.editForm.get(['observation'])!.value,
       nomEtablissement: this.editForm.get(['nomEtablissement'])!.value,
       nomCorps: this.editForm.get(['nomCorps'])!.value,
     };

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -8,9 +8,11 @@ import { finalize, map } from 'rxjs/operators';
 import { IEtablissement, Etablissement } from '../etablissement.model';
 import { EtablissementService } from '../service/etablissement.service';
 import { IQuartier } from 'app/entities/quartier/quartier.model';
-import { QuartierServiceInfra } from 'app/entities/quartier/service/quartier.service';
 import { MatHorizontalStepper } from '@angular/material/stepper';
-import { EventManager } from 'app/core/util/event-manager.service';
+import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
+import { QuartierService } from 'app/entities/quartier/service/quartier.service';
+import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
+import { AlertError } from 'app/shared/alert/alert-error.model';
 
 @Component({
   selector: 'jhi-etablissement-update',
@@ -27,6 +29,8 @@ export class EtablissementUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nomEtablissement: [null, [Validators.required]],
+    photo: [null, [Validators.required]],
+    photoContentType: [],
     adresse: [null, [Validators.required]],
     telephone: [null, [Validators.required]],
     email: [null, [Validators.required]],
@@ -53,10 +57,12 @@ export class EtablissementUpdateComponent implements OnInit {
   });
 
   constructor(
+    protected dataUtils: DataUtils,
     protected etablissementService: EtablissementService,
-    protected quartierService: QuartierServiceInfra,
     protected activatedRoute: ActivatedRoute,
+    protected quartierService: QuartierService,
     protected fb: FormBuilder,
+    protected elementRef: ElementRef,
     protected eventManager: EventManager
   ) {}
 
@@ -66,6 +72,34 @@ export class EtablissementUpdateComponent implements OnInit {
 
       this.loadRelationshipsOptions();
     });
+  }
+
+  
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    this.dataUtils.openFile(base64String, contentType);
+  }
+
+  setFileData(event: Event, field: string, isImage: boolean): void {
+    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
+      error: (err: FileLoadError) =>
+        this.eventManager.broadcast(
+          new EventWithContent<AlertError>('gestionPatrimoineApp.error', { ...err, key: 'error.file.' + err.key })
+        ),
+    });
+  }
+
+  clearInputImage(field: string, fieldContentType: string, idInput: string): void {
+    this.editForm.patchValue({
+      [field]: null,
+      [fieldContentType]: null,
+    });
+    if (idInput && this.elementRef.nativeElement.querySelector('#' + idInput)) {
+      this.elementRef.nativeElement.querySelector('#' + idInput).value = null;
+    }
   }
 
   previousState(): void {
@@ -113,6 +147,8 @@ export class EtablissementUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: etablissement.id,
       nomEtablissement: etablissement.nomEtablissement,
+      photo: etablissement.photo,
+      photoContentType: etablissement.photoContentType,
       adresse: etablissement.adresse,
       telephone: etablissement.telephone,
       email: etablissement.email,
@@ -137,11 +173,6 @@ export class EtablissementUpdateComponent implements OnInit {
       idPers: etablissement.idPers,
       nomQuartier: etablissement.nomQuartier,
     });
-
-    this.quartiersSharedCollection = this.quartierService.addQuartierToCollectionIfMissing(
-      this.quartiersSharedCollection,
-      etablissement.nomQuartier
-    );
   }
 
   protected loadRelationshipsOptions(): void {
@@ -161,6 +192,8 @@ export class EtablissementUpdateComponent implements OnInit {
       ...new Etablissement(),
       id: this.editForm.get(['id'])!.value,
       nomEtablissement: this.editForm.get(['nomEtablissement'])!.value,
+      photoContentType: this.editForm.get(['photoContentType'])!.value,
+      photo: this.editForm.get(['photo'])!.value,
       adresse: this.editForm.get(['adresse'])!.value,
       telephone: this.editForm.get(['telephone'])!.value,
       email: this.editForm.get(['email'])!.value,

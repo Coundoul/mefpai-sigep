@@ -23,7 +23,7 @@ public class Quartier implements Serializable {
     private String nomQuartier;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "nomDepartement" }, allowSetters = true)
+    @JsonIgnoreProperties(allowSetters = true)
     private Commune nomCommune;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

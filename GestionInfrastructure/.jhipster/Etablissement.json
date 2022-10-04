@@ -7,6 +7,11 @@
       "fieldValidateRules": ["required"]
     },
     {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
       "fieldName": "adresse",
       "fieldType": "String",
       "fieldValidateRules": ["required"]

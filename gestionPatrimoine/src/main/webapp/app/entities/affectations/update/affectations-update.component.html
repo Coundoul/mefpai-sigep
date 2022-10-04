@@ -122,7 +122,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.affectations.idPers" for="field_idPers">Id Pers</label>
+          <label class="form-control-label"  for="field_idPers">Comptable Secondaire</label>
           <input type="number" class="form-control" name="idPers" id="field_idPers" data-cy="idPers" formControlName="idPers" />
           <div *ngIf="editForm.get('idPers')!.invalid && (editForm.get('idPers')!.dirty || editForm.get('idPers')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('idPers')?.errors?.required" jhiTranslate="entity.validation.required">

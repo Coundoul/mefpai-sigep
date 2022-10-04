@@ -132,26 +132,29 @@ public class BatimentResource {
             .findById(batiment.getId())
             .map(
                 existingBatiment -> {
-                    if (batiment.getNomBatiment() != null) {
-                        existingBatiment.setNomBatiment(batiment.getNomBatiment());
+                    if (batiment.getDesignation() != null) {
+                        existingBatiment.setDesignation(batiment.getDesignation());
                     }
                     if (batiment.getNbrPiece() != null) {
                         existingBatiment.setNbrPiece(batiment.getNbrPiece());
                     }
-                    if (batiment.getDesignation() != null) {
-                        existingBatiment.setDesignation(batiment.getDesignation());
-                    }
                     if (batiment.getSurface() != null) {
                         existingBatiment.setSurface(batiment.getSurface());
                     }
-                    if (batiment.getEtatGeneral() != null) {
-                        existingBatiment.setEtatGeneral(batiment.getEtatGeneral());
+                    if (batiment.getSourceFinancement() != null) {
+                        existingBatiment.setSourceFinancement(batiment.getSourceFinancement());
                     }
-                    if (batiment.getDescription() != null) {
-                        existingBatiment.setDescription(batiment.getDescription());
+                    if (batiment.getPhoto() != null) {
+                        existingBatiment.setPhoto(batiment.getPhoto());
                     }
-                    if (batiment.getNombreSalle() != null) {
-                        existingBatiment.setNombreSalle(batiment.getNombreSalle());
+                    if (batiment.getEtatGrosOeuvre() != null) {
+                        existingBatiment.setEtatGrosOeuvre(batiment.getEtatGrosOeuvre());
+                    }
+                    if (batiment.getEtatSecondOeuvre() != null) {
+                        existingBatiment.setEtatSecondOeuvre(batiment.getEtatSecondOeuvre());
+                    }
+                    if (batiment.getObservation() != null) {
+                        existingBatiment.setObservation(batiment.getObservation());
                     }
 
                     return existingBatiment;

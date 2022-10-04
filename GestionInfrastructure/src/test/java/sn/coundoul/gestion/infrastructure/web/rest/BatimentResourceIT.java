@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.Base64Utils;
 import org.springframework.transaction.annotation.Transactional;
 import sn.coundoul.gestion.infrastructure.IntegrationTest;
 import sn.coundoul.gestion.infrastructure.domain.Batiment;
@@ -30,26 +31,31 @@ import sn.coundoul.gestion.infrastructure.repository.BatimentRepository;
 @WithMockUser
 class BatimentResourceIT {
 
-    private static final String DEFAULT_NOM_BATIMENT = "AAAAAAAAAA";
-    private static final String UPDATED_NOM_BATIMENT = "BBBBBBBBBB";
-
-    private static final String DEFAULT_NBR_PIECE = "AAAAAAAAAA";
-    private static final String UPDATED_NBR_PIECE = "BBBBBBBBBB";
-
     private static final String DEFAULT_DESIGNATION = "AAAAAAAAAA";
     private static final String UPDATED_DESIGNATION = "BBBBBBBBBB";
+
+    private static final Double DEFAULT_NBR_PIECE = 1D;
+    private static final Double UPDATED_NBR_PIECE = 2D;
 
     private static final Double DEFAULT_SURFACE = 1D;
     private static final Double UPDATED_SURFACE = 2D;
 
-    private static final Boolean DEFAULT_ETAT_GENERAL = false;
-    private static final Boolean UPDATED_ETAT_GENERAL = true;
+    private static final String DEFAULT_SOURCE_FINANCEMENT = "AAAAAAAAAA";
+    private static final String UPDATED_SOURCE_FINANCEMENT = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+    private static final byte[] DEFAULT_PHOTO = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_PHOTO = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_PHOTO_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_PHOTO_CONTENT_TYPE = "image/png";
 
-    private static final Integer DEFAULT_NOMBRE_SALLE = 1;
-    private static final Integer UPDATED_NOMBRE_SALLE = 2;
+    private static final String DEFAULT_ETAT_GROS_OEUVRE = "AAAAAAAAAA";
+    private static final String UPDATED_ETAT_GROS_OEUVRE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ETAT_SECOND_OEUVRE = "AAAAAAAAAA";
+    private static final String UPDATED_ETAT_SECOND_OEUVRE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_OBSERVATION = "AAAAAAAAAA";
+    private static final String UPDATED_OBSERVATION = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/batiments";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -76,13 +82,13 @@ class BatimentResourceIT {
      */
     public static Batiment createEntity(EntityManager em) {
         Batiment batiment = new Batiment()
-            .nomBatiment(DEFAULT_NOM_BATIMENT)
-            .nbrPiece(DEFAULT_NBR_PIECE)
             .designation(DEFAULT_DESIGNATION)
+            .nbrPiece(DEFAULT_NBR_PIECE)
             .surface(DEFAULT_SURFACE)
-            .etatGeneral(DEFAULT_ETAT_GENERAL)
-            .description(DEFAULT_DESCRIPTION)
-            .nombreSalle(DEFAULT_NOMBRE_SALLE);
+            .sourceFinancement(DEFAULT_SOURCE_FINANCEMENT)
+            .photo(DEFAULT_PHOTO)
+            .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
+            .observation(DEFAULT_OBSERVATION);
         return batiment;
     }
 
@@ -94,13 +100,13 @@ class BatimentResourceIT {
      */
     public static Batiment createUpdatedEntity(EntityManager em) {
         Batiment batiment = new Batiment()
-            .nomBatiment(UPDATED_NOM_BATIMENT)
-            .nbrPiece(UPDATED_NBR_PIECE)
-            .designation(UPDATED_DESIGNATION)
-            .surface(UPDATED_SURFACE)
-            .etatGeneral(UPDATED_ETAT_GENERAL)
-            .description(UPDATED_DESCRIPTION)
-            .nombreSalle(UPDATED_NOMBRE_SALLE);
+            .designation(DEFAULT_DESIGNATION)
+            .nbrPiece(DEFAULT_NBR_PIECE)
+            .surface(DEFAULT_SURFACE)
+            .sourceFinancement(DEFAULT_SOURCE_FINANCEMENT)
+            .photo(DEFAULT_PHOTO)
+            .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
+            .observation(DEFAULT_OBSERVATION);
         return batiment;
     }
 
@@ -127,13 +133,15 @@ class BatimentResourceIT {
         List<Batiment> batimentList = batimentRepository.findAll();
         assertThat(batimentList).hasSize(databaseSizeBeforeCreate + 1);
         Batiment testBatiment = batimentList.get(batimentList.size() - 1);
-        assertThat(testBatiment.getNomBatiment()).isEqualTo(DEFAULT_NOM_BATIMENT);
-        assertThat(testBatiment.getNbrPiece()).isEqualTo(DEFAULT_NBR_PIECE);
         assertThat(testBatiment.getDesignation()).isEqualTo(DEFAULT_DESIGNATION);
+        assertThat(testBatiment.getNbrPiece()).isEqualTo(DEFAULT_NBR_PIECE);
         assertThat(testBatiment.getSurface()).isEqualTo(DEFAULT_SURFACE);
-        assertThat(testBatiment.getEtatGeneral()).isEqualTo(DEFAULT_ETAT_GENERAL);
-        assertThat(testBatiment.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testBatiment.getNombreSalle()).isEqualTo(DEFAULT_NOMBRE_SALLE);
+        assertThat(testBatiment.getSourceFinancement()).isEqualTo(DEFAULT_SOURCE_FINANCEMENT);
+        assertThat(testBatiment.getPhoto()).isEqualTo(DEFAULT_PHOTO);
+        assertThat(testBatiment.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
+        assertThat(testBatiment.getEtatGrosOeuvre()).isEqualTo(DEFAULT_ETAT_GROS_OEUVRE);
+        assertThat(testBatiment.getEtatSecondOeuvre()).isEqualTo(DEFAULT_ETAT_SECOND_OEUVRE);
+        assertThat(testBatiment.getObservation()).isEqualTo(DEFAULT_OBSERVATION);
     }
 
     @Test
@@ -164,7 +172,7 @@ class BatimentResourceIT {
     void checkNomBatimentIsRequired() throws Exception {
         int databaseSizeBeforeTest = batimentRepository.findAll().size();
         // set the field null
-        batiment.setNomBatiment(null);
+        batiment.setDesignation(null);
 
         // Create the Batiment, which fails.
 
@@ -252,7 +260,7 @@ class BatimentResourceIT {
     void checkEtatGeneralIsRequired() throws Exception {
         int databaseSizeBeforeTest = batimentRepository.findAll().size();
         // set the field null
-        batiment.setEtatGeneral(null);
+        batiment.setEtatGrosOeuvre(null);
 
         // Create the Batiment, which fails.
 
@@ -274,7 +282,7 @@ class BatimentResourceIT {
     void checkNombreSalleIsRequired() throws Exception {
         int databaseSizeBeforeTest = batimentRepository.findAll().size();
         // set the field null
-        batiment.setNombreSalle(null);
+        batiment.setObservation(null);
 
         // Create the Batiment, which fails.
 
@@ -303,13 +311,15 @@ class BatimentResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(batiment.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nomBatiment").value(hasItem(DEFAULT_NOM_BATIMENT)))
-            .andExpect(jsonPath("$.[*].nbrPiece").value(hasItem(DEFAULT_NBR_PIECE)))
-            .andExpect(jsonPath("$.[*].designation").value(hasItem(DEFAULT_DESIGNATION)))
-            .andExpect(jsonPath("$.[*].surface").value(hasItem(DEFAULT_SURFACE.doubleValue())))
-            .andExpect(jsonPath("$.[*].etatGeneral").value(hasItem(DEFAULT_ETAT_GENERAL.booleanValue())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].nombreSalle").value(hasItem(DEFAULT_NOMBRE_SALLE)));
+            .andExpect(jsonPath("$.[*].designation").value(DEFAULT_DESIGNATION))
+            .andExpect(jsonPath("$.[*].nbrPiece").value(DEFAULT_NBR_PIECE.doubleValue()))
+            .andExpect(jsonPath("$.[*].surface").value(DEFAULT_SURFACE.doubleValue()))
+            .andExpect(jsonPath("$.[*].sourceFinancement").value(DEFAULT_SOURCE_FINANCEMENT))
+            .andExpect(jsonPath("$.[*].photoContentType").value(hasItem(DEFAULT_PHOTO_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].photo").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO))))
+            .andExpect(jsonPath("$.[*].etatGrosOeuvre").value(DEFAULT_ETAT_GROS_OEUVRE))
+            .andExpect(jsonPath("$.[*].etatSecondOeuvre").value(DEFAULT_ETAT_SECOND_OEUVRE))
+            .andExpect(jsonPath("$.[*].observation").value(DEFAULT_OBSERVATION));
     }
 
     @Test
@@ -324,13 +334,15 @@ class BatimentResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(batiment.getId().intValue()))
-            .andExpect(jsonPath("$.nomBatiment").value(DEFAULT_NOM_BATIMENT))
-            .andExpect(jsonPath("$.nbrPiece").value(DEFAULT_NBR_PIECE))
             .andExpect(jsonPath("$.designation").value(DEFAULT_DESIGNATION))
+            .andExpect(jsonPath("$.nbrPiece").value(DEFAULT_NBR_PIECE.doubleValue()))
             .andExpect(jsonPath("$.surface").value(DEFAULT_SURFACE.doubleValue()))
-            .andExpect(jsonPath("$.etatGeneral").value(DEFAULT_ETAT_GENERAL.booleanValue()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.nombreSalle").value(DEFAULT_NOMBRE_SALLE));
+            .andExpect(jsonPath("$.sourceFinancement").value(DEFAULT_SOURCE_FINANCEMENT))
+            .andExpect(jsonPath("$.photoContentType").value(hasItem(DEFAULT_PHOTO_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.photo").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO))))
+            .andExpect(jsonPath("$.etatGrosOeuvre").value(DEFAULT_ETAT_GROS_OEUVRE))
+            .andExpect(jsonPath("$.etatSecondOeuvre").value(DEFAULT_ETAT_SECOND_OEUVRE))
+            .andExpect(jsonPath("$.observation").value(DEFAULT_OBSERVATION));
     }
 
     @Test
@@ -353,13 +365,13 @@ class BatimentResourceIT {
         // Disconnect from session so that the updates on updatedBatiment are not directly saved in db
         em.detach(updatedBatiment);
         updatedBatiment
-            .nomBatiment(UPDATED_NOM_BATIMENT)
-            .nbrPiece(UPDATED_NBR_PIECE)
-            .designation(UPDATED_DESIGNATION)
-            .surface(UPDATED_SURFACE)
-            .etatGeneral(UPDATED_ETAT_GENERAL)
-            .description(UPDATED_DESCRIPTION)
-            .nombreSalle(UPDATED_NOMBRE_SALLE);
+            .designation(DEFAULT_DESIGNATION)
+            .nbrPiece(DEFAULT_NBR_PIECE)
+            .surface(DEFAULT_SURFACE)
+            .sourceFinancement(DEFAULT_SOURCE_FINANCEMENT)
+            .photo(DEFAULT_PHOTO)
+            .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
+            .observation(DEFAULT_OBSERVATION);
 
         restBatimentMockMvc
             .perform(
@@ -374,13 +386,15 @@ class BatimentResourceIT {
         List<Batiment> batimentList = batimentRepository.findAll();
         assertThat(batimentList).hasSize(databaseSizeBeforeUpdate);
         Batiment testBatiment = batimentList.get(batimentList.size() - 1);
-        assertThat(testBatiment.getNomBatiment()).isEqualTo(UPDATED_NOM_BATIMENT);
-        assertThat(testBatiment.getNbrPiece()).isEqualTo(UPDATED_NBR_PIECE);
-        assertThat(testBatiment.getDesignation()).isEqualTo(UPDATED_DESIGNATION);
-        assertThat(testBatiment.getSurface()).isEqualTo(UPDATED_SURFACE);
-        assertThat(testBatiment.getEtatGeneral()).isEqualTo(UPDATED_ETAT_GENERAL);
-        assertThat(testBatiment.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testBatiment.getNombreSalle()).isEqualTo(UPDATED_NOMBRE_SALLE);
+        assertThat(testBatiment.getDesignation()).isEqualTo(DEFAULT_DESIGNATION);
+        assertThat(testBatiment.getNbrPiece()).isEqualTo(DEFAULT_NBR_PIECE);
+        assertThat(testBatiment.getSurface()).isEqualTo(DEFAULT_SURFACE);
+        assertThat(testBatiment.getSourceFinancement()).isEqualTo(DEFAULT_SOURCE_FINANCEMENT);
+        assertThat(testBatiment.getPhoto()).isEqualTo(DEFAULT_PHOTO);
+        assertThat(testBatiment.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
+        assertThat(testBatiment.getEtatGrosOeuvre()).isEqualTo(DEFAULT_ETAT_GROS_OEUVRE);
+        assertThat(testBatiment.getEtatSecondOeuvre()).isEqualTo(DEFAULT_ETAT_SECOND_OEUVRE);
+        assertThat(testBatiment.getObservation()).isEqualTo(DEFAULT_OBSERVATION);
     }
 
     @Test
@@ -459,10 +473,13 @@ class BatimentResourceIT {
         partialUpdatedBatiment.setId(batiment.getId());
 
         partialUpdatedBatiment
-            .nomBatiment(UPDATED_NOM_BATIMENT)
-            .surface(UPDATED_SURFACE)
-            .description(UPDATED_DESCRIPTION)
-            .nombreSalle(UPDATED_NOMBRE_SALLE);
+            .designation(DEFAULT_DESIGNATION)
+            .nbrPiece(DEFAULT_NBR_PIECE)
+            .surface(DEFAULT_SURFACE)
+            .sourceFinancement(DEFAULT_SOURCE_FINANCEMENT)
+            .photo(DEFAULT_PHOTO)
+            .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
+            .observation(DEFAULT_OBSERVATION);
 
         restBatimentMockMvc
             .perform(
@@ -477,13 +494,15 @@ class BatimentResourceIT {
         List<Batiment> batimentList = batimentRepository.findAll();
         assertThat(batimentList).hasSize(databaseSizeBeforeUpdate);
         Batiment testBatiment = batimentList.get(batimentList.size() - 1);
-        assertThat(testBatiment.getNomBatiment()).isEqualTo(UPDATED_NOM_BATIMENT);
-        assertThat(testBatiment.getNbrPiece()).isEqualTo(DEFAULT_NBR_PIECE);
         assertThat(testBatiment.getDesignation()).isEqualTo(DEFAULT_DESIGNATION);
-        assertThat(testBatiment.getSurface()).isEqualTo(UPDATED_SURFACE);
-        assertThat(testBatiment.getEtatGeneral()).isEqualTo(DEFAULT_ETAT_GENERAL);
-        assertThat(testBatiment.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testBatiment.getNombreSalle()).isEqualTo(UPDATED_NOMBRE_SALLE);
+        assertThat(testBatiment.getNbrPiece()).isEqualTo(DEFAULT_NBR_PIECE);
+        assertThat(testBatiment.getSurface()).isEqualTo(DEFAULT_SURFACE);
+        assertThat(testBatiment.getSourceFinancement()).isEqualTo(DEFAULT_SOURCE_FINANCEMENT);
+        assertThat(testBatiment.getPhoto()).isEqualTo(DEFAULT_PHOTO);
+        assertThat(testBatiment.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
+        assertThat(testBatiment.getEtatGrosOeuvre()).isEqualTo(DEFAULT_ETAT_GROS_OEUVRE);
+        assertThat(testBatiment.getEtatSecondOeuvre()).isEqualTo(DEFAULT_ETAT_SECOND_OEUVRE);
+        assertThat(testBatiment.getObservation()).isEqualTo(DEFAULT_OBSERVATION);
     }
 
     @Test
@@ -499,13 +518,13 @@ class BatimentResourceIT {
         partialUpdatedBatiment.setId(batiment.getId());
 
         partialUpdatedBatiment
-            .nomBatiment(UPDATED_NOM_BATIMENT)
-            .nbrPiece(UPDATED_NBR_PIECE)
-            .designation(UPDATED_DESIGNATION)
-            .surface(UPDATED_SURFACE)
-            .etatGeneral(UPDATED_ETAT_GENERAL)
-            .description(UPDATED_DESCRIPTION)
-            .nombreSalle(UPDATED_NOMBRE_SALLE);
+            .designation(DEFAULT_DESIGNATION)
+            .nbrPiece(DEFAULT_NBR_PIECE)
+            .surface(DEFAULT_SURFACE)
+            .sourceFinancement(DEFAULT_SOURCE_FINANCEMENT)
+            .photo(DEFAULT_PHOTO)
+            .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
+            .observation(DEFAULT_OBSERVATION);
 
         restBatimentMockMvc
             .perform(
@@ -520,13 +539,15 @@ class BatimentResourceIT {
         List<Batiment> batimentList = batimentRepository.findAll();
         assertThat(batimentList).hasSize(databaseSizeBeforeUpdate);
         Batiment testBatiment = batimentList.get(batimentList.size() - 1);
-        assertThat(testBatiment.getNomBatiment()).isEqualTo(UPDATED_NOM_BATIMENT);
-        assertThat(testBatiment.getNbrPiece()).isEqualTo(UPDATED_NBR_PIECE);
         assertThat(testBatiment.getDesignation()).isEqualTo(UPDATED_DESIGNATION);
+        assertThat(testBatiment.getNbrPiece()).isEqualTo(UPDATED_NBR_PIECE);
         assertThat(testBatiment.getSurface()).isEqualTo(UPDATED_SURFACE);
-        assertThat(testBatiment.getEtatGeneral()).isEqualTo(UPDATED_ETAT_GENERAL);
-        assertThat(testBatiment.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testBatiment.getNombreSalle()).isEqualTo(UPDATED_NOMBRE_SALLE);
+        assertThat(testBatiment.getSourceFinancement()).isEqualTo(UPDATED_SOURCE_FINANCEMENT);
+        assertThat(testBatiment.getPhoto()).isEqualTo(UPDATED_PHOTO);
+        assertThat(testBatiment.getPhotoContentType()).isEqualTo(UPDATED_PHOTO_CONTENT_TYPE);
+        assertThat(testBatiment.getEtatGrosOeuvre()).isEqualTo(UPDATED_ETAT_GROS_OEUVRE);
+        assertThat(testBatiment.getEtatSecondOeuvre()).isEqualTo(UPDATED_ETAT_SECOND_OEUVRE);
+        assertThat(testBatiment.getObservation()).isEqualTo(UPDATED_OBSERVATION);
     }
 
     @Test

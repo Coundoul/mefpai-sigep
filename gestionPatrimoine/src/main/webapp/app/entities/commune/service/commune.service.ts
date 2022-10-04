@@ -12,7 +12,7 @@ export type EntityArrayResponseType = HttpResponse<ICommune[]>;
 
 @Injectable({ providedIn: 'root' })
 export class CommuneService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/communes', 'gestioninfrastructure');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/communes', 'gestionequipement');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 

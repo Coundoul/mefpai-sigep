@@ -25,7 +25,7 @@
       </div>
     </h2>
 
-    <jhi-alert-error></jhi-alert-error>
+    <!-- <jhi-alert-error></jhi-alert-error> -->
 
     <jhi-alert></jhi-alert>
 
@@ -90,15 +90,24 @@
                   <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
                 </button>
 
-                  <button
+                <button
+                  type="submit"
+                  [routerLink]="['/batiment']"
+                  class="btn btn-light btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <fa-icon icon="building"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
+                </button>
+                  <!-- <button
                     type="submit"
                     [routerLink]="['/etablissement', etablissement.id, 'view']"
                     class="btn btn-secondary btn-sm"
                     data-cy="entityDetailsButton"
                   >
                     <fa-icon icon="print"></fa-icon>
-                    <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
-                  </button>
+                     <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </button> -->
 
                 <button
                   type="submit"

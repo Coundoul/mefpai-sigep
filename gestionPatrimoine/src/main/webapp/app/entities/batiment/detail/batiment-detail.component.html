@@ -14,34 +14,42 @@
         <dd>
           <span>{{ batiment.id }}</span>
         </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nomBatiment">Nom Batiment</span></dt>
-        <dd>
-          <span>{{ batiment.nomBatiment }}</span>
-        </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nbrPiece">Nbr Piece</span></dt>
-        <dd>
-          <span>{{ batiment.nbrPiece }}</span>
-        </dd>
+
         <dt><span jhiTranslate="gestionPatrimoineApp.batiment.designation">Designation</span></dt>
         <dd>
           <span>{{ batiment.designation }}</span>
         </dd>
+
+        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nbrPiece">Nbr Piece</span></dt>
+        <dd>
+          <span>{{ batiment.nbrPiece }}</span>
+        </dd>
+        
         <dt><span jhiTranslate="gestionPatrimoineApp.batiment.surface">Surface</span></dt>
         <dd>
           <span>{{ batiment.surface }}</span>
         </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.etatGeneral">Etat General</span></dt>
+
+        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.sourceFinancement">Source de Financement</span></dt>
         <dd>
-          <span>{{ batiment.etatGeneral }}</span>
+          <span>{{ batiment.sourceFinancement }}</span>
         </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.description">Description</span></dt>
+
+        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.etatGrosOeuvre">Etat du Gros Oeuvre</span></dt>
         <dd>
-          <span>{{ batiment.description }}</span>
+          <span>{{ batiment.etatGrosOeuvre }}</span>
         </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nombreSalle">Nombre Salle</span></dt>
+
+        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.etatGrosOeuvre">Etat du second Oeuvre</span></dt>
         <dd>
-          <span>{{ batiment.nombreSalle }}</span>
+          <span>{{ batiment.etatGrosOeuvre }}</span>
         </dd>
+
+        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.observation">Observation</span></dt>
+        <dd>
+          <span>{{ batiment.observation }}</span>
+        </dd>
+        
         <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nomEtablissement">Nom Etablissement</span></dt>
         <dd>
           <div *ngIf="batiment.nomEtablissement">

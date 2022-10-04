@@ -37,7 +37,7 @@ public class Magazin implements Serializable {
     private Integer idPers;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "nomCommune" }, allowSetters = true)
+    @JsonIgnoreProperties(allowSetters = true)
     private Quartier nomQuartier;
 
     @OneToMany(mappedBy = "nomMagazin")

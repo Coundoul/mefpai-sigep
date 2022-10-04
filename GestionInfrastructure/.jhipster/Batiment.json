@@ -2,18 +2,13 @@
   "name": "Batiment",
   "fields": [
     {
-      "fieldName": "nomBatiment",
+      "fieldName": "designation",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "nbrPiece",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "designation",
-      "fieldType": "String",
+      "fieldType": "Double",
       "fieldValidateRules": ["required"]
     },
     {
@@ -22,18 +17,28 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "etatGeneral",
-      "fieldType": "Boolean",
+      "fieldName": "sourceDeFinancement",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "description",
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "etatGrosOeuvre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "etatSecondOeuvre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "observation",
       "fieldType": "String"
-    },
-    {
-      "fieldName": "nombreSalle",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [

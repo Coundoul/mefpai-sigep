@@ -12,60 +12,7 @@ export type EntityArrayResponseType = HttpResponse<IQuartier[]>;
 
 @Injectable({ providedIn: 'root' })
 export class QuartierService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/equipements/quartiers', 'gestionequipement');
-
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
-
-  create(quartier: IQuartier): Observable<EntityResponseType> {
-    return this.http.post<IQuartier>(this.resourceUrl, quartier, { observe: 'response' });
-  }
-
-  update(quartier: IQuartier): Observable<EntityResponseType> {
-    return this.http.put<IQuartier>(`${this.resourceUrl}/${getQuartierIdentifier(quartier) as number}`, quartier, { observe: 'response' });
-  }
-
-  partialUpdate(quartier: IQuartier): Observable<EntityResponseType> {
-    return this.http.patch<IQuartier>(`${this.resourceUrl}/${getQuartierIdentifier(quartier) as number}`, quartier, {
-      observe: 'response',
-    });
-  }
-
-  find(id: number): Observable<EntityResponseType> {
-    return this.http.get<IQuartier>(`${this.resourceUrl}/${id}`, { observe: 'response' });
-  }
-
-  query(req?: any): Observable<EntityArrayResponseType> {
-    const options = createRequestOption(req);
-    return this.http.get<IQuartier[]>(this.resourceUrl, { params: options, observe: 'response' });
-  }
-
-  delete(id: number): Observable<HttpResponse<{}>> {
-    return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
-  }
-
-  addQuartierToCollectionIfMissing(quartierCollection: IQuartier[], ...quartiersToCheck: (IQuartier | null | undefined)[]): IQuartier[] {
-    const quartiers: IQuartier[] = quartiersToCheck.filter(isPresent);
-    if (quartiers.length > 0) {
-      const quartierCollectionIdentifiers = quartierCollection.map(quartierItem => getQuartierIdentifier(quartierItem)!);
-      const quartiersToAdd = quartiers.filter(quartierItem => {
-        const quartierIdentifier = getQuartierIdentifier(quartierItem);
-        if (quartierIdentifier == null || quartierCollectionIdentifiers.includes(quartierIdentifier)) {
-          return false;
-        }
-        quartierCollectionIdentifiers.push(quartierIdentifier);
-        return true;
-      });
-      return [...quartiersToAdd, ...quartierCollection];
-    }
-    return quartierCollection;
-  }
-}
-
-
-
-@Injectable({ providedIn: 'root' })
-export class QuartierServiceInfra {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/infrastructures/quartiers', 'gestioninfrastructure');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/quartiers', 'gestionequipement');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 

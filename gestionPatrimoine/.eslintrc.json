@@ -21,6 +21,7 @@
   },
   "rules": {
     "@typescript-eslint/restrict-plus-operands": "error",
+    "@typescript-eslint/restrict-template-expressions": "error",
     "@angular-eslint/component-selector": [
       "error",
       {

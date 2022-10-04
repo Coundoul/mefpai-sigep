@@ -5,13 +5,15 @@ import { IAtelier } from 'app/entities/atelier/atelier.model';
 
 export interface IBatiment {
   id?: number;
-  nomBatiment?: string;
-  nbrPiece?: string;
   designation?: string;
+  nbrPiece?: number;
   surface?: number;
-  etatGeneral?: boolean;
-  description?: string | null;
-  nombreSalle?: number;
+  sourceFinancement?: string;
+  photoContentType?: string;
+  photo?: string;
+  etatGrosOeuvre?: string;
+  etatSecondOeuvre?: string;
+  observation?: string;
   nomEtablissement?: IEtablissement | null;
   nomCorps?: ICorpsEtat | null;
   typeBas?: ITypeBatiment[] | null;
@@ -21,20 +23,20 @@ export interface IBatiment {
 export class Batiment implements IBatiment {
   constructor(
     public id?: number,
-    public nomBatiment?: string,
-    public nbrPiece?: string,
     public designation?: string,
+    public nbrPiece?: number,
     public surface?: number,
-    public etatGeneral?: boolean,
-    public description?: string | null,
-    public nombreSalle?: number,
+    public sourceFinancement?: string,
+    public photoContentType?: string,
+    public photo?: string,
+    public etatGrosOeuvre?: string,
+    public etatSecondOeuvre?: string,
+    public observation?: string,
     public nomEtablissement?: IEtablissement | null,
     public nomCorps?: ICorpsEtat | null,
     public typeBas?: ITypeBatiment[] | null,
     public nomAteliers?: IAtelier[] | null
-  ) {
-    this.etatGeneral = this.etatGeneral ?? false;
-  }
+  ) {}
 }
 
 export function getBatimentIdentifier(batiment: IBatiment): number | undefined {

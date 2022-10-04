@@ -24,6 +24,13 @@ public class Etablissement implements Serializable {
     @Column(name = "nom_etablissement", nullable = false)
     private String nomEtablissement;
 
+    @Lob
+    @Column(name = "photo", nullable = false)
+    private byte[] photo;
+
+    @Column(name = "photo_content_type")
+    private String photoContentType;
+
     @NotNull
     @Column(name = "adresse", nullable = false)
     private String adresse;
@@ -114,7 +121,7 @@ public class Etablissement implements Serializable {
     private Integer idPers;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "nomCommune" }, allowSetters = true)
+    @JsonIgnoreProperties(allowSetters = true)
     private Quartier nomQuartier;
 
     @OneToMany(mappedBy = "nomEtablissement")
@@ -148,7 +155,32 @@ public class Etablissement implements Serializable {
         this.nomEtablissement = nomEtablissement;
     }
 
+    public byte[] getPhoto() {
+        return this.photo;
+    }
 
+    public Etablissement photo(byte[] photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getPhotoContentType() {
+        return this.photoContentType;
+    }
+
+    public Etablissement photoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
+        return this;
+    }
+
+    public void setPhotoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
+    }
+    
     public Integer getNombreApprenants() {
         return this.nombreApprenants;
     }
@@ -507,6 +539,8 @@ public class Etablissement implements Serializable {
         return "Etablissement{" +
             "id=" + getId() +
             ", nomEtablissement='" + getNomEtablissement() + "'" +
+            ", image='" + getPhoto() + "'" +
+            ", nomEtablissement='" + getPhotoContentType() + "'" +
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", Email='" + getEmail() + "'" +

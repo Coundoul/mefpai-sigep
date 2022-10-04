@@ -4,6 +4,8 @@ import { IProjets } from 'app/entities/projets/projets.model';
 export interface IEtablissement {
   id?: number;
   nomEtablissement?: string;
+  photoContentType?: string | null;
+  photo?: string ;
   adresse?: string;
   telephone?: string;
   email?: string;

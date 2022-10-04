@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng-lts/api';
 
 import { IEtablissement } from '../etablissement.model';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { DataUtils } from 'app/core/util/data-util.service';
 
 declare let google: any;
 
@@ -28,7 +31,7 @@ export class EtablissementDetailComponent implements OnInit {
 
     draggable = false;
 
-  constructor(protected activatedRoute: ActivatedRoute, private messageService: MessageService) {}
+  constructor(protected activatedRoute: ActivatedRoute, protected dataUtils: DataUtils, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ etablissement }) => {
@@ -45,6 +48,40 @@ export class EtablissementDetailComponent implements OnInit {
   //   this.infoWindow = new google.maps.InfoWindow();
   }
 
+  download(): void { 
+     // const element = document.getElementById('identification')!;
+
+      // html2canvas(element).then((canvas) => {
+
+      //   const imgData = canvas.toDataURL('image/png');
+
+      //   const doc = new jsPDF();
+        
+      //   const imgHeight = canvas.height * 208 / canvas.width;
+        
+      //   doc.addImage(imgData, 0, 0, 208, imgHeight);
+
+      //   doc.save('image.pdf');
+      // })
+
+      const doc = new jsPDF();
+
+      html2canvas(document.querySelector("#content") as HTMLImageElement).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        
+        const imgHeight = canvas.height * 208 / canvas.width;
+        
+        doc.addImage(imgData, 0, 0, 210, imgHeight);
+
+        doc.save("etablissement.pdf");
+        
+      });
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    this.dataUtils.openFile(base64String, contentType);
+  }
+  
   previousState(): void {
     window.history.back();
   }
