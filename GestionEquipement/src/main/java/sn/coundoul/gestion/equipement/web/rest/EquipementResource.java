@@ -219,7 +219,7 @@ public class EquipementResource {
         @PathVariable Instant dateSignalisation
     ) {
         log.debug("REST request to update Equipement reference : {}", reference);
-        equipementRepository.updateEtatMatiere(etatMatiere, dateSignalisation, reference);
+        equipementRepository.updateEtatMatiere(reference, etatMatiere, dateSignalisation);
         return ResponseEntity
             .noContent()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, reference.toString()))
