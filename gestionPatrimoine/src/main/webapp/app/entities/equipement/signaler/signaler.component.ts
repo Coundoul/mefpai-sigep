@@ -124,7 +124,7 @@ export class SignalerComponent implements OnInit {
     //const equipement = this.createFromForm();
     alert('1112');
     this.ref = this.editForm.get(['reference'])!.value;
-    this.etat = this.editForm.get(['etat'])!.value;
+    this.etat = this.editForm.get(['etatMatiere'])!.value;
     this.dteSignal = this.editForm.get(['dateSignalisation'])!.value
       ? dayjs(this.editForm.get(['dateSignalisation'])!.value, DATE_TIME_FORMAT)
       : undefined;

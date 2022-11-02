@@ -8,21 +8,32 @@
     },
     {
       "fieldName": "nbrPiece",
-      "fieldType": "Double",
-      "fieldValidateRules": ["required"]
+      "fieldType": "Double"
     },
     {
       "fieldName": "surface",
-      "fieldType": "Double",
-      "fieldValidateRules": ["required"]
+      "fieldType": "Double"
     },
     {
-      "fieldName": "sourceDeFinancement",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldName": "sourceFinancement",
+      "fieldType": "String"
     },
     {
       "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "dateSignalisation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "photoSignalisationGrosOeuvre",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photoSignalisationSecondOeuvre",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "image"
     },
@@ -38,6 +49,10 @@
     },
     {
       "fieldName": "observation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description_signalisation",
       "fieldType": "String"
     }
   ],

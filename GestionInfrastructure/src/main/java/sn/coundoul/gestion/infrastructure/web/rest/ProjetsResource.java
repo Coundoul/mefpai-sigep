@@ -188,6 +188,15 @@ public class ProjetsResource {
         Optional<Projets> projets = projetsRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(projets);
     }
+    
+
+    @GetMapping("/projets/etablissement/{id}")
+    public ResponseEntity<List<Projets>> getAllBatiments(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of Batiments");
+        Page<Projets> page = projetsRepository.findAllProjet(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
 
     /**
      * {@code DELETE  /projets/:id} : delete the "id" projets.

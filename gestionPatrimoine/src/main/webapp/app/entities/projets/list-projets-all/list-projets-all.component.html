@@ -8,12 +8,12 @@
       <span>Projets</span>
       <hr />
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <button class="btn btn-info mr-2" (click)="loadPageAll()" [disabled]="isLoading">
           <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
           <span>Actualiser</span>
         </button>
 
-        <button
+        <!-- <button
           id="jh-create-entity"
           data-cy="entityCreateButton"
           class="btn btn-primary jh-create-entity create-projets"
@@ -21,7 +21,7 @@
         >
           <fa-icon icon="plus"></fa-icon>
           <span>Nouveau Projet </span>
-        </button>
+        </button> -->
       </div>
     </h2>
 
@@ -36,7 +36,7 @@
     <div class="table-responsive" id="entities" *ngIf="projets && projets.length > 0">
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
-          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPageAll.bind(this)">
             <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
             <th scope="col" jhiSortBy="typeProjet">
               <span jhiTranslate="gestionPatrimoineApp.projets.typeProjet">Type Projet</span>
@@ -49,9 +49,6 @@
             </th>
             <th scope="col" jhiSortBy="dateFin">
               <span jhiTranslate="gestionPatrimoineApp.projets.dateFin">Date Fin</span> <fa-icon icon="sort"></fa-icon>
-            </th>
-            <th scope="col" jhiSortBy="dateFin">
-              <span>Etapes du Projet</span>
             </th>
             <!-- <th scope="col" jhiSortBy="description">
               <span jhiTranslate="gestionPatrimoineApp.projets.description">Description</span> <fa-icon icon="sort"></fa-icon>
@@ -80,14 +77,6 @@
             <td>{{ projets.nomProjet }}</td>
             <td>{{ projets.dateDebut | formatMediumDate }}</td>
             <td>{{ projets.dateFin | formatMediumDate }}</td>
-            <td>
-              <a [routerLink]="['/etapes', projets.id, 'projets']" data-toggle="tooltip"
-                title="Voir les étapes du Projet">
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped bg-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                </div> 
-              </a>
-            </td>
             <!-- <td>{{ projets.description }}</td> -->
             <!-- <td>
               <div *ngIf="projets.extension === true">
@@ -124,8 +113,6 @@
                   type="submit"
                   [routerLink]="['/projets', projets.id, 'view']"
                   class="btn btn-info btn-sm"
-                  data-toggle="tooltip"
-                  title="Voir les détails du Projet"
                   data-cy="entityDetailsButton"
                 >
                   <fa-icon icon="eye"></fa-icon>
@@ -134,22 +121,8 @@
 
                 <button
                   type="submit"
-                  [routerLink]="['/intervenant', projets.id, 'projets']"
-                  class="btn btn-secondary btn-sm"
-                  data-toggle="tooltip"
-                  title="Voir Les Intervenant du Projet"
-                  data-cy="entityDetailsButton"
-                >
-                  <fa-icon icon="users"></fa-icon>
-                  <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
-                </button>
-
-                <button
-                  type="submit"
                   [routerLink]="['/projets', projets.id, 'edit']"
                   class="btn btn-primary btn-sm"
-                  data-toggle="tooltip"
-                  title="Modifier Le Projet"
                   data-cy="entityEditButton"
                 >
                   <fa-icon icon="pencil-alt"></fa-icon>
@@ -180,7 +153,7 @@
           [maxSize]="5"
           [rotate]="true"
           [boundaryLinks]="true"
-          (pageChange)="loadPage($event)"
+          (pageChange)="loadPageAll($event)"
         ></ngb-pagination>
       </div>
     </div>

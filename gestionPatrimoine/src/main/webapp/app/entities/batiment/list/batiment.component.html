@@ -5,12 +5,12 @@
 
   <div class="card jh-card col-xs-12 col-md-9 mt-3">
     <h2 id="page-heading" data-cy="BatimentHeading">
-      <span jhiTranslate="gestionPatrimoineApp.batiment.home.title">ETAT DES LIEUX DES INFRASTRUCTURES DE L'ETABLISSEMENT</span>
+      <span>ETAT DES LIEUX DES INFRASTRUCTURES DE L'ETABLISSEMENT</span>
   
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
           <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-          <span jhiTranslate="gestionPatrimoineApp.batiment.home.refreshListLabel">Refresh List</span>
+          <span>Actualiser</span>
         </button>
   
         <button
@@ -20,7 +20,7 @@
           [routerLink]="['/batiment/new']"
         >
           <fa-icon icon="plus"></fa-icon>
-          <span jhiTranslate="gestionPatrimoineApp.batiment.home.createLabel"> Ajouter Désignation </span>
+          <span> Ajouter Désignation </span>
         </button>
       </div>
     </h2>
@@ -39,31 +39,29 @@
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
             <!-- <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th> -->
             <th scope="col" jhiSortBy="designation">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.designation">Designation</span> <fa-icon icon="sort"></fa-icon>
+              <span >Désignation</span>
             </th>
 
-            <th scope="col" jhiSortBy="nbrPiece">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.nbrPiece">Nbr Piece</span> <fa-icon icon="sort"></fa-icon>
+            <th scope="col" >
+              <span>Nombre de Pièces</span>
             </th>
             
-            <th scope="col" jhiSortBy="surface">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.surface">Surface</span> <fa-icon icon="sort"></fa-icon>
+            <th scope="col">
+              <span >Surface</span>
             </th>
-            <th scope="col" jhiSortBy="sourceFinancement">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.sourceFinancement">Sources de Financement</span> <fa-icon icon="sort"></fa-icon>
+            <th scope="col">
+              <span>Sources de Financement</span>
             </th>
-            <th scope="col" jhiSortBy="etatGrosOeuvre">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.etatGrosOeuvre">Etat du Gros Oeuvre</span> <fa-icon icon="sort"></fa-icon>
+            <th scope="col" >
+              <span >Etat du Gros Oeuvre</span>
             </th>
-            <th scope="col" jhiSortBy="etatSecondOeuvre">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.etatSecondOeuvre">Etat du Second Oeuvre</span> <fa-icon icon="sort"></fa-icon>
+            <th scope="col">
+              <span>Etat du Second Oeuvre</span>
             </th>
             <th scope="col" jhiSortBy="nomEtablissement.id">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.nomEtablissement">Nom Etablissement</span> <fa-icon icon="sort"></fa-icon>
+              <span>Observations</span>
             </th>
-            <th scope="col" jhiSortBy="nomCorps.id">
-              <span jhiTranslate="gestionPatrimoineApp.batiment.nomCorps">Nom Corps</span> <fa-icon icon="sort"></fa-icon>
-            </th>
+            
             <th scope="col"></th>
           </tr>
         </thead>
@@ -74,21 +72,12 @@
             </td> -->
             <td>{{ batiment.designation }}</td>
             <td>{{ batiment.nbrPiece }}</td>
-            <td>{{ batiment.surface }}</td>
+            <td>{{ batiment.surface }} m²</td>
             <td>{{ batiment.sourceFinancement }}</td>
             <td>{{ batiment.etatGrosOeuvre }}</td>
             <td>{{ batiment.etatSecondOeuvre }}</td>
             <td>{{ batiment.observation }}</td>
-            <td>
-              <div *ngIf="batiment.nomEtablissement">
-                <a [routerLink]="['/etablissement', batiment.nomEtablissement?.id, 'view']">{{ batiment.nomEtablissement?.id }}</a>
-              </div>
-            </td>
-            <td>
-              <div *ngIf="batiment.nomCorps">
-                <a [routerLink]="['/corps-etat', batiment.nomCorps?.id, 'view']">{{ batiment.nomCorps?.id }}</a>
-              </div>
-            </td>
+            
             <td class="text-right">
               <div class="btn-group">
                 <button
@@ -98,7 +87,11 @@
                   data-cy="entityDetailsButton"
                 >
                   <fa-icon icon="eye"></fa-icon>
-                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                </button>
+
+                <button type="submit" [routerLink]="['/batiment', batiment.id, 'signalerdesignation']" class="btn btn-warning btn-sm">
+                  <fa-icon icon="bell" style="color: white"></fa-icon>
+                  <!-- <span class="d-none d-md-inline" style="color: white;">Signaler</span> -->
                 </button>
   
                 <button
@@ -108,12 +101,10 @@
                   data-cy="entityEditButton"
                 >
                   <fa-icon icon="pencil-alt"></fa-icon>
-                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                 </button>
   
                 <button type="submit" (click)="delete(batiment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                   <fa-icon icon="times"></fa-icon>
-                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                 </button>
               </div>
             </td>
@@ -141,3 +132,4 @@
     </div>
   </div>
 </div>
+

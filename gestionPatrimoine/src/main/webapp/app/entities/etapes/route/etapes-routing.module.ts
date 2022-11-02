@@ -9,7 +9,7 @@ import { EtapesRoutingResolveService } from './etapes-routing-resolve.service';
 
 const etapesRoute: Routes = [
   {
-    path: '',
+    path: ':id/projets',
     component: EtapesComponent,
     data: {
       defaultSort: 'id,asc',

@@ -6,10 +6,19 @@ import { ProjetsComponent } from '../list/projets.component';
 import { ProjetsDetailComponent } from '../detail/projets-detail.component';
 import { ProjetsUpdateComponent } from '../update/projets-update.component';
 import { ProjetsRoutingResolveService } from './projets-routing-resolve.service';
+import { ListProjetsAllComponent } from '../list-projets-all/list-projets-all.component';
 
 const projetsRoute: Routes = [
   {
     path: '',
+    component: ListProjetsAllComponent,
+    data: {
+      defaultSort: 'id,asc',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: ':id/projetEtablissement',
     component: ProjetsComponent,
     data: {
       defaultSort: 'id,asc',

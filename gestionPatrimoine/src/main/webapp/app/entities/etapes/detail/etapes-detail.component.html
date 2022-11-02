@@ -1,50 +1,54 @@
-<div class="row justify-content-center">
-  <div class="col-8">
-    <div *ngIf="etapes">
-      <h2 data-cy="etapesDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.etapes.detail.title">Etapes</span></h2>
-
-      <hr />
-
-      <jhi-alert-error></jhi-alert-error>
-
-      <jhi-alert></jhi-alert>
-
-      <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
-        <dd>
-          <span>{{ etapes.id }}</span>
-        </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.etapes.dateDebut">Date Debut</span></dt>
-        <dd>
-          <span>{{ etapes.dateDebut | formatMediumDatetime }}</span>
-        </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.etapes.dateFin">Date Fin</span></dt>
-        <dd>
-          <span>{{ etapes.dateFin | formatMediumDatetime }}</span>
-        </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.etapes.nomTache">Nom Tache</span></dt>
-        <dd>
-          <span>{{ etapes.nomTache }}</span>
-        </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.etapes.duration">Duration</span></dt>
-        <dd>
-          <span>{{ etapes.duration | duration }} ({{ etapes.duration }})</span>
-        </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.etapes.nomProjet">Nom Projet</span></dt>
-        <dd>
-          <div *ngIf="etapes.nomProjet">
-            <a [routerLink]="['/projets', etapes.nomProjet?.id, 'view']">{{ etapes.nomProjet?.id }}</a>
-          </div>
-        </dd>
-      </dl>
-
-      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-      </button>
-
-      <button type="button" [routerLink]="['/etapes', etapes.id, 'edit']" class="btn btn-primary">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-      </button>
-    </div>
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
   </div>
+
+    <div class="card jh-card col-xs-12 col-md-9 mt-3">
+      <div *ngIf="etapes">
+        <h2 data-cy="etapesDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.etapes.detail.title">Etapes</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ etapes.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.etapes.dateDebut">Date Debut</span></dt>
+          <dd>
+            <span>{{ etapes.dateDebut | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.etapes.dateFin">Date Fin</span></dt>
+          <dd>
+            <span>{{ etapes.dateFin | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.etapes.nomTache">Nom Tache</span></dt>
+          <dd>
+            <span>{{ etapes.nomTache }}</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.etapes.duration">Duration</span></dt>
+          <dd>
+            <span>{{ etapes.duration | duration }} ({{ etapes.duration }})</span>
+          </dd>
+          <dt><span jhiTranslate="gestionPatrimoineApp.etapes.nomProjet">Nom Projet</span></dt>
+          <dd>
+            <div *ngIf="etapes.nomProjet">
+              <a [routerLink]="['/projets', etapes.nomProjet?.id, 'view']">{{ etapes.nomProjet?.id }}</a>
+            </div>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/etapes', etapes.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    </div>
 </div>

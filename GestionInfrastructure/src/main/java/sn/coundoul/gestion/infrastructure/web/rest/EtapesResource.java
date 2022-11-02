@@ -170,6 +170,14 @@ public class EtapesResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+    @GetMapping("/etapes/projets/{id}")
+    public ResponseEntity<List<Etapes>> getAllEtapesProjet(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of Batiments");
+        Page<Etapes> page = etapesRepository.findAllEtapesProjet(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }   
+
     /**
      * {@code GET  /etapes/:id} : get the "id" etapes.
      *

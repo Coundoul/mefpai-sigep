@@ -14,7 +14,10 @@ export type EntityArrayResponseType = HttpResponse<IProjets[]>;
 
 @Injectable({ providedIn: 'root' })
 export class ProjetsService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/projets');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/projets', 'gestioninfrastructure');
+
+  public resourceUrlProjets = this.applicationConfigService.getEndpointFor('api/projets/etablissement', 'gestioninfrastructure');
+
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
@@ -49,6 +52,13 @@ export class ProjetsService {
     const options = createRequestOption(req);
     return this.http
       .get<IProjets[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  queryProjet(id: number, req?:any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<IProjets[]>(`${this.resourceUrlProjets}/${id}`, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

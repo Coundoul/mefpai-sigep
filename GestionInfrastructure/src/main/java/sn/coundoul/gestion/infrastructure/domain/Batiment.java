@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.Instant;
 
 /**
  * A Batiment.
@@ -24,20 +25,18 @@ public class Batiment implements Serializable {
     @Column(name = "designation", nullable = false)
     private String designation;
     
-    @NotNull
-    @Column(name = "nbr_piece", nullable = false)
+   
+    @Column(name = "nbr_piece")
     private Double nbrPiece;
 
-    @NotNull
-    @Column(name = "surface", nullable = false)
+    @Column(name = "surface")
     private Double surface;
 
-    @NotNull
-    @Column(name = "source_de_financement", nullable = false)
+    @Column(name = "source_de_financement")
     private String sourceFinancement; 
 
     @Lob
-    @Column(name = "photo", nullable = false)
+    @Column(name = "photo")
     private byte[] photo;
 
     @Column(name = "photo_content_type")
@@ -54,8 +53,28 @@ public class Batiment implements Serializable {
     @Column(name = "observation")
     private String observation;
 
+    @Column(name = "date_signalisation")
+    private Instant dateSignalisation;
+
+    @Lob
+    @Column(name = "photo_signalisation_gros_oeuvre")
+    private byte[] photoSignalisationGrosOeuvre;
+
+    @Column(name = "photo_signalisation_content_type_gros_oeuvre")
+    private String photoSignalisationGrosOeuvreContentType;
+
+    @Lob
+    @Column(name = "photo_signalisation_second_oeuvre")
+    private byte[] photoSignalisationSecondOeuvre;
+
+    @Column(name = "photo_signalisation_content_type_second_oeuvre")
+    private String photoSignalisationSecondOeuvreContentType;
+
+    @Column(name = "description_signalisation")
+    private String descriptionSignalisation;
+
     @ManyToOne
-    @JsonIgnoreProperties(value = { "nomQuartier", "nomProjets" }, allowSetters = true)
+    @JsonIgnoreProperties(allowSetters = true)
     private Etablissement nomEtablissement;
 
     @ManyToOne
@@ -201,6 +220,20 @@ public class Batiment implements Serializable {
         this.observation = observation;
     }
 
+    public Etablissement getNomEtablissement() {
+        return this.nomEtablissement;
+    }
+
+    public Batiment nomEtablissement(Etablissement nomEtablissement) {
+        this.setNomEtablissement(nomEtablissement);
+        return this;
+    }
+
+    public void setNomEtablissement(Etablissement nomEtablissement) {
+        this.nomEtablissement = nomEtablissement;
+    }
+
+
     public CorpsEtat getNomCorps() {
         return this.nomCorps;
     }
@@ -275,6 +308,86 @@ public class Batiment implements Serializable {
         }
         this.nomAteliers = ateliers;
     }
+
+
+    public byte[] getPhotoSignalisationGrosOeuvre() {
+        return this.photoSignalisationGrosOeuvre;
+    }
+
+    public Batiment photoSignalisationGrosOeuvre(byte[] photoSignalisationGrosOeuvre) {
+        this.photoSignalisationGrosOeuvre = photoSignalisationGrosOeuvre;
+        return this;
+    }
+
+    public void setPhotoSignalisationGrosOeuvre(byte[] photoSignalisationGrosOeuvre) {
+        this.photoSignalisationGrosOeuvre = photoSignalisationGrosOeuvre;
+    }
+
+    public String getPhotoSignalisationGrosOeuvreContentType() {
+        return this.photoSignalisationGrosOeuvreContentType;
+    }
+
+    public Batiment photoSignalisationGrosOeuvreContentType(String photoSignalisationGrosOeuvreContentType) {
+        this.photoSignalisationGrosOeuvreContentType = photoSignalisationGrosOeuvreContentType;
+        return this;
+    }
+
+    public void setPhotoSignalisationGrosOeuvreContentType(String photoSignalisationGrosOeuvreContentType) {
+        this.photoSignalisationGrosOeuvreContentType = photoSignalisationGrosOeuvreContentType;
+    }
+
+    public byte[] getPhotoSignalisationSecondOeuvre() {
+        return this.photoSignalisationSecondOeuvre;
+    }
+
+    public Batiment photoSignalisationSecondOeuvre(byte[] photoSignalisationSecondOeuvre) {
+        this.photoSignalisationSecondOeuvre = photoSignalisationSecondOeuvre;
+        return this;
+    }
+
+    public void setPhotoSignalisationSecondOeuvre(byte[] photoSignalisationSecondOeuvre) {
+        this.photoSignalisationSecondOeuvre = photoSignalisationSecondOeuvre;
+    }
+
+    public String getPhotoSignalisationSecondOeuvreContentType() {
+        return this.photoSignalisationSecondOeuvreContentType;
+    }
+
+    public Batiment photoSignalisationSecondOeuvreContentType(String photoSignalisationSecondOeuvreContentType) {
+        this.photoSignalisationSecondOeuvreContentType = photoSignalisationSecondOeuvreContentType;
+        return this;
+    }
+
+    public void setPhotoSignalisationSecondOeuvreContentType(String photoSignalisationSecondOeuvreContentType) {
+        this.photoSignalisationSecondOeuvreContentType = photoSignalisationSecondOeuvreContentType;
+    }
+
+    public String getDescriptionSignalisation() {
+        return this.descriptionSignalisation;
+    }
+
+    public Batiment descriptionSignalisation(String descriptionSignalisation) {
+        this.descriptionSignalisation = descriptionSignalisation;
+        return this;
+    }
+
+    public void setDescriptionSignalisation(String descriptionSignalisation) {
+        this.descriptionSignalisation = descriptionSignalisation;
+    }
+
+    public Instant getDateSignalisation() {
+        return this.dateSignalisation;
+    }
+
+    public Batiment dateAttribution(Instant dateSignalisation) {
+        this.dateSignalisation = dateSignalisation;
+        return this;
+    }
+
+    public void setDateSignalisation(Instant dateSignalisation) {
+        this.dateSignalisation = dateSignalisation;
+    }
+
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

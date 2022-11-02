@@ -54,6 +54,7 @@ import {
   faArrowRight,
   faPrint,
   faBuilding,
+  faProjectDiagram,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -121,4 +122,5 @@ export const fontAwesomeIcons = [
   faCheckCircle,
   faChevronCircleDown,
   faChevronCircleUp,
+  faProjectDiagram
 ];

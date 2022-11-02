@@ -12,7 +12,9 @@ export type EntityArrayResponseType = HttpResponse<IBatiment[]>;
 
 @Injectable({ providedIn: 'root' })
 export class BatimentService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/batiments');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/batiments', 'gestioninfrastructure');
+
+  public resourceUrlBatiment = this.applicationConfigService.getEndpointFor('api/batiments/etablissement', 'gestioninfrastructure');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
@@ -32,6 +34,11 @@ export class BatimentService {
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<IBatiment>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  queryDesignation(id: number, req?:any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IBatiment[]>(`${this.resourceUrlBatiment}/${id}`, { params: options, observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

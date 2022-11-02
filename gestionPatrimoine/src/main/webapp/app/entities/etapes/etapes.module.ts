@@ -6,9 +6,10 @@ import { EtapesDetailComponent } from './detail/etapes-detail.component';
 import { EtapesUpdateComponent } from './update/etapes-update.component';
 import { EtapesDeleteDialogComponent } from './delete/etapes-delete-dialog.component';
 import { EtapesRoutingModule } from './route/etapes-routing.module';
+import { SidebarModule } from 'app/layouts/sidebar/sidebar.module';
 
 @NgModule({
-  imports: [SharedModule, EtapesRoutingModule],
+  imports: [SharedModule, EtapesRoutingModule, SidebarModule],
   declarations: [EtapesComponent, EtapesDetailComponent, EtapesUpdateComponent, EtapesDeleteDialogComponent],
   entryComponents: [EtapesDeleteDialogComponent],
 })

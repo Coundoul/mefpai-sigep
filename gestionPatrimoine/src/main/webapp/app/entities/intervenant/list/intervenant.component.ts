@@ -16,6 +16,7 @@ import { IntervenantDeleteDialogComponent } from '../delete/intervenant-delete-d
 })
 export class IntervenantComponent implements OnInit {
   intervenants?: IIntervenant[];
+  projet!: any;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -36,7 +37,7 @@ export class IntervenantComponent implements OnInit {
     const pageToLoad: number = page ?? this.page ?? 1;
 
     this.intervenantService
-      .query({
+      .queryIntervenant(this.projet, {
         page: pageToLoad - 1,
         size: this.itemsPerPage,
         sort: this.sort(),
@@ -54,6 +55,9 @@ export class IntervenantComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(() => {
+      this.projet = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    });
     this.handleNavigation();
   }
 

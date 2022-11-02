@@ -9,7 +9,7 @@ import { IntervenantRoutingResolveService } from './intervenant-routing-resolve.
 
 const intervenantRoute: Routes = [
   {
-    path: '',
+    path: ':id/projets',
     component: IntervenantComponent,
     data: {
       defaultSort: 'id,asc',

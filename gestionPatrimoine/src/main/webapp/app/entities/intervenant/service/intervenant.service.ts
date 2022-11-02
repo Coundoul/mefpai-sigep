@@ -12,7 +12,9 @@ export type EntityArrayResponseType = HttpResponse<IIntervenant[]>;
 
 @Injectable({ providedIn: 'root' })
 export class IntervenantService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/intervenants');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/intervenants', 'gestioninfrastructure');
+
+  public resourceUrlIntervants = this.applicationConfigService.getEndpointFor('api/intervenants/projets', 'gestioninfrastructure');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
@@ -39,6 +41,11 @@ export class IntervenantService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IIntervenant[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  queryIntervenant(id: number, req?:any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IIntervenant[]>(`${this.resourceUrlIntervants}/${id}`, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

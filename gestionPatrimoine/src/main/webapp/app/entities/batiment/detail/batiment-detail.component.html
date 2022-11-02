@@ -1,7 +1,11 @@
-<div class="row justify-content-center">
-  <div class="col-8">
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <jhi-sidebar></jhi-sidebar>
+  </div>
+
+  <div class="card jh-card col-xs-12 col-md-9" *ngIf="batiment">
     <div *ngIf="batiment">
-      <h2 data-cy="batimentDetailsHeading"><span jhiTranslate="gestionPatrimoineApp.batiment.detail.title">Batiment</span></h2>
+      <h2 data-cy="batimentDetailsHeading"><span>Détail du {{ batiment.designation }} de {{ batiment.nomEtablissement?.nomEtablissement }}</span></h2>
 
       <hr />
 
@@ -10,67 +14,114 @@
       <jhi-alert></jhi-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
-        <dd>
-          <span>{{ batiment.id }}</span>
-        </dd>
 
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.designation">Designation</span></dt>
+        <dt><span>Désignation</span></dt>
         <dd>
           <span>{{ batiment.designation }}</span>
         </dd>
 
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nbrPiece">Nbr Piece</span></dt>
+        <dt><span>Nbr Piece</span></dt>
         <dd>
           <span>{{ batiment.nbrPiece }}</span>
         </dd>
         
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.surface">Surface</span></dt>
+        <dt><span>Surface</span></dt>
         <dd>
           <span>{{ batiment.surface }}</span>
         </dd>
 
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.sourceFinancement">Source de Financement</span></dt>
+        <dt><span>Source de Financement</span></dt>
         <dd>
           <span>{{ batiment.sourceFinancement }}</span>
         </dd>
 
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.etatGrosOeuvre">Etat du Gros Oeuvre</span></dt>
+        <dt><span>Etat du Gros Oeuvre</span></dt>
         <dd>
           <span>{{ batiment.etatGrosOeuvre }}</span>
         </dd>
 
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.etatGrosOeuvre">Etat du second Oeuvre</span></dt>
+        <dt><span>Etat du second Oeuvre</span></dt>
         <dd>
           <span>{{ batiment.etatGrosOeuvre }}</span>
         </dd>
 
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.observation">Observation</span></dt>
+        <dt><span>Observation</span></dt>
         <dd>
           <span>{{ batiment.observation }}</span>
         </dd>
-        
+
         <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nomEtablissement">Nom Etablissement</span></dt>
         <dd>
           <div *ngIf="batiment.nomEtablissement">
-            <a [routerLink]="['/etablissement', batiment.nomEtablissement?.id, 'view']">{{ batiment.nomEtablissement?.id }}</a>
-          </div>
-        </dd>
-        <dt><span jhiTranslate="gestionPatrimoineApp.batiment.nomCorps">Nom Corps</span></dt>
-        <dd>
-          <div *ngIf="batiment.nomCorps">
-            <a [routerLink]="['/corps-etat', batiment.nomCorps?.id, 'view']">{{ batiment.nomCorps?.id }}</a>
+            <a [routerLink]="['/etablissement', batiment.nomEtablissement?.id, 'view']">{{ batiment.nomEtablissement?.nomEtablissement }}</a>
           </div>
         </dd>
       </dl>
+      <hr />
 
-      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+      <div class="container" style="text-align: center;">
+        <div *ngIf="batiment.photo">
+            <img
+              [src]="'data:' + batiment.photoContentType + ';base64,' + batiment.photo"
+              style="max-width: 100%; max-height: 100%;"
+              alt="batiment image"
+            />
+        </div>
+    </div>
+
+    <hr />
+    <div *ngIf="batiment.dateSignalisation">
+    <h2 data-cy="batimentDetailsHeading"><span>Détail du Signalisation du {{ batiment.designation }} de {{ batiment.nomEtablissement?.nomEtablissement }}</span></h2>
+    <hr>
+    <dl>
+      <dt><span>Objet Signalisation</span></dt>
+        <dd>
+          <span>{{ batiment.descriptionSignalisation }}</span>
+        </dd>
+      
+      <dt><span>Date Signalisation</span></dt>
+        <dd>
+          <span>{{ batiment.dateSignalisation }}</span>
+        </dd>
+      
+        <hr>
+
+        <div class="container" style="text-align: center;">
+            <div *ngIf="batiment.photoSignalisationGrosOeuvre">
+                <img
+                  [src]="'data:' + batiment.photoSignalisationGrosOeuvreContentType + ';base64,' + batiment.photoSignalisationGrosOeuvre"
+                  style="max-width: 100%; max-height: 100%;"
+                  alt="batiment image"
+                />
+            </div>
+        </div>
+  
+        <hr />
+
+        <hr>
+
+        <div class="container" style="text-align: center;">
+            <div *ngIf="batiment.photoSignalisationSecondOeuvre">
+                <img
+                  [src]="'data:' + batiment.photoSignalisationSecondOeuvreContentType + ';base64,' + batiment.photoSignalisationSecondOeuvre"
+                  style="max-width: 100%; max-height: 100%;"
+                  alt="batiment image"
+                />
+            </div>
+        </div>
+  
+        <hr />
+    </dl>
+    </div>
+
+      <button type="submit" (click)="previousState()" class="btn btn-outline-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
       </button>
 
-      <button type="button" [routerLink]="['/batiment', batiment.id, 'edit']" class="btn btn-primary">
+      <button type="button" [routerLink]="['/batiment', batiment.id, 'edit']" class="btn btn-outline-primary">
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
       </button>
     </div>
   </div>
+
 </div>

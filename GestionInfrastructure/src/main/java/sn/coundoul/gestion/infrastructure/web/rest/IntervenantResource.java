@@ -176,6 +176,14 @@ public class IntervenantResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+    @GetMapping("/intervenants/projets/{id}")
+    public ResponseEntity<List<Intervenant>> getAllIntervenants(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of Batiments");
+        Page<Intervenant> page = intervenantRepository.findAllIntervenant(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
     /**
      * {@code GET  /intervenants/:id} : get the "id" intervenant.
      *

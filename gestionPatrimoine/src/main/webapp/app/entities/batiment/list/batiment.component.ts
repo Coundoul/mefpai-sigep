@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IBatiment } from '../batiment.model';
-
 import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
 import { BatimentService } from '../service/batiment.service';
 import { BatimentDeleteDialogComponent } from '../delete/batiment-delete-dialog.component';
+import { IBatiment } from '../batiment.model';
+
 
 @Component({
   selector: 'jhi-batiment',
-  templateUrl: './batiment.component.html',
+  templateUrl: './batiment.component.html'
 })
 export class BatimentComponent implements OnInit {
   batiments?: IBatiment[];
+  etablissement!: any;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -24,6 +25,7 @@ export class BatimentComponent implements OnInit {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+
   constructor(
     protected batimentService: BatimentService,
     protected activatedRoute: ActivatedRoute,
@@ -31,16 +33,13 @@ export class BatimentComponent implements OnInit {
     protected modalService: NgbModal
   ) {}
 
+  
   loadPage(page?: number, dontNavigate?: boolean): void {
     this.isLoading = true;
     const pageToLoad: number = page ?? this.page ?? 1;
 
     this.batimentService
-      .query({
-        page: pageToLoad - 1,
-        size: this.itemsPerPage,
-        sort: this.sort(),
-      })
+      .queryDesignation(this.etablissement, {page: pageToLoad - 1,size: this.itemsPerPage,sort: this.sort(),})
       .subscribe(
         (res: HttpResponse<IBatiment[]>) => {
           this.isLoading = false;
@@ -54,12 +53,17 @@ export class BatimentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(() => {
+      this.etablissement = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    });
+    alert(this.etablissement);
     this.handleNavigation();
   }
 
   trackId(index: number, item: IBatiment): number {
     return item.id!;
   }
+
 
   delete(batiment: IBatiment): void {
     const modalRef = this.modalService.open(BatimentDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
@@ -94,12 +98,12 @@ export class BatimentComponent implements OnInit {
       }
     });
   }
-
+  
   protected onSuccess(data: IBatiment[] | null, headers: HttpHeaders, page: number, navigate: boolean): void {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.page = page;
     if (navigate) {
-      this.router.navigate(['/batiment'], {
+      this.router.navigate(['/batiment', this.etablissement, 'designation'], {
         queryParams: {
           page: this.page,
           size: this.itemsPerPage,

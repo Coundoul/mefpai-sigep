@@ -6,13 +6,23 @@ import { BatimentComponent } from '../list/batiment.component';
 import { BatimentDetailComponent } from '../detail/batiment-detail.component';
 import { BatimentUpdateComponent } from '../update/batiment-update.component';
 import { BatimentRoutingResolveService } from './batiment-routing-resolve.service';
+import { SignalerComponent } from '../signaler/signaler.component';
+
 
 const batimentRoute: Routes = [
   {
-    path: '',
+    path: ':id/designation',
     component: BatimentComponent,
     data: {
       defaultSort: 'id,asc',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: ':id/signalerdesignation',
+    component: SignalerComponent,
+    resolve: {
+      batiment: BatimentRoutingResolveService,
     },
     canActivate: [UserRouteAccessService],
   },

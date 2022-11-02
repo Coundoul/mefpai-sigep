@@ -14,7 +14,9 @@ export type EntityArrayResponseType = HttpResponse<IEtapes[]>;
 
 @Injectable({ providedIn: 'root' })
 export class EtapesService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/etapes');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/etapes', 'gestioninfrastructure');
+
+  public resourceUrlProjets = this.applicationConfigService.getEndpointFor('api/etapes/projets', 'gestioninfrastructure');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
@@ -49,6 +51,13 @@ export class EtapesService {
     const options = createRequestOption(req);
     return this.http
       .get<IEtapes[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  queryEtapesProjet(id: number, req?:any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<IEtapes[]>(`${this.resourceUrlProjets}/${id}`, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

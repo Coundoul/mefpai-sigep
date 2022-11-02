@@ -5,18 +5,17 @@ import { combineLatest } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IProjets } from '../projets.model';
-
 import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
 import { ProjetsService } from '../service/projets.service';
 import { ProjetsDeleteDialogComponent } from '../delete/projets-delete-dialog.component';
 
 @Component({
-  selector: 'jhi-projets',
-  templateUrl: './projets.component.html',
+  selector: 'jhi-list-projets-all',
+  templateUrl: './list-projets-all.component.html',
+  styleUrls: ['./list-projets-all.component.scss']
 })
-export class ProjetsComponent implements OnInit {
+export class ListProjetsAllComponent implements OnInit {
   projets?: IProjets[];
-  etablissement!: any;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -32,12 +31,12 @@ export class ProjetsComponent implements OnInit {
     protected modalService: NgbModal
   ) {}
 
-  loadPage(page?: number, dontNavigate?: boolean): void {
+  loadPageAll(page?: number, dontNavigate?: boolean): void {
     this.isLoading = true;
     const pageToLoad: number = page ?? this.page ?? 1;
 
     this.projetsService
-      .queryProjet(this.etablissement,{page: pageToLoad - 1,size: this.itemsPerPage,sort: this.sort(),})
+      .query({page: pageToLoad - 1,size: this.itemsPerPage,sort: this.sort(),})
       .subscribe(
         (res: HttpResponse<IProjets[]>) => {
           this.isLoading = false;
@@ -51,10 +50,7 @@ export class ProjetsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(() => {
-      this.etablissement = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    });
-      this.handleNavigation();
+      this.handleNavigationAll();
   }
 
   trackId(index: number, item: IProjets): number {
@@ -67,7 +63,7 @@ export class ProjetsComponent implements OnInit {
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed.subscribe(reason => {
       if (reason === 'deleted') {
-        this.loadPage();
+        this.loadPageAll();
       }
     });
   }
@@ -80,7 +76,8 @@ export class ProjetsComponent implements OnInit {
     return result;
   }
 
-  protected handleNavigation(): void {
+
+  protected handleNavigationAll(): void {
     combineLatest([this.activatedRoute.data, this.activatedRoute.queryParamMap]).subscribe(([data, params]) => {
       const page = params.get('page');
       const pageNumber = page !== null ? +page : 1;
@@ -90,7 +87,7 @@ export class ProjetsComponent implements OnInit {
       if (pageNumber !== this.page || predicate !== this.predicate || ascending !== this.ascending) {
         this.predicate = predicate;
         this.ascending = ascending;
-        this.loadPage(pageNumber, true);
+        this.loadPageAll(pageNumber, true);
       }
     });
   }
@@ -99,7 +96,7 @@ export class ProjetsComponent implements OnInit {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.page = page;
     if (navigate) {
-      this.router.navigate(['/intervenant/new'], {
+      this.router.navigate(['/projets'], {
         queryParams: {
           page: this.page,
           size: this.itemsPerPage,

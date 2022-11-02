@@ -16,6 +16,7 @@ import { EtapesDeleteDialogComponent } from '../delete/etapes-delete-dialog.comp
 })
 export class EtapesComponent implements OnInit {
   etapes?: IEtapes[];
+  projet!: any;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -36,7 +37,7 @@ export class EtapesComponent implements OnInit {
     const pageToLoad: number = page ?? this.page ?? 1;
 
     this.etapesService
-      .query({
+      .queryEtapesProjet(this.projet, {
         page: pageToLoad - 1,
         size: this.itemsPerPage,
         sort: this.sort(),
@@ -54,6 +55,9 @@ export class EtapesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(() => {
+      this.projet = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    });
     this.handleNavigation();
   }
 

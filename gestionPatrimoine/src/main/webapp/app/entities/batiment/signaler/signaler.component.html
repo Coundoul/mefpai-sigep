@@ -9,7 +9,7 @@
           id="jhi-batiment-heading"
           data-cy="BatimentCreateUpdateHeading"
         >
-          Ajouter Désignation
+          Signaler Désignation
         </h2>
   
         <div>
@@ -31,6 +31,7 @@
               id="field_designation"
               data-cy="designation"
               formControlName="designation"
+              readonly
             />
             <div *ngIf="editForm.get('designation')!.invalid && (editForm.get('designation')!.dirty || editForm.get('designation')!.touched)">
               <small
@@ -45,7 +46,7 @@
   
           <div class="form-group">
             <label class="form-control-label" for="field_nbrPiece">Nombre de Pièces</label>
-            <input type="number" class="form-control" name="nbrPiece" id="field_nbrPiece" data-cy="nbrPiece" formControlName="nbrPiece" />
+            <input type="number" class="form-control" name="nbrPiece" id="field_nbrPiece" data-cy="nbrPiece" formControlName="nbrPiece"  readonly/>
             <div *ngIf="editForm.get('nbrPiece')!.invalid && (editForm.get('nbrPiece')!.dirty || editForm.get('nbrPiece')!.touched)">
               <small
                 class="form-text text-danger"
@@ -66,7 +67,7 @@
           
           <div class="form-group">
             <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.batiment.surface" for="field_surface">Surface</label>
-            <input type="number" class="form-control" name="surface" id="field_surface" data-cy="surface" formControlName="surface" />
+            <input type="number" class="form-control" name="surface" id="field_surface" data-cy="surface" formControlName="surface" readonly/>
             <div *ngIf="editForm.get('surface')!.invalid && (editForm.get('surface')!.dirty || editForm.get('surface')!.touched)">
               <small
                 class="form-text text-danger"
@@ -96,6 +97,7 @@
               id="field_sourceFinancement"
               data-cy="sourceFinancement"
               formControlName="sourceFinancement"
+              readonly
             />
             <div *ngIf="editForm.get('sourceFinancement')!.invalid && (editForm.get('sourceFinancement')!.dirty || editForm.get('sourceFinancement')!.touched)">
               <small
@@ -109,19 +111,38 @@
           </div>
   
           <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gestionPatrimoineApp.equipement.photo" for="field_photo">Photo</label>
+            <label
+              class="form-control-label"
+              for="field_dateSignalisation"
+              >Date Signalisation</label
+            >
+            <div class="d-flex">
+              <input
+                id="field_dateSignalisation"
+                data-cy="dateSignalisation"
+                type="datetime-local"
+                class="form-control"
+                name="dateSignalisation"
+                formControlName="dateSignalisation"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_photoSignalisationGrosOeuvre">Photo Gros Oeuvre</label>
             <div>
               <img
-                [src]="'data:' + editForm.get('photoContentType')!.value + ';base64,' + editForm.get('photo')!.value"
+                [src]="'data:' + editForm.get('photoSignalisationGrosOeuvreContentType')!.value + ';base64,' + editForm.get('photoSignalisationGrosOeuvre')!.value"
                 style="max-height: 100px"
-                *ngIf="editForm.get('photo')!.value"
+                *ngIf="editForm.get('photoSignalisationGrosOeuvre')!.value"
                 alt="equipement image"
               />
-              <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
-                <span class="pull-left">{{ editForm.get('photoContentType')!.value }}, {{ byteSize(editForm.get('photo')!.value) }}</span>
+              <div *ngIf="editForm.get('photoSignalisationGrosOeuvre')!.value" class="form-text text-danger clearfix">
+                <span class="pull-left">{{ editForm.get('photoSignalisationGrosOeuvreContentType')!.value }}, {{ byteSize(editForm.get('photoSignalisationGrosOeuvre')!.value) }}</span>
                 <button
                   type="button"
-                  (click)="clearInputImage('photo', 'photoContentType', 'file_photo')"
+                  (click)="clearInputImage('photoSignalisationGrosOeuvre', 'photoSignalisationGrosOeuvreContentType', 'file_photoSignalisationGrosOeuvre')"
                   class="btn btn-secondary btn-xs pull-right"
                 >
                   <fa-icon icon="times"></fa-icon>
@@ -129,20 +150,58 @@
               </div>
               <input
                 type="file"
-                id="file_photo"
-                data-cy="photo"
-                (change)="setFileData($event, 'photo', true)"
+                id="file_photoSignalisationGrosOeuvre"
+                data-cy="photoSignalisationGrosOeuvre"
+                (change)="setFileData($event, 'photoSignalisationGrosOeuvre', true)"
                 accept="image/*"
                 jhiTranslate="entity.action.addimage"
               />
             </div>
-            <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+            <input type="hidden" class="form-control" name="photoSignalisationGrosOeuvre" id="field_photoSignalisationGrosOeuvre" data-cy="photoSignalisationGrosOeuvre" formControlName="photoSignalisationGrosOeuvre" />
             <input
               type="hidden"
               class="form-control"
-              name="photoContentType"
-              id="field_photoContentType"
-              formControlName="photoContentType"
+              name="photoSignalisationGrosOeuvreContentType"
+              id="field_photoSignalisationGrosOeuvreContentType"
+              formControlName="photoSignalisationGrosOeuvreContentType"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_photoSignalisationSecondOeuvre">Photo Second Oeuvre</label>
+            <div>
+              <img
+                [src]="'data:' + editForm.get('photoSignalisationSecondOeuvreContentType')!.value + ';base64,' + editForm.get('photoSignalisationSecondOeuvre')!.value"
+                style="max-height: 100px"
+                *ngIf="editForm.get('photoSignalisationSecondOeuvre')!.value"
+                alt="equipement image"
+              />
+              <div *ngIf="editForm.get('photoSignalisationSecondOeuvre')!.value" class="form-text text-danger clearfix">
+                <span class="pull-left">{{ editForm.get('photoSignalisationSecondOeuvreContentType')!.value }}, {{ byteSize(editForm.get('photoSignalisationSecondOeuvre')!.value) }}</span>
+                <button
+                  type="button"
+                  (click)="clearInputImage('photoSignalisationSecondOeuvre', 'photoSignalisationSecondOeuvreContentType', 'file_photoSignalisationSecondOeuvre')"
+                  class="btn btn-secondary btn-xs pull-right"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+              <input
+                type="file"
+                id="file_photoSignalisationSecondOeuvre"
+                data-cy="photoSignalisationSecondOeuvre"
+                (change)="setFileData($event, 'photoSignalisationSecondOeuvre', true)"
+                accept="image/*"
+                jhiTranslate="entity.action.addimage"
+              />
+            </div>
+            <input type="hidden" class="form-control" name="photoSignalisationSecondOeuvre" id="field_photoSignalisationSecondOeuvre" data-cy="photoSignalisationSecondOeuvre" formControlName="photoSignalisationSecondOeuvre" />
+            <input
+              type="hidden"
+              class="form-control"
+              name="photoSignalisationSecondOeuvreContentType"
+              id="field_photoSignalisationSecondOeuvreContentType"
+              formControlName="photoSignalisationSecondOeuvreContentType"
             />
           </div>
   
@@ -193,25 +252,25 @@
           </div>
   
           <div class="form-group">
-            <label class="form-control-label" for="field_observation">Observation</label>
+            <label class="form-control-label" for="field_descriptionSignalisation">Description de L'état</label>
             <textarea
               class="form-control"
-              name="observation"
-              id="field_observation"
-              data-cy="observation"
-              formControlName="observation"
+              name="descriptionSignalisation"
+              id="field_descriptionSignalisation"
+              data-cy="descriptionSignalisation"
+              formControlName="descriptionSignalisation"
               rows="10"
             >
             </textarea>
             <div
               *ngIf="
-                editForm.get('observation')!.invalid &&
-                (editForm.get('observation')!.dirty || editForm.get('observation')!.touched)
+                editForm.get('descriptionSignalisation')!.invalid &&
+                (editForm.get('descriptionSignalisation')!.dirty || editForm.get('descriptionSignalisation')!.touched)
               "
             >
               <small
                 class="form-text text-danger"
-                *ngIf="editForm.get('observation')?.errors?.required"
+                *ngIf="editForm.get('descriptionSignalisation')?.errors?.required"
                 jhiTranslate="entity.validation.required"
               >
                 This field is required.
@@ -230,6 +289,7 @@
               data-cy="nomEtablissement"
               name="nomEtablissement"
               formControlName="nomEtablissement"
+              aria-readonly="true"
             >
               <option [ngValue]="null"></option>
               <option
