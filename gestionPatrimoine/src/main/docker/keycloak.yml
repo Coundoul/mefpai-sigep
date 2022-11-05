@@ -1,46 +1,46 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
-#version: '3.8'
-#services:
-#  dmatdage:
-#    image: postgres:13.6
-#    volumes:
-#      - ~/volumes/jhipster/dmatdage_data:/var/lib/postgresql/data/
-#    environment:
-#      - POSTGRES_DB=gestionutilisateur
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_PASSWORD=Amadou1995
-#      - POSTGRES_HOST_AUTH_METHOD=trust
-#    # If you want to expose these ports outside your dev PC,
-#    # remove the "127.0.0.1:" prefix
-#    ports:
-#      - 127.0.0.1:5433:5433
-#  keycloak:
-#    image: jboss/keycloak:12.0.4
-#    command:
-#      [
-#        '-Dkeycloak.migration.action=import',
-#        '-Dkeycloak.migration.provider=dir',
-#        '-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config',
-#        '-Dkeycloak.migration.strategy=IGNORE_EXISTING',
-#        '-Djboss.socket.binding.port-offset=1000',
-#        '-Dkeycloak.profile.feature.upload_scripts=enabled',
-#      ]
-#    volumes:
-#      - ./realm-config:/opt/jboss/keycloak/realm-config
-#    environment:
-#      - KEYCLOAK_USER=babacar
-#      - KEYCLOAK_PASSWORD=passer1995
-#      - DB_VENDOR=POSTGRES
-#      - DB_ADDR=dmatdage
-#      - DB_SCHEMA=public
-#      - DB_DATABASE=gestionutilisateur
-#      - DB_USER=postgres
-#      - DB_PASSWORD=Amadou1995
-#    # If you want to expose these ports outside your dev PC,
-#    # remove the "127.0.0.1:" prefix
-#    ports:
-#      - 9080:9080
-#      - 9443:9443
-#      - 10990:10990
-#    depends_on:
-#      - dmatdage
+version: '3.8'
+services:
+  dmatdage:
+    image: postgres:13.6
+    volumes:
+      - ~/volumes/jhipster/dmatdage_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=gestionutilisateur
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Amadou1995
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:5433:5433
+  keycloak:
+    image: jboss/keycloak:12.0.4
+    command:
+      [
+        '-Dkeycloak.migration.action=import',
+        '-Dkeycloak.migration.provider=dir',
+        '-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config',
+        '-Dkeycloak.migration.strategy=IGNORE_EXISTING',
+        '-Djboss.socket.binding.port-offset=1000',
+        '-Dkeycloak.profile.feature.upload_scripts=enabled',
+      ]
+    volumes:
+      - ./realm-config:/opt/jboss/keycloak/realm-config
+    environment:
+      - KEYCLOAK_USER=babacar
+      - KEYCLOAK_PASSWORD=passer1995
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=dmatdage
+      - DB_SCHEMA=public
+      - DB_DATABASE=gestionutilisateur
+      - DB_USER=postgres
+      - DB_PASSWORD=Amadou1995
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 9080:9080
+      - 9443:9443
+      - 10990:10990
+    depends_on:
+      - dmatdage
