@@ -10,13 +10,9 @@ import { SidebarModule } from 'app/layouts/sidebar/sidebar.module';
 import { SignalerComponent } from './signaler/signaler.component';
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [SharedModule, BatimentRoutingModule, SidebarModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,],
   declarations: [BatimentComponent, BatimentDetailComponent, BatimentUpdateComponent, BatimentDeleteDialogComponent, SignalerComponent],

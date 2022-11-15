@@ -56,7 +56,6 @@ export class BatimentComponent implements OnInit {
     this.activatedRoute.data.subscribe(() => {
       this.etablissement = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     });
-    alert(this.etablissement);
     this.handleNavigation();
   }
 
@@ -103,7 +102,7 @@ export class BatimentComponent implements OnInit {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.page = page;
     if (navigate) {
-      this.router.navigate(['/batiment', this.etablissement, 'designation'], {
+      this.router.navigate(['/etablissement'], {
         queryParams: {
           page: this.page,
           size: this.itemsPerPage,

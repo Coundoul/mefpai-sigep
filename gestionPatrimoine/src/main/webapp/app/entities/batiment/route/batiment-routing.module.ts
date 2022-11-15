@@ -11,7 +11,7 @@ import { SignalerComponent } from '../signaler/signaler.component';
 
 const batimentRoute: Routes = [
   {
-    path: ':id/designation',
+    path: ':id/designations',
     component: BatimentComponent,
     data: {
       defaultSort: 'id,asc',
