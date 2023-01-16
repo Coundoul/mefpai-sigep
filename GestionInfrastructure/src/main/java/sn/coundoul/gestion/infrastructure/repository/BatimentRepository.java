@@ -15,4 +15,7 @@ import org.springframework.data.repository.query.Param;
 public interface BatimentRepository extends JpaRepository<Batiment, Long> {
     @Query("select batiment from Batiment batiment where nom_etablissement_id =:id")
     Page<Batiment> findAllDesignation(@Param("id") Long id, Pageable pageable);
+
+    @Query("select batiment from Batiment batiment where etat_gros_oeuvre='Vétuste' or etat_gros_oeuvre='Acceptable' or etat_second_oeuvre='Vétuste' or etat_second_oeuvre='Acceptable'")
+    Page<Batiment> findAllBatimentEtat(Pageable pageable);
 }

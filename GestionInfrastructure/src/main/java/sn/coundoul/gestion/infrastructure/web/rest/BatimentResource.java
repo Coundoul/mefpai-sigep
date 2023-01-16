@@ -190,6 +190,15 @@ public class BatimentResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+
+    @GetMapping("/batiments/etatinfra")
+    public ResponseEntity<List<Batiment>> getAllBatimentsEtatInfra(Pageable pageable) {
+        log.debug("REST request to get a page of Batiments");
+        Page<Batiment> page = batimentRepository.findAllBatimentEtat(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
     /**
      * {@code GET  /batiments/:id} : get the "id" batiment.
      *

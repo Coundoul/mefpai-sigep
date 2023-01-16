@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-3">
+      <jhi-sidebar></jhi-sidebar>
+    </div>
+  
+    <div class="card jh-card col-md-9">
+      <h2 style="text-align: center">
+        <span style="font-weight: bold">Etat Des Lieux Des Infrastructures des CFP</span>
+      </h2>
+      <hr />
+    </div>
+
+
+    <div class="" *ngIf="batiments && batiments.length > 0">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Désignation</th>
+            <th scope="col">Source De Financement</th>
+            <th scope="col">Date de Signalisation</th>
+            <th scope="col">Etat Gros Oeuvre</th>
+            <th scope="col">Etat Second Oeuvre</th>
+            <th scope="col">Observation</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let batiment of batiments">
+            <th scope="row">{{ batiment.designation }}</th>
+            <td>{{ batiment.sourceFinancement }}</td>
+            <td>{{ batiment.dateSignalisation }}</td>
+            <td>{{ batiment.etatGrosOeuvre }}</td>
+            <td>{{ batiment.etatSecondOeuvre }}</td>
+            <td>{{ batiment.observation }}</td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button class="btn btn-info btn-sm">
+                  <fa-icon icon="eye"></fa-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="batiments && batiments.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
+  </div>
+  <br />
+  

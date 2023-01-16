@@ -72,6 +72,7 @@
                 <span> Babacar Fall </span>
               </div>
             </td>
+            
             <!-- <td>
               <div *ngIf="etablissement.nomQuartier">
                 {{ etablissement.quartier.nomQuartier }}
@@ -94,7 +95,7 @@
 
                 <button
                   type="submit"
-                  [routerLink]="['/batiment', etablissement.id, 'designations']"
+                  [routerLink]="['/batiment', etablissement.id, etablissement.nomEtablissement, 'designations']"
                   class="btn btn-light btn-sm"
                   data-toggle="tooltip"
                   title="Voir Les Batiments de l'Etablissement"
@@ -106,7 +107,7 @@
 
                 <button
                   type="submit"
-                  [routerLink]="['/projets', etablissement.id, 'projetEtablissement']"
+                  [routerLink]="['/projets', etablissement.id, etablissement.nomEtablissement, 'projetEtablissement']"
                   class="btn btn-secondary btn-sm"
                   data-toggle="tooltip"
                   title="Voir Les Projets de l'Etablissement"

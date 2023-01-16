@@ -9,6 +9,7 @@ import { ApplicationConfigService } from 'app/core/config/application-config.ser
 import { createRequestOption } from 'app/core/request/request-util';
 import { IEtapes, getEtapesIdentifier } from '../etapes.model';
 
+
 export type EntityResponseType = HttpResponse<IEtapes>;
 export type EntityArrayResponseType = HttpResponse<IEtapes[]>;
 
@@ -20,6 +21,7 @@ export class EtapesService {
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
+  
   create(etapes: IEtapes): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(etapes);
     return this.http
@@ -58,6 +60,12 @@ export class EtapesService {
     const options = createRequestOption(req);
     return this.http
       .get<IEtapes[]>(`${this.resourceUrlProjets}/${id}`, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  getEvent(id: number): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<IEtapes[]>(`${this.resourceUrlProjets}/${id}`, { observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

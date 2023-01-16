@@ -16,6 +16,7 @@ import { CheckboxModule } from 'primeng-lts/checkbox';
 import { ButtonModule } from 'primeng-lts/button';
 import { DialogModule } from 'primeng-lts/dialog';
 import { MessageService } from 'primeng-lts/api';
+import { EtatinfraComponent } from './etatinfra/etatinfra.component';
 
 @NgModule({
   imports: [SharedModule, 
@@ -31,7 +32,7 @@ import { MessageService } from 'primeng-lts/api';
     ReactiveFormsModule, 
     FormsModule],
   providers: [MessageService],
-  declarations: [EtablissementComponent, EtablissementDetailComponent, EtablissementUpdateComponent, EtablissementDeleteDialogComponent],
+  declarations: [EtablissementComponent, EtablissementDetailComponent, EtablissementUpdateComponent, EtablissementDeleteDialogComponent, EtatinfraComponent],
   entryComponents: [EtablissementDeleteDialogComponent],
 })
 export class EtablissementModule {}

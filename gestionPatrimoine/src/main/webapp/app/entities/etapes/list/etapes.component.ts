@@ -10,6 +10,9 @@ import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
 import { EtapesService } from '../service/etapes.service';
 import { EtapesDeleteDialogComponent } from '../delete/etapes-delete-dialog.component';
 
+//import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
+// import dayGridPlugin from '@fullcalendar/daygrid';
+
 @Component({
   selector: 'jhi-etapes',
   templateUrl: './etapes.component.html',
@@ -24,6 +27,15 @@ export class EtapesComponent implements OnInit {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+
+  events: any;
+
+  options: any;
+
+  // calendarOptions: CalendarOptions = {
+  //   initialView: 'dayGridMonth',
+  //   plugins: [dayGridPlugin]
+  // };
 
   constructor(
     protected etapesService: EtapesService,
@@ -54,11 +66,28 @@ export class EtapesComponent implements OnInit {
       );
   }
 
+  /* getCalendrier(): void{
+    this.etapesService.getEvent(this.projet).subscribe(events => {this.events = events.body;});
+
+        this.options = {
+            plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+            defaultDate: '2017-02-01',
+            header: {
+                left: 'prev,next',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            }
+        }
+  } */
+
+
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(() => {
       this.projet = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     });
+
     this.handleNavigation();
+    //this.getCalendrier();
   }
 
   trackId(index: number, item: IEtapes): number {

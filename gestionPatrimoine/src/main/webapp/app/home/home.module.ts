@@ -13,6 +13,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import {SplitterModule} from 'primeng-lts/splitter';
+import {OrganizationChartModule} from 'primeng-lts/organizationchart';
+import { ChartModule } from 'primeng-lts/chart';
 @NgModule({
   imports: [
     SharedModule,
@@ -26,6 +28,8 @@ import {SplitterModule} from 'primeng-lts/splitter';
     MatIconModule,
     MatDividerModule,
     SplitterModule,
+    OrganizationChartModule,
+    ChartModule,
   ],
   declarations: [HomeComponent],
 })

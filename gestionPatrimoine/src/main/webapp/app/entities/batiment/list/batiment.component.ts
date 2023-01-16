@@ -17,6 +17,7 @@ import { IBatiment } from '../batiment.model';
 export class BatimentComponent implements OnInit {
   batiments?: IBatiment[];
   etablissement!: any;
+  nomEtablissement!: any;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -55,6 +56,7 @@ export class BatimentComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(() => {
       this.etablissement = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+      this.nomEtablissement = this.activatedRoute.snapshot.paramMap.get('nomEtablissement');
     });
     this.handleNavigation();
   }

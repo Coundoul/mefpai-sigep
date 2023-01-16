@@ -131,6 +131,8 @@ h4 {
   margin-bottom: 10px;
 }
 
-.sidebar{
-  height: max-content;
-}
+
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */

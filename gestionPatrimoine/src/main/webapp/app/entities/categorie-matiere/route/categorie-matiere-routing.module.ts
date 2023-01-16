@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { CategorieMatiereComponent } from '../list/categorie-matiere.component';
+import { MatiereCategorieComponent } from '../matiere-categorie/matiere-categorie.component';
 import { CategorieMatiereDetailComponent } from '../detail/categorie-matiere-detail.component';
 import { CategorieMatiereUpdateComponent } from '../update/categorie-matiere-update.component';
 import { CategorieMatiereRoutingResolveService } from './categorie-matiere-routing-resolve.service';
+import { EquipementRoutingResolveService } from 'app/entities/equipement/route/equipement-routing-resolve.service';
 
 const categorieMatiereRoute: Routes = [
   {
@@ -35,6 +37,14 @@ const categorieMatiereRoute: Routes = [
   {
     path: ':id/edit',
     component: CategorieMatiereUpdateComponent,
+    resolve: {
+      categorieMatiere: CategorieMatiereRoutingResolveService,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: ':id/matieres',
+    component: MatiereCategorieComponent,
     resolve: {
       categorieMatiere: CategorieMatiereRoutingResolveService,
     },

@@ -6,6 +6,7 @@ import { EtablissementComponent } from '../list/etablissement.component';
 import { EtablissementDetailComponent } from '../detail/etablissement-detail.component';
 import { EtablissementUpdateComponent } from '../update/etablissement-update.component';
 import { EtablissementRoutingResolveService } from './etablissement-routing-resolve.service';
+import { EtatinfraComponent } from '../etatinfra/etatinfra.component';
 
 const etablissementRoute: Routes = [
   {
@@ -13,6 +14,14 @@ const etablissementRoute: Routes = [
     component: EtablissementComponent,
     data: {
       defaultSort: 'id,asc',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'etatinfra',
+    component: EtatinfraComponent,
+    resolve: {
+      etablissement: EtablissementRoutingResolveService,
     },
     canActivate: [UserRouteAccessService],
   },

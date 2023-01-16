@@ -17,6 +17,7 @@ import { ProjetsDeleteDialogComponent } from '../delete/projets-delete-dialog.co
 export class ProjetsComponent implements OnInit {
   projets?: IProjets[];
   etablissement!: any;
+  nomEtablissement!: any;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -53,6 +54,7 @@ export class ProjetsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(() => {
       this.etablissement = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+      this.nomEtablissement = this.activatedRoute.snapshot.paramMap.get('nomEtablissement');
     });
       this.handleNavigation();
   }

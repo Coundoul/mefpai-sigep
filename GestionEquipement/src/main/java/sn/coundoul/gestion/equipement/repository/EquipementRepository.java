@@ -58,4 +58,16 @@ public interface EquipementRepository extends JpaRepository<Equipement, Long> {
         @Param("etatMatiere") String etatMatiere,
         @Param("dateSignalisation") Instant dateSignalisation
     );
+
+    @Query(
+        value = "select c.categorie, COUNT(e.categorie_id) FROM equipement e, categorie_matiere c WHERE e.categorie_id=c.id GROUP BY c.categorie",
+        nativeQuery = true
+    )
+    Page<Object> statiqueMatiere(Pageable pageable);
+
+    @Query(value = "select equipement from Equipement equipement where categorie_id=:id", nativeQuery = true)
+    Page<Equipement> findAllCategorieEquipement(@Param("id") Long id, Pageable pageable);
+
+    @Query("select equipement from Equipement equipement where etat_matiere like 'Hors Service' or etat_matiere like 'Mauvaise Etat'")
+    Page<Equipement> findEtatMatiere(Pageable pageable);
 }

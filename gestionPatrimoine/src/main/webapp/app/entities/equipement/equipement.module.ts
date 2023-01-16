@@ -16,7 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { RechercheEquipementComponent } from './recherche-equipement/recherche-equipement.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCarouselModule } from '@ngmodule/material-carousel'; 
-
+import {DataViewModule} from 'primeng-lts/dataview';
+import {CarouselModule} from 'primeng-lts/carousel';
 
 @NgModule({
   imports: [
@@ -29,6 +30,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
+    CarouselModule,
+    DataViewModule,
     MatCarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',

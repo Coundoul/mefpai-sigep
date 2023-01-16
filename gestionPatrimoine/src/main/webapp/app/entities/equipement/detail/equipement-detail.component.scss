@@ -1,4 +1,27 @@
-.matCarousel{
-    height: 200vh;
-    width: auto;
-}
+// .matCarousel{
+//     height: 200vh;
+//     width: auto;
+// }
+
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .space-top {
+    margin-top: 5%;
+  }
+
+  img {
+    height: fit-content; //so that it takes up full space
+    max-height: 500px !important; // this prevents the image from being extremely big
+    object-fit: cover; 
+    object-position: center; /* this centers and crops the image so that it doesn't break the aspect ratio */
+  }
+  
+  @media only screen and (min-width: 799px){
+    .gutter {
+      margin-left: 32px;
+    }
+  }

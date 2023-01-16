@@ -231,6 +231,21 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'gestionPatrimoineApp.typeBatiment.home.title' },
         loadChildren: () => import('./type-batiment/type-batiment.module').then(m => m.TypeBatimentModule),
       },
+      // {
+      //   path: 'matieres-maintenances',
+      //   data: { pageTitle: 'gestionPatrimoineApp.matieresMaintenances.home.title' },
+      //   loadChildren: () => import('./matieres-maintenances/matieres-maintenances.module').then(m => m.MatieresMaintenancesModule),
+      // },
+      // {
+      //   path: 'infrastructures-maintenances',
+      //   data: { pageTitle: 'gestionPatrimoineApp.infrastructuresMaintenances.home.title' },
+      //   loadChildren: () => import('./infrastructures-maintenances/infrastructures-maintenances.module').then(m => m.InfrastructuresMatieresModule),
+      // },
+      {
+        path: 'type-batiment',
+        data: { pageTitle: 'gestionPatrimoineApp.typeBatiment.home.title' },
+        loadChildren: () => import('./type-batiment/type-batiment.module').then(m => m.TypeBatimentModule),
+      },
       {
         path: 'utilisateur-final',
         data: { pageTitle: 'gestionPatrimoineApp.utilisateurFinal.home.title' },

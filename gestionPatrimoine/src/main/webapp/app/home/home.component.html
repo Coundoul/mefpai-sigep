@@ -120,6 +120,14 @@
               </div>
             </div>
           </div>
+          
+          <hr>
+          <div>
+            <span style="font-size: 100%; font-weight: bold; text-align: center;">Nombre de Matière par Catégorie </span>
+            <hr>
+            <p-chart type="polarArea" [data]="dataStatics"></p-chart>
+          </div>
+            <p> {{ donneesStatic }} </p>
         </div>
       </div>
     </div>
@@ -188,6 +196,22 @@
 
   <div [ngSwitch]="isAuthenticated()">
     <div *ngSwitchCase="false">
+      <!-- <div class="card jh-card col-md-12">
+        <p-organizationChart [value]="data" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event)"
+          styleClass="company">
+          <ng-template let-node pTemplate="person">
+              <div class="node-header p-corner-top">{{node.label}}</div>
+              <div class="node-content">
+                  <img src="assets/showcase/images/demo/organization/{node.data.avatar}" width="32">
+                  <div>{{node.data.name}}</div>
+              </div>
+          </ng-template>
+          <ng-template let-node pTemplate="department">
+              {{node.label}}
+          </ng-template>
+        </p-organizationChart>
+      </div>
+      <br> -->
       <div class="col-md-12 card-deck">
         <div class="card">
           <img class="card-img-top" src="./content/images/gst.jpg" style="height: 50%" alt="Card image cap" />

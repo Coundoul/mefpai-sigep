@@ -7,9 +7,13 @@ import { EtapesUpdateComponent } from './update/etapes-update.component';
 import { EtapesDeleteDialogComponent } from './delete/etapes-delete-dialog.component';
 import { EtapesRoutingModule } from './route/etapes-routing.module';
 import { SidebarModule } from 'app/layouts/sidebar/sidebar.module';
+import {FullCalendarModule} from 'primeng-lts/fullcalendar';
+
+
+
 
 @NgModule({
-  imports: [SharedModule, EtapesRoutingModule, SidebarModule],
+  imports: [SharedModule, EtapesRoutingModule, SidebarModule, FullCalendarModule],
   declarations: [EtapesComponent, EtapesDetailComponent, EtapesUpdateComponent, EtapesDeleteDialogComponent],
   entryComponents: [EtapesDeleteDialogComponent],
 })

@@ -143,7 +143,7 @@
         </li>
 
         <li class="mt-1" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CHEF_PROJET']">
-          <a href="">
+          <a href="/etablissement/etatinfra">
             <fa-icon icon="angle-double-right"></fa-icon>
             <span>Etat des Infrastructures</span>
           </a>
@@ -177,7 +177,7 @@
           </a>
           <ul>
             <li class="mt-1">
-              <a href="">
+              <a href="/matieres-maintenances">
                 <fa-icon icon="cogs"></fa-icon>
                 <span>Matières</span>
               </a>
@@ -212,15 +212,65 @@
           </a>
         </li>
 
-        <li class="mt-1">
+        <!-- <li class="mt-1">
           <a href="">
             <fa-icon icon="angle-double-right"></fa-icon>
             <span>Etat des Demandes</span>
           </a>
+        </li> -->
+      </ul>
+      <hr />
+
+    </li> 
+
+    <!-- <li *jhiHasAnyAuthority="['ROLE_ADMIN']" style="background-color: white">
+      <a id="adminMenuMaint" data-cy="adminMenu" (click)="myFunctionMaint()" style="display: inline-block">
+        <span>
+          <fa-icon icon="users"></fa-icon>
+          <span>Gestion des Utilisateurs</span>
+          <fa-icon id="adminMenuCacheMaint" style="display: none" icon="chevron-circle-up"></fa-icon>
+          <fa-icon id="adminMenuAfficheMaint" style="display: inline-block" icon="chevron-circle-down"></fa-icon>
+        </span>
+      </a>
+
+      <ul
+        class=""
+        id="adminMenuListeMaint"
+        style="display: inline-block"
+        ngDropDownMenu
+        aria-labelledby="admin-menu"
+        style="list-style-type: none"
+      >
+        <li class="mt-1">
+          <a>
+            <fa-icon icon="angle-double-right"></fa-icon>
+            <span>DAGE</span>
+          </a>
+          <ul>
+            <li class="mt-1">
+              <a href="">
+                <fa-icon icon="angle-double-right"></fa-icon>
+                <span>DRH</span>
+              </a>
+            </li>
+            <li class="mt-1">
+              <a href="">
+                <fa-icon icon="angle-double-right"></fa-icon>
+                <span>CI</span>
+              </a>
+            </li>
+            <li class="mt-1">
+              <a href="">
+                <fa-icon icon="angle-double-right"></fa-icon>
+                <span>PEJA</span>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
       <hr />
-    </li>
+      
+    </li> -->
 
     <a class="" (click)="logout()" style="text-decoration: none">
       <span> <fa-icon icon="sign-out-alt" class="fa-lg mr-2"></fa-icon> Déconnexion </span>

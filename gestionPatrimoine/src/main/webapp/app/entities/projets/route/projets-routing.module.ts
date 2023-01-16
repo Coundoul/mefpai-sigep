@@ -18,7 +18,7 @@ const projetsRoute: Routes = [
     canActivate: [UserRouteAccessService],
   },
   {
-    path: ':id/projetEtablissement',
+    path: ':id/:nomEtablissement/projetEtablissement',
     component: ProjetsComponent,
     data: {
       defaultSort: 'id,asc',

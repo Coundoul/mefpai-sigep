@@ -43,6 +43,8 @@ public class EquipementResource {
 
     private final EquipementRepository equipementRepository;
 
+    // private final SecurityUtils securityUtils;
+
     public EquipementResource(EquipementRepository equipementRepository) {
         this.equipementRepository = equipementRepository;
     }
@@ -178,7 +180,27 @@ public class EquipementResource {
     @GetMapping("/equipements")
     public ResponseEntity<List<Equipement>> getAllEquipements(Pageable pageable) {
         log.debug("REST request to get a page of Equipements");
+        // if(SecurityUtils.hasCurrentUserThisAuthority("COMPTABLE_PRINCIPALE")){
+        //     Page<Equipement> page = equipementRepository.findAllequipementComptable(pageable);
+        //     HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        //     return ResponseEntity.ok().headers(headers).body(page.getContent());
+        // }
+
+        // else if(SecurityUtils.hasCurrentUserThisAuthority("ROLE_SECONDAIRE")){
+        //     // Page<Equipement> page = equipementRepository.findAllE(pageable);
+        //     // HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        //     // return ResponseEntity.ok().headers(headers).body(page.getContent());
+        // }
+
         Page<Equipement> page = equipementRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/equipements/statics")
+    public ResponseEntity<List<Object>> Statistique(Pageable pageable) {
+        log.debug("REST request to get a page of statique matiere equipements");
+        Page<Object> page = equipementRepository.statiqueMatiere(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -189,11 +211,28 @@ public class EquipementResource {
      * @param id the id of the equipement to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the equipement, or with status {@code 404 (Not Found)}.
      */
+
     @GetMapping("/equipements/{id}")
     public ResponseEntity<Equipement> getEquipement(@PathVariable Long id) {
         log.debug("REST request to get Equipement : {}", id);
         Optional<Equipement> equipement = equipementRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(equipement);
+    }
+
+    @GetMapping("/equipements-categorie/{id}")
+    public ResponseEntity<List<Equipement>> getAllEquipementCategorie(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get Equipement Par Categorie : {} id", id);
+        Page<Equipement> page = equipementRepository.findAllCategorieEquipement(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/equipements/EtatMatieres")
+    public ResponseEntity<List<Equipement>> getAllEquipementEtat(Pageable pageable) {
+        log.debug("REST request to get Equipement Etat des Matieres");
+        Page<Equipement> page = equipementRepository.findEtatMatiere(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
@@ -202,6 +241,7 @@ public class EquipementResource {
      * @param id the id of the equipement to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
+
     @DeleteMapping("/equipements/{id}")
     public ResponseEntity<Void> deleteEquipement(@PathVariable Long id) {
         log.debug("REST request to delete Equipement : {}", id);

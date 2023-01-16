@@ -16,6 +16,8 @@ export class BatimentService {
 
   public resourceUrlBatiment = this.applicationConfigService.getEndpointFor('api/batiments/etablissement', 'gestioninfrastructure');
 
+  public resourceUrlEtatInfra = this.applicationConfigService.getEndpointFor('api/batiments/etatinfra', 'gestioninfrastructure');
+
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
   create(batiment: IBatiment): Observable<EntityResponseType> {
@@ -44,6 +46,11 @@ export class BatimentService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IBatiment[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  queryBatiment(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IBatiment[]>(this.resourceUrlEtatInfra, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

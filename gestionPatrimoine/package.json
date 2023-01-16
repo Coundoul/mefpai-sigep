@@ -79,7 +79,7 @@
     "packaging": "jar"
   },
   "dependencies": {
-    "@agm/core": "^1.1.0",
+    "@agm/core": "^3.0.0-beta.0",
     "@angular/animations": "^12.0.3",
     "@angular/cdk": "^11.2.13",
     "@angular/common": "11.2.7",
@@ -97,6 +97,10 @@
     "@fortawesome/fontawesome-svg-core": "1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
+    "@fullcalendar/core": "4.1.0",
+    "@fullcalendar/daygrid": "^5.11.3",
+    "@fullcalendar/interaction": "^5.11.3",
+    "@fullcalendar/timegrid": "^5.11.3",
     "@ng-bootstrap/ng-bootstrap": "9.1.0",
     "@ngmodule/material-carousel": "^0.6.0",
     "@ngrx/effects": "^12.1.0",
@@ -109,7 +113,7 @@
     "bootstrap-material-design": "4.1.3",
     "bootstrap-notify": "3.1.3",
     "boxicons": "^2.1.1",
-    "chart.js": "^2.5.0",
+    "chart.js": "^2.9.4",
     "dayjs": "1.10.4",
     "generator-jhipster-fab": "^4.0.8",
     "generator-jhipster-google-maps": "^0.0.1",
@@ -123,6 +127,7 @@
     "primeicons": "^5.0.0",
     "primeng": "^14.0.0",
     "primeng-lts": "^11.4.10",
+    "randomcolor": "^0.6.2",
     "rxjs": "6.6.7",
     "swagger-ui-dist": "3.46.0",
     "tslib": "2.1.0",
@@ -188,5 +193,8 @@
   "jestSonar": {
     "reportPath": "target/test-results/jest",
     "reportFile": "TESTS-results-sonar.xml"
-  }
+  },
+  "main": ".lintstagedrc.js",
+  "keywords": [],
+  "author": ""
 }

@@ -6,13 +6,19 @@ import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { ICategorieMatiere, getCategorieMatiereIdentifier } from '../categorie-matiere.model';
+import { IEquipement } from 'app/entities/equipement/equipement.model';
 
 export type EntityResponseType = HttpResponse<ICategorieMatiere>;
 export type EntityArrayResponseType = HttpResponse<ICategorieMatiere[]>;
 
+export type EntityResponseTypeMatiere = HttpResponse<IEquipement>;
+export type EntityArrayResponseTypeMatiere = HttpResponse<IEquipement[]>;
+
 @Injectable({ providedIn: 'root' })
 export class CategorieMatiereService {
   public resourceUrl = this.applicationConfigService.getEndpointFor('api/categorie-matieres', 'gestionequipement');
+
+  public resourceUrlMatiere = this.applicationConfigService.getEndpointFor('api/equipements-categorie', 'gestionequipement');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
@@ -43,6 +49,11 @@ export class CategorieMatiereService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<ICategorieMatiere[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  queryMatiere(id: number, req?: any): Observable<EntityArrayResponseTypeMatiere> {
+    const options = createRequestOption(req);
+    return this.http.get<IEquipement[]>(`${this.resourceUrlMatiere}/${id}`,{ params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

@@ -30,7 +30,6 @@ export class EquipementComponent implements OnInit {
   ascending!: boolean;
   ngbPaginationPage = 1;
   detailRecherche: any;
-  data: any;
 
   editForm = this.fb.group({
     recherche: [null, [Validators.required]],
@@ -43,25 +42,7 @@ export class EquipementComponent implements OnInit {
     protected router: Router,
     protected modalService: NgbModal,
     protected fb: FormBuilder
-  ) {
-    this.data = {
-      labels: ['A','B','C'],
-      datasets: [
-          {
-              data: [300, 50, 100],
-              backgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-              ],
-              hoverBackgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-              ]
-          }]    
-      };
-  }
+  ) {}
 
 
   

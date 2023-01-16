@@ -7,6 +7,7 @@ import { CategorieMatiereUpdateComponent } from './update/categorie-matiere-upda
 import { CategorieMatiereDeleteDialogComponent } from './delete/categorie-matiere-delete-dialog.component';
 import { CategorieMatiereRoutingModule } from './route/categorie-matiere-routing.module';
 import { SidebarModule } from 'app/layouts/sidebar/sidebar.module';
+import { MatiereCategorieComponent } from './matiere-categorie/matiere-categorie.component';
 
 @NgModule({
   imports: [SharedModule, CategorieMatiereRoutingModule, SidebarModule],
@@ -15,6 +16,7 @@ import { SidebarModule } from 'app/layouts/sidebar/sidebar.module';
     CategorieMatiereDetailComponent,
     CategorieMatiereUpdateComponent,
     CategorieMatiereDeleteDialogComponent,
+    MatiereCategorieComponent,
   ],
   entryComponents: [CategorieMatiereDeleteDialogComponent],
 })

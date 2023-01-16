@@ -14,6 +14,8 @@ export type EntityArrayResponseType = HttpResponse<IEquipement[]>;
 export class EquipementService {
   public resourceUrl = this.applicationConfigService.getEndpointFor('api/equipements', 'gestionequipement');
 
+  public resourceUrlStatic = this.applicationConfigService.getEndpointFor('api/equipements/statics', 'gestionequipement');
+
   public resourceUrlRecherche = this.applicationConfigService.getEndpointFor('api/search/equipement', 'gestionequipement');
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
@@ -41,6 +43,10 @@ export class EquipementService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IEquipement[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  queryStaticMatiere(): Observable<EntityArrayResponseType> {
+    return this.http.get<IEquipement[]>(this.resourceUrlStatic, { observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

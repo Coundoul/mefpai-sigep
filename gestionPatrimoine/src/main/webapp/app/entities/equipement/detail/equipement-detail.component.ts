@@ -4,14 +4,34 @@ import { ActivatedRoute } from '@angular/router';
 import { IEquipement } from '../equipement.model';
 import { DataUtils } from 'app/core/util/data-util.service';
 
+
 @Component({
   selector: 'jhi-equipement-detail',
   templateUrl: './equipement-detail.component.html',
 })
 export class EquipementDetailComponent implements OnInit {
   equipement: IEquipement | null = null;
+  responsiveOptions: any;
 
-  constructor(protected dataUtils: DataUtils, protected activatedRoute: ActivatedRoute) {}
+  constructor(protected dataUtils: DataUtils, protected activatedRoute: ActivatedRoute) {
+    this.responsiveOptions = [
+      {
+          breakpoint: '1024px',
+          numVisible: 3,
+          numScroll: 3
+      },
+      {
+          breakpoint: '768px',
+          numVisible: 2,
+          numScroll: 2
+      },
+      {
+          breakpoint: '560px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
+  }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ equipement }) => {
